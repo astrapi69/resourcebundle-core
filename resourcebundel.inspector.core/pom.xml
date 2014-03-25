@@ -3,4 +3,120 @@
   <groupId>resourcebundel.inspector</groupId>
   <artifactId>resourcebundel.inspector.core</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.source.version>1.7</maven-compiler-plugin.source.version>
+		<maven-compiler-plugin.target.version>1.7</maven-compiler-plugin.target.version>
+		<maven-compiler-plugin.encoding>UTF-8</maven-compiler-plugin.encoding>
+		<maven-compiler-plugin.optimize>true</maven-compiler-plugin.optimize>
+		<maven-compiler-plugin.debug>true</maven-compiler-plugin.debug>
+		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
+		<maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
+		<license-maven-plugin.version>2.5</license-maven-plugin.version>
+		<maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
+		<slf4j.version>1.6.4</slf4j.version>
+		<log4j.version>1.2.16</log4j.version>
+		<testng.version>6.8.7</testng.version>
+		<github.global.server>github</github.global.server>
+	</properties>	
+  
+	<build>
+
+		<resources>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/site</directory>
+			</resource>
+
+		</resources>
+
+		<testResources>
+
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/resources</directory>
+			</testResource>
+
+		</testResources>
+
+		<plugins>
+
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${maven-compiler-plugin.source.version}</source>
+					<target>${maven-compiler-plugin.target.version}</target>
+					<encoding>${maven-compiler-plugin.encoding}</encoding>
+					<optimize>${maven-compiler-plugin.optimize}</optimize>
+					<debug>${maven-compiler-plugin.debug}</debug>
+				</configuration>
+			</plugin>
+
+			<!-- Configuring Maven Source Plugin: To attach source artifacts to your 
+				build we execute the source:jar goal from the source plugin during the package 
+				phase. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>${maven-eclipse-plugin.version}</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<additionalProjectnatures>
+<!-- 						<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature> -->
+						<projectnature>org.springsource.ide.eclipse.gradle.core.nature</projectnature>
+					</additionalProjectnatures>
+					<downloadSources>true</downloadSources>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
 </project>
