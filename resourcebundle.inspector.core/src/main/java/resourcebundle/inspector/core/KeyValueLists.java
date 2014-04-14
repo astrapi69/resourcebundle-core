@@ -1,4 +1,4 @@
-package resourcebundel.inspector.core;
+package resourcebundle.inspector.core;
 
 import java.io.Serializable;
 import java.util.ArrayList;
