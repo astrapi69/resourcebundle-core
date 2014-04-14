@@ -105,7 +105,7 @@ public class DuplicatePropertiesKeyInspector {
 	}
 
 	/**
-	 * Load.
+	 * Read from inputstream.
 	 * 
 	 * @param inputStream
 	 *            the inputStream
@@ -118,7 +118,7 @@ public class DuplicatePropertiesKeyInspector {
 	}
 
 	/**
-	 * Load.
+	 * Read from given PropertiesLineReader.
 	 * 
 	 * @param propertiesLineReader
 	 *            the lr
