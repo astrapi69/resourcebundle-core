@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import resourcebundle.inspector.core.KeyValueLists;
+import resourcebundle.inspector.io.PropertiesLineReader;
+
 /**
  * The Class DuplicatePropertiesKeyInspector.
  */
