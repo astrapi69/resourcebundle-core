@@ -7,9 +7,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<nv-i18n.version>1.12</nv-i18n.version>
+		<nv-i18n.version>1.10</nv-i18n.version>
 		<jaulp.lang.version>2.4.0</jaulp.lang.version>
 		<jaulp.file.version>3.7.0</jaulp.file.version>
+		<commons-io.version>2.4</commons-io.version>
 		<!-- MAVEN PLUGIN versions -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
 		<maven-compiler-plugin.source.version>1.7</maven-compiler-plugin.source.version>
@@ -58,6 +59,12 @@
 				<version>${jaulp.file.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
 		</dependencies>
 
 	</dependencyManagement>
@@ -80,6 +87,16 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.file</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.neovisionaries</groupId>
+			<artifactId>nv-i18n</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
 		</dependency>
 
 	</dependencies>
