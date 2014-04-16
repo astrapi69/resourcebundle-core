@@ -7,7 +7,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<nv-i18n.version>1.10</nv-i18n.version>
+		<nv-i18n.version>1.11</nv-i18n.version>
 		<jaulp.lang.version>2.4.0</jaulp.lang.version>
 		<jaulp.file.version>3.7.0</jaulp.file.version>
 		<commons-io.version>2.4</commons-io.version>
