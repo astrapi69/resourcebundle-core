@@ -7,16 +7,19 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * The Class KeySearchModel is model for search keys in properties files.
+ * The Class KeySearchModel is model for search keys in all kind of files. For
+ * instance in java files.
  */
 public class KeySearchModel {
-	
-	/** The base where to search. */
+
+	/**
+	 * The Properties that contain the keys to search.
+	 * */
 	private Properties base;
-	
+
 	/** The files to be excluded. */
 	private Set<File> exclude = new HashSet<File>();
-	
+
 	/** The file extensions to find. */
 	private String[] fileExtensions;
 
@@ -25,7 +28,7 @@ public class KeySearchModel {
 
 	/** The directory where the search shell be begin. */
 	private File searchDir;
-	
+
 	/**
 	 * Gets the base.
 	 *
@@ -34,7 +37,7 @@ public class KeySearchModel {
 	public Properties getBase() {
 		return base;
 	}
-	
+
 	/**
 	 * Gets the exclude.
 	 *
@@ -43,7 +46,7 @@ public class KeySearchModel {
 	public Set<File> getExclude() {
 		return exclude;
 	}
-	
+
 	/**
 	 * Gets the file extensions.
 	 *
@@ -52,7 +55,7 @@ public class KeySearchModel {
 	public String[] getFileExtensions() {
 		return fileExtensions;
 	}
-	
+
 	/**
 	 * Gets the locale.
 	 *
@@ -61,7 +64,7 @@ public class KeySearchModel {
 	public Locale getLocale() {
 		return locale;
 	}
-	
+
 	/**
 	 * Gets the search dir.
 	 *
@@ -70,47 +73,52 @@ public class KeySearchModel {
 	public File getSearchDir() {
 		return searchDir;
 	}
-	
+
 	/**
 	 * Sets the base.
 	 *
-	 * @param base the new base
+	 * @param base
+	 *            the new base
 	 */
 	public void setBase(Properties base) {
 		this.base = base;
 	}
-	
+
 	/**
 	 * Sets the exclude.
 	 *
-	 * @param exclude the new exclude
+	 * @param exclude
+	 *            the new exclude
 	 */
 	public void setExclude(Set<File> exclude) {
 		this.exclude = exclude;
 	}
-	
+
 	/**
 	 * Sets the file extensions.
 	 *
-	 * @param fileExtensions the new file extensions
+	 * @param fileExtensions
+	 *            the new file extensions
 	 */
 	public void setFileExtensions(String[] fileExtensions) {
 		this.fileExtensions = fileExtensions;
 	}
-	
+
 	/**
 	 * Sets the locale.
 	 *
-	 * @param locale the new locale
+	 * @param locale
+	 *            the new locale
 	 */
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 	}
-	
+
 	/**
 	 * Sets the search dir.
 	 *
-	 * @param searchDir the new search dir
+	 * @param searchDir
+	 *            the new search dir
 	 */
 	public void setSearchDir(File searchDir) {
 		this.searchDir = searchDir;
