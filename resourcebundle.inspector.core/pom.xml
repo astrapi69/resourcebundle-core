@@ -3,13 +3,27 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>resourcebundle.inspector</groupId>
 	<artifactId>resourcebundle.inspector.core</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<nv-i18n.version>1.11</nv-i18n.version>
-		<jaulp.lang.version>2.4.0</jaulp.lang.version>
-		<jaulp.file.version>3.7.0</jaulp.file.version>
+		<!-- JAULP versions -->
+		<jaulp.core.version>3.9.0-SNAPSHOT</jaulp.core.version>
+		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
+		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
+		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
+		<jaulp.file.version>${jaulp.core.version}</jaulp.file.version>
+		<jaulp.generic.tree.version>${jaulp.core.version}</jaulp.generic.tree.version>
+		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
+		<jaulp.net.version>${jaulp.core.version}</jaulp.net.version>
+		<jaulp.random.version>${jaulp.core.version}</jaulp.random.version>
+		<jaulp.security.version>${jaulp.core.version}</jaulp.security.version>
+		<jaulp.swing.version>${jaulp.core.version}</jaulp.swing.version>
+		<jaulp.test.objects.version>${jaulp.core.version}</jaulp.test.objects.version>
+		<jaulp.time.version>${jaulp.core.version}</jaulp.time.version>
+		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
+		<mystic.crypt.version>${jaulp.core.version}</mystic.crypt.version>
 		<commons-io.version>2.4</commons-io.version>
 		<!-- MAVEN PLUGIN versions -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
@@ -48,13 +62,13 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.lang</artifactId>
 				<version>${jaulp.lang.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.file</artifactId>
 				<version>${jaulp.file.version}</version>
 			</dependency>
@@ -80,12 +94,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jaulp</groupId>
+			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.lang</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.jaulp</groupId>
+			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.file</artifactId>
 		</dependency>
 
