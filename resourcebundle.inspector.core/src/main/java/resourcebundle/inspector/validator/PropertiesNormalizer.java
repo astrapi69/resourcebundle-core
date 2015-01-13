@@ -128,7 +128,7 @@ public class PropertiesNormalizer {
 	 */
 	public static void normalizeProperties(String path) throws IOException, FileIsADirectoryException {
 		File originalFile = new File(path);
-		File backupFile = PropertiesFileUtils.createBackupOf(originalFile);
+		File backupFile = PropertiesFileUtils.newBackupOf(originalFile);
 		replaceCharacters(backupFile, originalFile);
 	}
 
