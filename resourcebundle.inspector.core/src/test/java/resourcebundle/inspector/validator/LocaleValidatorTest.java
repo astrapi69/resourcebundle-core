@@ -13,11 +13,10 @@ public class LocaleValidatorTest {
 
 	@Test
 	public void testValidate() {
-		// Test string 
-		String key = "com.example.gui.window.title";
 		String actual = "de";
 		AssertJUnit.assertTrue(LocaleValidator.validate(actual));
 		Locale l = LocaleCode.getByCode(actual, true).toLocale();
+		AssertJUnit.assertTrue(l.getLanguage().equals(actual));
 		actual = "de_DE";
 		AssertJUnit.assertTrue(LocaleValidator.validate(actual));
 	}
