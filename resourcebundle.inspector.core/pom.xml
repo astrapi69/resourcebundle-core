@@ -12,13 +12,12 @@
 		The resourcebundle.inspector project can inspect projects of unused properties keys or duplicate keys.
 	</description>
 
-	<url>https://github.com/astrapi69/resourcebundle.inspector</url>
-
+	<url>https://github.com/astrapi69/resourcebundle.inspector</url>	
+	
 	<scm>
-		<url>https://github.com/astrapi69/resourcebundle.inspector</url>
-		<connection>scm:git:https://github.com/astrapi69/resourcebundle.inspector.git</connection>
-		<developerConnection>scm:git:https://github.com:astrapi69/resourcebundle.inspector.git</developerConnection>
-		<tag>HEAD</tag>
+		<connection>scm:git:git:@github.com:astrapi69/resourcebundle.inspector.git</connection>
+		<developerConnection>scm:git:git@github.com:astrapi69/resourcebundle.inspector.git</developerConnection>
+		<url>git:@github.com:astrapi69/resourcebundle.inspector.git</url>
 	</scm>
 
 	<developers>
