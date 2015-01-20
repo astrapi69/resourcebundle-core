@@ -12,8 +12,8 @@
 		The resourcebundle.inspector project can inspect projects of unused properties keys or duplicate keys.
 	</description>
 
-	<url>https://github.com/astrapi69/resourcebundle.inspector</url>	
-	
+	<url>https://github.com/astrapi69/resourcebundle.inspector</url>
+
 	<scm>
 		<connection>scm:git:git:@github.com:astrapi69/resourcebundle.inspector.git</connection>
 		<developerConnection>scm:git:git@github.com:astrapi69/resourcebundle.inspector.git</developerConnection>
@@ -378,10 +378,12 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
+			<name>Nexus snapshot Repository</name>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
+			<name>Nexus snapshot Repository</name>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
@@ -423,10 +425,12 @@
 			<distributionManagement>
 				<snapshotRepository>
 					<id>ossrh</id>
+					<name>Nexus snapshot Repository</name>
 					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 				</snapshotRepository>
 				<repository>
 					<id>ossrh</id>
+					<name>Nexus snapshot Repository</name>
 					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 				</repository>
 			</distributionManagement>
