@@ -6,9 +6,9 @@ import java.util.Collection;
 
 import org.testng.annotations.Test;
 
-import net.sourceforge.jaulp.file.exceptions.FileIsADirectoryException;
-import net.sourceforge.jaulp.file.search.PathFinder;
-import net.sourceforge.jaulp.lang.ClassUtils;
+import de.alpharogroup.file.exceptions.FileIsADirectoryException;
+import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.lang.ClassUtils;
 
 
 public class PropertiesNormalizerTest {

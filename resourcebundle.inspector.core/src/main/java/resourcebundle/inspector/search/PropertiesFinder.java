@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sourceforge.jaulp.locale.LocaleUtils;
+import de.alpharogroup.locale.LocaleUtils;
 
 /**
  * The Class PropertiesFinder finds all properties file from the given root

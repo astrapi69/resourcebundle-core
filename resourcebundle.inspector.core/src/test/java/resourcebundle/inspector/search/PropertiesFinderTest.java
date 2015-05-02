@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import net.sourceforge.jaulp.file.search.PathFinder;
+import de.alpharogroup.file.search.PathFinder;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;

@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import net.sourceforge.jaulp.file.FileExtension;
-import net.sourceforge.jaulp.file.filter.MultiplyExtensionsFileFilter;
+import de.alpharogroup.file.FileExtension;
+import de.alpharogroup.file.filter.MultiplyExtensionsFileFilter;
 
 import org.apache.commons.io.DirectoryWalker;
 

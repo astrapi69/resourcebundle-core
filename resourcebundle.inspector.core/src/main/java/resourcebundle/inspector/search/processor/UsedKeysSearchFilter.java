@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import net.sourceforge.jaulp.file.search.FileSearchUtils;
+import de.alpharogroup.file.search.FileSearchUtils;
 
 import org.apache.commons.io.FileUtils;
 

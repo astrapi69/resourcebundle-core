@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import net.sourceforge.jaulp.file.search.PathFinder;
-import net.sourceforge.jaulp.lang.PropertiesUtils;
-import net.sourceforge.jaulp.locale.LocaleUtils;
+import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.lang.PropertiesUtils;
+import de.alpharogroup.locale.LocaleUtils;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;

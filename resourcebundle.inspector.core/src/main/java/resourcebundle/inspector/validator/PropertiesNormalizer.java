@@ -17,8 +17,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sourceforge.jaulp.file.exceptions.FileIsADirectoryException;
-import net.sourceforge.jaulp.file.properties.PropertiesFileUtils;
+import de.alpharogroup.file.exceptions.FileIsADirectoryException;
+import de.alpharogroup.file.properties.PropertiesFileUtils;
 
 import org.apache.commons.io.IOUtils;
 
