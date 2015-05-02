@@ -30,6 +30,7 @@ public class UsedKeysSearchFilterTest {
 		unusedKeys.add("com.example.gui.window.buttons.ok");
 		unusedKeys.add("com.example.gui");
 		unusedKeys.add("com.example.gui.window.buttons.cancel");
+		unusedKeys.add("com.example.gui.window.title");
 		expected.setUnusedKeys(unusedKeys);
 		KeySearchModel model = newKeySearchModel();
 		UsedKeysSearchFilter command = new UsedKeysSearchFilter();

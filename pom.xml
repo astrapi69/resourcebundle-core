@@ -2,13 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>de.alpharogroup</groupId>
-		<artifactId>resourcebundle.inspector</artifactId>
-		<version>1.0.1</version>
-	</parent>
-
-	<artifactId>resourcebundle.inspector.core</artifactId>
+	<groupId>de.alpharogroup</groupId>
+	<artifactId>resourcebundle.inspector</artifactId>
+	<version>1.0.1</version>
+	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
 
@@ -48,12 +45,16 @@
 		</license>
 
 	</licenses>
+	
+	<modules>
+		<module>resourcebundle.inspector.core</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<nv-i18n.version>1.11</nv-i18n.version>
 		<!-- JAULP versions -->
-		<jaulp.core.version>3.10.0</jaulp.core.version>
+		<jaulp.core.version>3.11.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
 		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
@@ -440,7 +441,6 @@
 			</distributionManagement>
 
 		</profile>
-
 
 	</profiles>
 
