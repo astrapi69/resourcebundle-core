@@ -1,2 +1,1 @@
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/astrapi69/resourcebundle.inspector/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+[![Build Status](https://travis-ci.org/astrapi69/resourcebundle.inspector.svg?branch=master)](https://travis-ci.org/astrapi69/resourcebundle.inspector)
