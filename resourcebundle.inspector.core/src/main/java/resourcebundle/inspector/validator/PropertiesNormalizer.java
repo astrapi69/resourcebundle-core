@@ -29,6 +29,14 @@ import resourcebundle.inspector.search.PropertiesDirectoryWalker;
  * characters.
  **/
 public class PropertiesNormalizer {
+	
+	    public static final char ae = '\u00E4';
+    public static final char AE = '\u00C4';
+    public static final char oe = '\u00F6';
+    public static final char OE = '\u00D6';
+    public static final char ue = '\u00FC';
+    public static final char UE = '\u00DC';
+    public static final char sss = '\u00DF';
 
 	/** The invalid characters. */
 	public static Map<Character, String> INVALID_CHARACTERS = new HashMap<Character, String>() {
