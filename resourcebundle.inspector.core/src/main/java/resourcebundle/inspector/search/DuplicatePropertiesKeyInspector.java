@@ -15,7 +15,8 @@ import resourcebundle.inspector.io.PropertiesLineReader;
 /**
  * The Class DuplicatePropertiesKeyInspector.
  */
-public class DuplicatePropertiesKeyInspector {
+public class DuplicatePropertiesKeyInspector
+{
 
 
 	/** The result. */
@@ -24,21 +25,26 @@ public class DuplicatePropertiesKeyInspector {
 	/**
 	 * Instantiates a new duplicate properties key finder.
 	 *
-	 * @param propertiesFile the properties file
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param propertiesFile
+	 *            the properties file
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
-	public DuplicatePropertiesKeyInspector(File propertiesFile) throws IOException {
+	public DuplicatePropertiesKeyInspector(final File propertiesFile) throws IOException
+	{
 		this.result = findDuplicateKeys(propertiesFile);
 	}
 
 	/**
 	 * Instantiates a new duplicate properties key finder.
 	 *
-	 * @param inputStream the input stream
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param inputStream
+	 *            the input stream
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
-	public DuplicatePropertiesKeyInspector(InputStream inputStream)
-			throws IOException {
+	public DuplicatePropertiesKeyInspector(final InputStream inputStream) throws IOException
+	{
 		this.result = findDuplicateKeys(inputStream);
 	}
 
@@ -47,13 +53,12 @@ public class DuplicatePropertiesKeyInspector {
 	 * 
 	 * @param propertiesFile
 	 *            the properties file
-	 * @return the map with the duplicate keys as key and the occurences as
-	 *         value.
+	 * @return the map with the duplicate keys as key and the occurences as value.
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	private KeyValueLists findDuplicateKeys(File propertiesFile)
-			throws IOException {
+	private KeyValueLists findDuplicateKeys(final File propertiesFile) throws IOException
+	{
 		return findDuplicateKeys(new FileInputStream(propertiesFile));
 	}
 
@@ -62,35 +67,37 @@ public class DuplicatePropertiesKeyInspector {
 	 * 
 	 * @param inputStream
 	 *            the properties file as InputStream.
-	 * @return the KeyValueLists that hold a map with the duplicate keys as key
-	 *         and the occurences as value.
+	 * @return the KeyValueLists that hold a map with the duplicate keys as key and the occurences
+	 *         as value.
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	private KeyValueLists findDuplicateKeys(InputStream inputStream)
-			throws IOException {
-		Set<String> set = new TreeSet<String>();
-		KeyValueLists keyValueLists = read(inputStream);
-		List<String> keys = keyValueLists.getKeys();
-		for (int i = 0; i < keys.size(); i++) {
-			String key = keys.get(i);
-			if (!set.add(key)) {
-				if (keyValueLists.getDuplicateMap().containsKey(key)) {
-					keyValueLists.getDuplicateMap()
-							.put(key,
-									keyValueLists.getDuplicateMap().get(key)
-											.intValue() + 1);
-					List<String> duplicateValues = keyValueLists
-							.getDuplicateValueMap().get(key);
-					String currentValue = keyValueLists.getValues().get(i);
+	private KeyValueLists findDuplicateKeys(final InputStream inputStream) throws IOException
+	{
+		final Set<String> set = new TreeSet<String>();
+		final KeyValueLists keyValueLists = read(inputStream);
+		final List<String> keys = keyValueLists.getKeys();
+		for (int i = 0; i < keys.size(); i++)
+		{
+			final String key = keys.get(i);
+			if (!set.add(key))
+			{
+				if (keyValueLists.getDuplicateMap().containsKey(key))
+				{
+					keyValueLists.getDuplicateMap().put(key,
+						keyValueLists.getDuplicateMap().get(key).intValue() + 1);
+					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap().get(
+						key);
+					final String currentValue = keyValueLists.getValues().get(i);
 					duplicateValues.add(currentValue);
-				} else {
+				}
+				else
+				{
 					keyValueLists.getDuplicateMap().put(key, 1);
-					keyValueLists.getDuplicateValueMap().put(key,
-							new ArrayList<String>());
-					List<String> duplicateValues = keyValueLists
-							.getDuplicateValueMap().get(key);
-					String currentValue = keyValueLists.getValues().get(i);
+					keyValueLists.getDuplicateValueMap().put(key, new ArrayList<String>());
+					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap().get(
+						key);
+					final String currentValue = keyValueLists.getValues().get(i);
 					duplicateValues.add(currentValue);
 				}
 			}
@@ -103,7 +110,8 @@ public class DuplicatePropertiesKeyInspector {
 	 *
 	 * @return the result
 	 */
-	public KeyValueLists getResult() {
+	public KeyValueLists getResult()
+	{
 		return result;
 	}
 
@@ -116,7 +124,8 @@ public class DuplicatePropertiesKeyInspector {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	private KeyValueLists read(InputStream inputStream) throws IOException {
+	private KeyValueLists read(final InputStream inputStream) throws IOException
+	{
 		return read(new PropertiesLineReader(inputStream));
 	}
 
@@ -129,64 +138,75 @@ public class DuplicatePropertiesKeyInspector {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	private KeyValueLists read(PropertiesLineReader propertiesLineReader)
-			throws IOException {
-		char[] buffer = new char[1024];
+	private KeyValueLists read(final PropertiesLineReader propertiesLineReader) throws IOException
+	{
+		final char[] buffer = new char[1024];
 		int limit;
 		int keyLength;
 		int valueStart;
 		char c;
 		boolean hasSep;
 		boolean precedingBackslash;
-		KeyValueLists keyValueLists = new KeyValueLists();
-		while ((limit = propertiesLineReader.readLine()) >= 0) {
+		final KeyValueLists keyValueLists = new KeyValueLists();
+		while ((limit = propertiesLineReader.readLine()) >= 0)
+		{
 			c = 0;
 			keyLength = 0;
 			valueStart = limit;
 			hasSep = false;
 			precedingBackslash = false;
-			while (keyLength < limit) {
+			while (keyLength < limit)
+			{
 				c = propertiesLineReader.getLineBuffer()[keyLength];
-				if ((c == '=' || c == ':') && !precedingBackslash) {
+				if ((c == '=' || c == ':') && !precedingBackslash)
+				{
 					valueStart = keyLength + 1;
 					hasSep = true;
 					break;
-				} else if ((c == ' ' || c == '\t' || c == '\f')
-						&& !precedingBackslash) {
+				}
+				else if ((c == ' ' || c == '\t' || c == '\f') && !precedingBackslash)
+				{
 					valueStart = keyLength + 1;
 					break;
 				}
-				if (c == '\\') {
+				if (c == '\\')
+				{
 					precedingBackslash = !precedingBackslash;
-				} else {
+				}
+				else
+				{
 					precedingBackslash = false;
 				}
 				keyLength++;
 			}
-			while (valueStart < limit) {
+			while (valueStart < limit)
+			{
 				c = propertiesLineReader.getLineBuffer()[valueStart];
-				if (c != ' ' && c != '\t' && c != '\f') {
-					if (!hasSep && (c == '=' || c == ':')) {
+				if (c != ' ' && c != '\t' && c != '\f')
+				{
+					if (!hasSep && (c == '=' || c == ':'))
+					{
 						hasSep = true;
-					} else {
+					}
+					else
+					{
 						break;
 					}
 				}
 				valueStart++;
 			}
-			char[] lineBuffer = propertiesLineReader.getLineBuffer();
-			String key = readPartOfLine(lineBuffer, 0, keyLength, buffer);
-			String value = readPartOfLine(lineBuffer, valueStart, limit
-					- valueStart, buffer);
+			final char[] lineBuffer = propertiesLineReader.getLineBuffer();
+			final String key = readPartOfLine(lineBuffer, 0, keyLength, buffer);
+			final String value = readPartOfLine(lineBuffer, valueStart, limit - valueStart, buffer);
 			keyValueLists.getKeys().add(key);
 			keyValueLists.getValues().add(value);
 		}
 		return keyValueLists;
-	}	
+	}
 
 	/**
-	 * Converts encoded &#92;uxxxx to unicode chars and changes special saved
-	 * chars to their original forms.
+	 * Converts encoded &#92;uxxxx to unicode chars and changes special saved chars to their
+	 * original forms.
 	 * 
 	 * @param in
 	 *            the in
@@ -198,76 +218,94 @@ public class DuplicatePropertiesKeyInspector {
 	 *            the buffer
 	 * @return the string
 	 */
-	private String readPartOfLine(char[] in, int off, int len,
-			char[] buffer) {
-		if (buffer.length < len) {
+	private String readPartOfLine(final char[] in, int off, final int len, char[] buffer)
+	{
+		if (buffer.length < len)
+		{
 			int newLength = len * 2;
-			if (newLength < 0) {
+			if (newLength < 0)
+			{
 				newLength = Integer.MAX_VALUE;
 			}
 			buffer = new char[newLength];
 		}
 		char aChar;
-		char[] out = buffer;
+		final char[] out = buffer;
 		int outputLength = 0;
-		int end = off + len;
+		final int end = off + len;
 
-		while (off < end) {
+		while (off < end)
+		{
 			aChar = in[off++];
-			if (aChar == '\\') {
+			if (aChar == '\\')
+			{
 				aChar = in[off++];
-				if (aChar == 'u') {
+				if (aChar == 'u')
+				{
 					// Read the xxxx(Hex-values)
 					int value = 0;
-					for (int i = 0; i < 4; i++) {
+					for (int i = 0; i < 4; i++)
+					{
 						aChar = in[off++];
-						switch (aChar) {
-						case '0':
-						case '1':
-						case '2':
-						case '3':
-						case '4':
-						case '5':
-						case '6':
-						case '7':
-						case '8':
-						case '9':
-							value = (value << 4) + aChar - '0';
-							break;
-						case 'a':
-						case 'b':
-						case 'c':
-						case 'd':
-						case 'e':
-						case 'f':
-							value = (value << 4) + 10 + aChar - 'a';
-							break;
-						case 'A':
-						case 'B':
-						case 'C':
-						case 'D':
-						case 'E':
-						case 'F':
-							value = (value << 4) + 10 + aChar - 'A';
-							break;
-						default:
-							throw new IllegalArgumentException(
-									"Malformed \\uxxxx encoding.");
+						switch (aChar)
+						{
+							case '0' :
+							case '1' :
+							case '2' :
+							case '3' :
+							case '4' :
+							case '5' :
+							case '6' :
+							case '7' :
+							case '8' :
+							case '9' :
+								value = (value << 4) + aChar - '0';
+								break;
+							case 'a' :
+							case 'b' :
+							case 'c' :
+							case 'd' :
+							case 'e' :
+							case 'f' :
+								value = (value << 4) + 10 + aChar - 'a';
+								break;
+							case 'A' :
+							case 'B' :
+							case 'C' :
+							case 'D' :
+							case 'E' :
+							case 'F' :
+								value = (value << 4) + 10 + aChar - 'A';
+								break;
+							default :
+								throw new IllegalArgumentException("Malformed \\uxxxx encoding.");
 						}
 					}
-					out[outputLength++] = (char) value;
-				} else {
+					out[outputLength++] = (char)value;
+				}
+				else
+				{
 					if (aChar == 't')
+					{
 						aChar = '\t';
+					}
 					else if (aChar == 'r')
+					{
 						aChar = '\r';
+					}
 					else if (aChar == 'n')
+					{
 						aChar = '\n';
+					}
 					else if (aChar == 'f')
+					{
 						aChar = '\f';
+					}
 					out[outputLength++] = aChar;
 				}
-			} else {
+			}
+			else
+			{
 				out[outputLength++] = aChar;
 			}
 		}

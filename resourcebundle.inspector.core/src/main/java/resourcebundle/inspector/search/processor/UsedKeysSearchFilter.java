@@ -1,43 +1,53 @@
 package resourcebundle.inspector.search.processor;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import de.alpharogroup.file.search.FileSearchUtils;
-
 import org.apache.commons.io.FileUtils;
+
+import de.alpharogroup.file.search.FileSearchUtils;
 
 /**
  * The Class UsedKeysSearchFilter finds the used keys from.
  */
-public class UsedKeysSearchFilter implements
-		FilterProcessor<KeySearchModel, UsedKeysSearchResult> {
+public class UsedKeysSearchFilter implements FilterProcessor<KeySearchModel, UsedKeysSearchResult>
+{
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.clean.resourcebundles.search.filter.FilterProcessor#process(java.lang.Object)
 	 */
-	public UsedKeysSearchResult process(KeySearchModel searchModel)
-			 {
+	@Override
+	public UsedKeysSearchResult process(final KeySearchModel searchModel)
+	{
 		UsedKeysSearchResult result;
-		try {
-			// Find 
-			List<File> foundFiles = FileSearchUtils.findFilesWithFilter(
-					searchModel.getSearchDir(), searchModel.getFileExtensions());
+		try
+		{
+			// Find
+			final List<File> foundFiles = FileSearchUtils.findFilesWithFilter(
+				searchModel.getSearchDir(), searchModel.getFileExtensions());
 			result = new UsedKeysSearchResult();
 			result.setSearchModel(searchModel);
-			for (File file : foundFiles) {
-				if (!searchModel.getExclude().contains(file)) {
-					String fileContent = FileUtils.readFileToString(file, "UTF-8");
-					for (Object key : searchModel.getBase().keySet()) {
-						String k = "\"" + key.toString().trim() + "\"";
-						if (fileContent.contains(k)) {
-							result.getUsed().put(key,
-									searchModel.getBase().get(key));
+			for (final File file : foundFiles)
+			{
+				if (!searchModel.getExclude().contains(file))
+				{
+					final String fileContent = FileUtils.readFileToString(file, "UTF-8");
+					for (final Object key : searchModel.getBase().keySet())
+					{
+						final String k = "\"" + key.toString().trim() + "\"";
+						if (fileContent.contains(k))
+						{
+							result.getUsed().put(key, searchModel.getBase().get(key));
 						}
 					}
 				}
 			}
-		} catch (IOException e) {
+		}
+		catch (final IOException e)
+		{
 			throw new RuntimeException(e);
 		}
 		return result;

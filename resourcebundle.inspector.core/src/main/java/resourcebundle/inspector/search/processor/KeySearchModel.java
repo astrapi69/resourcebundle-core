@@ -7,10 +7,11 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * The Class KeySearchModel is model for search keys in all kind of files. For
- * instance in java files.
+ * The Class KeySearchModel is model for search keys in all kind of files. For instance in java
+ * files.
  */
-public class KeySearchModel {
+public class KeySearchModel
+{
 
 	/**
 	 * The Properties that contain the keys to search.
@@ -34,7 +35,8 @@ public class KeySearchModel {
 	 *
 	 * @return the base
 	 */
-	public Properties getBase() {
+	public Properties getBase()
+	{
 		return base;
 	}
 
@@ -43,7 +45,8 @@ public class KeySearchModel {
 	 *
 	 * @return the exclude
 	 */
-	public Set<File> getExclude() {
+	public Set<File> getExclude()
+	{
 		return exclude;
 	}
 
@@ -52,7 +55,8 @@ public class KeySearchModel {
 	 *
 	 * @return the file extensions
 	 */
-	public String[] getFileExtensions() {
+	public String[] getFileExtensions()
+	{
 		return fileExtensions;
 	}
 
@@ -61,7 +65,8 @@ public class KeySearchModel {
 	 *
 	 * @return the locale
 	 */
-	public Locale getLocale() {
+	public Locale getLocale()
+	{
 		return locale;
 	}
 
@@ -70,7 +75,8 @@ public class KeySearchModel {
 	 *
 	 * @return the search dir
 	 */
-	public File getSearchDir() {
+	public File getSearchDir()
+	{
 		return searchDir;
 	}
 
@@ -80,7 +86,8 @@ public class KeySearchModel {
 	 * @param base
 	 *            the new base
 	 */
-	public void setBase(Properties base) {
+	public void setBase(final Properties base)
+	{
 		this.base = base;
 	}
 
@@ -90,7 +97,8 @@ public class KeySearchModel {
 	 * @param exclude
 	 *            the new exclude
 	 */
-	public void setExclude(Set<File> exclude) {
+	public void setExclude(final Set<File> exclude)
+	{
 		this.exclude = exclude;
 	}
 
@@ -100,7 +108,8 @@ public class KeySearchModel {
 	 * @param fileExtensions
 	 *            the new file extensions
 	 */
-	public void setFileExtensions(String[] fileExtensions) {
+	public void setFileExtensions(final String[] fileExtensions)
+	{
 		this.fileExtensions = fileExtensions;
 	}
 
@@ -110,7 +119,8 @@ public class KeySearchModel {
 	 * @param locale
 	 *            the new locale
 	 */
-	public void setLocale(Locale locale) {
+	public void setLocale(final Locale locale)
+	{
 		this.locale = locale;
 	}
 
@@ -120,7 +130,8 @@ public class KeySearchModel {
 	 * @param searchDir
 	 *            the new search dir
 	 */
-	public void setSearchDir(File searchDir) {
+	public void setSearchDir(final File searchDir)
+	{
 		this.searchDir = searchDir;
 	}
 }

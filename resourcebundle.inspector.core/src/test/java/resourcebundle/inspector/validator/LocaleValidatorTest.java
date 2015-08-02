@@ -8,14 +8,15 @@ import org.testng.annotations.Test;
 import com.neovisionaries.i18n.LocaleCode;
 
 
-
-public class LocaleValidatorTest {
+public class LocaleValidatorTest
+{
 
 	@Test
-	public void testValidate() {
+	public void testValidate()
+	{
 		String actual = "de";
 		AssertJUnit.assertTrue(LocaleValidator.validate(actual));
-		Locale l = LocaleCode.getByCode(actual, true).toLocale();
+		final Locale l = LocaleCode.getByCode(actual, true).toLocale();
 		AssertJUnit.assertTrue(l.getLanguage().equals(actual));
 		actual = "de_DE";
 		AssertJUnit.assertTrue(LocaleValidator.validate(actual));

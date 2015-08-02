@@ -8,11 +8,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * The Class KeyValueLists holds to lists for the keys and values from a
- * properties file and a map to save duplicate keys and the occurrences of it.
- * It is used to find duplicate keys in a properties file.
+ * The Class KeyValueLists holds to lists for the keys and values from a properties file and a map
+ * to save duplicate keys and the occurrences of it. It is used to find duplicate keys in a
+ * properties file.
  */
-public class KeyValueLists implements Serializable {
+public class KeyValueLists implements Serializable
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -28,17 +29,19 @@ public class KeyValueLists implements Serializable {
 	/** The duplicate map. */
 	private final Map<String, List<String>> duplicateValueMap = new LinkedHashMap<String, List<String>>();
 
-	public Map<String, List<String>> getDuplicateValueMap() {
-		return duplicateValueMap;
-	}
-
 	/**
 	 * Gets the duplicate map.
 	 * 
 	 * @return the duplicate map
 	 */
-	public Map<String, Integer> getDuplicateMap() {
+	public Map<String, Integer> getDuplicateMap()
+	{
 		return duplicateMap;
+	}
+
+	public Map<String, List<String>> getDuplicateValueMap()
+	{
+		return duplicateValueMap;
 	}
 
 	/**
@@ -46,7 +49,8 @@ public class KeyValueLists implements Serializable {
 	 * 
 	 * @return the keys
 	 */
-	public List<String> getKeys() {
+	public List<String> getKeys()
+	{
 		return keys;
 	}
 
@@ -55,7 +59,8 @@ public class KeyValueLists implements Serializable {
 	 * 
 	 * @return the values
 	 */
-	public List<String> getValues() {
+	public List<String> getValues()
+	{
 		return values;
 	}
 }

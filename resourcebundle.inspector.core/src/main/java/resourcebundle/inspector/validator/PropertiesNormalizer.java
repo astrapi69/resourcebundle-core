@@ -17,29 +17,29 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.alpharogroup.file.exceptions.FileIsADirectoryException;
-import de.alpharogroup.file.properties.PropertiesFileUtils;
-
 import org.apache.commons.io.IOUtils;
 
 import resourcebundle.inspector.search.PropertiesDirectoryWalker;
+import de.alpharogroup.file.exceptions.FileIsADirectoryException;
+import de.alpharogroup.file.properties.PropertiesFileUtils;
 
 /**
- * Normalizes Properties and replaces existing invalid characters to utf8
- * characters.
+ * Normalizes Properties and replaces existing invalid characters to utf8 characters.
  **/
-public class PropertiesNormalizer {
-	
-	    public static final char ae = '\u00E4';
-    public static final char AE = '\u00C4';
-    public static final char oe = '\u00F6';
-    public static final char OE = '\u00D6';
-    public static final char ue = '\u00FC';
-    public static final char UE = '\u00DC';
-    public static final char sss = '\u00DF';
+public class PropertiesNormalizer
+{
+
+	public static final char ae = '\u00E4';
+	public static final char AE = '\u00C4';
+	public static final char oe = '\u00F6';
+	public static final char OE = '\u00D6';
+	public static final char ue = '\u00FC';
+	public static final char UE = '\u00DC';
+	public static final char sss = '\u00DF';
 
 	/** The invalid characters. */
-	public static Map<Character, String> INVALID_CHARACTERS = new HashMap<Character, String>() {
+	public static Map<Character, String> INVALID_CHARACTERS = new HashMap<Character, String>()
+	{
 		private static final long serialVersionUID = 1L;
 		{
 			// german
@@ -125,81 +125,44 @@ public class PropertiesNormalizer {
 	};
 
 	/**
-	 * Replaces all occurrences from invalid characters with utf8 characters for the
-	 * given path from the properties file and creates a backup file for comparisons if necessary.
-	 * 
-	 * @param path
-	 *            the path from the properties file
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @throws FileIsADirectoryException 
-	 */
-	public static void normalizeProperties(String path) throws IOException, FileIsADirectoryException {
-		File originalFile = new File(path);
-		File backupFile = PropertiesFileUtils.newBackupOf(originalFile);
-		replaceCharacters(backupFile, originalFile);
-	}
-
-	/**
-	 * Reads the input file and writes the converted characters to the output
-	 * file.
+	 * Checks if the given File contains invalid characters.
 	 * 
 	 * @param input
 	 *            the input file
-	 * @param output
-	 *            the output file
+	 * @return true, if successful
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	private static void replaceCharacters(File input, File output)
-			throws IOException {
+	private static boolean containsInvalidCharacters(final File input) throws IOException
+	{
 		Reader bufferIn = null;
-		Writer bufferOut = null;
-
-		try {
-			InputStream in = new FileInputStream(input);
+		try
+		{
+			final InputStream in = new FileInputStream(input);
 			bufferIn = new BufferedReader(new InputStreamReader(in));
 
-			OutputStream out = new FileOutputStream(output);
-			bufferOut = new BufferedWriter(new OutputStreamWriter(out));
-
 			int r;
-			while ((r = bufferIn.read()) != -1) {
-				char ch = (char) r;
-				String invalidCharacters = getUtf8Character(ch);
+			while ((r = bufferIn.read()) != -1)
+			{
+				final char ch = (char)r;
+				final String invalidCharacter = getUtf8Character(ch);
 
-				if (invalidCharacters != null) {
-					bufferOut.write(invalidCharacters.toCharArray());
-				} else {
-					bufferOut.write(ch);
+				if (invalidCharacter != null)
+				{
+					return true;
 				}
 			}
-			bufferOut.flush();
-		} finally {
+		}
+		finally
+		{
 			IOUtils.closeQuietly(bufferIn);
-			IOUtils.closeQuietly(bufferOut);
 		}
+		return false;
 	}
 
 	/**
-	 * Checks if the given char is an invalid character, if true than it returns it
-	 * as a utf8 character in a String object, otherwise it returns null.
-	 * 
-	 * @param c
-	 *            the char
-	 * 
-	 * @return the utf8 character
-	 */
-	private static String getUtf8Character(char c) {
-		if (INVALID_CHARACTERS.containsKey(Character.valueOf(c))) {
-			return INVALID_CHARACTERS.get(Character.valueOf(c));
-		}
-		return null;
-	}
-
-	/**
-	 * Finds properties files that contains invalid characters and adds them to the
-	 * collection from the given directory recursively.
+	 * Finds properties files that contains invalid characters and adds them to the collection from
+	 * the given directory recursively.
 	 * 
 	 * @param rootDir
 	 *            the root directory that shall be search for all properties files.
@@ -207,13 +170,18 @@ public class PropertiesNormalizer {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public static Collection<File> findPropertiesFilesWithInvalidCharacters(File rootDir) throws IOException {
+	public static Collection<File> findPropertiesFilesWithInvalidCharacters(final File rootDir)
+		throws IOException
+	{
 		final Collection<File> found = new ArrayList<File>();
-		PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker() {
+		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
+		{
 			@Override
-			protected void handleFile(File file, int depth,
-					Collection<File> results) throws IOException {
-				if (containsInvalidCharacters(file)) {
+			protected void handleFile(final File file, final int depth,
+				final Collection<File> results) throws IOException
+			{
+				if (containsInvalidCharacters(file))
+				{
 					found.add(file);
 				}
 			}
@@ -223,33 +191,86 @@ public class PropertiesNormalizer {
 	}
 
 	/**
-	 * Checks if the given File contains invalid characters.
+	 * Checks if the given char is an invalid character, if true than it returns it as a utf8
+	 * character in a String object, otherwise it returns null.
+	 * 
+	 * @param c
+	 *            the char
+	 * 
+	 * @return the utf8 character
+	 */
+	private static String getUtf8Character(final char c)
+	{
+		if (INVALID_CHARACTERS.containsKey(Character.valueOf(c)))
+		{
+			return INVALID_CHARACTERS.get(Character.valueOf(c));
+		}
+		return null;
+	}
+
+	/**
+	 * Replaces all occurrences from invalid characters with utf8 characters for the given path from
+	 * the properties file and creates a backup file for comparisons if necessary.
+	 * 
+	 * @param path
+	 *            the path from the properties file
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileIsADirectoryException
+	 */
+	public static void normalizeProperties(final String path) throws IOException,
+		FileIsADirectoryException
+	{
+		final File originalFile = new File(path);
+		final File backupFile = PropertiesFileUtils.newBackupOf(originalFile);
+		replaceCharacters(backupFile, originalFile);
+	}
+
+	/**
+	 * Reads the input file and writes the converted characters to the output file.
 	 * 
 	 * @param input
 	 *            the input file
-	 * @return true, if successful
+	 * @param output
+	 *            the output file
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	private static boolean containsInvalidCharacters(File input) throws IOException {
+	private static void replaceCharacters(final File input, final File output) throws IOException
+	{
 		Reader bufferIn = null;
-		try {
-			InputStream in = new FileInputStream(input);
+		Writer bufferOut = null;
+
+		try
+		{
+			final InputStream in = new FileInputStream(input);
 			bufferIn = new BufferedReader(new InputStreamReader(in));
 
-			int r;
-			while ((r = bufferIn.read()) != -1) {
-				char ch = (char) r;
-				String invalidCharacter = getUtf8Character(ch);
+			final OutputStream out = new FileOutputStream(output);
+			bufferOut = new BufferedWriter(new OutputStreamWriter(out));
 
-				if (invalidCharacter != null) {
-					return true;
+			int r;
+			while ((r = bufferIn.read()) != -1)
+			{
+				final char ch = (char)r;
+				final String invalidCharacters = getUtf8Character(ch);
+
+				if (invalidCharacters != null)
+				{
+					bufferOut.write(invalidCharacters.toCharArray());
+				}
+				else
+				{
+					bufferOut.write(ch);
 				}
 			}
-		} finally {
-			IOUtils.closeQuietly(bufferIn);
+			bufferOut.flush();
 		}
-		return false;
+		finally
+		{
+			IOUtils.closeQuietly(bufferIn);
+			IOUtils.closeQuietly(bufferOut);
+		}
 	}
 
 }
