@@ -62,7 +62,6 @@
 		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
 		<jaulp.net.version>${jaulp.core.version}</jaulp.net.version>
 		<jaulp.random.version>${jaulp.core.version}</jaulp.random.version>
-		<jaulp.security.version>${jaulp.core.version}</jaulp.security.version>
 		<jaulp.swing.version>${jaulp.core.version}</jaulp.swing.version>
 		<jaulp.test.objects.version>${jaulp.core.version}</jaulp.test.objects.version>
 		<jaulp.time.version>${jaulp.core.version}</jaulp.time.version>
