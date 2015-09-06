@@ -4,7 +4,7 @@
 
 	<groupId>de.alpharogroup</groupId>
 	<artifactId>resourcebundle.inspector</artifactId>
-	<version>1.0.1</version>
+	<version>2.0.0</version>
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
@@ -71,9 +71,9 @@
 		<commons-io.version>2.4</commons-io.version>
 		<!-- MAVEN PLUGIN versions -->
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-		<maven-compiler-plugin.source.version>1.7</maven-compiler-plugin.source.version>
-		<maven-compiler-plugin.target.version>1.7</maven-compiler-plugin.target.version>
-		<maven-compiler-plugin.compilerVersion>1.7</maven-compiler-plugin.compilerVersion>
+		<maven-compiler-plugin.source.version>1.8</maven-compiler-plugin.source.version>
+		<maven-compiler-plugin.target.version>1.8</maven-compiler-plugin.target.version>
+		<maven-compiler-plugin.compilerVersion>1.8</maven-compiler-plugin.compilerVersion>
 		<maven-compiler-plugin.encoding>UTF-8</maven-compiler-plugin.encoding>
 		<maven-compiler-plugin.optimize>true</maven-compiler-plugin.optimize>
 		<maven-compiler-plugin.showWarnings>true</maven-compiler-plugin.showWarnings>
