@@ -53,7 +53,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<nv-i18n.version>1.11</nv-i18n.version>
 		<!-- JAULP versions -->
-		<jaulp.core.version>3.12.0</jaulp.core.version>
+		<jaulp.core.version>4.0.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
 		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
