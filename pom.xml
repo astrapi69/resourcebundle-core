@@ -81,12 +81,6 @@
 		<dependencies>
 
 			<dependency>
-				<groupId>org.testng</groupId>
-				<artifactId>testng</artifactId>
-				<version>${testng.version}</version>
-			</dependency>
-
-			<dependency>
 				<groupId>com.neovisionaries</groupId>
 				<artifactId>nv-i18n</artifactId>
 				<version>${nv-i18n.version}</version>
@@ -113,99 +107,5 @@
 		</dependencies>
 
 	</dependencyManagement>
-
-	<dependencies>
-		<!-- UNIT TESTS DEPENDENCIES -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.lang</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.file</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.neovisionaries</groupId>
-			<artifactId>nv-i18n</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-		</dependency>
-
-	</dependencies>
-
-	<build>
-
-		<resources>
-
-			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**</include>
-				</includes>
-				<excludes>
-					<exclude>**/*.java</exclude>
-					<exclude>**/package.html</exclude>
-				</excludes>
-			</resource>
-
-			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/resources</directory>
-			</resource>
-
-		</resources>
-
-		<testResources>
-
-			<testResource>
-				<filtering>false</filtering>
-				<directory>src/test/java</directory>
-				<includes>
-					<include>**</include>
-				</includes>
-				<excludes>
-					<exclude>**/*.java</exclude>
-					<exclude>**/package.html</exclude>
-				</excludes>
-			</testResource>
-			<testResource>
-				<filtering>false</filtering>
-				<directory>src/test/resources</directory>
-			</testResource>
-
-		</testResources>
-
-		<plugins>
-
-			<plugin>
-				<inherited>true</inherited>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<inherited>true</inherited>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<inherited>true</inherited>
-				<artifactId>maven-eclipse-plugin</artifactId>
-			</plugin>
-
-		</plugins>
-
-	</build>
 
 </project>
