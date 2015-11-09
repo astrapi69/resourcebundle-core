@@ -85,7 +85,7 @@ public class UsedKeysSearchFilterTest
 		// We can set the files that shell be excuded from the search...
 		final Set<File> exclude = new HashSet<File>();
 		final File ex = new File(PathFinder.getSrcTestJavaDir(),
-			"/resourcebundle/inspector/search/processor/UsedKeysSearchFilterTest.java");
+			"/de/alpharogroup/resourcebundle/inspector/search/processor/UsedKeysSearchFilterTest.java");
 		System.out.println(ex.exists());
 		exclude.add(ex);
 		model.setExclude(exclude);

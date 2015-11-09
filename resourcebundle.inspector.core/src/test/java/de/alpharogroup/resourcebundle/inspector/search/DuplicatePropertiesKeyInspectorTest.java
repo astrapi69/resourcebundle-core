@@ -11,10 +11,18 @@ import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
 import de.alpharogroup.resourcebundle.inspector.search.DuplicatePropertiesKeyInspector;
 
-
+/**
+ * The Class {@link DuplicatePropertiesKeyInspectorTest}.
+ */
 public class DuplicatePropertiesKeyInspectorTest
 {
 
+	/**
+	 * Test get result.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	@Test
 	public void testGetResult() throws IOException
 	{
