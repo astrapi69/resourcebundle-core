@@ -99,21 +99,21 @@ public class LocaleResolver
 	 */
 	public static Locale resolveLocale(final File propertiesFile)
 	{
-		final String localeString = propertiesFile.getName()
+		final String localeCode = propertiesFile.getName()
 			.replaceAll("^" + resolveBundlename(propertiesFile) + "(_)?|\\.properties$", "");
-		return LocaleResolver.resolveLocale(localeString);
+		return LocaleResolver.resolveLocale(localeCode);
 	}
 
 	/**
-	 * Resolves the {@link Locale} object from the given properties file.
+	 * Resolves the {@link Locale} object from the given locale code.
 	 *
-	 * @param propertiesFile
-	 *            the properties file
+	 * @param localeCode
+	 *            the locale code
 	 * @return the {@link Locale} object.
 	 */
-	public static Locale resolveLocale(final String localeString)
+	public static Locale resolveLocale(final String localeCode)
 	{
-		Locale current = resolveLocaleCode(localeString);
+		Locale current = resolveLocaleCode(localeCode);
 		if(current == null) {
 			current = Locale.getDefault();
 		}

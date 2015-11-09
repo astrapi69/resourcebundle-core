@@ -208,6 +208,7 @@ public class PropertiesNormalizer
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 * @throws FileIsADirectoryException
+	 *             is thrown if the given path is a directory.
 	 */
 	public static void normalizeProperties(final String path) throws IOException,
 		FileIsADirectoryException
