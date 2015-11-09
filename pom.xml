@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.0.1</version>
+	<version>2.1.0</version>
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
@@ -51,7 +51,7 @@
 		</license>
 
 	</licenses>
-	
+
 	<modules>
 		<module>resourcebundle.inspector.core</module>
 	</modules>
@@ -73,7 +73,7 @@
 		<jaulp.time.version>${jaulp.core.version}</jaulp.time.version>
 		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
 		<mystic.crypt.version>${jaulp.core.version}</mystic.crypt.version>
-		<commons-io.version>2.4</commons-io.version>		
+		<commons-io.version>2.4</commons-io.version>
 	</properties>
 
 	<dependencyManagement>
