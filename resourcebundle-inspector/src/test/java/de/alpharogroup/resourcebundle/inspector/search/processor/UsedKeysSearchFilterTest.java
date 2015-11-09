@@ -17,13 +17,8 @@ import com.neovisionaries.i18n.LocaleCode;
 
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.lang.PropertiesUtils;
-import de.alpharogroup.locale.LocaleUtils;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
-import de.alpharogroup.resourcebundle.inspector.search.processor.KeySearchModel;
-import de.alpharogroup.resourcebundle.inspector.search.processor.UnusedKeysSearchFilter;
-import de.alpharogroup.resourcebundle.inspector.search.processor.UnusedKeysSearchResult;
-import de.alpharogroup.resourcebundle.inspector.search.processor.UsedKeysSearchFilter;
-import de.alpharogroup.resourcebundle.inspector.search.processor.UsedKeysSearchResult;
+import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 public class UsedKeysSearchFilterTest
 {
@@ -39,7 +34,7 @@ public class UsedKeysSearchFilterTest
 			protected void handleFile(final File file, final int depth,
 				final Collection<File> results) throws IOException
 			{
-				final String localeCode = LocaleUtils.getLocaleCode(file);
+				final String localeCode = LocaleResolver.resolveLocaleCode(file);
 				if (localeCode.equals("default"))
 				{
 					foundMap.put(file, Locale.GERMAN);

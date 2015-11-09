@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.alpharogroup.locale.LocaleUtils;
+import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
  * The Class PropertiesFinder finds all properties file from the given root directory and save it to
@@ -23,7 +23,7 @@ public class PropertiesFinder
 
 	/**
 	 * Instantiates a new properties finder.
-	 * 
+	 *
 	 * @param rootDir
 	 *            the root dir
 	 */
@@ -42,7 +42,7 @@ public class PropertiesFinder
 
 	/**
 	 * Find.
-	 * 
+	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
@@ -54,7 +54,7 @@ public class PropertiesFinder
 			protected void handleFile(final File file, final int depth,
 				final Collection<File> results) throws IOException
 			{
-				final String localeCode = LocaleUtils.getLocaleCode(file);
+				final String localeCode = LocaleResolver.resolveLocaleCode(file);
 				propertiesToLocale.put(file, localeCode);
 			}
 		};
@@ -63,7 +63,7 @@ public class PropertiesFinder
 
 	/**
 	 * Gets the properties to locale.
-	 * 
+	 *
 	 * @return the properties to locale
 	 */
 	public Map<File, String> getPropertiesToLocale()
@@ -73,7 +73,7 @@ public class PropertiesFinder
 
 	/**
 	 * Gets the root dir.
-	 * 
+	 *
 	 * @return the root dir
 	 */
 	public File getRootDir()

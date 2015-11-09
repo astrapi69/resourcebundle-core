@@ -9,8 +9,7 @@ import org.testng.annotations.Test;
 
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.lang.ClassUtils;
-import de.alpharogroup.resourcebundle.inspector.validator.PropertiesNormalizer;
+import de.alpharogroup.lang.ClassExtensions;
 
 
 public class PropertiesNormalizerTest
@@ -40,7 +39,7 @@ public class PropertiesNormalizerTest
 	{
 
 		final String propertiesFilename = "resources.properties";
-		final File propertiesFile = ClassUtils.getResourceAsFile(propertiesFilename);
+		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		PropertiesNormalizer.normalizeProperties(propertiesFile.getAbsolutePath());
 	}
 
