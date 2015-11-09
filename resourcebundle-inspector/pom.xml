@@ -8,7 +8,7 @@
 		<version>2.1.0</version>
 	</parent>
 
-	<artifactId>resourcebundle.inspector.core</artifactId>
+	<artifactId>resourcebundle-inspector</artifactId>
 
 	<name>${project.artifactId}</name>
 
