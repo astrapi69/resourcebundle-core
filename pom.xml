@@ -16,7 +16,7 @@
 	<name>${project.artifactId}</name>
 
 	<description>
-		The resourcebundle.inspector project can inspect projects of unused properties keys or duplicate keys.
+		The resourcebundle-core project can inspect projects of unused properties keys or duplicate keys.
 	</description>
 
 	<url>https://github.com/astrapi69/resourcebundle.inspector</url>
@@ -53,7 +53,7 @@
 	</licenses>
 
 	<modules>
-		<module>resourcebundle.inspector.core</module>
+		<module>resourcebundle-inspector</module>
 	</modules>
 
 	<properties>
