@@ -11,7 +11,7 @@ import java.util.TreeSet;
 
 import lombok.experimental.UtilityClass;
 import de.alpharogroup.file.FilenameUtils;
-import de.alpharogroup.file.namefilter.PropertiesResourceBundleFilenameFilter;
+import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
 
 /**
  * The Class {@link LocaleResolver} helps to resolve locale objects and languages.
