@@ -3,6 +3,7 @@ package de.alpharogroup.resourcebundle.locale;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 import org.testng.AssertJUnit;
@@ -59,8 +60,15 @@ public class LocaleResolverTest {
 	public void testResolveLocaleCodeString() {
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void testResolveLocales() {
+		final String bundlepackage = "de/alpharogroup/lang";
+		final String bundlename = "resources";
+		Map<File, Locale> fileToLocaleMap = LocaleResolver.resolveLocales(bundlepackage, bundlename);
+
+		AssertJUnit.assertTrue(fileToLocaleMap.containsValue(Locale.GERMAN));
+		AssertJUnit.assertTrue(fileToLocaleMap.containsValue(Locale.GERMANY));
+		AssertJUnit.assertTrue(fileToLocaleMap.containsValue(Locale.ENGLISH));
 	}
 	
 
