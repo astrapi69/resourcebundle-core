@@ -43,7 +43,7 @@ public class LocaleResolver
 
 	/**
 	 * Resolves all the available languages for the given resource bundle name in the given bundle
-	 * package. Note the default resource bundle is excluded.
+	 * package. Note the default resource bundle is named 'default'.
 	 *
 	 * @param bundlepackage
 	 *            The package that contains the properties files.
@@ -66,6 +66,8 @@ public class LocaleResolver
 			if ((language != null) && !language.isEmpty())
 			{
 				languages.add(language);
+			} else {
+				languages.add("default");
 			}
 		}
 		return languages;
@@ -154,7 +156,7 @@ public class LocaleResolver
 	{
 		if ((code == null) || code.isEmpty())
 		{
-			return Locale.getDefault();
+			return null;
 		}
 		final String[] splitted = code.split("_");
 		if (splitted.length == 1)
@@ -169,7 +171,7 @@ public class LocaleResolver
 		{
 			return new Locale(splitted[0], splitted[1], splitted[2]);
 		}
-		return Locale.getDefault();
+		return null;
 	}
 
 	/**
