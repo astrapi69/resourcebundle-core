@@ -13,6 +13,9 @@ import de.alpharogroup.lang.ClassExtensions;
 
 public class LocaleResolverTest {
 
+	/**
+	 * Test method for {@link LocaleResolver#isISOCountryCode(String)}
+	 */
 	@Test(enabled = true)
 	public void testIsISOCountryCode() {
 
@@ -27,12 +30,65 @@ public class LocaleResolverTest {
 		AssertJUnit.assertTrue("", LocaleResolver.isISOCountryCode(de));
 	}
 
-	@Test(enabled = false)
-	public void testResolveLocaleFile() {
+	/**
+	 * Test method for {@link LocaleResolver#resolveLocale(File)}.
+	 *
+	 * @throws URISyntaxException the URI syntax exception
+	 */
+	@Test(enabled = true)
+	public void testResolveLocaleFile() throws URISyntaxException {
+		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
+		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
+		String code = "de";
+		Locale expected = new Locale(code);
+		Locale actual = LocaleResolver.resolveLocale(propertiesFile);
+		AssertJUnit.assertNotNull(actual);
+		AssertJUnit.assertEquals(expected, actual);
 	}
-
+	
+	/**
+	 * Test method for {@link LocaleResolver#resolveLocale(String)}
+	 */
 	@Test(enabled = true)
 	public void testResolveLocaleString() {
+		String code = null;
+		Locale actual = LocaleResolver.resolveLocale(code);
+		code = "";
+		actual = LocaleResolver.resolveLocale(code);
+		AssertJUnit.assertEquals(Locale.getDefault(), actual);
+		code = "de";
+		actual = LocaleResolver.resolveLocale(code);
+		Locale expected = new Locale(code);
+		AssertJUnit.assertEquals(expected, actual);
+		code = "de_DE";
+		actual = LocaleResolver.resolveLocale(code);
+		expected = new Locale("de", "DE");
+		AssertJUnit.assertEquals(expected, actual);
+		code = "de_DE_platt";
+		actual = LocaleResolver.resolveLocale(code);
+		expected = new Locale("de", "DE", "platt");
+		AssertJUnit.assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocaleResolver#resolveLocaleCode(File)}
+	 * 
+	 * @throws URISyntaxException the URI syntax exception
+	 */
+	@Test(enabled = true)
+	public void testResolveLocaleCodeFile() throws URISyntaxException {
+		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
+		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
+		String expected = "de";
+		String actual = LocaleResolver.resolveLocaleCode(propertiesFile);
+		AssertJUnit.assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocaleResolver#resolveLocaleCode(String)}
+	 */
+	@Test(enabled = true)
+	public void testResolveLocaleCodeString() {
 		String code = null;
 		Locale actual = LocaleResolver.resolveLocaleCode(code);
 		code = "";
@@ -52,14 +108,9 @@ public class LocaleResolverTest {
 		AssertJUnit.assertEquals(expected, actual);
 	}
 
-	@Test(enabled = false)
-	public void testResolveLocaleCodeFile() {
-	}
-
-	@Test(enabled = false)
-	public void testResolveLocaleCodeString() {
-	}
-
+	/**
+	 * Test method for {@link LocaleResolver#resolveLocales(String, String)}
+	 */
 	@Test(enabled = true)
 	public void testResolveLocales() {
 		final String bundlepackage = "de/alpharogroup/lang";
@@ -70,8 +121,10 @@ public class LocaleResolverTest {
 		AssertJUnit.assertTrue(fileToLocaleMap.containsValue(Locale.GERMANY));
 		AssertJUnit.assertTrue(fileToLocaleMap.containsValue(Locale.ENGLISH));
 	}
-	
 
+	/**
+	 * Test method for {@link LocaleResolver#resolveAvailableLanguages(String, String)}
+	 */
 	@Test(enabled = true)
 	public void testResolveAvailableLanguages()
 	{
@@ -86,6 +139,11 @@ public class LocaleResolverTest {
 		AssertJUnit.assertTrue(availableLanguages.contains("default"));
 	}
 
+	/**
+	 * Test method for {@link LocaleResolver#resolveBundlename(File)}
+	 * 
+	 * @throws URISyntaxException the URI syntax exception
+	 */
 	@Test(enabled = true)
 	public void testResolveBundlename() throws URISyntaxException
 	{
