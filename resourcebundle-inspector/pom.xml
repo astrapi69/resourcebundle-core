@@ -25,6 +25,11 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.test.objects</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.file</artifactId>
 		</dependency>
 

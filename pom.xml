@@ -94,6 +94,12 @@
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.test.objects</artifactId>
+				<version>${jaulp.test.objects.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.file</artifactId>
 				<version>${jaulp.file.version}</version>
 			</dependency>

@@ -6,7 +6,7 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 /**
- * The Class LocaleExtensionsTest.
+ * The class {@link LocaleExtensionsTest} provides unit tests for the class {@link LocaleExtensions}.
  */
 public class LocaleExtensionsTest {
 

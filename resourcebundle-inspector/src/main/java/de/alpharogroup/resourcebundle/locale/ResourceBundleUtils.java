@@ -67,15 +67,15 @@ public class ResourceBundleUtils
 	 *            the locale for which a resource bundle
 	 * @param key
 	 *            the key
-	 * @param params
-	 *            the params
+	 * @param parameters
+	 *            the parameters
 	 * @return the string
 	 */
 	public static String getString(final String baseName, final Locale locale, final String key,
-		final Object... params)
+		final Object... parameters)
 	{
 		final ResourceBundle resourceBundle = ResourceBundle.getBundle(baseName, locale);
-		return getString(resourceBundle, key, params);
+		return getString(resourceBundle, key, parameters);
 	}
 
 	/**
