@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.2.0</version>
+	<version>2.3.0</version>
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
@@ -59,7 +59,7 @@
 	<properties>
 		<nv-i18n.version>1.11</nv-i18n.version>
 		<!-- JAULP versions -->
-		<jaulp.core.version>4.2.0</jaulp.core.version>
+		<jaulp.core.version>4.3.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
 		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>

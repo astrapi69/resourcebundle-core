@@ -1,75 +1,66 @@
 package de.alpharogroup.resourcebundle.locale;
 
-import java.text.MessageFormat;
 import java.util.Locale;
-import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-
-import de.alpharogroup.lang.ClassExtensions;
 
 /**
  * The class ResourceBundleUtils provides utility methods for the class ResourceBundle.
+ * @deprecated use instead the corresponding methods from the classes {@link ResourceBundleExtensions}
  */
 public class ResourceBundleUtils
 {
 
 	/**
-	 * Gets the string.
+	 * Gets the string from the given {@link ResourceBundle} object.
 	 *
 	 * @param resourceBundle
-	 *            the resource bundle
+	 *            the resource bundle to get the {@link String} object.
 	 * @param key
-	 *            the key
+	 *            the properties key
 	 * @return the string
+	 * 
+	 * @deprecated use instead {@link ResourceBundleExtensions#getString(ResourceBundle, String)}
 	 */
 	public static String getString(final ResourceBundle resourceBundle, final String key)
 	{
-		try
-		{
-			return resourceBundle.getString(key);
-		}
-		catch (final MissingResourceException e)
-		{
-			return "Warning:Missing key is '" + key + "'";
-		}
+		return ResourceBundleExtensions.getString(resourceBundle, key);
 	}
 
 	/**
-	 * Gets the string.
+	 * Gets the string from the given {@link ResourceBundle} object.
 	 *
 	 * @param resourceBundle
-	 *            the resource bundle
+	 *            the resource bundle to get the {@link String} object.
 	 * @param key
-	 *            the key
-	 * @param params
-	 *            the parameters
-	 * @return the string
-	 */
-	public static String getString(final ResourceBundle resourceBundle, final String key,
-		final Object... params)
-	{
-		try
-		{
-			return MessageFormat.format(resourceBundle.getString(key), params);
-		}
-		catch (final MissingResourceException e)
-		{
-			return "Warning:Missing key is '" + key + "'";
-		}
-	}
-
-	/**
-	 * Gets the string.
-	 *
-	 * @param baseName
-	 *            the base name of the resource bundle, a fully qualified class name
-	 * @param locale
-	 *            the locale for which a resource bundle
-	 * @param key
-	 *            the key
+	 *            the properties key
 	 * @param parameters
 	 *            the parameters
 	 * @return the string
+	 * 
+	 * @deprecated use instead {@link ResourceBundleExtensions#getString(ResourceBundle, String, Object...)}
+	 */
+	public static String getString(final ResourceBundle resourceBundle, final String key,
+		final Object... parameters)
+	{
+		return ResourceBundleExtensions.getString(resourceBundle, key, parameters);
+	}
+
+	/**
+	 * Resolves from the given base name and locale the {@link ResourceBundle}
+	 * and get the {@link String} from the given key and parameters.
+	 *
+	 * @param baseName
+	 *            the base name of the resource bundle, a fully qualified class
+	 *            name
+	 * @param locale
+	 *            the locale for which a resource bundle
+	 * @param key
+	 *            the properties key
+	 * @param parameters
+	 *            the parameters
+	 * @return the string
+	 * 
+	 * @deprecated use instead {@link ResourceBundleExtensions#getString(String, Locale, String, Object...)}
 	 */
 	public static String getString(final String baseName, final Locale locale, final String key,
 		final Object... parameters)
@@ -90,9 +81,11 @@ public class ResourceBundleUtils
 	 * @param <T>
 	 *            The generic type of the given object.
 	 * @return The generated resource key.
+	 * 
+	 * @deprecated use instead {@link ResourceKeyFactory#newResourceKey(Object, String)}
 	 */
 	public static <T> String newResourceKey(final T object, final String keySuffix)
 	{
-		return ClassExtensions.getSimpleName(object.getClass()) + '.' + keySuffix;
+		return ResourceKeyFactory.newResourceKey(object, keySuffix);
 	}
 }
