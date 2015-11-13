@@ -3,35 +3,28 @@ package de.alpharogroup.resourcebundle.inspector.search.processor;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
- * The Class UnusedKeysSearchResult.
+ * The class {@link UnusedKeysSearchResult}.
  */
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UnusedKeysSearchResult
 {
 
 	/** The unused keys. */
 	private Set<String> unusedKeys = new HashSet<String>();
 
-	/**
-	 * Gets the unused keys.
-	 *
-	 * @return the unused keys
-	 */
-	public Set<String> getUnusedKeys()
-	{
-		return unusedKeys;
-	}
-
-	/**
-	 * Sets the unused keys.
-	 *
-	 * @param unusedKeys
-	 *            the unused keys
-	 * @return the unused keys search result
-	 */
-	public UnusedKeysSearchResult setUnusedKeys(final Set<String> unusedKeys)
-	{
-		this.unusedKeys = unusedKeys;
-		return this;
-	}
 }

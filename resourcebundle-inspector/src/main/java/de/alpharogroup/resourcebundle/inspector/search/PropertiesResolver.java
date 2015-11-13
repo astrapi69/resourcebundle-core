@@ -9,12 +9,10 @@ import java.util.Map;
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
- * The Class PropertiesFinder finds all properties file from the given root directory and save it to
+ * The Class {@link PropertiesResolver} finds all properties file from the given root directory and save it to
  * a map with the locale string code.
- * 
- * @deprecated use instead {@link PropertiesResolver}
  */
-public class PropertiesFinder
+public class PropertiesResolver
 {
 
 	/** The properties file as key and the locale string code as value. */
@@ -29,7 +27,7 @@ public class PropertiesFinder
 	 * @param rootDir
 	 *            the root dir
 	 */
-	public PropertiesFinder(final File rootDir)
+	public PropertiesResolver(final File rootDir)
 	{
 		if (rootDir == null)
 		{
@@ -48,7 +46,7 @@ public class PropertiesFinder
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void find() throws IOException
+	public void resolve() throws IOException
 	{
 		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
 		{

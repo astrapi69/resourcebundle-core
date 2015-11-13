@@ -12,13 +12,13 @@ import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
 import de.alpharogroup.resourcebundle.inspector.search.DuplicatePropertiesKeyInspector;
 
 /**
- * The Class {@link DuplicatePropertiesKeyInspectorTest}.
+ * The class {@link DuplicatePropertiesKeyInspectorTest} provides unit tests for the class {@link DuplicatePropertiesKeyInspector}.
  */
 public class DuplicatePropertiesKeyInspectorTest
 {
 
 	/**
-	 * Test get result.
+	 * Test method for {@link DuplicatePropertiesKeyInspector#getResult()}
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.

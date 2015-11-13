@@ -8,17 +8,22 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.resourcebundle.inspector.search.PropertiesFinder;
 
-public class PropertiesFinderTest
+/**
+ * The class {@link PropertiesResolverTest} provides unit tests for the class {@link PropertiesResolver}.
+ */
+public class PropertiesResolverTest
 {
 
+	/**
+	 * Test method for {@link PropertiesResolver#resolve()}
+	 */
 	@Test
 	public void testFind() throws IOException
 	{
 		final File rootDir = PathFinder.getSrcTestResourcesDir();
-		final PropertiesFinder finder = new PropertiesFinder(rootDir);
-		finder.find();
+		final PropertiesResolver finder = new PropertiesResolver(rootDir);
+		finder.resolve();
 		final Map<File, String> foundedfiles = finder.getPropertiesToLocale();
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "resources.properties";

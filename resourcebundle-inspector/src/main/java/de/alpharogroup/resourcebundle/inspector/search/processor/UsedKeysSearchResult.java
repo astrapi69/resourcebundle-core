@@ -2,58 +2,32 @@ package de.alpharogroup.resourcebundle.inspector.search.processor;
 
 import java.util.Properties;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  * The Class UsedKeysSearchResult keeps the result from the search and the a reference from the
  * search model.
  */
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UsedKeysSearchResult
 {
 
-	/** The search model. */
-	private KeySearchModel searchModel;
+	/** The search bean. */
+	private KeySearchBean searchModel;
 
-	/** The used. */
+	/** The used keys. */
 	private Properties used = new Properties();
 
-	/**
-	 * Gets the search model.
-	 *
-	 * @return the search model
-	 */
-	public KeySearchModel getSearchModel()
-	{
-		return searchModel;
-	}
-
-	/**
-	 * Gets the used.
-	 *
-	 * @return the used
-	 */
-	public Properties getUsed()
-	{
-		return used;
-	}
-
-	/**
-	 * Sets the search model.
-	 *
-	 * @param searchModel
-	 *            the new search model
-	 */
-	public void setSearchModel(final KeySearchModel searchModel)
-	{
-		this.searchModel = searchModel;
-	}
-
-	/**
-	 * Sets the used.
-	 *
-	 * @param used
-	 *            the new used
-	 */
-	public void setUsed(final Properties used)
-	{
-		this.used = used;
-	}
 }

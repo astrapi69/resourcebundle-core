@@ -3,24 +3,23 @@ package de.alpharogroup.resourcebundle.inspector.search.processor;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 
 import de.alpharogroup.file.search.FileSearchUtils;
 
 /**
- * The Class UsedKeysSearchFilter finds the used keys from.
+ * The class {@link UsedKeysSearchFilter} finds the used keys from.
  */
-public class UsedKeysSearchFilter implements FilterProcessor<KeySearchModel, UsedKeysSearchResult>
+public class UsedKeysSearchFilter implements FilterProcessor<KeySearchBean, UsedKeysSearchResult>
 {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.clean.resourcebundles.search.filter.FilterProcessor#process(java.lang.Object)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
-	public UsedKeysSearchResult process(final KeySearchModel searchModel)
+	public UsedKeysSearchResult process(final KeySearchBean searchModel)
 	{
 		UsedKeysSearchResult result;
 		try
@@ -28,7 +27,7 @@ public class UsedKeysSearchFilter implements FilterProcessor<KeySearchModel, Use
 			// Find
 			final List<File> foundFiles = FileSearchUtils.findFilesWithFilter(
 				searchModel.getSearchDir(), searchModel.getFileExtensions());
-			result = new UsedKeysSearchResult();
+			result = UsedKeysSearchResult.builder().used(new Properties()).build();
 			result.setSearchModel(searchModel);
 			for (final File file : foundFiles)
 			{
