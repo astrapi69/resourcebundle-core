@@ -70,4 +70,22 @@ public class ResourceBundleExtensions {
 		return ResourceBundleExtensions.getString(resourceBundle, key, parameters);
 	}
 
+	/**
+	 * Resolves from the given base name and locale the {@link ResourceBundle}
+	 * and get the {@link String} from the given key and parameters.
+	 *
+	 * @param baseName
+	 *            the base name of the resource bundle, a fully qualified class
+	 *            name
+	 * @param locale
+	 *            the locale for the resource bundle
+	 * @param key
+	 *            the properties key
+	 * @return the string
+	 */
+	public static String getString(final String baseName, final Locale locale, final String key) {
+		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle(baseName, locale);
+		return ResourceBundleExtensions.getString(resourceBundle, key);
+	}
+
 }
