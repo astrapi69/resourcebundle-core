@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 /**
  * The class ResourceBundleUtils provides utility methods for the class ResourceBundle.
- * @deprecated use instead the corresponding methods from the classes {@link ResourceBundleExtensions}
+ * @deprecated use instead the corresponding methods from the classes {@link de.alpharogroup.resourcebundle.locale.ResourceBundleExtensions}
  */
 public class ResourceBundleUtils
 {
@@ -19,7 +19,7 @@ public class ResourceBundleUtils
 	 *            the properties key
 	 * @return the string
 	 * 
-	 * @deprecated use instead {@link ResourceBundleExtensions#getString(ResourceBundle, String)}
+	 * @deprecated use instead de.alpharogroup.resourcebundle.locale.ResourceBundleExtensions#getString(ResourceBundle, String)
 	 */
 	public static String getString(final ResourceBundle resourceBundle, final String key)
 	{
@@ -37,7 +37,7 @@ public class ResourceBundleUtils
 	 *            the parameters
 	 * @return the string
 	 * 
-	 * @deprecated use instead {@link ResourceBundleExtensions#getString(ResourceBundle, String, Object...)}
+	 * @deprecated use instead de.alpharogroup.resourcebundle.locale.ResourceBundleExtensions#getString(ResourceBundle, String, Object...)
 	 */
 	public static String getString(final ResourceBundle resourceBundle, final String key,
 		final Object... parameters)
@@ -60,7 +60,7 @@ public class ResourceBundleUtils
 	 *            the parameters
 	 * @return the string
 	 * 
-	 * @deprecated use instead {@link ResourceBundleExtensions#getString(String, Locale, String, Object...)}
+	 * @deprecated use instead  de.alpharogroup.resourcebundle.locale.ResourceBundleExtensions#getString(String, Locale, String, Object...)
 	 */
 	public static String getString(final String baseName, final Locale locale, final String key,
 		final Object... parameters)
@@ -82,7 +82,7 @@ public class ResourceBundleUtils
 	 *            The generic type of the given object.
 	 * @return The generated resource key.
 	 * 
-	 * @deprecated use instead {@link ResourceKeyFactory#newResourceKey(Object, String)}
+	 * @deprecated use instead de.alpharogroup.resourcebundle.locale.ResourceKeyFactory#newResourceKey(Object, String)
 	 */
 	public static <T> String newResourceKey(final T object, final String keySuffix)
 	{
