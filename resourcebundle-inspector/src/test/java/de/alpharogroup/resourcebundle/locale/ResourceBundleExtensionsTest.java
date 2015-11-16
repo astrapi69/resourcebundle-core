@@ -19,7 +19,9 @@ public class ResourceBundleExtensionsTest {
 		ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		String expected = "Hello, there!";
 		String actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.window.title");
-		AssertJUnit.assertEquals(expected, actual);		
+		AssertJUnit.assertEquals(expected, actual);	
+		actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.window.title", (Object)null);
+		AssertJUnit.assertEquals(expected, actual);
 	}
 
 	/**
@@ -32,7 +34,6 @@ public class ResourceBundleExtensionsTest {
 		Object [] parameters = {"Martin", "Germany"};
 		String actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.prop.with.params.label", parameters);
 		AssertJUnit.assertEquals(expected, actual);
-
 	}
 
 	/**
