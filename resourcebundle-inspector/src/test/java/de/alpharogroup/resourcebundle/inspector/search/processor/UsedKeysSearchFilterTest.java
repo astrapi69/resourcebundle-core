@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import com.neovisionaries.i18n.LocaleCode;
 
 import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.lang.PropertiesUtils;
+import de.alpharogroup.lang.PropertiesExtensions;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
@@ -48,7 +48,7 @@ public class UsedKeysSearchFilterTest {
 		};
 		walker.start(rootDir);
 		for (final File propertiesFile : foundMap.keySet()) {
-			final Properties properties = PropertiesUtils.loadProperties(propertiesFile);
+			final Properties properties = PropertiesExtensions.loadProperties(propertiesFile);
 
 			final KeySearchBean model = newKeySearchBean(properties, rootDir, new HashSet<File>(),
 					foundMap.get(propertiesFile), ".java", ".html");

@@ -7,7 +7,7 @@ import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 
-import de.alpharogroup.file.search.FileSearchUtils;
+import de.alpharogroup.file.search.FileSearchExtensions;
 
 /**
  * The class {@link UsedKeysSearchFilter} finds the used keys from.
@@ -25,7 +25,7 @@ public class UsedKeysSearchFilter implements FilterProcessor<KeySearchBean, Used
 		try
 		{
 			// Find
-			final List<File> foundFiles = FileSearchUtils.findFilesWithFilter(
+			final List<File> foundFiles = FileSearchExtensions.findFilesWithFilter(
 				searchModel.getSearchDir(), searchModel.getFileExtensions());
 			result = UsedKeysSearchResult.builder().used(new Properties()).build();
 			result.setSearchModel(searchModel);

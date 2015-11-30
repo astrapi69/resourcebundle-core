@@ -20,7 +20,7 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
-import de.alpharogroup.file.properties.PropertiesFileUtils;
+import de.alpharogroup.file.properties.PropertiesFileExtensions;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 
 /**
@@ -214,7 +214,7 @@ public class PropertiesNormalizer
 		FileIsADirectoryException
 	{
 		final File originalFile = new File(path);
-		final File backupFile = PropertiesFileUtils.newBackupOf(originalFile);
+		final File backupFile = PropertiesFileExtensions.newBackupOf(originalFile);
 		replaceCharacters(backupFile, originalFile);
 	}
 

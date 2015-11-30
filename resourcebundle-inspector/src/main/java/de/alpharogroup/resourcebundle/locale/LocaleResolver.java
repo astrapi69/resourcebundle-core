@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import lombok.experimental.UtilityClass;
-import de.alpharogroup.file.FilenameUtils;
+import de.alpharogroup.file.FilenameExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
+import lombok.experimental.UtilityClass;
 
 /**
  * The Class {@link LocaleResolver} helps to resolve locale objects and languages.
@@ -134,7 +134,7 @@ public class LocaleResolver
 	 */
 	public static String resolveLocaleCode(final File propertiesFile)
 	{
-		final String filename = FilenameUtils.getFilenameWithoutExtension(propertiesFile);
+		final String filename = FilenameExtensions.getFilenameWithoutExtension(propertiesFile);
 		final int underscoreIndex = filename.indexOf("_");
 		String stringCode = "default";
 		if (0 < underscoreIndex)
