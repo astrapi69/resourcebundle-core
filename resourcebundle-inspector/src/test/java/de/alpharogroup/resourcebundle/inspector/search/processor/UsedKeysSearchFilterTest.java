@@ -16,9 +16,9 @@ import org.testng.annotations.Test;
 import com.neovisionaries.i18n.LocaleCode;
 
 import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.lang.PropertiesExtensions;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
+import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 
 /**
  * The class {@link UsedKeysSearchFilterTest} provides unit tests for the class

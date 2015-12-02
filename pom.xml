@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.5.0</version>
+	<version>2.6.0</version>
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
@@ -60,7 +60,7 @@
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.11</nv-i18n.version>
 		<!-- NEW EXTENSIONS LIB versions -->
-		<extensions-lib.version>4.7.0</extensions-lib.version>
+		<extensions-lib.version>4.8.0</extensions-lib.version>
 		<jcommons-lang.version>${extensions-lib.version}</jcommons-lang.version>
 		<test-objects.version>${extensions-lib.version}</test-objects.version>
 		<file-worker.version>${extensions-lib.version}</file-worker.version>

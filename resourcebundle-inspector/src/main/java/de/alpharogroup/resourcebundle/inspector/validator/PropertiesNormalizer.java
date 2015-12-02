@@ -20,8 +20,8 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
-import de.alpharogroup.file.properties.PropertiesFileExtensions;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 
 /**
  * Normalizes Properties and replaces existing invalid characters to utf8 characters.
