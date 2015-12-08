@@ -1,6 +1,7 @@
 package de.alpharogroup.resourcebundle.locale;
 
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import org.testng.AssertJUnit;
@@ -18,14 +19,14 @@ public class ResourceBundleExtensionsTest {
 	 */
 	@Test
 	public void testGetStringResourceBundleString() {
-		ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		String expected = "Hello, there!";
 		String actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.window.title");
 		AssertJUnit.assertEquals(expected, actual);
 		actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.window.title", (Object) null);
 		AssertJUnit.assertEquals(expected, actual);
 		expected = "Warning:!!!Missing key is 'foo.bar'!!!";
-		actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar");
+		actual = ResourceBundleExtensions.getStringQuietly(resourceBundle, "foo.bar");
 		AssertJUnit.assertEquals(expected, actual);
 	}
 
@@ -35,14 +36,10 @@ public class ResourceBundleExtensionsTest {
 	 */
 	@Test
 	public void testGetStringResourceBundleStringString() {
-		ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
-		String defaultValue = "Default value";
+		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		String expected = "Hello i am Martin and i come from Germany.";
 		expected = "Warning:!!!Missing key is 'foo.bar'!!!";
-		String actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", (String)null);
-		AssertJUnit.assertEquals(expected, actual);
-		expected = defaultValue;
-		actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", defaultValue);
+		final String actual = ResourceBundleExtensions.getStringQuietly(resourceBundle, "foo.bar", (String)null);
 		AssertJUnit.assertEquals(expected, actual);
 	}
 
@@ -52,18 +49,28 @@ public class ResourceBundleExtensionsTest {
 	 */
 	@Test
 	public void testGetStringResourceBundleStringObjectArray() {
-		ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		String expected = "Hello i am Martin and i come from Germany.";
-		Object[] parameters = { "Martin", "Germany" };
+		final Object[] parameters = { "Martin", "Germany" };
 		String actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.prop.with.params.label",
 				parameters);
 		AssertJUnit.assertEquals(expected, actual);
 		expected = "Warning:!!!Missing key is 'foo.bar'!!!";
-		actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", parameters);
+		actual = ResourceBundleExtensions.getStringQuietly(resourceBundle, "foo.bar", parameters);
 		AssertJUnit.assertEquals(expected, actual);
-		String defaultValue = "Default value";
-		expected = defaultValue;
-		actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", defaultValue, parameters);
+	}
+
+	/**
+	 * Test method for
+	 * {@link ResourceBundleExtensions#getString(ResourceBundle, String, Object...)} with default value
+	 */
+	@Test(expectedExceptions = MissingResourceException.class)
+	public void testGetStringResourceBundleStringObjectArrayWithDefaultValue() {
+		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		final Object[] parameters = { "Martin", "Germany" };
+		final String defaultValue = "Default value";
+		final String expected = defaultValue;
+		final String actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", defaultValue, parameters);
 		AssertJUnit.assertEquals(expected, actual);
 	}
 
@@ -73,20 +80,11 @@ public class ResourceBundleExtensionsTest {
 	 */
 	@Test
 	public void testGetStringResourceBundleStringStringObjectArray() {
-		ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
-		String defaultValue = "Default value";
-		String expected = "Hello i am Martin and i come from Germany.";
-		Object[] parameters = { "Martin", "Germany" };
-		String actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.prop.with.params.label", defaultValue, parameters);
-		AssertJUnit.assertEquals(expected, actual);
-		expected = defaultValue;
-		actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", defaultValue, parameters);
-		AssertJUnit.assertEquals(expected, actual);
-		expected = defaultValue;
-		actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", defaultValue, parameters);
-		AssertJUnit.assertEquals(expected, actual);
-		expected = "Warning:!!!Missing key is 'foo.bar'!!!";
-		actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", null, parameters);
+		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		final String defaultValue = "Default value";
+		final String expected = "Hello i am Martin and i come from Germany.";
+		final Object[] parameters = { "Martin", "Germany" };
+		final String actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.prop.with.params.label", defaultValue, parameters);
 		AssertJUnit.assertEquals(expected, actual);
 	}
 
@@ -96,9 +94,9 @@ public class ResourceBundleExtensionsTest {
 	 */
 	@Test
 	public void testGetStringStringLocaleStringObjectArray() {
-		String expected = "Hello i am Martin and i come from Germany.";
-		Object[] parameters = { "Martin", "Germany" };
-		String actual = ResourceBundleExtensions.getString("test", Locale.UK, "com.example.gui.prop.with.params.label",
+		final String expected = "Hello i am Martin and i come from Germany.";
+		final Object[] parameters = { "Martin", "Germany" };
+		final String actual = ResourceBundleExtensions.getString("test", Locale.UK, "com.example.gui.prop.with.params.label",
 				parameters);
 		AssertJUnit.assertEquals(expected, actual);
 	}
@@ -109,8 +107,8 @@ public class ResourceBundleExtensionsTest {
 	 */
 	@Test
 	public void testGetStringStringLocaleString() {
-		String expected = "Hello, there!";
-		String actual = ResourceBundleExtensions.getString("test", Locale.UK, "com.example.gui.window.title");
+		final String expected = "Hello, there!";
+		final String actual = ResourceBundleExtensions.getString("test", Locale.UK, "com.example.gui.window.title");
 		AssertJUnit.assertEquals(expected, actual);
 	}
 

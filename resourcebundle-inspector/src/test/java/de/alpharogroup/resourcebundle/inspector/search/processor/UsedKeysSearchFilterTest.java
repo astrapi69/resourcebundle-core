@@ -76,10 +76,10 @@ public class UsedKeysSearchFilterTest {
 
 		// Set the project directory as search path...
 		final File projectdir = PathFinder.getProjectDirectory();
-		
+
 		// We want to search only java files so we set the extension...
 		final String[] fileExtensions = { ".java" };
-		
+
 		// We can set the files that shell be excuded from the search...
 		// these are unit tests that we do not want to include...
 		final Set<File> exclude = new HashSet<File>();
@@ -128,10 +128,7 @@ public class UsedKeysSearchFilterTest {
 	public void testExecute() throws IOException {
 		final UnusedKeysSearchResult expected = new UnusedKeysSearchResult();
 		final Set<String> unusedKeys = new HashSet<String>();
-		unusedKeys.add("com.example.gui.window.buttons.ok");
 		unusedKeys.add("com.example.gui");
-		unusedKeys.add("com.example.gui.window.buttons.cancel");
-		unusedKeys.add("com.example.gui.window.title");
 		expected.setUnusedKeys(unusedKeys);
 		final KeySearchBean model = newKeySearchModel();
 		final UsedKeysSearchFilter command = new UsedKeysSearchFilter();
