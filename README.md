@@ -6,7 +6,7 @@ The source code comes under the liberal MIT License, making resourcebundle-inspe
 
 # Build status and latest maven version
 
-[![Build Status](https://travis-ci.org/astrapi69/resourcebundle.inspector.svg?branch=master)](https://travis-ci.org/astrapi69/resourcebundle.inspector)
+[![Build Status](https://travis-ci.org/astrapi69/resourcebundle-core.svg?branch=master)](https://travis-ci.org/astrapi69/resourcebundle-core)
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/resourcebundle-core)
 
