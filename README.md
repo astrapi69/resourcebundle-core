@@ -49,7 +49,6 @@ Don't forget to add new units tests on your changes.
 Do not hesitate to contact the resourcebundle-core developers with your questions, concerns, comments, bug reports, or feature requests.
 - Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/resourcebundle-core/issues).
 
-
 # Donate
 
 If you like this library, please consider a donation through 
