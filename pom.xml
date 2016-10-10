@@ -60,9 +60,9 @@
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.21</nv-i18n.version>
 		<!-- NEW EXTENSIONS LIB versions -->
-		<extensions-lib.version>4.11.0</extensions-lib.version>
+		<extensions-lib.version>4.12.0</extensions-lib.version>
 		<jcommons-lang.version>${extensions-lib.version}</jcommons-lang.version>
-		<test-objects.version>${extensions-lib.version}</test-objects.version>
+		<test-objects.version>4.11.0</test-objects.version>
 		<file-worker.version>${extensions-lib.version}</file-worker.version>
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.5</commons-io.version>
