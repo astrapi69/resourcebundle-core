@@ -27,6 +27,12 @@ public class ConfigurationPropertiesResolver implements Serializable
 	/** The constant for the default http port. */
 	public static final int DEFAULT_HTTPS_PORT = 8443;
 
+	/** The constant for the properties key of the http port. */
+	public static final String APPLICATION_HTTP_PORT_KEY = "application.http.port";
+
+	/** The constant for the properties key of the https port. */
+	public static final String APPLICATION_HTTPS_PORT_KEY = "application.https.port";
+
 	/**
 	 * The default http port.
 	 */
@@ -109,9 +115,9 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 * @return the optional http port
 	 */
 	private Optional<Integer> getOptionalHttpPort() {
-		if (getProperties().containsKey("application.http.port"))
+		if (getProperties().containsKey(APPLICATION_HTTP_PORT_KEY))
 		{
-			final String httpPortString = getProperties().getProperty("application.http.port");
+			final String httpPortString = getProperties().getProperty(APPLICATION_HTTP_PORT_KEY);
 			try
 			{
 				final Integer httpPort = Integer.valueOf(httpPortString);
@@ -146,9 +152,9 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 * @return the optional https port
 	 */
 	private Optional<Integer> getOptionalHttpsPort() {
-		if (getProperties().containsKey("application.https.port"))
+		if (getProperties().containsKey(APPLICATION_HTTPS_PORT_KEY))
 		{
-			final String httpsPortString = getProperties().getProperty("application.https.port");
+			final String httpsPortString = getProperties().getProperty(APPLICATION_HTTPS_PORT_KEY);
 			try
 			{
 				final Integer httpsPort = Integer.valueOf(httpsPortString);
