@@ -21,7 +21,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- resourcebundle-core version -->
-		<resourcebundle-core.version>2.8.0</resourcebundle-core.version>
+		<resourcebundle-core.version>2.9.0</resourcebundle-core.version>
 
 		<dependencies>
 			...
@@ -49,12 +49,9 @@ Don't forget to add new units tests on your changes.
 Do not hesitate to contact the resourcebundle-core developers with your questions, concerns, comments, bug reports, or feature requests.
 - Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/resourcebundle-core/issues).
 
-
 # Donate
 
+If you like this library, please consider a donation through 
 <a href="http://flattr.com/thing/4180911/astrapi69resourcebundle-inspector-on-GitHub" target="_blank">
 <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
 </a>
-
-[![Build Status](https://travis-ci.org/astrapi69/resourcebundle-core.svg?branch=master)](https://travis-ci.org/astrapi69/resourcebundle.inspector)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/resourcebundle-core)
