@@ -1,16 +1,18 @@
 package de.alpharogroup.resourcebundle.config;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Optional;
 import java.util.Properties;
 
 import de.alpharogroup.check.Check;
+import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 import lombok.Getter;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an application like the http, https ports.
  */
-public abstract class ConfigurationPropertiesResolver implements Serializable
+public class ConfigurationPropertiesResolver implements Serializable
 {
 
 	/** The Constant serialVersionUID. */
@@ -165,7 +167,19 @@ public abstract class ConfigurationPropertiesResolver implements Serializable
 	 *
 	 * @return configuration properties
 	 */
-	protected abstract Properties loadProperties();
+	protected Properties loadProperties()
+	{
+		final Properties properties;
+		try
+		{
+			properties = PropertiesExtensions.loadProperties(getPropertiesFilename());
+		}
+		catch (final IOException e)
+		{
+			throw new RuntimeException(e);
+		}
+		return properties;
+	}
 
 
 }
