@@ -12,6 +12,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 
+import lombok.Getter;
+
 import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
 import de.alpharogroup.resourcebundle.inspector.io.PropertiesLineReader;
 
@@ -20,7 +22,10 @@ import de.alpharogroup.resourcebundle.inspector.io.PropertiesLineReader;
  */
 public class DuplicatePropertiesKeyInspector
 {
-
+	/** The result. */
+	@Getter
+	private final KeyValueLists result;
+	
 	/**
 	 * Finds redundant values from the given Properties object and saves it to a Map.
 	 *
@@ -60,9 +65,6 @@ public class DuplicatePropertiesKeyInspector
 		}
 		return redundantValues;
 	}
-
-	/** The result. */
-	private final KeyValueLists result;
 
 	/**
 	 * Instantiates a new duplicate properties key finder.
@@ -145,16 +147,6 @@ public class DuplicatePropertiesKeyInspector
 			}
 		}
 		return keyValueLists;
-	}
-
-	/**
-	 * Gets the result.
-	 *
-	 * @return the result
-	 */
-	public KeyValueLists getResult()
-	{
-		return result;
 	}
 
 	/**
