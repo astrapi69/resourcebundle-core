@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 
+import lombok.Getter;
+
 /**
  * The Class PropertiesLineReader that can read from an Reader or inputstream all lines from a
  * properties file.
@@ -27,6 +29,7 @@ public class PropertiesLineReader
 	private InputStream inputStream;
 
 	/** The line buffer. */
+	@Getter
 	private char[] lineBuffer = new char[1024];
 
 	/** The reader. */
@@ -54,11 +57,6 @@ public class PropertiesLineReader
 	{
 		this.reader = reader;
 		this.inputCharBuffer = new char[8192];
-	}
-
-	public char[] getLineBuffer()
-	{
-		return lineBuffer;
 	}
 
 	/**
