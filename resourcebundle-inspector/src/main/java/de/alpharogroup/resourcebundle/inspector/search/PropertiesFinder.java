@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Getter;
+
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
@@ -18,9 +20,11 @@ public class PropertiesFinder
 {
 
 	/** The properties file as key and the locale string code as value. */
+	@Getter
 	private final Map<File, String> propertiesToLocale = new HashMap<File, String>();
 
 	/** The root dir. */
+	@Getter
 	private final File rootDir;
 
 	/**
@@ -61,26 +65,6 @@ public class PropertiesFinder
 			}
 		};
 		walker.start(rootDir);
-	}
-
-	/**
-	 * Gets the properties to locale.
-	 *
-	 * @return the properties to locale
-	 */
-	public Map<File, String> getPropertiesToLocale()
-	{
-		return propertiesToLocale;
-	}
-
-	/**
-	 * Gets the root dir.
-	 *
-	 * @return the root dir
-	 */
-	public File getRootDir()
-	{
-		return rootDir;
 	}
 
 }
