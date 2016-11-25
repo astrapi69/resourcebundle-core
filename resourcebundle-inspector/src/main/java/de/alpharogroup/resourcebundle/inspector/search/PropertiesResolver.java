@@ -1,3 +1,27 @@
+/**
+ * The MIT License
+ *
+ * Copyright (C) 2012 Asterios Raptis
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *  *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *  *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package de.alpharogroup.resourcebundle.inspector.search;
 
 import java.io.File;
@@ -5,6 +29,8 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import lombok.Getter;
 
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
@@ -16,9 +42,11 @@ public class PropertiesResolver
 {
 
 	/** The properties file as key and the locale string code as value. */
+	@Getter
 	private final Map<File, String> propertiesToLocale = new HashMap<File, String>();
 
 	/** The root dir. */
+	@Getter
 	private final File rootDir;
 
 	/**
@@ -59,26 +87,6 @@ public class PropertiesResolver
 			}
 		};
 		walker.start(rootDir);
-	}
-
-	/**
-	 * Gets the properties to locale.
-	 *
-	 * @return the properties to locale
-	 */
-	public Map<File, String> getPropertiesToLocale()
-	{
-		return propertiesToLocale;
-	}
-
-	/**
-	 * Gets the root dir.
-	 *
-	 * @return the root dir
-	 */
-	public File getRootDir()
-	{
-		return rootDir;
 	}
 
 }

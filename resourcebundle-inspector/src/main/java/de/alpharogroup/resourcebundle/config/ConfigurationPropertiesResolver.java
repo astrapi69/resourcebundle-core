@@ -1,16 +1,42 @@
+/**
+ * The MIT License
+ *
+ * Copyright (C) 2012 Asterios Raptis
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *  *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *  *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package de.alpharogroup.resourcebundle.config;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Optional;
 import java.util.Properties;
 
 import de.alpharogroup.check.Check;
+import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 import lombok.Getter;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an application like the http, https ports.
  */
-public abstract class ConfigurationPropertiesResolver implements Serializable
+public class ConfigurationPropertiesResolver implements Serializable
 {
 
 	/** The Constant serialVersionUID. */
@@ -24,6 +50,12 @@ public abstract class ConfigurationPropertiesResolver implements Serializable
 
 	/** The constant for the default http port. */
 	public static final int DEFAULT_HTTPS_PORT = 8443;
+
+	/** The constant for the properties key of the http port. */
+	public static final String APPLICATION_HTTP_PORT_KEY = "application.http.port";
+
+	/** The constant for the properties key of the https port. */
+	public static final String APPLICATION_HTTPS_PORT_KEY = "application.https.port";
 
 	/**
 	 * The default http port.
@@ -107,9 +139,9 @@ public abstract class ConfigurationPropertiesResolver implements Serializable
 	 * @return the optional http port
 	 */
 	private Optional<Integer> getOptionalHttpPort() {
-		if (getProperties().containsKey("application.http.port"))
+		if (getProperties().containsKey(APPLICATION_HTTP_PORT_KEY))
 		{
-			final String httpPortString = getProperties().getProperty("application.http.port");
+			final String httpPortString = getProperties().getProperty(APPLICATION_HTTP_PORT_KEY);
 			try
 			{
 				final Integer httpPort = Integer.valueOf(httpPortString);
@@ -144,9 +176,9 @@ public abstract class ConfigurationPropertiesResolver implements Serializable
 	 * @return the optional https port
 	 */
 	private Optional<Integer> getOptionalHttpsPort() {
-		if (getProperties().containsKey("application.https.port"))
+		if (getProperties().containsKey(APPLICATION_HTTPS_PORT_KEY))
 		{
-			final String httpsPortString = getProperties().getProperty("application.https.port");
+			final String httpsPortString = getProperties().getProperty(APPLICATION_HTTPS_PORT_KEY);
 			try
 			{
 				final Integer httpsPort = Integer.valueOf(httpsPortString);
@@ -165,7 +197,19 @@ public abstract class ConfigurationPropertiesResolver implements Serializable
 	 *
 	 * @return configuration properties
 	 */
-	protected abstract Properties loadProperties();
+	protected Properties loadProperties()
+	{
+		final Properties properties;
+		try
+		{
+			properties = PropertiesExtensions.loadProperties(getPropertiesFilename());
+		}
+		catch (final IOException e)
+		{
+			throw new RuntimeException(e);
+		}
+		return properties;
+	}
 
 
 }
