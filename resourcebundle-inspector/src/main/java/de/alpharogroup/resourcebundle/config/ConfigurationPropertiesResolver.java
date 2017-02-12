@@ -139,7 +139,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 * @return the optional http port
 	 */
 	private Optional<Integer> getOptionalHttpPort() {
-		if (getProperties().containsKey(APPLICATION_HTTP_PORT_KEY))
+		if (getProperties() != null && getProperties().containsKey(APPLICATION_HTTP_PORT_KEY))
 		{
 			final String httpPortString = getProperties().getProperty(APPLICATION_HTTP_PORT_KEY);
 			try
