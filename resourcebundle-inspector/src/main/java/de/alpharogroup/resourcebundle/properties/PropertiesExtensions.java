@@ -237,7 +237,7 @@ public final class PropertiesExtensions
 	 * @param propertiesFilename the properties filename
 	 * @return the loaded {@link Properties} or null if the loading process failed.
 	 */
-	public static<T> Properties loadProperties(T object, String propertiesFilename)
+	public static<T> Properties loadProperties(final T object, final String propertiesFilename)
 	{
 		Properties properties = null;
 		final String packagePath = PackageExtensions.getPackagePathWithSlash(object);
@@ -661,6 +661,26 @@ public final class PropertiesExtensions
 	 */
 	private PropertiesExtensions()
 	{
+	}
+
+	/**
+	 * Gets the project name from the 'project.properties'.
+	 * In this properties file is only a reference of the artifactId from the pom.
+	 *
+	 * @return the project name
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public static String getProjectName() throws IOException {
+		final Properties projectProperties = PropertiesExtensions.loadProperties("project.properties");
+		if(projectProperties != null) {
+			final String projectName = projectProperties.getProperty("artifactId");
+			if(projectName == null) {
+				throw new RuntimeException("No properties key 'artifactId' found in the properties file project.properties exist.");
+			}
+			return projectName;
+		} else {
+			throw new RuntimeException("No properties file project.properties exist.");
+		}
 	}
 
 }
