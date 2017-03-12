@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>2.15.0</version>
+		<version>2.24.0-SNAPSHOT</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.11.0</version>
+	<version>2.12.0-SNAPSHOT</version>
 	<inceptionYear>2012</inceptionYear>
 	<packaging>pom</packaging>
 
@@ -55,13 +55,12 @@
 	</modules>
 
 	<properties>
+		<!-- NEW EXTENSIONS LIB versions -->		
+		<jcommons-lang.version>4.19.0-SNAPSHOT</jcommons-lang.version>
+		<test-objects.version>4.16.0-SNAPSHOT</test-objects.version>
+		<file-worker.version>4.15.0-SNAPSHOT</file-worker.version>
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.21</nv-i18n.version>
-		<!-- NEW EXTENSIONS LIB versions -->
-		<extensions-lib.version>4.14.0</extensions-lib.version>
-		<jcommons-lang.version>${extensions-lib.version}</jcommons-lang.version>
-		<test-objects.version>${extensions-lib.version}</test-objects.version>
-		<file-worker.version>${extensions-lib.version}</file-worker.version>
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.5</commons-io.version>
 	</properties>
@@ -69,12 +68,6 @@
 	<dependencyManagement>
 
 		<dependencies>
-
-			<dependency>
-				<groupId>com.neovisionaries</groupId>
-				<artifactId>nv-i18n</artifactId>
-				<version>${nv-i18n.version}</version>
-			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -92,6 +85,12 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>file-worker</artifactId>
 				<version>${file-worker.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.neovisionaries</groupId>
+				<artifactId>nv-i18n</artifactId>
+				<version>${nv-i18n.version}</version>
 			</dependency>
 
 			<dependency>
