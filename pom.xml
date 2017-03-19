@@ -55,12 +55,12 @@
 	</modules>
 
 	<properties>
-		<!-- NV-I18N version -->
-		<nv-i18n.version>1.21</nv-i18n.version>
-		<!-- NEW EXTENSIONS LIB versions -->
+		<!-- NEW EXTENSIONS LIB versions -->		
 		<jcommons-lang.version>4.19.0-SNAPSHOT</jcommons-lang.version>
 		<test-objects.version>4.16.0-SNAPSHOT</test-objects.version>
 		<file-worker.version>4.15.0-SNAPSHOT</file-worker.version>
+		<!-- NV-I18N version -->
+		<nv-i18n.version>1.21</nv-i18n.version>
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.5</commons-io.version>
 	</properties>
@@ -68,12 +68,6 @@
 	<dependencyManagement>
 
 		<dependencies>
-
-			<dependency>
-				<groupId>com.neovisionaries</groupId>
-				<artifactId>nv-i18n</artifactId>
-				<version>${nv-i18n.version}</version>
-			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -93,6 +87,12 @@
 				<version>${file-worker.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>com.neovisionaries</groupId>
+				<artifactId>nv-i18n</artifactId>
+				<version>${nv-i18n.version}</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
