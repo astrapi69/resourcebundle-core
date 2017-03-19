@@ -50,6 +50,17 @@
 		</license>
 	</licenses>
 
+	<ciManagement>
+		<system>travis-ci</system>
+		<url>https://travis-ci.org/astrapi69/resourcebundle-core</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/astrapi69/resourcebundle-core/issues</url>
+	</issueManagement>
+	
+
 	<modules>
 		<module>resourcebundle-inspector</module>
 	</modules>
