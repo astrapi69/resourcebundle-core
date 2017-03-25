@@ -90,7 +90,9 @@ public class LocaleResolver
 			if ((language != null) && !language.isEmpty())
 			{
 				languages.add(language);
-			} else {
+			}
+			else
+			{
 				languages.add("default");
 			}
 		}
@@ -131,7 +133,8 @@ public class LocaleResolver
 	}
 
 	/**
-	 * Resolves the {@link Locale} object from the given locale code.
+	 * Resolves the {@link Locale} object from the given locale code. If not found the system
+	 * default locale will be taken.
 	 *
 	 * @param localeCode
 	 *            the locale code
@@ -139,8 +142,23 @@ public class LocaleResolver
 	 */
 	public static Locale resolveLocale(final String localeCode)
 	{
+		return resolveLocale(localeCode, true);
+	}
+
+	/**
+	 * Resolves the {@link Locale} object from the given locale code.
+	 *
+	 * @param localeCode
+	 *            the locale code
+	 * @param systemsDefault
+	 *            if this flag is true the systems default locale will be taken if not found otherwise not
+	 * @return the {@link Locale} object or null if not found and flag systemsDefault is false.
+	 */
+	public static Locale resolveLocale(final String localeCode, final boolean systemsDefault)
+	{
 		Locale current = resolveLocaleCode(localeCode);
-		if(current == null) {
+		if (current == null && systemsDefault)
+		{
 			current = Locale.getDefault();
 		}
 		return current;
@@ -208,7 +226,8 @@ public class LocaleResolver
 	 *            The name of the resource bundle.
 	 * @return a Map of File objects with the corresponding Locales to it.
 	 */
-	public static Map<File, Locale> resolveLocales(final String bundlepackage, final String bundlename)
+	public static Map<File, Locale> resolveLocales(final String bundlepackage,
+		final String bundlename)
 	{
 		final ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		final File root = new File(loader.getResource(bundlepackage.replace('.', '/')).getFile());
