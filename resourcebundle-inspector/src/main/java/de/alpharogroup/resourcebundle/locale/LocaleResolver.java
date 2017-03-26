@@ -269,7 +269,7 @@ public class LocaleResolver
 		final Map<File, Locale> locales = new HashMap<>();
 		for (final File file : files)
 		{
-			final Locale current = LocaleResolver.resolveLocale(file);
+			final Locale current = LocaleResolver.resolveLocale(file, systemsDefault);
 			locales.put(file, current);
 		}
 		return locales;
