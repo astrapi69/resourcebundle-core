@@ -44,11 +44,11 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder=true)
 public class UnusedKeysSearchResult
 {
 
 	/** The unused keys. */
-	private Set<String> unusedKeys = new HashSet<String>();
+	private Set<String> unusedKeys = new HashSet<>();
 
 }

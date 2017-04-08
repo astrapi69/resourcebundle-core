@@ -46,10 +46,12 @@ import org.apache.commons.io.IOUtils;
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
+import lombok.experimental.UtilityClass;
 
 /**
  * Normalizes Properties and replaces existing invalid characters to utf8 characters.
  **/
+@UtilityClass
 public class PropertiesNormalizer
 {
 	/** The invalid characters. */
@@ -188,7 +190,7 @@ public class PropertiesNormalizer
 	public static Collection<File> findPropertiesFilesWithInvalidCharacters(final File rootDir)
 		throws IOException
 	{
-		final Collection<File> found = new ArrayList<File>();
+		final Collection<File> found = new ArrayList<>();
 		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
 		{
 			@Override

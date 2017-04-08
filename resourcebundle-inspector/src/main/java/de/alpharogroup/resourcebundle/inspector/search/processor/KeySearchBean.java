@@ -48,7 +48,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder=true)
 public class KeySearchBean
 {
 
@@ -58,7 +58,7 @@ public class KeySearchBean
 	private Properties base;
 
 	/** The files to be excluded. */
-	private Set<File> exclude = new HashSet<File>();
+	private Set<File> exclude = new HashSet<>();
 
 	/** The file extensions to find. */
 	private String[] fileExtensions;

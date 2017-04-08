@@ -27,9 +27,12 @@ package de.alpharogroup.resourcebundle.locale;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * The class {@link ResourceBundleResolver}.
  */
+@UtilityClass
 public class ResourceBundleResolver {
 
 	/**
@@ -46,5 +49,5 @@ public class ResourceBundleResolver {
 		final ResourceBundle resourceBundle = ResourceBundle.getBundle(baseName, locale);
 		return resourceBundle;
 	}
-	
+
 }

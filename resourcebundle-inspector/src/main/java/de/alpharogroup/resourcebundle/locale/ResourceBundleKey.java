@@ -45,7 +45,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder=true)
 public class ResourceBundleKey implements Serializable
 {
 
@@ -74,9 +74,9 @@ public class ResourceBundleKey implements Serializable
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Object clone()
+	public ResourceBundleKey clone()
 	{
-		return CloneObjectExtensions.cloneObjectQuietly(this);
+		return CloneObjectExtensions.cloneQuietly(this);
 	}
 
 }
