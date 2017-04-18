@@ -49,8 +49,8 @@ public class UsedKeysSearchFilter implements FilterProcessor<KeySearchBean, Used
 		try
 		{
 			// Find
-			final List<File> foundFiles = FileSearchExtensions.findFilesWithFilter(
-				searchModel.getSearchDir(), searchModel.getFileExtensions());
+			final List<File> foundFiles = FileSearchExtensions
+				.findFilesWithFilter(searchModel.getSearchDir(), searchModel.getFileExtensions());
 			result = UsedKeysSearchResult.builder().used(new Properties()).build();
 			result.setSearchModel(searchModel);
 			for (final File file : foundFiles)

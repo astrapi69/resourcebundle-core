@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
 
 import de.alpharogroup.file.search.PathFinder;
 
-public class PropertiesFileExtensionsTest 
+public class PropertiesFileExtensionsTest
 {
 
 	@Test(enabled = true)

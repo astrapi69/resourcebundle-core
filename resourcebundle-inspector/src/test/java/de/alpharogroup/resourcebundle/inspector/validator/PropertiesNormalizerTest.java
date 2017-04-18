@@ -58,8 +58,8 @@ public class PropertiesNormalizerTest
 	}
 
 	@Test
-	public void testNormalizeProperties() throws URISyntaxException, IOException,
-		FileIsADirectoryException
+	public void testNormalizeProperties()
+		throws URISyntaxException, IOException, FileIsADirectoryException
 	{
 
 		final String propertiesFilename = "resources.properties";
