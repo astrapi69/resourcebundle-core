@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2007 Asterios Raptis
+ * Copyright (C) 2012 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ *  *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ *  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -53,8 +53,9 @@ import de.alpharogroup.lang.PackageExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
 
 /**
- * The Class {@link PropertiesExtensions} provides methods loading properties and other related operations for
- * properties like find redundant values or getting all available languages from a bundle.
+ * The Class {@link PropertiesExtensions} provides methods loading properties and other related
+ * operations for properties like find redundant values or getting all available languages from a
+ * bundle.
  */
 public final class PropertiesExtensions
 {
@@ -182,6 +183,56 @@ public final class PropertiesExtensions
 	}
 
 	/**
+	 * Gets the project name from the 'project.properties'. In this properties file is only a
+	 * reference of the artifactId from the pom.
+	 *
+	 * @return the project name
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public static String getProjectName() throws IOException
+	{
+		final Properties projectProperties = PropertiesExtensions
+			.loadProperties("project.properties");
+		if (projectProperties != null)
+		{
+			final String projectName = projectProperties.getProperty("artifactId");
+			if (projectName == null)
+			{
+				throw new RuntimeException(
+					"No properties key 'artifactId' found in the properties file project.properties exist.");
+			}
+			return projectName;
+		}
+		else
+		{
+			throw new RuntimeException("No properties file project.properties exist.");
+		}
+	}
+
+	/**
+	 * Gets the project name from the 'project.properties'. In this properties file is only a
+	 * reference of the artifactId from the pom.
+	 *
+	 * @param defaultName
+	 *            the default project name if
+	 * @return the project name
+	 */
+	public static String getProjectNameQuietly(final String defaultName)
+	{
+		try
+		{
+			getProjectName();
+		}
+		catch (final Exception e)
+		{
+			// default project name will be returned...
+			LOGGER.error(e.getMessage(), e);
+		}
+		return defaultName;
+	}
+
+	/**
 	 * Finds the property parameters from the given propertyValue.
 	 *
 	 * @param propertyValue
@@ -224,41 +275,6 @@ public final class PropertiesExtensions
 			{
 				properties = new Properties();
 				properties.load(is);
-			}
-		}
-		return properties;
-	}
-
-	/**
-	 * Load {@link Properties} object from the given arguments.
-	 *
-	 * @param <T> the generic type of the object
-	 * @param object the object for get the package path
-	 * @param propertiesFilename the properties filename
-	 * @return the loaded {@link Properties} or null if the loading process failed.
-	 */
-	public static<T> Properties loadProperties(T object, String propertiesFilename)
-	{
-		Properties properties = null;
-		final String packagePath = PackageExtensions.getPackagePathWithSlash(object);
-		final String propertiespath = packagePath + propertiesFilename;
-		try
-		{
-			properties = PropertiesExtensions.loadProperties(object.getClass(), propertiespath);
-		}
-		catch (final IOException e)
-		{
-			LOGGER.error("Loading properties file '"+propertiespath+"' with method 'PropertiesExtensions.loadProperties(object.getClass(), propertiespath)' failed.", e);
-		}
-		if (properties == null)
-		{
-			try
-			{
-				properties = PropertiesExtensions.getLocalPropertiesFromClass(object.getClass(), object.getClass(), null);
-			}
-			catch (final Exception e)
-			{
-				LOGGER.error("Loading properties file '"+propertiespath+"' with method 'PropertiesExtensions.getLocalPropertiesFromClass(object.getClass(), object.getClass(), null)' failed.", e);
 			}
 		}
 		return properties;
@@ -395,6 +411,52 @@ public final class PropertiesExtensions
 	}
 
 	/**
+	 * Load {@link Properties} object from the given arguments.
+	 *
+	 * @param <T>
+	 *            the generic type of the object
+	 * @param object
+	 *            the object for get the package path
+	 * @param propertiesFilename
+	 *            the properties filename
+	 * @return the loaded {@link Properties} or null if the loading process failed.
+	 */
+	public static <T> Properties loadProperties(final T object, final String propertiesFilename)
+	{
+		Properties properties = null;
+		final String packagePath = PackageExtensions.getPackagePathWithSlash(object);
+		final String propertiespath = packagePath + propertiesFilename;
+		try
+		{
+			properties = PropertiesExtensions.loadProperties(object.getClass(), propertiespath);
+		}
+		catch (final IOException e)
+		{
+			LOGGER.error(
+				"Loading properties file '" + propertiespath
+					+ "' with method 'PropertiesExtensions.loadProperties(object.getClass(), propertiespath)' failed.",
+				e);
+		}
+		if (properties == null)
+		{
+			try
+			{
+				properties = PropertiesExtensions.getLocalPropertiesFromClass(object.getClass(),
+					object.getClass(), null);
+			}
+			catch (final Exception e)
+			{
+				LOGGER.error(
+					"Loading properties file '" + propertiespath
+						+ "' with method 'PropertiesExtensions.getLocalPropertiesFromClass(object.getClass(), object.getClass(), null)' failed.",
+					e);
+			}
+		}
+		return properties;
+	}
+
+
+	/**
 	 * Load the properties file from the given class object. The filename from the properties file
 	 * is the same as the simple name from the class object and it looks at the same path as the
 	 * given class object. If locale is not null than the language will be added to the filename
@@ -408,8 +470,8 @@ public final class PropertiesExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public static Properties loadPropertiesFromClassObject(final Class<?> clazz, final Locale locale)
-		throws IOException
+	public static Properties loadPropertiesFromClassObject(final Class<?> clazz,
+		final Locale locale) throws IOException
 	{
 		if (null == clazz)
 		{
@@ -500,8 +562,8 @@ public final class PropertiesExtensions
 		if (null == properties)
 		{
 			propertiesName = new StringBuilder();
-			propertiesName.append(clazz.getSimpleName()).append(
-				FileExtension.PROPERTIES.getExtension());
+			propertiesName.append(clazz.getSimpleName())
+				.append(FileExtension.PROPERTIES.getExtension());
 			filename = propertiesName.toString().trim();
 			pathAndFilename = packagePath + filename;
 			final URL url = ClassExtensions.getResource(clazz, filename);
@@ -538,8 +600,7 @@ public final class PropertiesExtensions
 
 	/**
 	 * Resolves all the available languages for the given resource bundle name in the given bundle
-	 * package.
-	 * Note the default resource bundle is excluded.
+	 * package. Note the default resource bundle is excluded.
 	 *
 	 * @param bundlepackage
 	 *            The package that contains the properties files.
@@ -566,7 +627,6 @@ public final class PropertiesExtensions
 		}
 		return languages;
 	}
-
 
 	/**
 	 * Converts the given xml file to the given properties file.

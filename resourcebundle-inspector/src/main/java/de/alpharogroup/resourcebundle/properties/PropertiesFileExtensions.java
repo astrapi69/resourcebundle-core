@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2007 Asterios Raptis
+ * Copyright (C) 2012 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ *  *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ *  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -144,9 +144,8 @@ public class PropertiesFileExtensions
 	 */
 	public static List<String> removeComments(final File propertiesFile) throws IOException
 	{
-		if (propertiesFile != null
-			&& !propertiesFile.getName()
-				.matches(FileSearchExtensions.getSearchFilePattern("properties")))
+		if (propertiesFile != null && !propertiesFile.getName()
+			.matches(FileSearchExtensions.getSearchFilePattern("properties")))
 		{
 			throw new IllegalArgumentException("The given file is not an properties file.");
 		}

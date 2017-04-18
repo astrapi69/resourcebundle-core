@@ -22,37 +22,37 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.resourcebundle.inspector.search.processor;
+package de.alpharogroup.resourcebundle.file.namefilter;
 
-import java.util.Properties;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
- * The Class UsedKeysSearchResult keeps the result from the search and the a reference from the
- * search model.
+ * The enum {@link PropertiesFileTypeExtensions}.
  */
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(toBuilder = true)
-public class UsedKeysSearchResult
+public enum PropertiesFileTypeExtensions
 {
 
-	/** The search bean. */
-	private KeySearchBean searchModel;
+	/** The file type with the extension '.properties'. */
+	PROPERTIES(".properties"),
 
-	/** The used keys. */
-	@Builder.Default
-	private Properties used = new Properties();
+	/** The file type with the extension '.utf8.properties'. */
+	UTF8_PROPERTIES(".utf8.properties"),
 
+	/** The file type with the extension '.properties.xml'. */
+	XML(".properties.xml");
+
+	/** The properties file extension. */
+	@Getter
+	private final String propertiesFileExtension;
+
+	/**
+	 * Instantiates a new {@link PropertiesFileTypeExtensions} object.
+	 *
+	 * @param propertiesFileExtension
+	 *            the properties file extension
+	 */
+	private PropertiesFileTypeExtensions(final String propertiesFileExtension)
+	{
+		this.propertiesFileExtension = propertiesFileExtension;
+	}
 }

@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2007 Asterios Raptis
+ * Copyright (C) 2012 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ *  *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ *  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -87,7 +87,8 @@ public class PropertiesExtensionsTest
 						method.getMethodAnnotations().add(annotation);
 						annotation.setName(localeAnnotationName);
 						annotation.setValue(propertyValue);
-						method.setParameters(PropertiesExtensions.getPropertyParameters(propertyValue));
+						method.setParameters(
+							PropertiesExtensions.getPropertyParameters(propertyValue));
 					}
 				}
 				else
@@ -110,7 +111,8 @@ public class PropertiesExtensionsTest
 						method.getMethodAnnotations().add(annotation);
 						annotation.setName(localeAnnotationName);
 						annotation.setValue(propertyValue);
-						method.setParameters(PropertiesExtensions.getPropertyParameters(propertyValue));
+						method.setParameters(
+							PropertiesExtensions.getPropertyParameters(propertyValue));
 					}
 					interfaces.put(interfaceName, classModel);
 				}
@@ -132,7 +134,8 @@ public class PropertiesExtensionsTest
 						method.getMethodAnnotations().add(annotation);
 						annotation.setName(localeAnnotationName);
 						annotation.setValue(propertyValue);
-						method.setParameters(PropertiesExtensions.getPropertyParameters(propertyValue));
+						method.setParameters(
+							PropertiesExtensions.getPropertyParameters(propertyValue));
 					}
 				}
 				else
@@ -154,7 +157,8 @@ public class PropertiesExtensionsTest
 						method.getMethodAnnotations().add(annotation);
 						annotation.setName(localeAnnotationName);
 						annotation.setValue(propertyValue);
-						method.setParameters(PropertiesExtensions.getPropertyParameters(propertyValue));
+						method.setParameters(
+							PropertiesExtensions.getPropertyParameters(propertyValue));
 					}
 					interfaces.put(interfaceName, classModel);
 				}
@@ -210,14 +214,13 @@ public class PropertiesExtensionsTest
 
 		final Map<String, List<String>> redundantValues = PropertiesExtensions
 			.findRedundantValues(properties);
-		AssertJUnit.assertEquals(redundantValues.get("Hello, {0} {1} {2}!"),
-			new ArrayList<String>()
+		AssertJUnit.assertEquals(redundantValues.get("Hello, {0} {1} {2}!"), new ArrayList<String>()
+		{
 			{
-				{
-					add("com");
-					add("foo.redundant.value");
-				}
-			});
+				add("com");
+				add("foo.redundant.value");
+			}
+		});
 		AssertJUnit.assertEquals(redundantValues.get("OK"), new ArrayList<String>()
 		{
 			{
@@ -232,8 +235,8 @@ public class PropertiesExtensionsTest
 	{
 		final String bundlepackage = "de/alpharogroup/lang";
 		final String bundlename = "resources";
-		final Set<String> availableLanguages = LocaleResolver.resolveAvailableLanguages(bundlepackage,
-			bundlename);
+		final Set<String> availableLanguages = LocaleResolver
+			.resolveAvailableLanguages(bundlepackage, bundlename);
 		AssertJUnit.assertTrue(availableLanguages.contains("de"));
 		AssertJUnit.assertTrue(availableLanguages.contains("de_DE"));
 		AssertJUnit.assertTrue(availableLanguages.contains("en"));
@@ -313,7 +316,8 @@ public class PropertiesExtensionsTest
 	public void testLoadPropertiesFromClassObject() throws IOException
 	{
 		final Locale en = Locale.ENGLISH;
-		Properties properties = PropertiesExtensions.loadPropertiesFromClassObject(this.getClass(), en);
+		Properties properties = PropertiesExtensions.loadPropertiesFromClassObject(this.getClass(),
+			en);
 		AssertJUnit.assertTrue("", properties.get("test").equals("foo"));
 		properties = PropertiesExtensions.loadPropertiesFromClassObject(this.getClass(), null);
 		AssertJUnit.assertTrue("", properties.get("test").equals("bar"));
@@ -332,8 +336,8 @@ public class PropertiesExtensionsTest
 	}
 
 	@Test(enabled = false)
-	public void testToXmlFileFileStringString() throws URISyntaxException, FileNotFoundException,
-		IOException
+	public void testToXmlFileFileStringString()
+		throws URISyntaxException, FileNotFoundException, IOException
 	{
 		final String propertiesFilename = "de/alpharogroup/lang/resources.properties";
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
