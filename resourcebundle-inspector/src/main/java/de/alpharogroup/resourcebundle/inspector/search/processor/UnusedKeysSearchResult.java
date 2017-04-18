@@ -49,6 +49,7 @@ public class UnusedKeysSearchResult
 {
 
 	/** The unused keys. */
+	@Builder.Default
 	private Set<String> unusedKeys = new HashSet<>();
 
 }

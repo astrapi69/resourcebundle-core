@@ -58,6 +58,7 @@ public class KeySearchBean
 	private Properties base;
 
 	/** The files to be excluded. */
+	@Builder.Default
 	private Set<File> exclude = new HashSet<>();
 
 	/** The file extensions to find. */

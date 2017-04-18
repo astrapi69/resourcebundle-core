@@ -52,6 +52,7 @@ public class UsedKeysSearchResult
 	private KeySearchBean searchModel;
 
 	/** The used keys. */
+	@Builder.Default
 	private Properties used = new Properties();
 
 }
