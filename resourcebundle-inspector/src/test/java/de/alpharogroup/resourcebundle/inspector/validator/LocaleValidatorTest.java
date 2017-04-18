@@ -31,8 +31,6 @@ import org.testng.annotations.Test;
 
 import com.neovisionaries.i18n.LocaleCode;
 
-import de.alpharogroup.resourcebundle.inspector.validator.LocaleValidator;
-
 
 public class LocaleValidatorTest
 {

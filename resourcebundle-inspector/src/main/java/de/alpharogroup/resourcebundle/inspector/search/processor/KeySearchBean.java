@@ -48,13 +48,13 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(toBuilder=true)
+@Builder(toBuilder = true)
 public class KeySearchBean
 {
 
 	/**
 	 * The Properties that contain the keys to search.
-	 * */
+	 */
 	private Properties base;
 
 	/** The files to be excluded. */

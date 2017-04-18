@@ -30,13 +30,12 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 import lombok.Getter;
 
-import de.alpharogroup.resourcebundle.locale.LocaleResolver;
-
 /**
- * The Class {@link PropertiesResolver} finds all properties file from the given root directory and save it to
- * a map with the locale string code.
+ * The Class {@link PropertiesResolver} finds all properties file from the given root directory and
+ * save it to a map with the locale string code.
  */
 public class PropertiesResolver
 {

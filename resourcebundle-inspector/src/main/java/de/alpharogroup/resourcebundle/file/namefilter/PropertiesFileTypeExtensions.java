@@ -48,9 +48,11 @@ public enum PropertiesFileTypeExtensions
 	/**
 	 * Instantiates a new {@link PropertiesFileTypeExtensions} object.
 	 *
-	 * @param propertiesFileExtension the properties file extension
+	 * @param propertiesFileExtension
+	 *            the properties file extension
 	 */
-	private PropertiesFileTypeExtensions(final String propertiesFileExtension){
+	private PropertiesFileTypeExtensions(final String propertiesFileExtension)
+	{
 		this.propertiesFileExtension = propertiesFileExtension;
 	}
 }

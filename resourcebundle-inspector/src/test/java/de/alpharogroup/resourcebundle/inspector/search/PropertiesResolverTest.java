@@ -34,7 +34,8 @@ import org.testng.annotations.Test;
 import de.alpharogroup.file.search.PathFinder;
 
 /**
- * The class {@link PropertiesResolverTest} provides unit tests for the class {@link PropertiesResolver}.
+ * The class {@link PropertiesResolverTest} provides unit tests for the class
+ * {@link PropertiesResolver}.
  */
 public class PropertiesResolverTest
 {

@@ -144,9 +144,8 @@ public class PropertiesFileExtensions
 	 */
 	public static List<String> removeComments(final File propertiesFile) throws IOException
 	{
-		if (propertiesFile != null
-			&& !propertiesFile.getName()
-				.matches(FileSearchExtensions.getSearchFilePattern("properties")))
+		if (propertiesFile != null && !propertiesFile.getName()
+			.matches(FileSearchExtensions.getSearchFilePattern("properties")))
 		{
 			throw new IllegalArgumentException("The given file is not an properties file.");
 		}

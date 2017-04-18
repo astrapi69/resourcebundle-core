@@ -236,8 +236,8 @@ public class PropertiesNormalizer
 	 * @throws FileIsADirectoryException
 	 *             is thrown if the given path is a directory.
 	 */
-	public static void normalizeProperties(final String path) throws IOException,
-		FileIsADirectoryException
+	public static void normalizeProperties(final String path)
+		throws IOException, FileIsADirectoryException
 	{
 		final File originalFile = new File(path);
 		final File backupFile = PropertiesFileExtensions.newBackupOf(originalFile);
