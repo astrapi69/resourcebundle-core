@@ -40,7 +40,7 @@ The source code for resourcebundle-core are on GitHub. Please feel free to fork 
 
 Create your own fork of [astrapi69/resourcebundle-core/fork](https://github.com/astrapi69/resourcebundle-core/fork)
 
-To share your changes, [submit a pull request](https://github.com/astrapi69/resourcebundle-core/pull/new/master).
+To share your changes, [submit a pull request](https://github.com/astrapi69/resourcebundle-core/pull/new/develop).
 
 Don't forget to add new units tests on your changes.
 
