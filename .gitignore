@@ -16,11 +16,13 @@
 /.project
 /.classpath
 /.settings
+/.tern-project
 
 #########################
 # maven generated files #
 #########################
 /target
+*.versionsBackup
 
 #############
 # Zip files #

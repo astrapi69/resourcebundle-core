@@ -26,27 +26,36 @@ package de.alpharogroup.resourcebundle.inspector.search;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
+import de.alpharogroup.check.Check;
+import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 import lombok.Getter;
 
 /**
- * The Class {@link PropertiesResolver} finds all properties file from the given root directory and
- * save it to a map with the locale string code.
+ * The Class {@link PropertiesListResolver} finds all properties files from the given root directory
+ * and save it to a key value list with the locales.
  */
-public class PropertiesResolver
+public class PropertiesListResolver
 {
 
 	/** The properties file as key and the locale string code as value. */
 	@Getter
-	private final Map<File, String> propertiesToLocale = new HashMap<File, String>();
+	private final Map<File, String> propertiesToLocale = new HashMap<>();
+
+	private final List<KeyValuePair<File, Locale>> propertiesList = new ArrayList<>();
 
 	/** The root dir. */
 	@Getter
 	private final File rootDir;
+
+	private final Locale defaultLocale;
 
 	/**
 	 * Instantiates a new properties finder.
@@ -54,17 +63,16 @@ public class PropertiesResolver
 	 * @param rootDir
 	 *            the root dir
 	 */
-	public PropertiesResolver(final File rootDir)
+	public PropertiesListResolver(final File rootDir, final Locale defaultLocale)
 	{
-		if (rootDir == null)
-		{
-			throw new IllegalArgumentException("rootDir is null.");
-		}
+		Check.get().notNull(rootDir, "rootDir");
+		Check.get().notNull(defaultLocale, "defaultLocale");
 		if (!rootDir.isDirectory())
 		{
 			throw new IllegalArgumentException("rootDir is not a directory.");
 		}
 		this.rootDir = rootDir;
+		this.defaultLocale = defaultLocale;
 	}
 
 	/**
@@ -81,8 +89,9 @@ public class PropertiesResolver
 			protected void handleFile(final File file, final int depth,
 				final Collection<File> results) throws IOException
 			{
-				final String localeCode = LocaleResolver.resolveLocaleCode(file);
-				propertiesToLocale.put(file, localeCode);
+				final Locale locale = LocaleResolver.resolveLocale(file, defaultLocale, false);
+				propertiesList
+					.add(KeyValuePair.<File, Locale> builder().key(file).value(locale).build());
 			}
 		};
 		walker.start(rootDir);

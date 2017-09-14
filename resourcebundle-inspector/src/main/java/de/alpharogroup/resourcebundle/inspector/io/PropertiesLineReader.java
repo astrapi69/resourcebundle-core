@@ -106,8 +106,9 @@ public class PropertiesLineReader
 		{
 			if (inputOff >= inputLimit)
 			{
-				inputLimit = (inputStream == null) ? reader.read(inputCharBuffer) : inputStream
-					.read(inputByteBuffer);
+				inputLimit = (inputStream == null)
+					? reader.read(inputCharBuffer)
+					: inputStream.read(inputByteBuffer);
 				inputOff = 0;
 				if (inputLimit <= 0)
 				{
@@ -192,8 +193,9 @@ public class PropertiesLineReader
 				}
 				if (inputOff >= inputLimit)
 				{
-					inputLimit = (inputStream == null) ? reader.read(inputCharBuffer) : inputStream
-						.read(inputByteBuffer);
+					inputLimit = (inputStream == null)
+						? reader.read(inputCharBuffer)
+						: inputStream.read(inputByteBuffer);
 					inputOff = 0;
 					if (inputLimit <= 0)
 					{

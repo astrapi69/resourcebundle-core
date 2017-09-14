@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>2.15.0</version>
+		<version>2.28.0</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.11.0</version>
+	<version>2.14.0</version>
 	<inceptionYear>2012</inceptionYear>
 	<packaging>pom</packaging>
 
@@ -41,30 +41,37 @@
 		</developer>
 
 	</developers>
-
+	
 	<licenses>
-
 		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt
-			</url>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
 			<distribution>repo</distribution>
 		</license>
-
 	</licenses>
+
+	<ciManagement>
+		<system>travis-ci</system>
+		<url>https://travis-ci.org/astrapi69/resourcebundle-core</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/astrapi69/resourcebundle-core/issues</url>
+	</issueManagement>
+	
 
 	<modules>
 		<module>resourcebundle-inspector</module>
 	</modules>
 
 	<properties>
+		<!-- NEW EXTENSIONS LIB versions -->		
+		<jcommons-lang.version>4.21.0</jcommons-lang.version>
+		<test-objects.version>4.16.0</test-objects.version>
+		<file-worker.version>4.15.0</file-worker.version>
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.21</nv-i18n.version>
-		<!-- NEW EXTENSIONS LIB versions -->
-		<extensions-lib.version>4.14.0</extensions-lib.version>
-		<jcommons-lang.version>${extensions-lib.version}</jcommons-lang.version>
-		<test-objects.version>${extensions-lib.version}</test-objects.version>
-		<file-worker.version>${extensions-lib.version}</file-worker.version>
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.5</commons-io.version>
 	</properties>
@@ -72,12 +79,6 @@
 	<dependencyManagement>
 
 		<dependencies>
-
-			<dependency>
-				<groupId>com.neovisionaries</groupId>
-				<artifactId>nv-i18n</artifactId>
-				<version>${nv-i18n.version}</version>
-			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -97,6 +98,12 @@
 				<version>${file-worker.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>com.neovisionaries</groupId>
+				<artifactId>nv-i18n</artifactId>
+				<version>${nv-i18n.version}</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>

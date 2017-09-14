@@ -36,20 +36,15 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 
-import lombok.Getter;
-
 import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
 import de.alpharogroup.resourcebundle.inspector.io.PropertiesLineReader;
+import lombok.Getter;
 
 /**
  * The Class {@link DuplicatePropertiesKeyInspector}.
  */
 public class DuplicatePropertiesKeyInspector
 {
-	/** The result. */
-	@Getter
-	private final KeyValueLists result;
-	
 	/**
 	 * Finds redundant values from the given Properties object and saves it to a Map.
 	 *
@@ -89,6 +84,10 @@ public class DuplicatePropertiesKeyInspector
 		}
 		return redundantValues;
 	}
+
+	/** The result. */
+	@Getter
+	private final KeyValueLists result;
 
 	/**
 	 * Instantiates a new duplicate properties key finder.
@@ -154,8 +153,8 @@ public class DuplicatePropertiesKeyInspector
 				{
 					keyValueLists.getDuplicateMap().put(key,
 						keyValueLists.getDuplicateMap().get(key).intValue() + 1);
-					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap().get(
-						key);
+					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap()
+						.get(key);
 					final String currentValue = keyValueLists.getValues().get(i);
 					duplicateValues.add(currentValue);
 				}
@@ -163,8 +162,8 @@ public class DuplicatePropertiesKeyInspector
 				{
 					keyValueLists.getDuplicateMap().put(key, 1);
 					keyValueLists.getDuplicateValueMap().put(key, new ArrayList<String>());
-					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap().get(
-						key);
+					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap()
+						.get(key);
 					final String currentValue = keyValueLists.getValues().get(i);
 					duplicateValues.add(currentValue);
 				}

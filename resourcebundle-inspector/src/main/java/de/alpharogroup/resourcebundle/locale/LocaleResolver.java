@@ -25,6 +25,7 @@
 package de.alpharogroup.resourcebundle.locale;
 
 import java.io.File;
+import java.text.DateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -90,7 +91,9 @@ public class LocaleResolver
 			if ((language != null) && !language.isEmpty())
 			{
 				languages.add(language);
-			} else {
+			}
+			else
+			{
 				languages.add("default");
 			}
 		}
@@ -125,13 +128,45 @@ public class LocaleResolver
 	 */
 	public static Locale resolveLocale(final File propertiesFile)
 	{
-		final String localeCode = propertiesFile.getName()
-			.replaceAll("^" + resolveBundlename(propertiesFile) + "(_)?|\\.properties$", "");
-		return LocaleResolver.resolveLocale(localeCode);
+		return LocaleResolver.resolveLocale(propertiesFile, true);
 	}
 
 	/**
-	 * Resolves the {@link Locale} object from the given locale code.
+	 * Resolves the locale from the given properties file.
+	 *
+	 * @param propertiesFile
+	 *            the properties file
+	 * @param systemsDefault
+	 *            if this flag is true the systems default locale will be taken if not found
+	 * @return the locale
+	 */
+	public static Locale resolveLocale(final File propertiesFile, final boolean systemsDefault)
+	{
+		return LocaleResolver.resolveLocale(propertiesFile, null, systemsDefault);
+	}
+
+	/**
+	 * Resolves the locale from the given properties file.
+	 *
+	 * @param propertiesFile
+	 *            the properties file
+	 * @param defaultLocale
+	 *            the default locale
+	 * @param systemsDefault
+	 *            if this flag is true the systems default locale will be taken if not found
+	 * @return the locale
+	 */
+	public static Locale resolveLocale(final File propertiesFile, final Locale defaultLocale,
+		final boolean systemsDefault)
+	{
+		final String localeCode = propertiesFile.getName()
+			.replaceAll("^" + resolveBundlename(propertiesFile) + "(_)?|\\.properties$", "");
+		return LocaleResolver.resolveLocale(localeCode, defaultLocale, systemsDefault);
+	}
+
+	/**
+	 * Resolves the {@link Locale} object from the given locale code. If not found the system
+	 * default locale will be taken.
 	 *
 	 * @param localeCode
 	 *            the locale code
@@ -139,8 +174,48 @@ public class LocaleResolver
 	 */
 	public static Locale resolveLocale(final String localeCode)
 	{
+		return resolveLocale(localeCode, true);
+	}
+
+	/**
+	 * Resolves the {@link Locale} object from the given locale code.
+	 *
+	 * @param localeCode
+	 *            the locale code
+	 * @param systemsDefault
+	 *            if this flag is true the systems default locale will be taken if not found
+	 *            otherwise not
+	 * @return the {@link Locale} object or null if not found and flag systemsDefault is false.
+	 */
+	public static Locale resolveLocale(final String localeCode, final boolean systemsDefault)
+	{
+		return resolveLocale(localeCode, null, systemsDefault);
+	}
+
+	/**
+	 * Resolves the {@link Locale} object from the given locale code. If the given default locale is
+	 * not null and the locale code does resolve to no locale the default locale will be returned.
+	 *
+	 * @param localeCode
+	 *            the locale code
+	 * @param defaultLocale
+	 *            the default locale
+	 * @param systemsDefault
+	 *            if this flag is true the systems default locale will be taken if not found
+	 *            otherwise not
+	 * @return the {@link Locale} object or null if not found and flag systemsDefault is false and
+	 *         defaultLocale is null.
+	 */
+	public static Locale resolveLocale(final String localeCode, final Locale defaultLocale,
+		final boolean systemsDefault)
+	{
 		Locale current = resolveLocaleCode(localeCode);
-		if(current == null) {
+		if (current == null && defaultLocale != null)
+		{
+			current = defaultLocale;
+		}
+		if (current == null && systemsDefault)
+		{
 			current = Locale.getDefault();
 		}
 		return current;
@@ -208,7 +283,27 @@ public class LocaleResolver
 	 *            The name of the resource bundle.
 	 * @return a Map of File objects with the corresponding Locales to it.
 	 */
-	public static Map<File, Locale> resolveLocales(final String bundlepackage, final String bundlename)
+	public static Map<File, Locale> resolveLocales(final String bundlepackage,
+		final String bundlename)
+	{
+		return resolveLocales(bundlepackage, bundlename, true);
+	}
+
+	/**
+	 * Resolves all the available Locales to the given resource bundle name in the given bundle
+	 * package. For now it is only for properties files.
+	 *
+	 * @param bundlepackage
+	 *            The package that contains the properties files.
+	 * @param bundlename
+	 *            The name of the resource bundle.
+	 * @param systemsDefault
+	 *            if this flag is true the systems default locale will be taken as the default
+	 *            locale otherwise the value will be null for the default locale.
+	 * @return a Map of File objects with the corresponding Locales to it.
+	 */
+	public static Map<File, Locale> resolveLocales(final String bundlepackage,
+		final String bundlename, final boolean systemsDefault)
 	{
 		final ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		final File root = new File(loader.getResource(bundlepackage.replace('.', '/')).getFile());
@@ -216,10 +311,20 @@ public class LocaleResolver
 		final Map<File, Locale> locales = new HashMap<>();
 		for (final File file : files)
 		{
-			final Locale current = LocaleResolver.resolveLocale(file);
+			final Locale current = LocaleResolver.resolveLocale(file, systemsDefault);
 			locales.put(file, current);
 		}
 		return locales;
+	}
+
+	/**
+	 * Resolve available locales on the current system.
+	 *
+	 * @return the list with the available locales.
+	 */
+	public List<Locale> resolveAvailableLocales()
+	{
+		return Arrays.asList(DateFormat.getAvailableLocales());
 	}
 
 }

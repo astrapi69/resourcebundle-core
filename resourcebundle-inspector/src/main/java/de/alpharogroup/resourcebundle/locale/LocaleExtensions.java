@@ -26,12 +26,15 @@ package de.alpharogroup.resourcebundle.locale;
 
 import java.util.Locale;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * Extension class for Locales.
  *
  * @author Asterios Raptis
  * @version 1.0
  */
+@UtilityClass
 public class LocaleExtensions
 {
 

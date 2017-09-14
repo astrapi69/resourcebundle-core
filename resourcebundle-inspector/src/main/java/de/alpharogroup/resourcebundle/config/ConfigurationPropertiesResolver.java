@@ -34,7 +34,8 @@ import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 import lombok.Getter;
 
 /**
- * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an application like the http, https ports.
+ * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an
+ * application like the http, https ports.
  */
 public class ConfigurationPropertiesResolver implements Serializable
 {
@@ -102,50 +103,42 @@ public class ConfigurationPropertiesResolver implements Serializable
 	/**
 	 * Instantiates a new {@link ConfigurationPropertiesResolver}.
 	 *
-	 * @param defaultHttpPort the default http port
-	 * @param defaultHttpsPort the default https port
-	 * @param propertiesFilename the properties filename
+	 * @param defaultHttpPort
+	 *            the default http port
+	 * @param defaultHttpsPort
+	 *            the default https port
+	 * @param propertiesFilename
+	 *            the properties filename
 	 */
-	public ConfigurationPropertiesResolver(final Integer defaultHttpPort, final Integer defaultHttpsPort, final String propertiesFilename)
+	public ConfigurationPropertiesResolver(final Integer defaultHttpPort,
+		final Integer defaultHttpsPort, final String propertiesFilename)
 	{
-		Check.get()
-		.notNull(defaultHttpPort, "defaultHttpPort")
-		.notNull(defaultHttpsPort, "defaultHttpsPort")
-		.notNull(propertiesFilename, "propertiesFilename");
+		Check.get().notNull(defaultHttpPort, "defaultHttpPort")
+			.notNull(defaultHttpsPort, "defaultHttpsPort")
+			.notNull(propertiesFilename, "propertiesFilename");
 		this.defaultHttpPort = defaultHttpPort;
 		this.defaultHttpsPort = defaultHttpsPort;
-		this.propertiesFilename =  propertiesFilename;
+		this.propertiesFilename = propertiesFilename;
 		this.properties = loadProperties();
 		this.httpPort = resolveHttpPort();
 		this.httpsPort = resolveHttpsPort();
 	}
 
 	/**
-	 * Resolves the http port from the configuration properties file.
-	 *
-	 * @return the resolved http port or if not found the default http port.
-	 */
-	private int resolveHttpPort() {
-		final Optional<Integer> optionalHttpPort = getOptionalHttpPort();
-		if(optionalHttpPort.isPresent()) {
-			return optionalHttpPort.get();
-		}
-		return getDefaultHttpPort();
-	}
-
-	/**
-	 * Try to get the http port from the properties. If it does not exists an empty {@link Optional} will be returned.
+	 * Try to get the http port from the properties. If it does not exists an empty {@link Optional}
+	 * will be returned.
 	 *
 	 * @return the optional http port
 	 */
-	private Optional<Integer> getOptionalHttpPort() {
-		if (getProperties().containsKey(APPLICATION_HTTP_PORT_KEY))
+	private Optional<Integer> getOptionalHttpPort()
+	{
+		if (getProperties() != null && getProperties().containsKey(APPLICATION_HTTP_PORT_KEY))
 		{
 			final String httpPortString = getProperties().getProperty(APPLICATION_HTTP_PORT_KEY);
 			try
 			{
 				final Integer httpPort = Integer.valueOf(httpPortString);
-				return Optional.of( httpPort );
+				return Optional.of(httpPort);
 			}
 			catch (final NumberFormatException e)
 			{
@@ -155,34 +148,21 @@ public class ConfigurationPropertiesResolver implements Serializable
 		return Optional.empty();
 	}
 
-
 	/**
-	 * Resolves the https port from the configuration properties file.
-	 *
-	 * @return the resolved https port or if not found the default https port.
-	 */
-	private int resolveHttpsPort() {
-		final Optional<Integer> optionalHttpsPort = getOptionalHttpsPort();
-		if(optionalHttpsPort.isPresent()) {
-			return optionalHttpsPort.get();
-		}
-		return getDefaultHttpsPort();
-	}
-
-
-	/**
-	 * Try to get the https port from the properties. If it does not exists an empty {@link Optional} will be returned.
+	 * Try to get the https port from the properties. If it does not exists an empty
+	 * {@link Optional} will be returned.
 	 *
 	 * @return the optional https port
 	 */
-	private Optional<Integer> getOptionalHttpsPort() {
+	private Optional<Integer> getOptionalHttpsPort()
+	{
 		if (getProperties().containsKey(APPLICATION_HTTPS_PORT_KEY))
 		{
 			final String httpsPortString = getProperties().getProperty(APPLICATION_HTTPS_PORT_KEY);
 			try
 			{
 				final Integer httpsPort = Integer.valueOf(httpsPortString);
-				return Optional.of( httpsPort );
+				return Optional.of(httpsPort);
 			}
 			catch (final NumberFormatException e)
 			{
@@ -191,6 +171,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 		}
 		return Optional.empty();
 	}
+
 
 	/**
 	 * Try to load the configuration properties file from disk.
@@ -209,6 +190,37 @@ public class ConfigurationPropertiesResolver implements Serializable
 			throw new RuntimeException(e);
 		}
 		return properties;
+	}
+
+
+	/**
+	 * Resolves the http port from the configuration properties file.
+	 *
+	 * @return the resolved http port or if not found the default http port.
+	 */
+	private int resolveHttpPort()
+	{
+		final Optional<Integer> optionalHttpPort = getOptionalHttpPort();
+		if (optionalHttpPort.isPresent())
+		{
+			return optionalHttpPort.get();
+		}
+		return getDefaultHttpPort();
+	}
+
+	/**
+	 * Resolves the https port from the configuration properties file.
+	 *
+	 * @return the resolved https port or if not found the default https port.
+	 */
+	private int resolveHttpsPort()
+	{
+		final Optional<Integer> optionalHttpsPort = getOptionalHttpsPort();
+		if (optionalHttpsPort.isPresent())
+		{
+			return optionalHttpsPort.get();
+		}
+		return getDefaultHttpsPort();
 	}
 
 

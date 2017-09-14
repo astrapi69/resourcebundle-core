@@ -25,11 +25,14 @@
 package de.alpharogroup.resourcebundle.locale;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 /**
  * The Class Locales provides constants for different Locales that are not in the Locale class.
- * 
+ *
  * @author Asterios Raptis
  */
 public final class Locales implements Serializable
@@ -48,5 +51,33 @@ public final class Locales implements Serializable
 	public static final Locale RUSSIAN = new Locale("ru");
 	/** Useful constant for the german language in variant schwaebisch. */
 	public static final Locale SCHWAEBISCH = new Locale("de", "DE", "schw");
+
+	private static List<Locale> availableLocales;
+
+    /**
+     * Returns a list of all available locales on the current jdk.
+     *
+     * @return list of all available locales on the current jdk.
+     */
+    public static List<Locale> getAvailableLocales()
+    {
+    	if(availableLocales == null) {
+    		final Locale poolArray[] = DateFormat.getAvailableLocales();
+    		availableLocales = Arrays.asList(poolArray);
+    	}
+		return availableLocales;
+    }
+
+    /**
+     * Checks if the given {@link Locale} is in the available locales on the current jdk.
+     *
+     * @param locale the locale to check
+     * @return true, if successful
+     */
+    public static boolean contains(Locale locale) {
+    	List<Locale> availableLocales = getAvailableLocales();
+    	boolean exists = availableLocales.contains(locale);
+    	return exists;
+    }
 
 }

@@ -107,10 +107,11 @@ public abstract class PropertiesKeysListResolver<T>
 	 */
 	protected String getPropertiesKey(final String object)
 	{
-		final String propertiesKey = this.propertiesKeyPrefix != null ? this.propertiesKeySuffix != null
-			? this.propertiesKeyPrefix + "." + object + "." + this.propertiesKeySuffix
-				: this.propertiesKeyPrefix + "." + object : this.propertiesKeySuffix != null ? object + "."
-					+ this.propertiesKeySuffix : object;
+		final String propertiesKey = this.propertiesKeyPrefix != null
+			? this.propertiesKeySuffix != null
+				? this.propertiesKeyPrefix + "." + object + "." + this.propertiesKeySuffix
+				: this.propertiesKeyPrefix + "." + object
+			: this.propertiesKeySuffix != null ? object + "." + this.propertiesKeySuffix : object;
 		return propertiesKey;
 	}
 
