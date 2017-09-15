@@ -24,6 +24,9 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
+import java.text.DateFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import lombok.experimental.UtilityClass;
@@ -37,6 +40,9 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class LocaleExtensions
 {
+
+	/** The available locales on the system. */
+	private static List<Locale> availableLocales;
 
 	/**
 	 * Gets the locale file name suffix that has the format 'language_COUNTRY_variant' for instance
@@ -133,6 +139,36 @@ public class LocaleExtensions
 	public static String getLocaleName(final Locale locale)
 	{
 		return getLocaleFileSuffix(locale, true, true, false);
+	}
+
+
+	/**
+	 * Checks if the given {@link Locale} is in the available locales on the current jdk.
+	 *
+	 * @param locale
+	 *            the locale to check
+	 * @return true, if successful
+	 */
+	public static boolean contains(Locale locale)
+	{
+		List<Locale> availableLocales = getAvailableLocales();
+		boolean exists = availableLocales.contains(locale);
+		return exists;
+	}
+
+	/**
+	 * Returns a list of all available locales on the current jdk.
+	 *
+	 * @return list of all available locales on the current jdk.
+	 */
+	public static List<Locale> getAvailableLocales()
+	{
+		if (availableLocales == null)
+		{
+			final Locale localesArray[] = DateFormat.getAvailableLocales();
+			availableLocales = Arrays.asList(localesArray);
+		}
+		return availableLocales;
 	}
 
 }

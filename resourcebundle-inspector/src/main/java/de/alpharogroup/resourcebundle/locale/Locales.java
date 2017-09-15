@@ -25,8 +25,6 @@
 package de.alpharogroup.resourcebundle.locale;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -52,32 +50,31 @@ public final class Locales implements Serializable
 	/** Useful constant for the german language in variant schwaebisch. */
 	public static final Locale SCHWAEBISCH = new Locale("de", "DE", "schw");
 
-	private static List<Locale> availableLocales;
+	/**
+	 * Checks if the given {@link Locale} is in the available locales on the current jdk.
+	 *
+	 * @param locale
+	 *            the locale to check
+	 * @return true, if successful
+	 *
+	 * @deprecated use instead {@link LocaleExtensions#contains(Locale)}
+	 */
+	@Deprecated
+	public static boolean contains(Locale locale)
+	{
+		return LocaleExtensions.contains(locale);
+	}
 
-    /**
-     * Returns a list of all available locales on the current jdk.
-     *
-     * @return list of all available locales on the current jdk.
-     */
-    public static List<Locale> getAvailableLocales()
-    {
-    	if(availableLocales == null) {
-    		final Locale poolArray[] = DateFormat.getAvailableLocales();
-    		availableLocales = Arrays.asList(poolArray);
-    	}
-		return availableLocales;
-    }
-
-    /**
-     * Checks if the given {@link Locale} is in the available locales on the current jdk.
-     *
-     * @param locale the locale to check
-     * @return true, if successful
-     */
-    public static boolean contains(Locale locale) {
-    	List<Locale> availableLocales = getAvailableLocales();
-    	boolean exists = availableLocales.contains(locale);
-    	return exists;
-    }
+	/**
+	 * Returns a list of all available locales on the current jdk.
+	 *
+	 * @return list of all available locales on the current jdk.
+	 * @deprecated use instead {@link LocaleExtensions#getAvailableLocales()}
+	 */
+	@Deprecated
+	public static List<Locale> getAvailableLocales()
+	{
+		return LocaleExtensions.getAvailableLocales();
+	}
 
 }
