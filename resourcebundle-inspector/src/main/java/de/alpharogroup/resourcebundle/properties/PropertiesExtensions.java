@@ -47,6 +47,8 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
+import de.alpharogroup.collections.ListExtensions;
+import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.file.FileExtension;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
@@ -626,6 +628,27 @@ public final class PropertiesExtensions
 			}
 		}
 		return languages;
+	}
+
+	/**
+	 * Converts the given {@linkplain Properties} object to a list of {@linkplain KeyValuePair}
+	 * objects.
+	 *
+	 * @param properties
+	 *            the properties
+	 * @return the list
+	 */
+	public static List<KeyValuePair<String, String>> toKeyValuePairList(final Properties properties)
+	{
+		final List<KeyValuePair<String, String>> keyValuePairList = ListExtensions.newArrayList();
+		for (final Map.Entry<Object, Object> entry : properties.entrySet())
+		{
+			final String key = (String)entry.getKey();
+			final String value = (String)entry.getValue();
+			keyValuePairList
+				.add(KeyValuePair.<String, String> builder().key(key).value(value).build());
+		}
+		return keyValuePairList;
 	}
 
 	/**
