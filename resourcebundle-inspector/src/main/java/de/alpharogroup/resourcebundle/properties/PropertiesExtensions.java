@@ -631,14 +631,13 @@ public final class PropertiesExtensions
 	}
 
 	/**
-	 * Converts the given {@linkplain Properties} object to a list of {@linkplain KeyValuePair}
-	 * objects.
+	 * Transforms the given {@link Properties} to a list of {@link KeyValuePair}'s.
 	 *
 	 * @param properties
 	 *            the properties
-	 * @return the list
+	 * @return the new list with the {@link KeyValuePair}'s.
 	 */
-	public static List<KeyValuePair<String, String>> toKeyValuePairList(final Properties properties)
+	public static List<KeyValuePair<String, String>> toKeyValuePairs(final Properties properties)
 	{
 		final List<KeyValuePair<String, String>> keyValuePairList = ListExtensions.newArrayList();
 		for (final Map.Entry<Object, Object> entry : properties.entrySet())

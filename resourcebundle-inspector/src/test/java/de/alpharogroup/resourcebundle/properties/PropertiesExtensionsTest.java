@@ -24,6 +24,9 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertTrue;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -40,6 +43,7 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.collections.SortedProperties;
+import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 import de.alpharogroup.lang.model.AnnotationModel;
@@ -49,7 +53,7 @@ import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
  * Test class for the class {@link de.alpharogroup.lang.PropertiesExtensions}.
- * 
+ *
  * @version 1.0
  * @author Asterios Raptis
  */
@@ -349,6 +353,28 @@ public class PropertiesExtensionsTest
 	public void testToXmlInputStreamOutputStreamStringString()
 	{
 		throw new RuntimeException("Test not implemented");
+	}
+
+	@Test
+	public void testToKeyValuePairs()
+	{
+		String key;
+		String value;
+		final Properties properties = new Properties();
+
+		key = "foo";
+		value = "bar";
+		properties.setProperty(key, value);
+
+		key = "bla";
+		value = "fasel";
+		properties.setProperty(key, value);
+
+		final List<KeyValuePair<String, String>> list = PropertiesExtensions.toKeyValuePairs(properties);
+
+		assertNotNull(list);
+		assertTrue(list.size() == 2);
+
 	}
 
 }
