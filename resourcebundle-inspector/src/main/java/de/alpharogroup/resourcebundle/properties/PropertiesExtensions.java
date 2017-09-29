@@ -639,15 +639,7 @@ public final class PropertiesExtensions
 	 */
 	public static List<KeyValuePair<String, String>> toKeyValuePairs(final Properties properties)
 	{
-		final List<KeyValuePair<String, String>> keyValuePairList = ListExtensions.newArrayList();
-		for (final Map.Entry<Object, Object> entry : properties.entrySet())
-		{
-			final String key = (String)entry.getKey();
-			final String value = (String)entry.getValue();
-			keyValuePairList
-				.add(KeyValuePair.<String, String> builder().key(key).value(value).build());
-		}
-		return keyValuePairList;
+		return KeyValuePair.toKeyValuePairs(properties);
 	}
 
 	/**
