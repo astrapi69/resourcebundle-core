@@ -47,7 +47,6 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
-import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.file.FileExtension;
 import de.alpharogroup.lang.ClassExtensions;
@@ -126,7 +125,9 @@ public final class PropertiesExtensions
 	 * @return the properties
 	 * @throws Exception
 	 *             the exception
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static Properties getLocalPropertiesFromClass(final Class<?> componentClass,
 		final Class<?> defaultClass, final Locale locale) throws Exception
 	{
@@ -134,11 +135,13 @@ public final class PropertiesExtensions
 		Properties properties = null;
 		if (componentClass != null)
 		{
-			properties = PropertiesExtensions.loadPropertiesFromClassObject(componentClass, locale);
+			properties = PropertiesFileExtensions.loadPropertiesFromClassObject(componentClass,
+				locale);
 		}
 		else
 		{
-			properties = PropertiesExtensions.loadPropertiesFromClassObject(defaultClass, locale);
+			properties = PropertiesFileExtensions.loadPropertiesFromClassObject(defaultClass,
+				locale);
 		}
 		return properties;
 	}
@@ -191,10 +194,12 @@ public final class PropertiesExtensions
 	 * @return the project name
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static String getProjectName() throws IOException
 	{
-		final Properties projectProperties = PropertiesExtensions
+		final Properties projectProperties = PropertiesFileExtensions
 			.loadProperties("project.properties");
 		if (projectProperties != null)
 		{
@@ -219,7 +224,9 @@ public final class PropertiesExtensions
 	 * @param defaultName
 	 *            the default project name if
 	 * @return the project name
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static String getProjectNameQuietly(final String defaultName)
 	{
 		try
@@ -265,7 +272,9 @@ public final class PropertiesExtensions
 	 * @return the properties
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static Properties loadProperties(final Class<?> clazz, final String name)
 		throws IOException
 	{
@@ -294,7 +303,9 @@ public final class PropertiesExtensions
 	 * @return the properties
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static Properties loadProperties(final Class<?> clazz, final String packagePath,
 		final String fileName) throws IOException
 	{
@@ -309,7 +320,9 @@ public final class PropertiesExtensions
 	 * @return the properties or null if the file is not found.
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static Properties loadProperties(final File propertiesFile) throws IOException
 	{
 		Properties properties = null;
@@ -338,7 +351,9 @@ public final class PropertiesExtensions
 	 * @return The Properties-object from the given packagepath.
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static Properties loadProperties(final String packagePath) throws IOException
 	{
 		Properties properties = null;
@@ -370,7 +385,9 @@ public final class PropertiesExtensions
 	 * @return the properties
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static Properties loadProperties(String packagePath, String fileName) throws IOException
 	{
 		StringBuilder sb = new StringBuilder();
@@ -422,7 +439,9 @@ public final class PropertiesExtensions
 	 * @param propertiesFilename
 	 *            the properties filename
 	 * @return the loaded {@link Properties} or null if the loading process failed.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static <T> Properties loadProperties(final T object, final String propertiesFilename)
 	{
 		Properties properties = null;
@@ -471,7 +490,9 @@ public final class PropertiesExtensions
 	 * @return the properties
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static Properties loadPropertiesFromClassObject(final Class<?> clazz,
 		final Locale locale) throws IOException
 	{
@@ -609,7 +630,9 @@ public final class PropertiesExtensions
 	 * @param bundlename
 	 *            The name of the resource bundle.
 	 * @return a Set of String objects with the available languages excluding the default.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static Set<String> resolveAvailableLanguages(final String bundlepackage,
 		final String bundlename)
 	{
@@ -655,7 +678,9 @@ public final class PropertiesExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static void toProperties(final File properties, final File xml, final String comment)
 		throws FileNotFoundException, IOException
 	{
@@ -675,7 +700,9 @@ public final class PropertiesExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static void toProperties(final OutputStream properties, final InputStream xml,
 		final String comment) throws FileNotFoundException, IOException
 	{
@@ -699,7 +726,9 @@ public final class PropertiesExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static void toXml(final File properties, final File xml, final String comment,
 		final String encoding) throws FileNotFoundException, IOException
 	{
@@ -721,7 +750,9 @@ public final class PropertiesExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same named method in the PropertiesFileExtensions.
 	 */
+	@Deprecated
 	public static void toXml(final InputStream properties, final OutputStream xml,
 		final String comment, final String encoding) throws FileNotFoundException, IOException
 	{

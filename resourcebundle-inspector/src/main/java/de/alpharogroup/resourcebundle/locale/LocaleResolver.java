@@ -115,7 +115,9 @@ public class LocaleResolver
 		if (0 < indexOfUnderscore)
 		{
 			bundlename = propertiesFile.getName().substring(0, filename.indexOf("_"));
-		} else {
+		}
+		else
+		{
 			bundlename = FilenameExtensions.getFilenameWithoutExtension(propertiesFile);
 		}
 		return bundlename;
