@@ -42,7 +42,7 @@ import com.neovisionaries.i18n.LocaleCode;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
-import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 
 /**
  * The class {@link UsedKeysSearchFilterTest} provides unit tests for the class
@@ -57,7 +57,7 @@ public class UsedKeysSearchFilterTest
 	@Test(enabled = true)
 	public void getUsedKeys() throws IOException
 	{
-		final Map<File, Locale> foundMap = new HashMap<File, Locale>();
+		final Map<File, Locale> foundMap = new HashMap<>();
 		final File rootDir = PathFinder.getSrcMainJavaDir();
 		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
 		{
@@ -80,7 +80,7 @@ public class UsedKeysSearchFilterTest
 		walker.start(rootDir);
 		for (final File propertiesFile : foundMap.keySet())
 		{
-			final Properties properties = PropertiesExtensions.loadProperties(propertiesFile);
+			final Properties properties = PropertiesFileExtensions.loadProperties(propertiesFile);
 
 			final KeySearchBean model = newKeySearchBean(properties, rootDir, new HashSet<File>(),
 				foundMap.get(propertiesFile), ".java", ".html");
@@ -138,7 +138,7 @@ public class UsedKeysSearchFilterTest
 
 		// We can set the files that shell be excuded from the search...
 		// these are unit tests that we do not want to include...
-		final Set<File> exclude = new HashSet<File>();
+		final Set<File> exclude = new HashSet<>();
 		final File ex1 = new File(PathFinder.getSrcTestJavaDir(),
 			"/de/alpharogroup/resourcebundle/inspector/search/processor/UsedKeysSearchFilterTest.java");
 		final File ex2 = new File(PathFinder.getSrcTestJavaDir(),
@@ -161,7 +161,7 @@ public class UsedKeysSearchFilterTest
 	public void testExecute() throws IOException
 	{
 		final UnusedKeysSearchResult expected = new UnusedKeysSearchResult();
-		final Set<String> unusedKeys = new HashSet<String>();
+		final Set<String> unusedKeys = new HashSet<>();
 		unusedKeys.add("com.example.gui");
 		expected.setUnusedKeys(unusedKeys);
 		final KeySearchBean model = newKeySearchModel();

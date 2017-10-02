@@ -77,23 +77,35 @@ public class LocaleResolverTest
 
 	/**
 	 * Test method for {@link LocaleResolver#resolveBundlename(File)}
-	 * 
+	 *
 	 * @throws URISyntaxException
 	 *             the URI syntax exception
 	 */
 	@Test(enabled = true)
 	public void testResolveBundlename() throws URISyntaxException
 	{
-		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
-		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
-		final String expected = "resources";
-		final String actual = LocaleResolver.resolveBundlename(propertiesFile);
+		String expected;
+		String actual;
+		String propertiesFilename;
+		File propertiesFile;
+
+		expected = "resources";
+
+		propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
+		propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
+		actual = LocaleResolver.resolveBundlename(propertiesFile);
 		AssertJUnit.assertTrue(expected.equals(actual));
+
+		propertiesFilename = "de/alpharogroup/lang/resources.properties";
+		propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
+		actual = LocaleResolver.resolveBundlename(propertiesFile);
+		AssertJUnit.assertTrue(expected.equals(actual));
+
 	}
 
 	/**
 	 * Test method for {@link LocaleResolver#resolveLocaleCode(File)}
-	 * 
+	 *
 	 * @throws URISyntaxException
 	 *             the URI syntax exception
 	 */
@@ -102,8 +114,8 @@ public class LocaleResolverTest
 	{
 		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
-		String expected = "de";
-		String actual = LocaleResolver.resolveLocaleCode(propertiesFile);
+		final String expected = "de";
+		final String actual = LocaleResolver.resolveLocaleCode(propertiesFile);
 		AssertJUnit.assertEquals(expected, actual);
 	}
 
@@ -143,9 +155,9 @@ public class LocaleResolverTest
 	{
 		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
-		String code = "de";
-		Locale expected = new Locale(code);
-		Locale actual = LocaleResolver.resolveLocale(propertiesFile);
+		final String code = "de";
+		final Locale expected = new Locale(code);
+		final Locale actual = LocaleResolver.resolveLocale(propertiesFile);
 		AssertJUnit.assertNotNull(actual);
 		AssertJUnit.assertEquals(expected, actual);
 	}
@@ -158,7 +170,7 @@ public class LocaleResolverTest
 	{
 		final String bundlepackage = "de/alpharogroup/lang";
 		final String bundlename = "resources";
-		Map<File, Locale> fileToLocaleMap = LocaleResolver.resolveLocales(bundlepackage,
+		final Map<File, Locale> fileToLocaleMap = LocaleResolver.resolveLocales(bundlepackage,
 			bundlename);
 
 		AssertJUnit.assertTrue(fileToLocaleMap.containsValue(Locale.GERMAN));

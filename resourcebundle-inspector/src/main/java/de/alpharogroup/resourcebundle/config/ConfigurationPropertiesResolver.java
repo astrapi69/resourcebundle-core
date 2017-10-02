@@ -30,7 +30,7 @@ import java.util.Optional;
 import java.util.Properties;
 
 import de.alpharogroup.check.Check;
-import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import lombok.Getter;
 
 /**
@@ -183,7 +183,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 		final Properties properties;
 		try
 		{
-			properties = PropertiesExtensions.loadProperties(getPropertiesFilename());
+			properties = PropertiesFileExtensions.loadProperties(getPropertiesFilename());
 		}
 		catch (final IOException e)
 		{

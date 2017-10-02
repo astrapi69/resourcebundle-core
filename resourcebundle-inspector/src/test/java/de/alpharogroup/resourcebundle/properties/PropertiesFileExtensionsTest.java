@@ -25,14 +25,20 @@
 package de.alpharogroup.resourcebundle.properties;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Properties;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.lang.ClassExtensions;
+import de.alpharogroup.lang.PackageExtensions;
 
 public class PropertiesFileExtensionsTest
 {
@@ -58,6 +64,57 @@ public class PropertiesFileExtensionsTest
 	}
 
 	@Test(enabled = true)
+	public void testLoadProperties() throws IOException
+	{
+		final String propertiesFilename = "resources.properties";
+		final String pathFromObject = PackageExtensions.getPackagePathWithSlash(this);
+		final String path = pathFromObject + propertiesFilename;
+
+		final Properties prop = PropertiesFileExtensions.loadProperties(path);
+		final boolean result = null != prop;
+		AssertJUnit.assertTrue("", result);
+	}
+
+
+	@Test(enabled = true)
+	public void testLoadProperties2() throws IOException
+	{
+		String packagePath = "de/alpharogroup/lang/";
+		String propertiesFilename = "resources.properties";
+		Properties prop = PropertiesFileExtensions.loadProperties(packagePath, propertiesFilename);
+		boolean result = null != prop;
+		AssertJUnit.assertTrue("", result);
+
+		packagePath = "/de/alpharogroup/lang//";
+		propertiesFilename = "//resources.properties";
+		prop = PropertiesFileExtensions.loadProperties(packagePath, propertiesFilename);
+		result = null != prop;
+		AssertJUnit.assertTrue("", result);
+
+	}
+
+	@Test(enabled = true)
+	public void testLoadProperties3() throws IOException
+	{
+		final String propertiesFilename = "de/alpharogroup/lang/resources.properties";
+		final Properties prop = PropertiesFileExtensions.loadProperties(propertiesFilename);
+		final boolean result = null != prop;
+		AssertJUnit.assertTrue("", result);
+	}
+
+	@Test(enabled = false)
+	public void testLoadPropertiesFromClassObject() throws IOException
+	{
+		final Locale en = Locale.ENGLISH;
+		Properties properties = PropertiesFileExtensions
+			.loadPropertiesFromClassObject(this.getClass(), en);
+		AssertJUnit.assertTrue("", properties.get("test").equals("foo"));
+		properties = PropertiesFileExtensions.loadPropertiesFromClassObject(this.getClass(), null);
+		AssertJUnit.assertTrue("", properties.get("test").equals("bar"));
+	}
+
+
+	@Test(enabled = true)
 	public void testRemoveComments() throws IOException
 	{
 		final File srcTestResourceDir = PathFinder.getSrcTestResourcesDir();
@@ -66,6 +123,16 @@ public class PropertiesFileExtensionsTest
 		final File propertiesFile = PathFinder.getRelativePath(testDir, "test.properties");
 		final List<String> lines = PropertiesFileExtensions.removeComments(propertiesFile);
 		AssertJUnit.assertTrue(lines.size() == 5);
+	}
+
+	@Test(enabled = false)
+	public void testToXmlFileFileStringString()
+		throws URISyntaxException, FileNotFoundException, IOException
+	{
+		final String propertiesFilename = "de/alpharogroup/lang/resources.properties";
+		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
+		final File xmlFile = new File(propertiesFile.getParent(), "resources.properties.xml");
+		PropertiesFileExtensions.toXml(propertiesFile, xmlFile, "", "UTF-8");
 	}
 
 }

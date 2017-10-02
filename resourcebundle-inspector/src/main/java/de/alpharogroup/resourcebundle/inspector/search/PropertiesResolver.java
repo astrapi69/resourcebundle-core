@@ -42,14 +42,14 @@ public class PropertiesResolver
 
 	/** The properties file as key and the locale string code as value. */
 	@Getter
-	private final Map<File, String> propertiesToLocale = new HashMap<File, String>();
+	private final Map<File, String> propertiesToLocale = new HashMap<>();
 
 	/** The root dir. */
 	@Getter
 	private final File rootDir;
 
 	/**
-	 * Instantiates a new properties finder.
+	 * Instantiates a new {@link PropertiesResolver}.
 	 *
 	 * @param rootDir
 	 *            the root dir
@@ -68,7 +68,8 @@ public class PropertiesResolver
 	}
 
 	/**
-	 * Find.
+	 * Resolves to the propertiesToLocale {@linkplain Map} where the properties file is the key and
+	 * the locale string code the value.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
