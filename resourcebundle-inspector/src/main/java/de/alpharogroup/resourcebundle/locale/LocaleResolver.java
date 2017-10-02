@@ -25,6 +25,7 @@
 package de.alpharogroup.resourcebundle.locale;
 
 import java.io.File;
+import java.text.DateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -141,9 +142,26 @@ public class LocaleResolver
 	 */
 	public static Locale resolveLocale(final File propertiesFile, final boolean systemsDefault)
 	{
+		return LocaleResolver.resolveLocale(propertiesFile, null, systemsDefault);
+	}
+
+	/**
+	 * Resolves the locale from the given properties file.
+	 *
+	 * @param propertiesFile
+	 *            the properties file
+	 * @param defaultLocale
+	 *            the default locale
+	 * @param systemsDefault
+	 *            if this flag is true the systems default locale will be taken if not found
+	 * @return the locale
+	 */
+	public static Locale resolveLocale(final File propertiesFile, final Locale defaultLocale,
+		final boolean systemsDefault)
+	{
 		final String localeCode = propertiesFile.getName()
 			.replaceAll("^" + resolveBundlename(propertiesFile) + "(_)?|\\.properties$", "");
-		return LocaleResolver.resolveLocale(localeCode, systemsDefault);
+		return LocaleResolver.resolveLocale(localeCode, defaultLocale, systemsDefault);
 	}
 
 	/**
@@ -171,7 +189,31 @@ public class LocaleResolver
 	 */
 	public static Locale resolveLocale(final String localeCode, final boolean systemsDefault)
 	{
+		return resolveLocale(localeCode, null, systemsDefault);
+	}
+
+	/**
+	 * Resolves the {@link Locale} object from the given locale code. If the given default locale is
+	 * not null and the locale code does resolve to no locale the default locale will be returned.
+	 *
+	 * @param localeCode
+	 *            the locale code
+	 * @param defaultLocale
+	 *            the default locale
+	 * @param systemsDefault
+	 *            if this flag is true the systems default locale will be taken if not found
+	 *            otherwise not
+	 * @return the {@link Locale} object or null if not found and flag systemsDefault is false and
+	 *         defaultLocale is null.
+	 */
+	public static Locale resolveLocale(final String localeCode, final Locale defaultLocale,
+		final boolean systemsDefault)
+	{
 		Locale current = resolveLocaleCode(localeCode);
+		if (current == null && defaultLocale != null)
+		{
+			current = defaultLocale;
+		}
 		if (current == null && systemsDefault)
 		{
 			current = Locale.getDefault();
@@ -273,6 +315,16 @@ public class LocaleResolver
 			locales.put(file, current);
 		}
 		return locales;
+	}
+
+	/**
+	 * Resolve available locales on the current system.
+	 *
+	 * @return the list with the available locales.
+	 */
+	public List<Locale> resolveAvailableLocales()
+	{
+		return Arrays.asList(DateFormat.getAvailableLocales());
 	}
 
 }
