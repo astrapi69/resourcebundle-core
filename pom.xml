@@ -69,7 +69,7 @@
 		<!-- NEW EXTENSIONS LIB versions -->		
 		<jcommons-lang.version>4.22.0</jcommons-lang.version>
 		<test-objects.version>4.16.0</test-objects.version>
-		<file-worker.version>4.15.0</file-worker.version>
+		<file-worker.version>4.16.0</file-worker.version>
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.21</nv-i18n.version>
 		<!-- COMMONS-IO version -->
