@@ -102,8 +102,7 @@ public class PropertiesFileExtensionsTest
 		AssertJUnit.assertTrue("", result);
 	}
 
-
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testLoadPropertiesFromClassObject() throws IOException
 	{
 		final Locale en = Locale.ENGLISH;
