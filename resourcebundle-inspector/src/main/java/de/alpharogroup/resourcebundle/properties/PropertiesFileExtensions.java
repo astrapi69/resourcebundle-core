@@ -25,9 +25,7 @@
 package de.alpharogroup.resourcebundle.properties;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -45,6 +43,7 @@ import java.util.TreeSet;
 
 import org.apache.commons.io.FilenameUtils;
 
+import de.alpharogroup.collections.properties.PropertiesExtensions;
 import de.alpharogroup.file.FileExtension;
 import de.alpharogroup.file.copy.CopyFileExtensions;
 import de.alpharogroup.file.read.ReadFileExtensions;
@@ -277,22 +276,7 @@ public class PropertiesFileExtensions
 	 */
 	public static Properties loadProperties(final File propertiesFile) throws IOException
 	{
-		Properties properties = null;
-		InputStream is = null;
-		if (propertiesFile.exists())
-		{
-			is = propertiesFile.toURI().toURL().openStream();
-			if (is != null)
-			{
-				properties = new Properties();
-				properties.load(is);
-			}
-		}
-		else
-		{
-			throw new FileNotFoundException(propertiesFile.getName() + " not found.");
-		}
-		return properties;
+		return PropertiesExtensions.loadProperties(propertiesFile);
 	}
 
 	/**
@@ -656,7 +640,7 @@ public class PropertiesFileExtensions
 	public static void toProperties(final File properties, final File xml, final String comment)
 		throws FileNotFoundException, IOException
 	{
-		toProperties(new FileOutputStream(properties), new FileInputStream(xml), comment);
+		PropertiesExtensions.toProperties(properties, xml, comment);
 	}
 
 	/**
@@ -676,9 +660,7 @@ public class PropertiesFileExtensions
 	public static void toProperties(final OutputStream properties, final InputStream xml,
 		final String comment) throws FileNotFoundException, IOException
 	{
-		final Properties prop = new Properties();
-		prop.loadFromXML(xml);
-		prop.store(properties, comment);
+		PropertiesExtensions.toProperties(properties, xml, comment);
 	}
 
 	/**
@@ -700,7 +682,7 @@ public class PropertiesFileExtensions
 	public static void toXml(final File properties, final File xml, final String comment,
 		final String encoding) throws FileNotFoundException, IOException
 	{
-		toXml(new FileInputStream(properties), new FileOutputStream(xml), comment, encoding);
+		PropertiesExtensions.toXml(properties, xml, comment, encoding);
 	}
 
 	/**
@@ -722,9 +704,7 @@ public class PropertiesFileExtensions
 	public static void toXml(final InputStream properties, final OutputStream xml,
 		final String comment, final String encoding) throws FileNotFoundException, IOException
 	{
-		final Properties prop = new Properties();
-		prop.load(properties);
-		prop.storeToXML(xml, comment, encoding);
+		PropertiesExtensions.toXml(properties, xml, comment, encoding);
 	}
 
 

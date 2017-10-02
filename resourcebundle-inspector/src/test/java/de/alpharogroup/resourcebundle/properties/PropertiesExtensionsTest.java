@@ -24,33 +24,20 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
-import static org.testng.AssertJUnit.assertNotNull;
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-
-import de.alpharogroup.collections.SortedProperties;
-import de.alpharogroup.collections.pairs.KeyValuePair;
-import de.alpharogroup.lang.ClassExtensions;
+import de.alpharogroup.collections.properties.PropertiesExtensions;
+import de.alpharogroup.collections.properties.SortedProperties;
 import de.alpharogroup.lang.model.AnnotationModel;
 import de.alpharogroup.lang.model.ClassModel;
 import de.alpharogroup.lang.model.MethodModel;
-import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
- * Test class for the class {@link de.alpharogroup.lang.PropertiesExtensions}.
+ * Test class for the class {@link de.alpharogroup.resourcebundle.dep.PropertiesExtensions}.
  *
  * @version 1.0
  * @author Asterios Raptis
@@ -199,122 +186,6 @@ public class PropertiesExtensionsTest
 
 		getClassModels(matchedPrefixes, localeAnnotationName, interfaces, ruProperties);
 		System.out.println(interfaces);
-	}
-
-	@SuppressWarnings("serial")
-	@Test(enabled = false)
-	public void testFindRedundantValues() throws IOException
-	{
-		final Properties properties = new Properties();
-
-		properties.put("com", "Hello, {0} {1} {2}!");
-		properties.put("foo.redundant.value", "Hello, {0} {1} {2}!");
-		properties.put("com.example.gui.window.title", "Hello, {0}!");
-		properties.put("com.example.gui.window.buttons.ok", "OK");
-		properties.put("foo.bar", "OK");
-		properties.put("com.example.gui.window.buttons.cancel", "Cancel");
-
-		final Map<String, List<String>> redundantValues = PropertiesExtensions
-			.findRedundantValues(properties);
-		AssertJUnit.assertEquals(redundantValues.get("Hello, {0} {1} {2}!"), new ArrayList<String>()
-		{
-			{
-				add("com");
-				add("foo.redundant.value");
-			}
-		});
-		AssertJUnit.assertEquals(redundantValues.get("OK"), new ArrayList<String>()
-		{
-			{
-				add("com.example.gui.window.buttons.ok");
-				add("foo.bar");
-			}
-		});
-	}
-
-	@Test(enabled = true)
-	public void testGetAvailableLanguages()
-	{
-		final String bundlepackage = "de/alpharogroup/lang";
-		final String bundlename = "resources";
-		final Set<String> availableLanguages = LocaleResolver
-			.resolveAvailableLanguages(bundlepackage, bundlename);
-		AssertJUnit.assertTrue(availableLanguages.contains("de"));
-		AssertJUnit.assertTrue(availableLanguages.contains("de_DE"));
-		AssertJUnit.assertTrue(availableLanguages.contains("en"));
-	}
-
-	@Test(enabled = false)
-	public void testGetBundlename() throws URISyntaxException
-	{
-
-		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
-		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
-		final String expected = "resources";
-		final String actual = LocaleResolver.resolveBundlename(propertiesFile);
-		AssertJUnit.assertTrue(expected.equals(actual));
-	}
-
-	@Test(enabled = false)
-	public void testGetLocales()
-	{
-		final String bundlepackage = "de/alpharogroup/lang";
-		final String bundlename = "resources";
-		final Map<File, Locale> availableLanguages = LocaleResolver.resolveLocales(bundlepackage,
-			bundlename);
-		AssertJUnit.assertTrue(availableLanguages.containsValue(new Locale("de")));
-		AssertJUnit.assertTrue(availableLanguages.containsValue(new Locale("de", "DE")));
-		AssertJUnit.assertTrue(availableLanguages.containsValue(new Locale("en")));
-		AssertJUnit.assertTrue(availableLanguages.containsValue(Locale.getDefault()));
-	}
-
-	@Test(enabled = false)
-	public void testGetLocalPropertiesFromClass()
-	{
-		throw new RuntimeException("Test not implemented");
-	}
-
-
-	@Test
-	public void testToKeyValuePairs()
-	{
-		String key;
-		String value;
-		final Properties properties = new Properties();
-
-		key = "foo";
-		value = "bar";
-		properties.setProperty(key, value);
-
-		key = "bla";
-		value = "fasel";
-		properties.setProperty(key, value);
-
-		final List<KeyValuePair<String, String>> list = PropertiesExtensions
-			.toKeyValuePairs(properties);
-
-		assertNotNull(list);
-		assertTrue(list.size() == 2);
-
-	}
-
-	@Test(enabled = false)
-	public void testToPropertiesFileFileString()
-	{
-		throw new RuntimeException("Test not implemented");
-	}
-
-
-	@Test(enabled = false)
-	public void testToPropertiesOutputStreamInputStreamString()
-	{
-		throw new RuntimeException("Test not implemented");
-	}
-
-	@Test(enabled = false)
-	public void testToXmlInputStreamOutputStreamStringString()
-	{
-		throw new RuntimeException("Test not implemented");
 	}
 
 }

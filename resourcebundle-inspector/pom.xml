@@ -22,6 +22,11 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jcommons-lang</artifactId>
 		</dependency>
+		<!-- SILLY-COLLECTIONS DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>silly-collections</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
