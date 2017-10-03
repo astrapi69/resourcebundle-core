@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.14.0</version>
+	<version>2.15.1</version>
 	<inceptionYear>2012</inceptionYear>
 	<packaging>pom</packaging>
 
@@ -67,9 +67,10 @@
 
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->		
-		<jcommons-lang.version>4.21.0</jcommons-lang.version>
+		<jcommons-lang.version>4.22.0</jcommons-lang.version>
 		<test-objects.version>4.16.0</test-objects.version>
-		<file-worker.version>4.15.0</file-worker.version>
+		<file-worker.version>4.16.0</file-worker.version>
+		<silly-collections.version>4.19.0</silly-collections.version>
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.21</nv-i18n.version>
 		<!-- COMMONS-IO version -->
@@ -84,6 +85,12 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jcommons-lang</artifactId>
 				<version>${jcommons-lang.version}</version>
+			</dependency>
+			<!-- SILLY-COLLECTIONS DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>silly-collections</artifactId>
+				<version>${silly-collections.version}</version>
 			</dependency>
 
 			<dependency>

@@ -28,10 +28,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import de.alpharogroup.check.Check;
 import de.alpharogroup.collections.pairs.KeyValuePair;
@@ -42,26 +40,29 @@ import lombok.Getter;
  * The Class {@link PropertiesListResolver} finds all properties files from the given root directory
  * and save it to a key value list with the locales.
  */
+@Getter
 public class PropertiesListResolver
 {
 
-	/** The properties file as key and the locale string code as value. */
-	@Getter
-	private final Map<File, String> propertiesToLocale = new HashMap<>();
-
+	/**
+	 * The properties list with {@linkplain KeyValuePair} objects as properties file as key and the
+	 * locale string code as value.
+	 */
 	private final List<KeyValuePair<File, Locale>> propertiesList = new ArrayList<>();
 
 	/** The root dir. */
-	@Getter
 	private final File rootDir;
 
+	/** The default locale. */
 	private final Locale defaultLocale;
 
 	/**
-	 * Instantiates a new properties finder.
+	 * Instantiates a new {@link PropertiesListResolver}.
 	 *
 	 * @param rootDir
 	 *            the root dir
+	 * @param defaultLocale
+	 *            the default locale
 	 */
 	public PropertiesListResolver(final File rootDir, final Locale defaultLocale)
 	{
@@ -76,7 +77,9 @@ public class PropertiesListResolver
 	}
 
 	/**
-	 * Find.
+	 * Resolves the properties file from the given root directory and put the result to the
+	 * properties list with {@linkplain KeyValuePair} objects as properties file as key and the
+	 * locale string code as value.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
