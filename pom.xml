@@ -67,10 +67,10 @@
 
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->		
-		<jcommons-lang.version>4.23.0</jcommons-lang.version>
-		<test-objects.version>4.16.0</test-objects.version>
-		<file-worker.version>4.16.1</file-worker.version>
-		<silly-collections.version>4.19.0</silly-collections.version>
+		<jcommons-lang.version>4.26.0</jcommons-lang.version>
+		<test-objects.version>4.17.0</test-objects.version>
+		<file-worker.version>4.17.0</file-worker.version>
+		<silly-collections.version>4.20.0</silly-collections.version>
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.21</nv-i18n.version>
 		<!-- COMMONS-IO version -->
