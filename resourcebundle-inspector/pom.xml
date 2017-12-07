@@ -26,6 +26,11 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>silly-collections</artifactId>
 		</dependency>
+		<!-- JOBJECT-CLONE DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jobject-clone</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
