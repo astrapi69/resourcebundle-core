@@ -24,7 +24,7 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
-import static org.testng.AssertJUnit.*;
+import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -65,6 +65,27 @@ public class PropertiesFileExtensionsTest
 	}
 
 	@Test(enabled = true)
+	public void testLoadPropertiesFromClassObject() throws IOException
+	{
+		final Locale en = Locale.ENGLISH;
+		Properties properties = PropertiesFileExtensions
+			.loadPropertiesFromClassObject(this.getClass(), en);
+		assertTrue("", properties.get("test").equals("foo"));
+		properties = PropertiesFileExtensions.loadPropertiesFromClassObject(this.getClass(), null);
+		assertTrue("", properties.get("test").equals("bar"));
+	}
+
+
+	@Test(enabled = true)
+	public void testLoadPropertiesObjectPropertiesFilename() throws IOException
+	{
+		final String propertiesFilename = ClassExtensions.getSimpleName(getClass()) + ".properties";
+		final Properties prop = PropertiesFileExtensions.loadProperties(this, propertiesFilename);
+		final boolean result = null != prop;
+		assertTrue("", result);
+	}
+
+	@Test(enabled = true)
 	public void testLoadPropertiesPackagePath() throws IOException
 	{
 		final String propertiesFilename = "resources.properties";
@@ -75,7 +96,6 @@ public class PropertiesFileExtensionsTest
 		final boolean result = null != prop;
 		assertTrue("", result);
 	}
-
 
 	@Test(enabled = true)
 	public void testLoadPropertiesPackagePathPropertiesFilename() throws IOException
@@ -101,26 +121,6 @@ public class PropertiesFileExtensionsTest
 		final Properties prop = PropertiesFileExtensions.loadProperties(propertiesFilename);
 		final boolean result = null != prop;
 		assertTrue("", result);
-	}
-
-	@Test(enabled = true)
-	public void testLoadPropertiesObjectPropertiesFilename() throws IOException
-	{
-		final String propertiesFilename = ClassExtensions.getSimpleName(getClass()) + ".properties";
-		final Properties prop = PropertiesFileExtensions.loadProperties(this, propertiesFilename);
-		final boolean result = null != prop;
-		assertTrue("", result);
-	}
-
-	@Test(enabled = true)
-	public void testLoadPropertiesFromClassObject() throws IOException
-	{
-		final Locale en = Locale.ENGLISH;
-		Properties properties = PropertiesFileExtensions
-			.loadPropertiesFromClassObject(this.getClass(), en);
-		assertTrue("", properties.get("test").equals("foo"));
-		properties = PropertiesFileExtensions.loadPropertiesFromClassObject(this.getClass(), null);
-		assertTrue("", properties.get("test").equals("bar"));
 	}
 
 
