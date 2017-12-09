@@ -24,6 +24,8 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
+import static org.testng.AssertJUnit.assertTrue;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,7 +35,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.file.search.PathFinder;
@@ -59,12 +60,33 @@ public class PropertiesFileExtensionsTest
 		final File expectedPropertiesFile1 = PathFinder.getRelativePath(testDir, "test.properties");
 		final File expectedPropertiesFile2 = PathFinder.getRelativePath(testDir, "foo",
 			"resources.properties");
-		AssertJUnit.assertTrue(fileMap.containsKey(expectedPropertiesFile1));
-		AssertJUnit.assertTrue(fileMap.containsKey(expectedPropertiesFile2));
+		assertTrue(fileMap.containsKey(expectedPropertiesFile1));
+		assertTrue(fileMap.containsKey(expectedPropertiesFile2));
 	}
 
 	@Test(enabled = true)
-	public void testLoadProperties() throws IOException
+	public void testLoadPropertiesFromClassObject() throws IOException
+	{
+		final Locale en = Locale.ENGLISH;
+		Properties properties = PropertiesFileExtensions
+			.loadPropertiesFromClassObject(this.getClass(), en);
+		assertTrue("", properties.get("test").equals("foo"));
+		properties = PropertiesFileExtensions.loadPropertiesFromClassObject(this.getClass(), null);
+		assertTrue("", properties.get("test").equals("bar"));
+	}
+
+
+	@Test(enabled = true)
+	public void testLoadPropertiesObjectPropertiesFilename() throws IOException
+	{
+		final String propertiesFilename = ClassExtensions.getSimpleName(getClass()) + ".properties";
+		final Properties prop = PropertiesFileExtensions.loadProperties(this, propertiesFilename);
+		final boolean result = null != prop;
+		assertTrue("", result);
+	}
+
+	@Test(enabled = true)
+	public void testLoadPropertiesPackagePath() throws IOException
 	{
 		final String propertiesFilename = "resources.properties";
 		final String pathFromObject = PackageExtensions.getPackagePathWithSlash(this);
@@ -72,45 +94,33 @@ public class PropertiesFileExtensionsTest
 
 		final Properties prop = PropertiesFileExtensions.loadProperties(path);
 		final boolean result = null != prop;
-		AssertJUnit.assertTrue("", result);
+		assertTrue("", result);
 	}
 
-
 	@Test(enabled = true)
-	public void testLoadProperties2() throws IOException
+	public void testLoadPropertiesPackagePathPropertiesFilename() throws IOException
 	{
 		String packagePath = "de/alpharogroup/lang/";
 		String propertiesFilename = "resources.properties";
 		Properties prop = PropertiesFileExtensions.loadProperties(packagePath, propertiesFilename);
 		boolean result = null != prop;
-		AssertJUnit.assertTrue("", result);
+		assertTrue("", result);
 
 		packagePath = "/de/alpharogroup/lang//";
 		propertiesFilename = "//resources.properties";
 		prop = PropertiesFileExtensions.loadProperties(packagePath, propertiesFilename);
 		result = null != prop;
-		AssertJUnit.assertTrue("", result);
+		assertTrue("", result);
 
 	}
 
 	@Test(enabled = true)
-	public void testLoadProperties3() throws IOException
+	public void testLoadPropertiesPropertiesFilename() throws IOException
 	{
 		final String propertiesFilename = "de/alpharogroup/lang/resources.properties";
 		final Properties prop = PropertiesFileExtensions.loadProperties(propertiesFilename);
 		final boolean result = null != prop;
-		AssertJUnit.assertTrue("", result);
-	}
-
-	@Test(enabled = false)
-	public void testLoadPropertiesFromClassObject() throws IOException
-	{
-		final Locale en = Locale.ENGLISH;
-		Properties properties = PropertiesFileExtensions
-			.loadPropertiesFromClassObject(this.getClass(), en);
-		AssertJUnit.assertTrue("", properties.get("test").equals("foo"));
-		properties = PropertiesFileExtensions.loadPropertiesFromClassObject(this.getClass(), null);
-		AssertJUnit.assertTrue("", properties.get("test").equals("bar"));
+		assertTrue("", result);
 	}
 
 
@@ -122,7 +132,7 @@ public class PropertiesFileExtensionsTest
 			"properties");
 		final File propertiesFile = PathFinder.getRelativePath(testDir, "test.properties");
 		final List<String> lines = PropertiesFileExtensions.removeComments(propertiesFile);
-		AssertJUnit.assertTrue(lines.size() == 5);
+		assertTrue(lines.size() == 5);
 	}
 
 	@Test(enabled = false)

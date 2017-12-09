@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -5,43 +6,40 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>2.28.0</version>
+		<version>3.2.0</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.15.0</version>
-	<inceptionYear>2012</inceptionYear>
+	<version>2.16.0</version>
 	<packaging>pom</packaging>
+	<inceptionYear>2012</inceptionYear>
 
 	<name>${project.artifactId}</name>
 
-	<description>
-		The resourcebundle-core project can inspect projects of unused properties keys or duplicate keys.
-	</description>
+	<description>The resourcebundle-core project can inspect projects of unused properties keys or duplicate keys.</description>
 
 	<url>https://github.com/astrapi69/resourcebundle-core</url>
 
-	<scm>
-		<connection>scm:git:git:@github.com:astrapi69/resourcebundle-core.git</connection>
-		<developerConnection>scm:git:git@github.com:astrapi69/resourcebundle-core.git</developerConnection>
-		<url>git:@github.com:astrapi69/resourcebundle-core.git</url>
-	</scm>
+	<properties>
+		<!-- NEW EXTENSIONS LIB versions -->
+		<jcommons-lang.version>4.27.0</jcommons-lang.version>
+		<test-objects.version>4.17.0</test-objects.version>
+		<file-worker.version>4.18.0</file-worker.version>
+		<silly-collections.version>4.20.0</silly-collections.version>
+		<!-- JOBJECT-EXTENSIONS versions -->
+		<jobject-extensions.version>1.4.0</jobject-extensions.version>		
+		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
+		<!-- NV-I18N version -->
+		<nv-i18n.version>1.21</nv-i18n.version>
+		<!-- COMMONS-IO version -->
+		<commons-io.version>2.5</commons-io.version>
+	</properties>
 
-	<developers>
+	<modules>
+		<module>resourcebundle-inspector</module>
+	</modules>
 
-		<developer>
-			<id>astrapi69</id>
-			<name>Asterios Raptis</name>
-			<timezone>Berlin</timezone>
-			<roles>
-				<role>Project manager</role>
-				<role>Developer</role>
-			</roles>
-		</developer>
-
-	</developers>
-	
 	<licenses>
 		<license>
 			<name>MIT License</name>
@@ -50,32 +48,35 @@
 		</license>
 	</licenses>
 
-	<ciManagement>
-		<system>travis-ci</system>
-		<url>https://travis-ci.org/astrapi69/resourcebundle-core</url>
-	</ciManagement>
+	<developers>
+
+		<developer>
+			<id>astrapi69</id>
+			<name>Asterios Raptis</name>
+			<roles>
+				<role>Project manager</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>Berlin</timezone>
+		</developer>
+
+	</developers>
+
+	<scm>
+		<connection>scm:git:git:@github.com:astrapi69/resourcebundle-core.git</connection>
+		<developerConnection>scm:git:git@github.com:astrapi69/resourcebundle-core.git</developerConnection>
+		<url>git:@github.com:astrapi69/resourcebundle-core.git</url>
+	</scm>
 
 	<issueManagement>
 		<system>github</system>
 		<url>https://github.com/astrapi69/resourcebundle-core/issues</url>
 	</issueManagement>
-	
 
-	<modules>
-		<module>resourcebundle-inspector</module>
-	</modules>
-
-	<properties>
-		<!-- NEW EXTENSIONS LIB versions -->		
-		<jcommons-lang.version>4.22.0</jcommons-lang.version>
-		<test-objects.version>4.16.0</test-objects.version>
-		<file-worker.version>4.16.0</file-worker.version>
-		<silly-collections.version>4.19.0</silly-collections.version>
-		<!-- NV-I18N version -->
-		<nv-i18n.version>1.21</nv-i18n.version>
-		<!-- COMMONS-IO version -->
-		<commons-io.version>2.5</commons-io.version>
-	</properties>
+	<ciManagement>
+		<system>travis-ci</system>
+		<url>https://travis-ci.org/astrapi69/resourcebundle-core</url>
+	</ciManagement>
 
 	<dependencyManagement>
 
@@ -110,11 +111,17 @@
 				<artifactId>nv-i18n</artifactId>
 				<version>${nv-i18n.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${commons-io.version}</version>
+			</dependency>
+			<!-- JOBJECT-CLONE DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jobject-clone</artifactId>
+				<version>${jobject-clone.version}</version>
 			</dependency>
 
 		</dependencies>
