@@ -28,7 +28,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- RESOURCEBUNDLE-CORE versions -->
-		<resourcebundle-core.version>2.15.1</resourcebundle-core.version>
+		<resourcebundle-core.version>2.16.0</resourcebundle-core.version>
 		<resourcebundle-inspector.version>${resourcebundle-core.version}</resourcebundle-inspector.version>
 
 		<dependencies>
