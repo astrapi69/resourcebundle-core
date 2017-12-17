@@ -13,9 +13,7 @@
 
 	<name>${project.artifactId}</name>
 
-	<description>
-		The resourcebundle.inspector project can inspect projects of unused properties keys or duplicate keys.
-	</description>
+	<description>The resourcebundle.inspector project can inspect projects of unused properties keys or duplicate keys.</description>
 
 	<dependencies>
 
@@ -27,6 +25,11 @@
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>silly-collections</artifactId>
+		</dependency>
+		<!-- JOBJECT-CLONE DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jobject-clone</artifactId>
 		</dependency>
 
 		<dependency>
