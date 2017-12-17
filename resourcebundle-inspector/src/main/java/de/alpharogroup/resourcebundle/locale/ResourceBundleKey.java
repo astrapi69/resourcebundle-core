@@ -26,7 +26,7 @@ package de.alpharogroup.resourcebundle.locale;
 
 import java.io.Serializable;
 
-import de.alpharogroup.lang.object.CloneObjectExtensions;
+import de.alpharogroup.clone.object.CloneObjectExtensions;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
