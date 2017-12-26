@@ -36,11 +36,6 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>file-worker</artifactId>
 		</dependency>
-		<!-- JOBJECT-CLONE DEPENDENCY -->
-		<dependency>
-			<groupId>de.alpharogroup</groupId>
-			<artifactId>jobject-clone</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>com.neovisionaries</groupId>
