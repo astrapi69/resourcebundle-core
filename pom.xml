@@ -26,11 +26,11 @@
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->
 		<jcommons-lang.version>4.28.0</jcommons-lang.version>
-		<test-objects.version>4.17.0</test-objects.version>
+		<test-objects.version>4.19.0</test-objects.version>
 		<file-worker.version>4.18.0</file-worker.version>
-		<silly-collections.version>4.21.0</silly-collections.version>
+		<silly-collections.version>4.21.1</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
-		<jobject-extensions.version>1.5.0</jobject-extensions.version>		
+		<jobject-extensions.version>1.6.0</jobject-extensions.version>		
 		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.22</nv-i18n.version>
