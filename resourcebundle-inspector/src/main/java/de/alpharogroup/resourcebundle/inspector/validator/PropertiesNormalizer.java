@@ -41,8 +41,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
-
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
@@ -150,14 +148,13 @@ public class PropertiesNormalizer
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
+	@SuppressWarnings("resource")
 	private static boolean containsInvalidCharacters(final File input) throws IOException
 	{
 		Reader bufferIn = null;
 		try
 		{
-			final InputStream in = new FileInputStream(input);
-			bufferIn = new BufferedReader(new InputStreamReader(in));
-
+			bufferIn = new BufferedReader(new InputStreamReader(new FileInputStream(input)));
 			int r;
 			while ((r = bufferIn.read()) != -1)
 			{
@@ -169,10 +166,11 @@ public class PropertiesNormalizer
 					return true;
 				}
 			}
+			bufferIn.close();
 		}
-		finally
+		catch (IOException e)
 		{
-			IOUtils.closeQuietly(bufferIn);
+			throw e;
 		}
 		return false;
 	}
@@ -283,11 +281,12 @@ public class PropertiesNormalizer
 				}
 			}
 			bufferOut.flush();
+			bufferOut.close();
+			bufferIn.close();
 		}
-		finally
+		catch (IOException e)
 		{
-			IOUtils.closeQuietly(bufferIn);
-			IOUtils.closeQuietly(bufferOut);
+			throw e;
 		}
 	}
 
