@@ -26,7 +26,7 @@ package de.alpharogroup.resourcebundle.locale;
 
 import java.io.Serializable;
 
-import de.alpharogroup.lang.object.CloneObjectExtensions;
+import de.alpharogroup.clone.object.CloneObjectQuietlyExtensions;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -37,7 +37,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * This class represents a resource bundle key.
+ * The class {@link ResourceBundleKey} represents a resource bundle key.
  */
 @Getter
 @Setter
@@ -76,7 +76,7 @@ public class ResourceBundleKey implements Serializable
 	@Override
 	public ResourceBundleKey clone()
 	{
-		return CloneObjectExtensions.cloneQuietly(this);
+		return CloneObjectQuietlyExtensions.cloneQuietly(this);
 	}
 
 }
