@@ -85,7 +85,6 @@ public class PropertiesLineReaderTest
 		assertNotNull(lineReader);
 		char[] lineBuffer = lineReader.getLineBuffer();
 		assertTrue(lineBuffer.length == 1024);
-
 	}
 
 }
