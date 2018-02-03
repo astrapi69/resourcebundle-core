@@ -26,9 +26,9 @@
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->
 		<jcommons-lang.version>4.29.0</jcommons-lang.version>
-		<test-objects.version>4.21.0</test-objects.version>
+		<test-objects.version>4.22.0</test-objects.version>
 		<file-worker.version>4.19.0</file-worker.version>
-		<silly-collections.version>4.23.0</silly-collections.version>
+		<silly-collections.version>4.24.0</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
 		<jobject-extensions.version>1.8.0</jobject-extensions.version>		
 		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
