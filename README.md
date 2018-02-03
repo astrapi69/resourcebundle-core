@@ -1,9 +1,14 @@
 # Overview
 
+<div align="center">
+
 [![Build Status](https://travis-ci.org/astrapi69/resourcebundle-core.svg?branch=master)](https://travis-ci.org/astrapi69/resourcebundle-core)
 [![Coverage Status](https://coveralls.io/repos/github/astrapi69/resourcebundle-core/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/resourcebundle-core?branch=develop)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/resourcebundle-core)
 [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/resourcebundle-inspector.svg)](http://www.javadoc.io/doc/de.alpharogroup/resourcebundle-inspector)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
+
+</div>
 
 The resourcebundle-core project can inspect projects and find unused properties keys or duplicate keys.
 		
