@@ -156,7 +156,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private Optional<Integer> getOptionalHttpsPort()
 	{
-		if (getProperties().containsKey(APPLICATION_HTTPS_PORT_KEY))
+		if (getProperties() != null && getProperties().containsKey(APPLICATION_HTTPS_PORT_KEY))
 		{
 			final String httpsPortString = getProperties().getProperty(APPLICATION_HTTPS_PORT_KEY);
 			try
