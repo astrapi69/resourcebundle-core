@@ -38,6 +38,8 @@
 		<commons-io.version>2.6</commons-io.version>
 		<!-- MEANBEAN version -->
 		<meanbean.version>2.0.3</meanbean.version>
+		<!-- MEANBEAN-FACTORIES version -->
+		<meanbean-factories.version>1.0.0-SNAPSHOT</meanbean-factories.version>
 	</properties>
 
 	<modules>
@@ -133,6 +135,12 @@
 				<artifactId>meanbean</artifactId>
 				<version>${meanbean.version}</version>
 			</dependency>
+			<!-- MEANBEAN-FACTORIES DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>meanbean-factories</artifactId>
+				<version>${meanbean-factories.version}</version>
+			</dependency>
 
 		</dependencies>
 
@@ -204,6 +212,7 @@
 								<!-- constant classes with only constants -->
 								<!-- explicit bean classes -->
 								<!-- explicit deprecated classes -->
+								<exclude>de/alpharogroup/resourcebundle/inspector/search/PropertiesFinder.class</exclude>								
 								<!-- explicit enums -->
 								<!-- explicit interfaces -->
 								<exclude>de/alpharogroup/resourcebundle/inspector/search/processor/FilterProcessor.class</exclude>

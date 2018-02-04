@@ -36,8 +36,9 @@ import lombok.Getter;
 /**
  * The Class PropertiesFinder finds all properties file from the given root directory and save it to
  * a map with the locale string code.
- * 
- * @deprecated use instead {@link PropertiesResolver}
+ *
+ * @deprecated use instead {@link PropertiesResolver}.
+ * Will be removed with the next minor version.
  */
 @Deprecated
 public class PropertiesFinder
@@ -45,7 +46,7 @@ public class PropertiesFinder
 
 	/** The properties file as key and the locale string code as value. */
 	@Getter
-	private final Map<File, String> propertiesToLocale = new HashMap<File, String>();
+	private final Map<File, String> propertiesToLocale = new HashMap<>();
 
 	/** The root dir. */
 	@Getter

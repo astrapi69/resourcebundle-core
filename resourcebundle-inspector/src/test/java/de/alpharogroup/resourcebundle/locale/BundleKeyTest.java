@@ -9,7 +9,7 @@ import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.resourcebundle.inspector.search.processor.LocaleFactory;
+import de.alpharogroup.meanbean.factories.LocaleFactory;
 import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluator;
 
 /**
