@@ -48,12 +48,13 @@ public class KeySearchBeanTest
 	@Test
 	public void testWithBeanTester()
 	{
-		 Configuration configuration = new ConfigurationBuilder()
-			 .overrideFactory("fileExtensions", new StringArrayFactory())
-			 .overrideFactory("searchDir", new FileFactory())
-			 .overrideFactory("locale", new LocaleFactory())
-			 .build();
-		    new BeanTester().testBean(KeySearchBean.class, configuration);
+		Configuration configuration = new ConfigurationBuilder()
+			.overrideFactory("fileExtensions", new StringArrayFactory())
+			.overrideFactory("searchDir", new FileFactory())
+			.overrideFactory("locale", new LocaleFactory()).build();
+		final BeanTester beanTester = new BeanTester();
+		beanTester.addCustomConfiguration(KeySearchBean.class, configuration);
+		beanTester.testBean(KeySearchBean.class);
 
 	}
 
