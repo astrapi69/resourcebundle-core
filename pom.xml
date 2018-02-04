@@ -39,7 +39,7 @@
 		<!-- MEANBEAN version -->
 		<meanbean.version>2.0.3</meanbean.version>
 		<!-- MEANBEAN-FACTORIES version -->
-		<meanbean-factories.version>1.0.0-SNAPSHOT</meanbean-factories.version>
+		<meanbean-factories.version>1.0.0</meanbean-factories.version>
 	</properties>
 
 	<modules>
