@@ -24,6 +24,8 @@
  */
 package de.alpharogroup.resourcebundle.inspector.validator;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -31,40 +33,61 @@ import java.util.Collection;
 
 import org.testng.annotations.Test;
 
+import de.alpharogroup.collections.list.ListExtensions;
+import de.alpharogroup.file.create.CreateFileExtensions;
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.file.write.WriteFileExtensions;
 import de.alpharogroup.lang.ClassExtensions;
 
-
+/**
+ * The unit test class for the class {@link PropertiesNormalizer}.
+ */
 public class PropertiesNormalizerTest
 {
 
-	@Test
-	public void testConvertFiles() throws IOException
-	{
-		final File dir = PathFinder.getSrcTestResourcesDir();
-		final Collection<File> r = PropertiesNormalizer
-			.findPropertiesFilesWithInvalidCharacters(dir);
-		System.out.println(r);
-	}
-
+	/**
+	 * Test method for {@link PropertiesNormalizer#findPropertiesFilesWithInvalidCharacters(File)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	@Test
 	public void testFindPropertiesFilesWithInvalidCharacters() throws IOException
 	{
+		int expected;
+		int actual;
+
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final Collection<File> r = PropertiesNormalizer
 			.findPropertiesFilesWithInvalidCharacters(dir);
-		System.out.println(r);
+		actual = r.size();
+		expected = 2;
+		assertEquals(actual, expected);
 	}
 
-	@Test
+	/**
+	 * Test method for {@link PropertiesNormalizer#normalizeProperties(String)}.
+	 *
+	 * @throws URISyntaxException
+	 *             the URI syntax exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws FileIsADirectoryException
+	 *             the file is A directory exception
+	 */
+	@Test(enabled = false)
 	public void testNormalizeProperties()
 		throws URISyntaxException, IOException, FileIsADirectoryException
 	{
-
-		final String propertiesFilename = "resources.properties";
+		final File dir = PathFinder.getSrcTestResourcesDir();
+		final String propertiesFilename = "foo-write.properties";
+		final File prpFile = new File(dir, propertiesFilename);
+		CreateFileExtensions.newFile(prpFile);
+		WriteFileExtensions.writeLinesToFile(ListExtensions.newArrayList("com=öäüß"), prpFile, "UTF-8");
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		PropertiesNormalizer.normalizeProperties(propertiesFile.getAbsolutePath());
+		prpFile.delete();
 	}
 
 

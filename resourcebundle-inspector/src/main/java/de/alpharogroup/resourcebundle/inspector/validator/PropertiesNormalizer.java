@@ -158,6 +158,9 @@ public class PropertiesNormalizer
 			int r;
 			while ((r = bufferIn.read()) != -1)
 			{
+				if(r == 65533) {
+					return true;
+				}
 				final char ch = (char)r;
 				final String invalidCharacter = getUtf8Character(ch);
 
@@ -168,7 +171,7 @@ public class PropertiesNormalizer
 			}
 			bufferIn.close();
 		}
-		catch (IOException e)
+		catch (final IOException e)
 		{
 			throw e;
 		}
@@ -284,7 +287,7 @@ public class PropertiesNormalizer
 			bufferOut.close();
 			bufferIn.close();
 		}
-		catch (IOException e)
+		catch (final IOException e)
 		{
 			throw e;
 		}
