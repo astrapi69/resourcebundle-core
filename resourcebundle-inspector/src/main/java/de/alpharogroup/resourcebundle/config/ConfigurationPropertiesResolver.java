@@ -30,13 +30,16 @@ import java.util.Optional;
 import java.util.Properties;
 
 import de.alpharogroup.check.Check;
+import de.alpharogroup.collections.properties.PropertiesExtensions;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an
  * application like the http, https ports.
  */
+@Slf4j
 public class ConfigurationPropertiesResolver implements Serializable
 {
 
@@ -132,16 +135,36 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private Optional<Integer> getOptionalHttpPort()
 	{
-		if (getProperties() != null && getProperties().containsKey(APPLICATION_HTTP_PORT_KEY))
+		return getInteger(getProperties(), APPLICATION_HTTP_PORT_KEY);
+	}
+
+	/**
+	 * Try to get a number from the given properties key from the given properties. If it does not
+	 * exists an empty {@link Optional} will be returned and a log message will be logged.
+	 *
+	 * @param properties
+	 *            the properties
+	 * @param propertiesKey
+	 *            the properties key
+	 * @return the port number or an empty {@linkplain Optional}
+	 * @deprecated use instead the corresponding method in the {@link PropertiesExtensions} from the next release.
+	 */
+	@Deprecated
+	private Optional<Integer> getInteger(final Properties properties,
+		final String propertiesKey)
+	{
+		if (properties != null && properties.containsKey(propertiesKey))
 		{
-			final String httpPortString = getProperties().getProperty(APPLICATION_HTTP_PORT_KEY);
+			final String portAsString = properties.getProperty(propertiesKey);
 			try
 			{
-				final Integer httpPort = Integer.valueOf(httpPortString);
-				return Optional.of(httpPort);
+				final Integer port = Integer.valueOf(portAsString);
+				return Optional.of(port);
 			}
 			catch (final NumberFormatException e)
 			{
+				log.error("Value of given properties key:" + propertiesKey + " is not a number.",
+					e);
 				return Optional.empty();
 			}
 		}
@@ -156,20 +179,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private Optional<Integer> getOptionalHttpsPort()
 	{
-		if (getProperties() != null && getProperties().containsKey(APPLICATION_HTTPS_PORT_KEY))
-		{
-			final String httpsPortString = getProperties().getProperty(APPLICATION_HTTPS_PORT_KEY);
-			try
-			{
-				final Integer httpsPort = Integer.valueOf(httpsPortString);
-				return Optional.of(httpsPort);
-			}
-			catch (final NumberFormatException e)
-			{
-				return Optional.empty();
-			}
-		}
-		return Optional.empty();
+		return getInteger(getProperties(), APPLICATION_HTTPS_PORT_KEY);
 	}
 
 

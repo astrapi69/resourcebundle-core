@@ -24,6 +24,10 @@ public class ConfigurationPropertiesResolverTest
 			ConfigurationPropertiesResolver.DEFAULT_HTTPS_PORT);
 		assertEquals(configurationPropertiesResolver.getPropertiesFilename(),
 			ConfigurationPropertiesResolver.DEFAULT_CONFIGURATION_PROPERTIES_FILENAME);
+		assertEquals(configurationPropertiesResolver.getHttpPort(),
+			18080);
+		assertEquals(configurationPropertiesResolver.getHttpsPort(),
+			18443);
 	}
 
 	/**
