@@ -66,7 +66,7 @@ public class PropertiesLineReaderTest
 		assertNotNull(lineReader);
 
 		actual = lineReader.readLine();
-		expected = 20;
+		expected = 16;
 		assertEquals(expected, actual);
 	}
 
