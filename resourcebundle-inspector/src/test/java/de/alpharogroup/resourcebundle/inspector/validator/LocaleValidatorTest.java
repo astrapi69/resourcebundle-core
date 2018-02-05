@@ -24,26 +24,34 @@
  */
 package de.alpharogroup.resourcebundle.inspector.validator;
 
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
+
 import java.util.Locale;
 
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import com.neovisionaries.i18n.LocaleCode;
 
-
+/**
+ * The unit test class for the class {@link LocaleValidator}
+ */
 public class LocaleValidatorTest
 {
 
+	/**
+	 * Test method for {@link LocaleValidator#validate(String)}.
+	 */
 	@Test
 	public void testValidate()
 	{
 		String actual = "de";
-		AssertJUnit.assertTrue(LocaleValidator.validate(actual));
+		assertTrue(LocaleValidator.validate(actual));
 		final Locale l = LocaleCode.getByCode(actual, true).toLocale();
-		AssertJUnit.assertTrue(l.getLanguage().equals(actual));
+		assertTrue(l.getLanguage().equals(actual));
 		actual = "de_DE";
-		AssertJUnit.assertTrue(LocaleValidator.validate(actual));
+		assertTrue(LocaleValidator.validate(actual));
+		assertFalse(LocaleValidator.validate(null));
 	}
 
 }

@@ -32,7 +32,7 @@ import lombok.experimental.UtilityClass;
  * The Class {@link LocaleValidator} validates string values for locale objects.
  */
 @UtilityClass
-public class LocaleValidator
+public final class LocaleValidator
 {
 
 	/**
