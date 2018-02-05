@@ -13,7 +13,7 @@ import de.alpharogroup.meanbean.factories.LocaleFactory;
 import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluator;
 
 /**
- * The class {@link BundleKey}.
+ * The unit test class for the class {@link BundleKey}.
  */
 public class BundleKeyTest
 {
@@ -62,7 +62,7 @@ public class BundleKeyTest
 	@Test
 	public void testWithBeanTester()
 	{
-		Configuration configuration = new ConfigurationBuilder()
+		final Configuration configuration = new ConfigurationBuilder()
 			.ignoreProperty("resourceBundleKey")
 			.overrideFactory("locale", new LocaleFactory())
 			.build();

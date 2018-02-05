@@ -35,7 +35,7 @@ import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * The class {@link LocaleExtensionsTest} provides unit tests for the class
+ * The unit test class {@link LocaleExtensionsTest} provides unit tests for the class
  * {@link LocaleExtensions}.
  */
 @Slf4j
@@ -52,7 +52,7 @@ public class LocaleExtensionsTest
 		condition = LocaleExtensions.contains(Locales.HELLENIC);
 		assertTrue(condition);
 
-		Locale locale = Locales.HELLENIC;
+		final Locale locale = Locales.HELLENIC;
 
 		final String englishName = locale.getDisplayName(Locale.ENGLISH);
 		final String country = locale.getCountry();

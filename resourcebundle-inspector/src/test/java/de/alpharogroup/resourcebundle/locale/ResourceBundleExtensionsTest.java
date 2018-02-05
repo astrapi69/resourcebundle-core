@@ -32,7 +32,7 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 /**
- * The class {@link ResourceBundleExtensionsTest} provides unit tests for the class
+ * The unit test class {@link ResourceBundleExtensionsTest} provides unit tests for the class
  * {@link ResourceBundleExtensions}.
  */
 public class ResourceBundleExtensionsTest

@@ -30,7 +30,7 @@ import org.testng.annotations.Test;
 import de.alpharogroup.test.objects.Person;
 
 /**
- * The class {@link ResourceKeyFactoryTest} provides unit tests for the class
+ * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for the class
  * {@link ResourceKeyFactory}.
  */
 public class ResourceKeyFactoryTest

@@ -207,8 +207,9 @@
 								<!-- enums -->
 								<!-- beans -->
 								<!-- interfaces -->
+								<!-- abstract classes -->
 								<!-- exceptions -->
-								<!-- deprecated -->
+								<!-- deprecated classes -->
 								<!-- constant classes with only constants -->
 								<!-- explicit bean classes -->
 								<!-- explicit deprecated classes -->
@@ -216,6 +217,8 @@
 								<!-- explicit enums -->
 								<!-- explicit interfaces -->
 								<exclude>de/alpharogroup/resourcebundle/inspector/search/processor/FilterProcessor.class</exclude>
+								<!-- explicit abstract classes -->
+								<exclude>de/alpharogroup/resourcebundle/locale/PropertiesKeysListResolver.class</exclude>
 								<!-- explicit constant classes with only constants -->
 								<!-- explicit delegation classes -->
 							</excludes>

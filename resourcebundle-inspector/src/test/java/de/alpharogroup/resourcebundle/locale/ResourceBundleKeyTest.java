@@ -11,7 +11,7 @@ import de.alpharogroup.meanbean.factories.ObjectArrayFactory;
 import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluator;
 
 /**
- * The class {@link ResourceBundleKey}.
+ * The unit test class for the class {@link ResourceBundleKey}.
  */
 public class ResourceBundleKeyTest
 {
@@ -21,12 +21,12 @@ public class ResourceBundleKeyTest
 	 */
 	@Test
 	public void testClone() {
-		 Object[] params = {"param1", "param2"};
+		 final Object[] params = {"param1", "param2"};
 		final ResourceBundleKey expected = ResourceBundleKey.builder()
 			.key("foo")
 			.parameters(params)
 			.defaultValue("bla bla").build();
-		ResourceBundleKey actual = expected.clone();
+		final ResourceBundleKey actual = expected.clone();
 		assertEquals(expected, actual);
 	}
 
@@ -62,7 +62,7 @@ public class ResourceBundleKeyTest
 	@Test
 	public void testWithBeanTester()
 	{
-		Configuration configuration = new ConfigurationBuilder()
+		final Configuration configuration = new ConfigurationBuilder()
 			.overrideFactory("parameters", new ObjectArrayFactory())
 			.build();
 		final BeanTester beanTester = new BeanTester();
