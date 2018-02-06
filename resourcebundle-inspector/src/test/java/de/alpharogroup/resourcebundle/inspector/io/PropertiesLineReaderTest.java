@@ -8,8 +8,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 /**
@@ -29,7 +32,7 @@ public class PropertiesLineReaderTest
 	{
 		final URL resource = getClass().getClassLoader().getResource("resources.properties");
 
-		PropertiesLineReader lineReader = new PropertiesLineReader(resource.openStream());
+		final PropertiesLineReader lineReader = new PropertiesLineReader(resource.openStream());
 		assertNotNull(lineReader);
 	}
 
@@ -44,7 +47,7 @@ public class PropertiesLineReaderTest
 	{
 		final URL resource = getClass().getClassLoader().getResource("resources.properties");
 
-		PropertiesLineReader lineReader = new PropertiesLineReader(
+		final PropertiesLineReader lineReader = new PropertiesLineReader(
 			new InputStreamReader(resource.openStream()));
 		assertNotNull(lineReader);
 	}
@@ -62,7 +65,7 @@ public class PropertiesLineReaderTest
 
 		final URL resource = getClass().getClassLoader().getResource("resources.properties");
 
-		PropertiesLineReader lineReader = new PropertiesLineReader(resource.openStream());
+		final PropertiesLineReader lineReader = new PropertiesLineReader(resource.openStream());
 		assertNotNull(lineReader);
 
 		actual = lineReader.readLine();
@@ -81,10 +84,22 @@ public class PropertiesLineReaderTest
 	{
 		final URL resource = getClass().getClassLoader().getResource("resources.properties");
 
-		PropertiesLineReader lineReader = new PropertiesLineReader(resource.openStream());
+		final PropertiesLineReader lineReader = new PropertiesLineReader(resource.openStream());
 		assertNotNull(lineReader);
-		char[] lineBuffer = lineReader.getLineBuffer();
+		final char[] lineBuffer = lineReader.getLineBuffer();
 		assertTrue(lineBuffer.length == 1024);
+	}
+
+
+	/**
+	 * Test method for {@link PropertiesLineReader}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
+			UnsupportedOperationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(PropertiesLineReader.class);
 	}
 
 }

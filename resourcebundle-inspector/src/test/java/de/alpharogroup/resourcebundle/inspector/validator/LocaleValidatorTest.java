@@ -27,8 +27,11 @@ package de.alpharogroup.resourcebundle.inspector.validator;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import com.neovisionaries.i18n.LocaleCode;
@@ -52,6 +55,17 @@ public class LocaleValidatorTest
 		actual = "de_DE";
 		assertTrue(LocaleValidator.validate(actual));
 		assertFalse(LocaleValidator.validate(null));
+	}
+
+	/**
+	 * Test method for {@link LocaleValidator}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
+			UnsupportedOperationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(LocaleValidator.class);
 	}
 
 }
