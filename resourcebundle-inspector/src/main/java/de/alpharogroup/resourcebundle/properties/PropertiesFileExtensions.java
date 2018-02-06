@@ -51,13 +51,15 @@ import de.alpharogroup.file.search.FileSearchExtensions;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * The class {@link PropertiesFileExtensions}.
  */
+@UtilityClass
 @Slf4j
-public class PropertiesFileExtensions
+public final class PropertiesFileExtensions
 {
 
 	/**

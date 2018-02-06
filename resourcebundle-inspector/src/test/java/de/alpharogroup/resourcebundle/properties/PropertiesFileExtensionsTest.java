@@ -24,6 +24,7 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
+import static org.testng.Assert.assertNotNull;
 import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.File;
@@ -43,6 +44,27 @@ import de.alpharogroup.lang.PackageExtensions;
 
 public class PropertiesFileExtensionsTest
 {
+
+	@Test
+	public void testGetLocalPropertiesFromClass() throws Exception
+	{
+		Properties propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(PropertiesFileExtensionsTest.class, PropertiesFileExtensionsTest.class, Locale.ENGLISH);
+		assertNotNull(propertiesFromClass);
+		propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(null, PropertiesFileExtensionsTest.class, Locale.ENGLISH);
+		assertNotNull(propertiesFromClass);
+	}
+
+	@Test
+	public void testGetProjectName() throws IOException
+	{
+		final String projectName = PropertiesFileExtensions.getProjectName();
+		assertNotNull(projectName);
+	}
+
+	@Test
+	public void testGetProjectNameQuietly()
+	{
+	}
 
 	@Test(enabled = true)
 	public void testGetRedundantKeys() throws IOException
