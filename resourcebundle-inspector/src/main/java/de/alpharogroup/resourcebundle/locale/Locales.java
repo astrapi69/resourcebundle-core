@@ -25,7 +25,6 @@
 package de.alpharogroup.resourcebundle.locale;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Locale;
 
 /**
@@ -49,32 +48,5 @@ public final class Locales implements Serializable
 	public static final Locale RUSSIAN = new Locale("ru");
 	/** Useful constant for the german language in variant schwaebisch. */
 	public static final Locale SCHWAEBISCH = new Locale("de", "DE", "schw");
-
-	/**
-	 * Checks if the given {@link Locale} is in the available locales on the current jdk.
-	 *
-	 * @param locale
-	 *            the locale to check
-	 * @return true, if successful
-	 *
-	 * @deprecated use instead {@link LocaleExtensions#contains(Locale)}
-	 */
-	@Deprecated
-	public static boolean contains(Locale locale)
-	{
-		return LocaleExtensions.contains(locale);
-	}
-
-	/**
-	 * Returns a list of all available locales on the current jdk.
-	 *
-	 * @return list of all available locales on the current jdk.
-	 * @deprecated use instead {@link LocaleExtensions#getAvailableLocales()}
-	 */
-	@Deprecated
-	public static List<Locale> getAvailableLocales()
-	{
-		return LocaleExtensions.getAvailableLocales();
-	}
 
 }
