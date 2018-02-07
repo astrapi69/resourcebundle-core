@@ -638,7 +638,10 @@ public final class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 *             @deprecated use instead the same name method of class {@link PropertiesExtensions}
+	 *             Note: will be deleted to the next minor version
 	 */
+	@Deprecated
 	public static void toProperties(final File properties, final File xml, final String comment)
 		throws FileNotFoundException, IOException
 	{
@@ -658,7 +661,10 @@ public final class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 *             @deprecated use instead the same name method of class {@link PropertiesExtensions}
+	 *             Note: will be deleted to the next minor version
 	 */
+	@Deprecated
 	public static void toProperties(final OutputStream properties, final InputStream xml,
 		final String comment) throws FileNotFoundException, IOException
 	{
@@ -680,7 +686,10 @@ public final class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 *             @deprecated use instead the same name method of class {@link PropertiesExtensions}
+	 *             Note: will be deleted to the next minor version
 	 */
+	@Deprecated
 	public static void toXml(final File properties, final File xml, final String comment,
 		final String encoding) throws FileNotFoundException, IOException
 	{
@@ -702,7 +711,10 @@ public final class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 *             @deprecated use instead the same name method of class {@link PropertiesExtensions}
+	 *             Note: will be deleted to the next minor version
 	 */
+	@Deprecated
 	public static void toXml(final InputStream properties, final OutputStream xml,
 		final String comment, final String encoding) throws FileNotFoundException, IOException
 	{
