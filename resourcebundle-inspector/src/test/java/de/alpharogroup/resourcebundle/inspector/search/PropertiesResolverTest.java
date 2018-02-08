@@ -71,7 +71,7 @@ public class PropertiesResolverTest
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "resources.properties";
 		final File propertiesFile = new File(dir, propertiesFilename);
-		final PropertiesResolver finder = new PropertiesResolver(propertiesFile);
+		new PropertiesResolver(propertiesFile);
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class PropertiesResolverTest
 	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void testPropertiesResolverNull() throws IOException
 	{
-		final PropertiesResolver finder = new PropertiesResolver(null);
+		new PropertiesResolver(null);
 	}
 
 }

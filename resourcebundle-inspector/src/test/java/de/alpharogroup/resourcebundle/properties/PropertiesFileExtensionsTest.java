@@ -28,10 +28,8 @@ import static org.testng.Assert.assertNotNull;
 import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -182,6 +180,12 @@ public class PropertiesFileExtensionsTest
 	{
 	}
 
+	/**
+	 * Test method for {@link PropertiesFileExtensions#removeComments(File)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	@Test(enabled = true)
 	public void testRemoveComments() throws IOException
 	{
@@ -200,17 +204,6 @@ public class PropertiesFileExtensionsTest
 	@Test
 	public void testResolveAvailableLanguages()
 	{
-	}
-
-	@SuppressWarnings("deprecation")
-	@Test(enabled = false)
-	public void testToXmlFileFileStringString()
-		throws URISyntaxException, FileNotFoundException, IOException
-	{
-		final String propertiesFilename = "de/alpharogroup/lang/resources.properties";
-		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
-		final File xmlFile = new File(propertiesFile.getParent(), "resources.properties.xml");
-		PropertiesFileExtensions.toXml(propertiesFile, xmlFile, "", "UTF-8");
 	}
 
 	/**

@@ -48,15 +48,15 @@ public class PropertiesListResolverTest
 	@Test
 	public void testPropertiesListResolver() throws IOException
 	{
-		File expectedDir = new File(".");
-		Locale expectedLocale = Locale.ENGLISH;
-		PropertiesListResolver propertiesListResolver = new PropertiesListResolver(expectedDir,
-			expectedLocale);
+		final File expectedDir = new File(".");
+		final Locale expectedLocale = Locale.ENGLISH;
+		final PropertiesListResolver propertiesListResolver = new PropertiesListResolver(
+			expectedDir, expectedLocale);
 		assertNotNull(propertiesListResolver);
 		propertiesListResolver.resolve();
-		File actualDir = propertiesListResolver.getRootDir();
+		final File actualDir = propertiesListResolver.getRootDir();
 		assertEquals(expectedDir, actualDir);
-		Locale actualLocale = propertiesListResolver.getDefaultLocale();
+		final Locale actualLocale = propertiesListResolver.getDefaultLocale();
 		assertEquals(expectedLocale, actualLocale);
 	}
 
@@ -70,12 +70,9 @@ public class PropertiesListResolverTest
 	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void testPropertiesListResolverNotDirectory() throws IOException
 	{
-		File expectedDir = new File("pom.xml");
-		Locale expectedLocale = Locale.ENGLISH;
-		PropertiesListResolver propertiesListResolver = new PropertiesListResolver(expectedDir,
-			expectedLocale);
-
+		final File expectedDir = new File("pom.xml");
+		final Locale expectedLocale = Locale.ENGLISH;
+		new PropertiesListResolver(expectedDir, expectedLocale);
 	}
-
 
 }

@@ -25,10 +25,8 @@
 package de.alpharogroup.resourcebundle.properties;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -624,102 +622,5 @@ public final class PropertiesFileExtensions
 		}
 		return languages;
 	}
-
-	/**
-	 * Converts the given xml file to the given properties file.
-	 *
-	 * @param properties
-	 *            the properties file. The xml file does not have to exist.
-	 * @param xml
-	 *            the xml file with the properties to convert.
-	 * @param comment
-	 *            the comment
-	 * @throws FileNotFoundException
-	 *             the file not found exception
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
-	 *             be deleted to the next minor version
-	 */
-	@Deprecated
-	public static void toProperties(final File properties, final File xml, final String comment)
-		throws FileNotFoundException, IOException
-	{
-		PropertiesExtensions.toProperties(properties, xml, comment);
-	}
-
-	/**
-	 * Converts the given xml InputStream to the given properties OutputStream.
-	 *
-	 * @param properties
-	 *            the properties file. The xml file does not have to exist.
-	 * @param xml
-	 *            the xml file with the properties to convert.
-	 * @param comment
-	 *            the comment
-	 * @throws FileNotFoundException
-	 *             the file not found exception
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
-	 *             be deleted to the next minor version
-	 */
-	@Deprecated
-	public static void toProperties(final OutputStream properties, final InputStream xml,
-		final String comment) throws FileNotFoundException, IOException
-	{
-		PropertiesExtensions.toProperties(properties, xml, comment);
-	}
-
-	/**
-	 * Converts the given properties file to the given xml file.
-	 *
-	 * @param properties
-	 *            the properties file.
-	 * @param xml
-	 *            the xml file to write in. The xml file does not have to exist.
-	 * @param comment
-	 *            the comment
-	 * @param encoding
-	 *            the encoding for the xml file.
-	 * @throws FileNotFoundException
-	 *             the file not found exception
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
-	 *             be deleted to the next minor version
-	 */
-	@Deprecated
-	public static void toXml(final File properties, final File xml, final String comment,
-		final String encoding) throws FileNotFoundException, IOException
-	{
-		PropertiesExtensions.toXml(properties, xml, comment, encoding);
-	}
-
-	/**
-	 * Converts the given properties InputStream to the given xml OutputStream.
-	 *
-	 * @param properties
-	 *            the properties InputStream.
-	 * @param xml
-	 *            the xml OutputStream to write in.
-	 * @param comment
-	 *            the comment
-	 * @param encoding
-	 *            the encoding for the xml file.
-	 * @throws FileNotFoundException
-	 *             the file not found exception
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
-	 *             be deleted to the next minor version
-	 */
-	@Deprecated
-	public static void toXml(final InputStream properties, final OutputStream xml,
-		final String comment, final String encoding) throws FileNotFoundException, IOException
-	{
-		PropertiesExtensions.toXml(properties, xml, comment, encoding);
-	}
-
 
 }
