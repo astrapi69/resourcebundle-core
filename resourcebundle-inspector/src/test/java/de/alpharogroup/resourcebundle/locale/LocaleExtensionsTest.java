@@ -26,8 +26,11 @@ package de.alpharogroup.resourcebundle.locale;
 
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
@@ -206,6 +209,17 @@ public class LocaleExtensionsTest
 		expected = "el_GR";
 		actual = LocaleExtensions.getLocaleName(Locales.HELLENIC);
 		AssertJUnit.assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocaleExtensions}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
+			UnsupportedOperationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(LocaleExtensions.class);
 	}
 
 }

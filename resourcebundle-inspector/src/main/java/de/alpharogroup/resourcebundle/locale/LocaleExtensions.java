@@ -38,7 +38,7 @@ import lombok.experimental.UtilityClass;
  * @version 1.0
  */
 @UtilityClass
-public class LocaleExtensions
+public final class LocaleExtensions
 {
 
 	/** The available locales on the system. */
@@ -149,10 +149,10 @@ public class LocaleExtensions
 	 *            the locale to check
 	 * @return true, if successful
 	 */
-	public static boolean contains(Locale locale)
+	public static boolean contains(final Locale locale)
 	{
-		List<Locale> availableLocales = getAvailableLocales();
-		boolean exists = availableLocales.contains(locale);
+		final List<Locale> availableLocales = getAvailableLocales();
+		final boolean exists = availableLocales.contains(locale);
 		return exists;
 	}
 
