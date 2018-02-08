@@ -22,38 +22,26 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.resourcebundle.locale;
+package de.alpharogroup.resourcebundle.inspector.search;
 
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.test.objects.Person;
-
 /**
- * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for the class
- * {@link ResourceKeyFactory}.
+ * The unit test class for the class {@link PropertiesDirectoryWalker}.
  */
-public class ResourceKeyFactoryTest
+public class PropertiesDirectoryWalkerTest
 {
 
-	/**
-	 * Test method for {@link ResourceKeyFactory#newResourceKey(Object, boolean, String)}
-	 */
-	@Test
-	public void testNewResourceKeyTBooleanString()
+	@Test(enabled = false)
+	public void testPropertiesDirectoryWalker() throws Exception
 	{
-		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), false, "foo");
-		AssertJUnit.assertEquals("de.alpharogroup.test.objects.Person.foo", resourceKey);
+		throw new RuntimeException("not yet implemented");
 	}
 
-	/**
-	 * Test method for {@link ResourceKeyFactory#newResourceKey(Object, String)}
-	 */
-	@Test
-	public void testNewResourceKeyTString()
+	@Test(enabled = false)
+	public void testStart() throws Exception
 	{
-		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), "foo");
-		AssertJUnit.assertEquals("Person.foo", resourceKey);
+		throw new RuntimeException("not yet implemented");
 	}
 
 }

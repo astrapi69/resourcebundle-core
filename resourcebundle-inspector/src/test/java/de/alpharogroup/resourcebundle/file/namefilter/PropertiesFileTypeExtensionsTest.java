@@ -22,50 +22,54 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.resourcebundle.inspector.validator;
+package de.alpharogroup.resourcebundle.file.namefilter;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
 
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import com.neovisionaries.i18n.LocaleCode;
-
 /**
- * The unit test class for the class {@link LocaleValidator}
+ * The unit test class for the class {@link PropertiesFileTypeExtensions}.
  */
-public class LocaleValidatorTest
+public class PropertiesFileTypeExtensionsTest
 {
 
 	/**
-	 * Test method for {@link LocaleValidator#validate(String)}.
+	 * Test method for {@link PropertiesFileTypeExtensions#getPropertiesFileExtension()}
 	 */
 	@Test
-	public void testValidate()
+	public void testGetPropertiesFileExtension()
 	{
-		String actual = "de";
-		assertTrue(LocaleValidator.validate(actual));
-		final Locale l = LocaleCode.getByCode(actual, true).toLocale();
-		assertTrue(l.getLanguage().equals(actual));
-		actual = "de_DE";
-		assertTrue(LocaleValidator.validate(actual));
-		assertFalse(LocaleValidator.validate(null));
+
+		String actual;
+		String expected;
+
+		actual = PropertiesFileTypeExtensions.PROPERTIES.getPropertiesFileExtension();
+		expected = ".properties";
+		assertEquals(expected, actual);
+
+		actual = PropertiesFileTypeExtensions.UTF8_PROPERTIES.getPropertiesFileExtension();
+		expected = ".utf8.properties";
+		assertEquals(expected, actual);
+
+		actual = PropertiesFileTypeExtensions.XML.getPropertiesFileExtension();
+		expected = ".properties.xml";
+		assertEquals(expected, actual);
 	}
 
 	/**
-	 * Test method for {@link LocaleValidator}
+	 * Test method for {@link PropertiesFileTypeExtensions}
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
 			UnsupportedOperationException.class })
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(LocaleValidator.class);
+		beanTester.testBean(PropertiesFileTypeExtensions.class);
 	}
 
 }

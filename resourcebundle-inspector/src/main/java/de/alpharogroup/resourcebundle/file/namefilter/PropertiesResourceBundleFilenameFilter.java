@@ -30,7 +30,7 @@ import java.io.FilenameFilter;
 import lombok.Getter;
 
 /**
- * The Class {@link PropertiesResourceBundleFilenameFilter} for accept only bundle properties files
+ * The class {@link PropertiesResourceBundleFilenameFilter} for accept only bundle properties files
  * with various locale extensions.
  */
 public class PropertiesResourceBundleFilenameFilter implements FilenameFilter

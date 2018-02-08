@@ -22,50 +22,51 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.resourcebundle.inspector.validator;
+package de.alpharogroup.resourcebundle.inspector.search.processor;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.Assert.assertEquals;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
+import java.util.Properties;
 
-import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
+import org.meanbean.test.Configuration;
+import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import com.neovisionaries.i18n.LocaleCode;
-
 /**
- * The unit test class for the class {@link LocaleValidator}
+ * The unit test class for the class {@link UnusedKeysSearchFilter}.
  */
-public class LocaleValidatorTest
+public class UnusedKeysSearchFilterTest
 {
 
 	/**
-	 * Test method for {@link LocaleValidator#validate(String)}.
+	 * Test method for {@link UnusedKeysSearchFilter#process(UsedKeysSearchResult)}.
 	 */
 	@Test
-	public void testValidate()
+	public void testProcess()
 	{
-		String actual = "de";
-		assertTrue(LocaleValidator.validate(actual));
-		final Locale l = LocaleCode.getByCode(actual, true).toLocale();
-		assertTrue(l.getLanguage().equals(actual));
-		actual = "de_DE";
-		assertTrue(LocaleValidator.validate(actual));
-		assertFalse(LocaleValidator.validate(null));
+		final Properties used = new Properties();
+		used.setProperty("com", "bar");
+		final Properties base = new Properties();
+		base.setProperty("com", "bar");
+		base.setProperty("bar", "foo");
+		final KeySearchBean searchBean = KeySearchBean.builder().base(base).build();
+		final UsedKeysSearchResult result = UsedKeysSearchResult.builder().used(used)
+			.searchModel(searchBean).build();
+		final UnusedKeysSearchFilter searchFilter = new UnusedKeysSearchFilter();
+		final UnusedKeysSearchResult process = searchFilter.process(result);
+		assertEquals(process.getUnusedKeys().size(), 1);
 	}
 
 	/**
-	 * Test method for {@link LocaleValidator}
+	 * Test method for {@link UnusedKeysSearchFilter}
 	 */
-	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
-			UnsupportedOperationException.class })
+	@Test
 	public void testWithBeanTester()
 	{
+		final Configuration configuration = new ConfigurationBuilder().build();
 		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(LocaleValidator.class);
+		beanTester.addCustomConfiguration(UnusedKeysSearchFilter.class, configuration);
+		beanTester.testBean(UnusedKeysSearchFilter.class);
 	}
-
 }

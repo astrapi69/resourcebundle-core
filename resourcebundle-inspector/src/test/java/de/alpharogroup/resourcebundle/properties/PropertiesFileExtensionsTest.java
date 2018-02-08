@@ -24,17 +24,21 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
+import static org.testng.Assert.assertNotNull;
 import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.file.search.PathFinder;
@@ -43,6 +47,44 @@ import de.alpharogroup.lang.PackageExtensions;
 
 public class PropertiesFileExtensionsTest
 {
+
+	/**
+	 * Test method for
+	 * {@link PropertiesFileExtensions#getLocalPropertiesFromClass(Class, Class, Locale)}
+	 *
+	 * @throws Exception
+	 *             is thrown if any error occurs on the execution
+	 */
+	@Test
+	public void testGetLocalPropertiesFromClass() throws Exception
+	{
+		Properties propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(
+			PropertiesFileExtensionsTest.class, PropertiesFileExtensionsTest.class, Locale.ENGLISH);
+		assertNotNull(propertiesFromClass);
+		propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(null,
+			PropertiesFileExtensionsTest.class, Locale.ENGLISH);
+		assertNotNull(propertiesFromClass);
+	}
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
+	 */
+	@Test
+	public void testGetProjectName() throws IOException
+	{
+		final String projectName = PropertiesFileExtensions.getProjectName();
+		assertNotNull(projectName);
+	}
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
+	 */
+	@Test
+	public void testGetProjectNameQuietly()
+	{
+		final String projectName = PropertiesFileExtensions.getProjectNameQuietly("foo");
+		assertNotNull(projectName);
+	}
 
 	@Test(enabled = true)
 	public void testGetRedundantKeys() throws IOException
@@ -62,6 +104,14 @@ public class PropertiesFileExtensionsTest
 			"resources.properties");
 		assertTrue(fileMap.containsKey(expectedPropertiesFile1));
 		assertTrue(fileMap.containsKey(expectedPropertiesFile2));
+	}
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions#loadProperties(Class, String, String)}.
+	 */
+	@Test
+	public void testLoadPropertiesClassOfQStringString()
+	{
 	}
 
 	@Test(enabled = true)
@@ -97,6 +147,7 @@ public class PropertiesFileExtensionsTest
 		assertTrue("", result);
 	}
 
+
 	@Test(enabled = true)
 	public void testLoadPropertiesPackagePathPropertiesFilename() throws IOException
 	{
@@ -123,6 +174,13 @@ public class PropertiesFileExtensionsTest
 		assertTrue("", result);
 	}
 
+	/**
+	 * Test method for {@link PropertiesFileExtensions#newBackupOf(File)}.
+	 */
+	@Test
+	public void testNewBackupOf()
+	{
+	}
 
 	@Test(enabled = true)
 	public void testRemoveComments() throws IOException
@@ -135,6 +193,16 @@ public class PropertiesFileExtensionsTest
 		assertTrue(lines.size() == 5);
 	}
 
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions#resolveAvailableLanguages(String, String)}.
+	 */
+	@Test
+	public void testResolveAvailableLanguages()
+	{
+	}
+
+	@SuppressWarnings("deprecation")
 	@Test(enabled = false)
 	public void testToXmlFileFileStringString()
 		throws URISyntaxException, FileNotFoundException, IOException
@@ -143,6 +211,17 @@ public class PropertiesFileExtensionsTest
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		final File xmlFile = new File(propertiesFile.getParent(), "resources.properties.xml");
 		PropertiesFileExtensions.toXml(propertiesFile, xmlFile, "", "UTF-8");
+	}
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
+			UnsupportedOperationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(PropertiesFileExtensions.class);
 	}
 
 }

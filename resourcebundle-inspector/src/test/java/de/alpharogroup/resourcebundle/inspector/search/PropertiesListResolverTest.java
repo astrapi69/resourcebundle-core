@@ -24,42 +24,58 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 
-import org.apache.commons.io.DirectoryWalker;
-
-import de.alpharogroup.file.FileExtension;
-import de.alpharogroup.file.filter.MultiplyExtensionsFileFilter;
+import org.testng.annotations.Test;
 
 /**
- * The Class PropertiesDirectoryWalker finds Properties files.
+ * The class {@link PropertiesListResolver}.
  */
-public class PropertiesDirectoryWalker extends DirectoryWalker<File>
+public class PropertiesListResolverTest
 {
-	private final List<File> files;
 
 	/**
-	 * Instantiates a new properties directory walker.
-	 */
-	public PropertiesDirectoryWalker()
-	{
-		super(new MultiplyExtensionsFileFilter(true, FileExtension.PROPERTIES.getExtension()), -1);
-		files = new ArrayList<>();
-	}
-
-	/**
-	 * Start.
+	 * Test method for the constructor of {@link PropertiesListResolver}.
 	 *
-	 * @param dir
-	 *            the dir
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void start(final File dir) throws IOException
+	@Test
+	public void testPropertiesListResolver() throws IOException
 	{
-		walk(dir, files);
+		File expectedDir = new File(".");
+		Locale expectedLocale = Locale.ENGLISH;
+		PropertiesListResolver propertiesListResolver = new PropertiesListResolver(expectedDir,
+			expectedLocale);
+		assertNotNull(propertiesListResolver);
+		propertiesListResolver.resolve();
+		File actualDir = propertiesListResolver.getRootDir();
+		assertEquals(expectedDir, actualDir);
+		Locale actualLocale = propertiesListResolver.getDefaultLocale();
+		assertEquals(expectedLocale, actualLocale);
 	}
+
+	/**
+	 * Test method for the constructor of {@link PropertiesListResolver} with given file and not
+	 * directory
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void testPropertiesListResolverNotDirectory() throws IOException
+	{
+		File expectedDir = new File("pom.xml");
+		Locale expectedLocale = Locale.ENGLISH;
+		PropertiesListResolver propertiesListResolver = new PropertiesListResolver(expectedDir,
+			expectedLocale);
+
+	}
+
+
 }

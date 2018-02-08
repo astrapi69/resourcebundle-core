@@ -22,38 +22,24 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.resourcebundle.locale;
+package de.alpharogroup.resourcebundle.inspector.core;
 
-import org.testng.AssertJUnit;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.test.objects.Person;
-
 /**
- * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for the class
- * {@link ResourceKeyFactory}.
+ * The class {@link KeyValueLists}.
  */
-public class ResourceKeyFactoryTest
+public class KeyValueListsTest
 {
 
 	/**
-	 * Test method for {@link ResourceKeyFactory#newResourceKey(Object, boolean, String)}
+	 * Test method for {@link KeyValueLists}
 	 */
 	@Test
-	public void testNewResourceKeyTBooleanString()
+	public void testWithBeanTester()
 	{
-		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), false, "foo");
-		AssertJUnit.assertEquals("de.alpharogroup.test.objects.Person.foo", resourceKey);
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(KeyValueLists.class);
 	}
-
-	/**
-	 * Test method for {@link ResourceKeyFactory#newResourceKey(Object, String)}
-	 */
-	@Test
-	public void testNewResourceKeyTString()
-	{
-		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), "foo");
-		AssertJUnit.assertEquals("Person.foo", resourceKey);
-	}
-
 }

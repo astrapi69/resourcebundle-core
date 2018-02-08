@@ -1,6 +1,20 @@
 ## Change log
 ----------------------
 
+Version 2.18.0
+-------------
+
+ADDED:
+ 
+- new unit tests 
+
+CHANGED:
+
+- update of parent version and of dependencies versions
+- javadoc extended and improved
+- unit tests extended 
+- improve of code coverage
+
 Version 2.17.0
 -------------
 

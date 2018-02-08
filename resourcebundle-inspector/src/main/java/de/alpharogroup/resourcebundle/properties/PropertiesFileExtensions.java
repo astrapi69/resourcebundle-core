@@ -51,13 +51,15 @@ import de.alpharogroup.file.search.FileSearchExtensions;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * The class {@link PropertiesFileExtensions}.
  */
+@UtilityClass
 @Slf4j
-public class PropertiesFileExtensions
+public final class PropertiesFileExtensions
 {
 
 	/**
@@ -636,7 +638,10 @@ public class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
+	 *             be deleted to the next minor version
 	 */
+	@Deprecated
 	public static void toProperties(final File properties, final File xml, final String comment)
 		throws FileNotFoundException, IOException
 	{
@@ -656,7 +661,10 @@ public class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
+	 *             be deleted to the next minor version
 	 */
+	@Deprecated
 	public static void toProperties(final OutputStream properties, final InputStream xml,
 		final String comment) throws FileNotFoundException, IOException
 	{
@@ -678,7 +686,10 @@ public class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
+	 *             be deleted to the next minor version
 	 */
+	@Deprecated
 	public static void toXml(final File properties, final File xml, final String comment,
 		final String encoding) throws FileNotFoundException, IOException
 	{
@@ -700,7 +711,10 @@ public class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
+	 *             be deleted to the next minor version
 	 */
+	@Deprecated
 	public static void toXml(final InputStream properties, final OutputStream xml,
 		final String comment, final String encoding) throws FileNotFoundException, IOException
 	{

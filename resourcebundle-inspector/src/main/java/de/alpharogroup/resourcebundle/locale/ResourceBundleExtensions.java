@@ -39,7 +39,7 @@ import lombok.experimental.UtilityClass;
  * {@link ResourceBundle}.
  */
 @UtilityClass
-public class ResourceBundleExtensions
+public final class ResourceBundleExtensions
 {
 
 	/** The Constant logger. */

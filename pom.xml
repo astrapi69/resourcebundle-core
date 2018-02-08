@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>3.5.0</version>
+		<version>3.6.0</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.17.0</version>
+	<version>2.18.0</version>
 	<packaging>pom</packaging>
 	<inceptionYear>2012</inceptionYear>
 
@@ -26,9 +26,9 @@
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->
 		<jcommons-lang.version>4.29.0</jcommons-lang.version>
-		<test-objects.version>4.21.0</test-objects.version>
+		<test-objects.version>4.22.0</test-objects.version>
 		<file-worker.version>4.19.0</file-worker.version>
-		<silly-collections.version>4.23.0</silly-collections.version>
+		<silly-collections.version>4.24.0</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
 		<jobject-extensions.version>1.8.0</jobject-extensions.version>		
 		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
@@ -38,6 +38,8 @@
 		<commons-io.version>2.6</commons-io.version>
 		<!-- MEANBEAN version -->
 		<meanbean.version>2.0.3</meanbean.version>
+		<!-- MEANBEAN-FACTORIES version -->
+		<meanbean-factories.version>1.0.0</meanbean-factories.version>
 	</properties>
 
 	<modules>
@@ -133,9 +135,127 @@
 				<artifactId>meanbean</artifactId>
 				<version>${meanbean.version}</version>
 			</dependency>
+			<!-- MEANBEAN-FACTORIES DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>meanbean-factories</artifactId>
+				<version>${meanbean-factories.version}</version>
+			</dependency>
 
 		</dependencies>
 
-	</dependencyManagement>
+	</dependencyManagement>	
+
+	<build>
+
+		<resources>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>**/package.html</exclude>
+				</excludes>
+			</resource>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/site</directory>
+			</resource>
+
+		</resources>
+
+		<testResources>
+
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>**/package.html</exclude>
+				</excludes>
+			</testResource>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/resources</directory>
+			</testResource>
+
+		</testResources>
+
+		<pluginManagement>
+
+			<plugins>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<configuration>
+						<instrumentation>
+							<excludes>
+								<!-- enums -->
+								<!-- beans -->
+								<!-- interfaces -->
+								<!-- abstract classes -->
+								<!-- exceptions -->
+								<!-- deprecated classes -->
+								<!-- constant classes with only constants -->
+								<!-- explicit bean classes -->
+								<!-- explicit deprecated classes -->
+								<exclude>de/alpharogroup/resourcebundle/inspector/search/PropertiesFinder.class</exclude>								
+								<!-- explicit enums -->
+								<!-- explicit interfaces -->
+								<exclude>de/alpharogroup/resourcebundle/inspector/search/processor/FilterProcessor.class</exclude>
+								<!-- explicit abstract classes -->
+								<exclude>de/alpharogroup/resourcebundle/locale/PropertiesKeysListResolver.class</exclude>
+								<!-- explicit constant classes with only constants -->
+								<!-- explicit delegation classes -->
+							</excludes>
+						</instrumentation>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+			</plugins>
+
+		</pluginManagement>
+
+		<plugins>
+
+			<plugin>
+				<inherited>true</inherited>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<inherited>true</inherited>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<inherited>true</inherited>
+				<artifactId>maven-eclipse-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+
+	</build>
 
 </project>

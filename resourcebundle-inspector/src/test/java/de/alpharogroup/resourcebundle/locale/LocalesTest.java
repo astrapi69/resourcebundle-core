@@ -24,36 +24,23 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import org.testng.AssertJUnit;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.test.objects.Person;
-
 /**
- * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for the class
- * {@link ResourceKeyFactory}.
+ * The unit test class for the class {@link Locales}.
  */
-public class ResourceKeyFactoryTest
+public class LocalesTest
 {
 
 	/**
-	 * Test method for {@link ResourceKeyFactory#newResourceKey(Object, boolean, String)}
+	 * Test method for {@link Locales}
 	 */
 	@Test
-	public void testNewResourceKeyTBooleanString()
+	public void testWithBeanTester()
 	{
-		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), false, "foo");
-		AssertJUnit.assertEquals("de.alpharogroup.test.objects.Person.foo", resourceKey);
-	}
-
-	/**
-	 * Test method for {@link ResourceKeyFactory#newResourceKey(Object, String)}
-	 */
-	@Test
-	public void testNewResourceKeyTString()
-	{
-		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), "foo");
-		AssertJUnit.assertEquals("Person.foo", resourceKey);
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(Locales.class);
 	}
 
 }
