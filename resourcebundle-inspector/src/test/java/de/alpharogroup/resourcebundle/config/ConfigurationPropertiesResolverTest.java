@@ -41,7 +41,7 @@ public class ConfigurationPropertiesResolverTest
 	@Test
 	public void testConfigurationPropertiesResolver()
 	{
-		ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver();
+		final ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver();
 		assertEquals(configurationPropertiesResolver.getDefaultHttpPort(),
 			ConfigurationPropertiesResolver.DEFAULT_HTTP_PORT);
 		assertEquals(configurationPropertiesResolver.getDefaultHttpsPort(),
@@ -59,7 +59,7 @@ public class ConfigurationPropertiesResolverTest
 	@Test
 	public void testConfigurationPropertiesResolverIntegerIntegerString()
 	{
-		ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver(
+		final ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver(
 			9090, 9443, "conf.properties");
 		assertEquals(configurationPropertiesResolver.getDefaultHttpPort(), 9090);
 		assertEquals(configurationPropertiesResolver.getDefaultHttpsPort(), 9443);
@@ -73,7 +73,7 @@ public class ConfigurationPropertiesResolverTest
 	@Test
 	public void testConfigurationPropertiesResolverIntegerIntegerStringNumberFormatException()
 	{
-		ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver(
+		final ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver(
 			9090, 9443, "config-ex.properties");
 		assertEquals(configurationPropertiesResolver.getDefaultHttpPort(), 9090);
 		assertEquals(configurationPropertiesResolver.getDefaultHttpsPort(), 9443);

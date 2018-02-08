@@ -33,7 +33,7 @@ import lombok.experimental.UtilityClass;
  * The class {@link ResourceBundleResolver}.
  */
 @UtilityClass
-public class ResourceBundleResolver
+public final class ResourceBundleResolver
 {
 
 	/**

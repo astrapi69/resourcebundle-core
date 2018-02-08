@@ -24,11 +24,14 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * The unit test class {@link ResourceBundleResolverTest} provides unit tests for the class
@@ -46,6 +49,18 @@ public class ResourceBundleResolverTest
 		final ResourceBundle expected = ResourceBundle.getBundle("test", Locale.UK);
 		final ResourceBundle actual = ResourceBundleResolver.getBundle("test", Locale.UK);
 		AssertJUnit.assertEquals(expected, actual);
+	}
+
+
+	/**
+	 * Test method for {@link ResourceBundleResolver}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
+		UnsupportedOperationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(ResourceBundleResolver.class);
 	}
 
 }
