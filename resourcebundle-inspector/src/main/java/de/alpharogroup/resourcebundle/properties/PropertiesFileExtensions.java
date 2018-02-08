@@ -638,8 +638,8 @@ public final class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
-	 *             @deprecated use instead the same name method of class {@link PropertiesExtensions}
-	 *             Note: will be deleted to the next minor version
+	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
+	 *             be deleted to the next minor version
 	 */
 	@Deprecated
 	public static void toProperties(final File properties, final File xml, final String comment)
@@ -661,8 +661,8 @@ public final class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
-	 *             @deprecated use instead the same name method of class {@link PropertiesExtensions}
-	 *             Note: will be deleted to the next minor version
+	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
+	 *             be deleted to the next minor version
 	 */
 	@Deprecated
 	public static void toProperties(final OutputStream properties, final InputStream xml,
@@ -686,8 +686,8 @@ public final class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
-	 *             @deprecated use instead the same name method of class {@link PropertiesExtensions}
-	 *             Note: will be deleted to the next minor version
+	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
+	 *             be deleted to the next minor version
 	 */
 	@Deprecated
 	public static void toXml(final File properties, final File xml, final String comment,
@@ -711,8 +711,8 @@ public final class PropertiesFileExtensions
 	 *             the file not found exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
-	 *             @deprecated use instead the same name method of class {@link PropertiesExtensions}
-	 *             Note: will be deleted to the next minor version
+	 * @deprecated use instead the same name method of class {@link PropertiesExtensions} Note: will
+	 *             be deleted to the next minor version
 	 */
 	@Deprecated
 	public static void toXml(final InputStream properties, final OutputStream xml,

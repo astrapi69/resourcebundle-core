@@ -49,50 +49,20 @@ public class PropertiesFileExtensionsTest
 {
 
 	/**
-	 * Test method for {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
-	 */
-	@Test
-	public void testGetProjectNameQuietly()
-	{
-		final String projectName = PropertiesFileExtensions.getProjectNameQuietly("foo");
-		assertNotNull(projectName);
-	}
-
-	/**
-	 * Test method for {@link PropertiesFileExtensions#loadProperties(Class, String, String)}.
-	 */
-	@Test
-	public void testLoadPropertiesClassOfQStringString()
-	{
-	}
-
-	/**
-	 * Test method for {@link PropertiesFileExtensions#newBackupOf(File)}.
-	 */
-	@Test
-	public void testNewBackupOf()
-	{
-	}
-
-	/**
-	 * Test method for {@link PropertiesFileExtensions#resolveAvailableLanguages(String, String)}.
-	 */
-	@Test
-	public void testResolveAvailableLanguages()
-	{
-	}
-
-	/**
-	 * Test method for {@link PropertiesFileExtensions#getLocalPropertiesFromClass(Class, Class, Locale)}
+	 * Test method for
+	 * {@link PropertiesFileExtensions#getLocalPropertiesFromClass(Class, Class, Locale)}
 	 *
-	 * @throws Exception is thrown if any error occurs on the execution
+	 * @throws Exception
+	 *             is thrown if any error occurs on the execution
 	 */
 	@Test
 	public void testGetLocalPropertiesFromClass() throws Exception
 	{
-		Properties propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(PropertiesFileExtensionsTest.class, PropertiesFileExtensionsTest.class, Locale.ENGLISH);
+		Properties propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(
+			PropertiesFileExtensionsTest.class, PropertiesFileExtensionsTest.class, Locale.ENGLISH);
 		assertNotNull(propertiesFromClass);
-		propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(null, PropertiesFileExtensionsTest.class, Locale.ENGLISH);
+		propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(null,
+			PropertiesFileExtensionsTest.class, Locale.ENGLISH);
 		assertNotNull(propertiesFromClass);
 	}
 
@@ -106,6 +76,15 @@ public class PropertiesFileExtensionsTest
 		assertNotNull(projectName);
 	}
 
+	/**
+	 * Test method for {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
+	 */
+	@Test
+	public void testGetProjectNameQuietly()
+	{
+		final String projectName = PropertiesFileExtensions.getProjectNameQuietly("foo");
+		assertNotNull(projectName);
+	}
 
 	@Test(enabled = true)
 	public void testGetRedundantKeys() throws IOException
@@ -125,6 +104,14 @@ public class PropertiesFileExtensionsTest
 			"resources.properties");
 		assertTrue(fileMap.containsKey(expectedPropertiesFile1));
 		assertTrue(fileMap.containsKey(expectedPropertiesFile2));
+	}
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions#loadProperties(Class, String, String)}.
+	 */
+	@Test
+	public void testLoadPropertiesClassOfQStringString()
+	{
 	}
 
 	@Test(enabled = true)
@@ -160,6 +147,7 @@ public class PropertiesFileExtensionsTest
 		assertTrue("", result);
 	}
 
+
 	@Test(enabled = true)
 	public void testLoadPropertiesPackagePathPropertiesFilename() throws IOException
 	{
@@ -186,6 +174,13 @@ public class PropertiesFileExtensionsTest
 		assertTrue("", result);
 	}
 
+	/**
+	 * Test method for {@link PropertiesFileExtensions#newBackupOf(File)}.
+	 */
+	@Test
+	public void testNewBackupOf()
+	{
+	}
 
 	@Test(enabled = true)
 	public void testRemoveComments() throws IOException
@@ -196,6 +191,15 @@ public class PropertiesFileExtensionsTest
 		final File propertiesFile = PathFinder.getRelativePath(testDir, "test.properties");
 		final List<String> lines = PropertiesFileExtensions.removeComments(propertiesFile);
 		assertTrue(lines.size() == 5);
+	}
+
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions#resolveAvailableLanguages(String, String)}.
+	 */
+	@Test
+	public void testResolveAvailableLanguages()
+	{
 	}
 
 	@SuppressWarnings("deprecation")

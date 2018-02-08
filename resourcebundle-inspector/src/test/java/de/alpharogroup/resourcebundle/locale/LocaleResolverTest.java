@@ -36,7 +36,8 @@ import org.testng.annotations.Test;
 import de.alpharogroup.lang.ClassExtensions;
 
 /**
- * The unit test class {@link LocaleResolverTest} provides unit tests for the class {@link LocaleResolver}.
+ * The unit test class {@link LocaleResolverTest} provides unit tests for the class
+ * {@link LocaleResolver}.
  */
 public class LocaleResolverTest
 {

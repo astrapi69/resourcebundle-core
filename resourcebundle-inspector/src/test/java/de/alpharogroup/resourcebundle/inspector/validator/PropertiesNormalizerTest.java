@@ -84,7 +84,8 @@ public class PropertiesNormalizerTest
 		final String propertiesFilename = "foo-write.properties";
 		final File prpFile = new File(dir, propertiesFilename);
 		CreateFileExtensions.newFile(prpFile);
-		WriteFileExtensions.writeLinesToFile(ListExtensions.newArrayList("com=öäüß"), prpFile, "UTF-8");
+		WriteFileExtensions.writeLinesToFile(ListExtensions.newArrayList("com=öäüß"), prpFile,
+			"UTF-8");
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		PropertiesNormalizer.normalizeProperties(propertiesFile.getAbsolutePath());
 		prpFile.delete();

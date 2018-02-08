@@ -25,7 +25,6 @@
 package de.alpharogroup.resourcebundle.inspector.search;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +65,7 @@ public class PropertiesResolverTest
 	/**
 	 * Test method for {@link PropertiesResolver#resolve()}
 	 */
-	@Test(expectedExceptions=IllegalArgumentException.class)
+	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void testPropertiesResolver() throws IOException
 	{
 		final File dir = PathFinder.getSrcTestResourcesDir();
@@ -78,7 +77,7 @@ public class PropertiesResolverTest
 	/**
 	 * Test method for {@link PropertiesResolver#resolve()}
 	 */
-	@Test(expectedExceptions=IllegalArgumentException.class)
+	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void testPropertiesResolverNull() throws IOException
 	{
 		final PropertiesResolver finder = new PropertiesResolver(null);

@@ -128,17 +128,6 @@ public class ConfigurationPropertiesResolver implements Serializable
 	}
 
 	/**
-	 * Try to get the http port from the properties. If it does not exists an empty {@link Optional}
-	 * will be returned.
-	 *
-	 * @return the optional http port
-	 */
-	private Optional<Integer> getOptionalHttpPort()
-	{
-		return getInteger(getProperties(), APPLICATION_HTTP_PORT_KEY);
-	}
-
-	/**
 	 * Try to get a number from the given properties key from the given properties. If it does not
 	 * exists an empty {@link Optional} will be returned and a log message will be logged.
 	 *
@@ -147,11 +136,11 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 * @param propertiesKey
 	 *            the properties key
 	 * @return the port number or an empty {@linkplain Optional}
-	 * @deprecated use instead the corresponding method in the {@link PropertiesExtensions} from the next release.
+	 * @deprecated use instead the corresponding method in the {@link PropertiesExtensions} from the
+	 *             next release.
 	 */
 	@Deprecated
-	private Optional<Integer> getInteger(final Properties properties,
-		final String propertiesKey)
+	private Optional<Integer> getInteger(final Properties properties, final String propertiesKey)
 	{
 		if (properties != null && properties.containsKey(propertiesKey))
 		{
@@ -169,6 +158,17 @@ public class ConfigurationPropertiesResolver implements Serializable
 			}
 		}
 		return Optional.empty();
+	}
+
+	/**
+	 * Try to get the http port from the properties. If it does not exists an empty {@link Optional}
+	 * will be returned.
+	 *
+	 * @return the optional http port
+	 */
+	private Optional<Integer> getOptionalHttpPort()
+	{
+		return getInteger(getProperties(), APPLICATION_HTTP_PORT_KEY);
 	}
 
 	/**

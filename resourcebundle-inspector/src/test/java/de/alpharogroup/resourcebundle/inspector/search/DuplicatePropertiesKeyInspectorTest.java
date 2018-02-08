@@ -48,23 +48,13 @@ public class DuplicatePropertiesKeyInspectorTest
 {
 
 	@Test
-	public void testFindRedundantValues()
-	{
-		final Properties properties = new Properties();
-		properties.setProperty("com", "bar");
-		properties.setProperty("bar", "foo");
-		properties.setProperty("foo", "foo");
-		final Map<String, List<String>> redundantValues = DuplicatePropertiesKeyInspector.findRedundantValues(properties);
-		assertEquals(redundantValues.size(), 1);
-	}
-
-	@Test
-	public void testDuplicatePropertiesKeyInspectorFile()  throws IOException
+	public void testDuplicatePropertiesKeyInspectorFile() throws IOException
 	{
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "resources.properties";
 		final File propertiesFile = new File(dir, propertiesFilename);
-		final DuplicatePropertiesKeyInspector duplicatePropertiesKeyInspector = new DuplicatePropertiesKeyInspector(propertiesFile);
+		final DuplicatePropertiesKeyInspector duplicatePropertiesKeyInspector = new DuplicatePropertiesKeyInspector(
+			propertiesFile);
 		assertNotNull(duplicatePropertiesKeyInspector);
 	}
 
@@ -74,8 +64,21 @@ public class DuplicatePropertiesKeyInspectorTest
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "resources.properties";
 		final File propertiesFile = new File(dir, propertiesFilename);
-		final DuplicatePropertiesKeyInspector duplicatePropertiesKeyInspector = new DuplicatePropertiesKeyInspector(StreamExtensions.getInputStream(propertiesFile));
+		final DuplicatePropertiesKeyInspector duplicatePropertiesKeyInspector = new DuplicatePropertiesKeyInspector(
+			StreamExtensions.getInputStream(propertiesFile));
 		assertNotNull(duplicatePropertiesKeyInspector);
+	}
+
+	@Test
+	public void testFindRedundantValues()
+	{
+		final Properties properties = new Properties();
+		properties.setProperty("com", "bar");
+		properties.setProperty("bar", "foo");
+		properties.setProperty("foo", "foo");
+		final Map<String, List<String>> redundantValues = DuplicatePropertiesKeyInspector
+			.findRedundantValues(properties);
+		assertEquals(redundantValues.size(), 1);
 	}
 
 	/**
@@ -105,8 +108,6 @@ public class DuplicatePropertiesKeyInspectorTest
 			values.get(1).equals("testvalue3"));
 
 	}
-
-
 
 
 }

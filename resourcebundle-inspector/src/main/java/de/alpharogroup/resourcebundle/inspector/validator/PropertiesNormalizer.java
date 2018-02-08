@@ -158,7 +158,8 @@ public class PropertiesNormalizer
 			int r;
 			while ((r = bufferIn.read()) != -1)
 			{
-				if(r == 65533) {
+				if (r == 65533)
+				{
 					return true;
 				}
 				final char ch = (char)r;

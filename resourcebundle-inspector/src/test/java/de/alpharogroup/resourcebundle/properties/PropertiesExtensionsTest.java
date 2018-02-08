@@ -37,7 +37,8 @@ import de.alpharogroup.lang.model.ClassModel;
 import de.alpharogroup.lang.model.MethodModel;
 
 /**
- * The unit test class for the class {@link de.alpharogroup.resourcebundle.dep.PropertiesExtensions}.
+ * The unit test class for the class
+ * {@link de.alpharogroup.resourcebundle.dep.PropertiesExtensions}.
  *
  * @version 1.0
  * @author Asterios Raptis
