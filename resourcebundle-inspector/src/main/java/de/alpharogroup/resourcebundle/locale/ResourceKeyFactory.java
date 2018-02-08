@@ -31,7 +31,7 @@ import lombok.experimental.UtilityClass;
  * A factory for creating new resource(properties) key as {@link String} objects.
  */
 @UtilityClass
-public class ResourceKeyFactory
+public final class ResourceKeyFactory
 {
 
 	/**
@@ -67,7 +67,7 @@ public class ResourceKeyFactory
 	 *            The generic type of the given object.
 	 * @return The generated resource key.
 	 */
-	public static <T> String newResourceKey(final T object, boolean simpleName,
+	public static <T> String newResourceKey(final T object, final boolean simpleName,
 		final String keySuffix)
 	{
 		return ClassExtensions.getName(object.getClass(), simpleName) + '.' + keySuffix;

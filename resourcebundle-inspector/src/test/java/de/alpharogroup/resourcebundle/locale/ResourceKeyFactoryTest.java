@@ -24,6 +24,10 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
@@ -54,6 +58,17 @@ public class ResourceKeyFactoryTest
 	{
 		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), "foo");
 		AssertJUnit.assertEquals("Person.foo", resourceKey);
+	}
+
+	/**
+	 * Test method for {@link ResourceKeyFactory}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
+			UnsupportedOperationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(ResourceKeyFactory.class);
 	}
 
 }
