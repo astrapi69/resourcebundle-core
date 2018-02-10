@@ -19,14 +19,14 @@ The source code comes under the liberal MIT License, making resourcebundle-inspe
 ## Maven dependency
 
 Maven dependency is now on sonatype.
-Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~de.alpharogroup~resourcebundle-core~~~) for latest snapshots and releases.
+Check out [sonatype repository](https://oss.sonatype.org/#nexus-search;quick~resourcebundle-inspector) for latest snapshots and releases.
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of resourcebundle-core:
 
 Than you can add the dependency to your dependencies:
 
 		<!-- RESOURCEBUNDLE-CORE versions -->
-		<resourcebundle-core.version>2.17.0</resourcebundle-core.version>
+		<resourcebundle-core.version>2.18.0</resourcebundle-core.version>
 		<resourcebundle-inspector.version>${resourcebundle-core.version}</resourcebundle-inspector.version>
 
 		<dependencies>
