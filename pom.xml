@@ -204,13 +204,14 @@
 					<configuration>
 						<instrumentation>
 							<excludes>
+								<!-- abstract classes -->
 								<!-- enums -->
 								<!-- beans -->
-								<!-- interfaces -->
-								<!-- abstract classes -->
 								<!-- exceptions -->
+								<!-- interfaces -->
 								<!-- deprecated classes -->
 								<!-- constant classes with only constants -->
+								<!-- explicit abstract classes -->
 								<!-- explicit bean classes -->
 								<!-- explicit deprecated classes -->
 								<exclude>de/alpharogroup/resourcebundle/inspector/search/PropertiesFinder.class</exclude>								
@@ -247,11 +248,6 @@
 			<plugin>
 				<inherited>true</inherited>
 				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<inherited>true</inherited>
-				<artifactId>maven-eclipse-plugin</artifactId>
 			</plugin>
 
 		</plugins>
