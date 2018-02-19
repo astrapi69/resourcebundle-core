@@ -4,7 +4,11 @@
 Version 2.19.0-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update of parent version to 3.7.0
+- removed deprecated methods from class PropertiesFileExtensions
+- update of silly-collections version to 4.25.0
 
 Version 2.18.0
 -------------
