@@ -13,6 +13,7 @@ CHANGED:
 - update of parent version to 3.7.0
 - removed deprecated methods from class PropertiesFileExtensions
 - update of silly-collections version to 4.25.0
+- update of test-objects version to 4.23.0
 
 Version 2.18.0
 -------------
