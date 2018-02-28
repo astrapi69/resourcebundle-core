@@ -35,12 +35,48 @@ import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
+import de.alpharogroup.collections.array.ArrayExtensions;
+
 /**
  * The unit test class {@link ResourceBundleExtensionsTest} provides unit tests for the class
  * {@link ResourceBundleExtensions}.
  */
 public class ResourceBundleExtensionsTest
 {
+
+	/**
+	 * Test method for {@link ResourceBundleExtensions#format(String, Object...)}.
+	 */
+	@Test
+	public void testFormat()
+	{
+		String expected;
+		String actual;
+		Object[] parameters;
+		String value;
+
+		value = "Hello i am {0} and i come from {1}.";
+		actual = ResourceBundleExtensions.format(value, "Brad", "Hollywood");
+		expected = "Hello i am Brad and i come from Hollywood.";
+		assertEquals(expected, actual);
+
+
+		parameters = ArrayExtensions.newArray( "Brad", "Hollywood");
+
+		value = "Hallo ich bin {0} und komme aus {1}.";
+		actual = ResourceBundleExtensions.format(value, parameters);
+		expected = "Hallo ich bin Brad und komme aus Hollywood.";
+		assertEquals(expected, actual);
+
+		parameters = null;
+
+		value = "Hallo ich bin {0} und komme aus {1}.";
+		actual = ResourceBundleExtensions.format(value, parameters);
+		expected = "Hallo ich bin {0} und komme aus {1}.";
+		assertEquals(expected, actual);
+
+
+	}
 
 	/**
 	 * Test method for {@link ResourceBundleExtensions#getString(BundleKey)}.
@@ -50,8 +86,21 @@ public class ResourceBundleExtensionsTest
 	{
 		String expected;
 		String actual;
-		final Object[] parameters = { "foo", "bar" };
-		final BundleKey bundleKey = BundleKey.builder().baseName("test").locale(Locale.UK)
+		Object[] parameters;
+		BundleKey bundleKey;
+
+		parameters = ArrayExtensions.newArray( "foo", "bar");
+		bundleKey = BundleKey.builder().baseName("test").locale(Locale.UK)
+			.resourceBundleKey(
+				ResourceBundleKey.builder().key("com.example.gui.prop.with.params.label")
+					.defaultValue("default value of com.example.gui.prop.with.params.label")
+					.parameters(parameters).build())
+			.build();
+		actual = ResourceBundleExtensions.getString(bundleKey);
+		expected = "Hello i am foo and i come from bar.";
+		assertEquals(expected, actual);
+
+		bundleKey = BundleKey.builder().baseName("test").locale(Locale.UK)
 			.resourceBundleKey(
 				ResourceBundleKey.builder().key("com.example.gui.prop.with.params.label")
 					.defaultValue("default value of com.example.gui.prop.with.params.label")
