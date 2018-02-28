@@ -4,6 +4,10 @@
 Version 2.19.0-SNAPSHOT
 -------------
 
+ADDED:
+ 
+- new method for format a pattern string with arguments in ResourceBundleExtensions
+
 CHANGED:
 
 - update of parent version to 3.7.0
