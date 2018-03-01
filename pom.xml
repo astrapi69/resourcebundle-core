@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>3.7.0</version>
+		<version>3.9.0</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -36,8 +36,6 @@
 		<nv-i18n.version>1.22</nv-i18n.version>
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.6</commons-io.version>
-		<!-- MEANBEAN version -->
-		<meanbean.version>2.0.3</meanbean.version>
 		<!-- MEANBEAN-FACTORIES version -->
 		<meanbean-factories.version>1.0.0</meanbean-factories.version>
 	</properties>
@@ -128,12 +126,6 @@
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${commons-io.version}</version>
-			</dependency>
-			<!-- MEANBEAN DEPENDENCY -->
-			<dependency>
-				<groupId>org.meanbean</groupId>
-				<artifactId>meanbean</artifactId>
-				<version>${meanbean.version}</version>
 			</dependency>
 			<!-- MEANBEAN-FACTORIES DEPENDENCY -->
 			<dependency>
