@@ -42,8 +42,7 @@ import org.testng.annotations.Test;
 /**
  * The class {@link PropertiesLineReader}.
  */
-public class PropertiesLineReaderTest
-{
+public class PropertiesLineReaderTest {
 
 	/**
 	 * Test method for {@link PropertiesLineReader#getLineBuffer()}.
@@ -52,8 +51,7 @@ public class PropertiesLineReaderTest
 	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testGetLineBuffer() throws IOException
-	{
+	public void testGetLineBuffer() throws IOException {
 		final URL resource = getClass().getClassLoader().getResource("resources.properties");
 
 		final PropertiesLineReader lineReader = new PropertiesLineReader(resource.openStream());
@@ -63,14 +61,14 @@ public class PropertiesLineReaderTest
 	}
 
 	/**
-	 * Test the constructor of {@link PropertiesLineReader} with {@linkplain InputStream}.
+	 * Test the constructor of {@link PropertiesLineReader} with
+	 * {@linkplain InputStream}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testPropertiesLineReaderInputStream() throws IOException
-	{
+	public void testPropertiesLineReaderInputStream() throws IOException {
 		final URL resource = getClass().getClassLoader().getResource("resources.properties");
 
 		final PropertiesLineReader lineReader = new PropertiesLineReader(resource.openStream());
@@ -78,18 +76,17 @@ public class PropertiesLineReaderTest
 	}
 
 	/**
-	 * Test the constructor of {@link PropertiesLineReader} with {@linkplain Reader}.
+	 * Test the constructor of {@link PropertiesLineReader} with
+	 * {@linkplain Reader}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testPropertiesLineReaderReader() throws IOException
-	{
+	public void testPropertiesLineReaderReader() throws IOException {
 		final URL resource = getClass().getClassLoader().getResource("resources.properties");
 
-		final PropertiesLineReader lineReader = new PropertiesLineReader(
-			new InputStreamReader(resource.openStream()));
+		final PropertiesLineReader lineReader = new PropertiesLineReader(new InputStreamReader(resource.openStream()));
 		assertNotNull(lineReader);
 	}
 
@@ -99,8 +96,7 @@ public class PropertiesLineReaderTest
 	 * @throws IOException
 	 */
 	@Test
-	public void testReadLine() throws IOException
-	{
+	public void testReadLine() throws IOException {
 		int expected;
 		int actual;
 
@@ -114,14 +110,12 @@ public class PropertiesLineReaderTest
 		assertEquals(expected, actual);
 	}
 
-
 	/**
 	 * Test method for {@link PropertiesLineReader}
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
 			UnsupportedOperationException.class })
-	public void testWithBeanTester()
-	{
+	public void testWithBeanTester() {
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(PropertiesLineReader.class);
 	}

@@ -28,16 +28,16 @@ import de.alpharogroup.lang.ClassExtensions;
 import lombok.experimental.UtilityClass;
 
 /**
- * A factory for creating new resource(properties) key as {@link String} objects.
+ * A factory for creating new resource(properties) key as {@link String}
+ * objects.
  */
 @UtilityClass
-public final class ResourceKeyFactory
-{
+public final class ResourceKeyFactory {
 
 	/**
-	 * Creates a new resource key from the given object and the given key. The simple name of the
-	 * given object will be taken as the prefix and the given keySuffix will be taken as suffix for
-	 * the generated resource key.
+	 * Creates a new resource key from the given object and the given key. The
+	 * simple name of the given object will be taken as the prefix and the given
+	 * keySuffix will be taken as suffix for the generated resource key.
 	 *
 	 * @param object
 	 *            The object that will be used to generate the resource key.
@@ -47,15 +47,14 @@ public final class ResourceKeyFactory
 	 *            The generic type of the given object.
 	 * @return The generated resource key.
 	 */
-	public static <T> String newResourceKey(final T object, final String keySuffix)
-	{
+	public static <T> String newResourceKey(final T object, final String keySuffix) {
 		return ResourceKeyFactory.newResourceKey(object, true, keySuffix);
 	}
 
 	/**
-	 * Creates a new resource key from the given object and the given key. The name of the given
-	 * object will be taken as the prefix and the given keySuffix will be taken as suffix for the
-	 * generated resource key.
+	 * Creates a new resource key from the given object and the given key. The
+	 * name of the given object will be taken as the prefix and the given
+	 * keySuffix will be taken as suffix for the generated resource key.
 	 *
 	 * @param object
 	 *            The object that will be used to generate the resource key.
@@ -67,9 +66,7 @@ public final class ResourceKeyFactory
 	 *            The generic type of the given object.
 	 * @return The generated resource key.
 	 */
-	public static <T> String newResourceKey(final T object, final boolean simpleName,
-		final String keySuffix)
-	{
+	public static <T> String newResourceKey(final T object, final boolean simpleName, final String keySuffix) {
 		return ClassExtensions.getName(object.getClass(), simpleName) + '.' + keySuffix;
 	}
 }

@@ -35,15 +35,14 @@ import org.testng.annotations.Test;
 /**
  * The unit test class for the class {@link PropertiesFileTypeExtensions}.
  */
-public class PropertiesFileTypeExtensionsTest
-{
+public class PropertiesFileTypeExtensionsTest {
 
 	/**
-	 * Test method for {@link PropertiesFileTypeExtensions#getPropertiesFileExtension()}
+	 * Test method for
+	 * {@link PropertiesFileTypeExtensions#getPropertiesFileExtension()}
 	 */
 	@Test
-	public void testGetPropertiesFileExtension()
-	{
+	public void testGetPropertiesFileExtension() {
 
 		String actual;
 		String expected;
@@ -66,8 +65,7 @@ public class PropertiesFileTypeExtensionsTest
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
 			UnsupportedOperationException.class })
-	public void testWithBeanTester()
-	{
+	public void testWithBeanTester() {
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(PropertiesFileTypeExtensions.class);
 	}

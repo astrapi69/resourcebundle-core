@@ -30,11 +30,10 @@ import java.io.FilenameFilter;
 import lombok.Getter;
 
 /**
- * The Class {@link PropertiesXmlResourceBundleFilenameFilter} for accept only bundle properties
- * files with various locale extensions.
+ * The Class {@link PropertiesXmlResourceBundleFilenameFilter} for accept only
+ * bundle properties files with various locale extensions.
  */
-public class PropertiesXmlResourceBundleFilenameFilter implements FilenameFilter
-{
+public class PropertiesXmlResourceBundleFilenameFilter implements FilenameFilter {
 
 	/** The bundlename. */
 	@Getter
@@ -46,8 +45,7 @@ public class PropertiesXmlResourceBundleFilenameFilter implements FilenameFilter
 	 * @param bundlename
 	 *            the bundlename
 	 */
-	public PropertiesXmlResourceBundleFilenameFilter(final String bundlename)
-	{
+	public PropertiesXmlResourceBundleFilenameFilter(final String bundlename) {
 		this.bundlename = bundlename;
 	}
 
@@ -55,8 +53,7 @@ public class PropertiesXmlResourceBundleFilenameFilter implements FilenameFilter
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean accept(final File dir, final String name)
-	{
+	public boolean accept(final File dir, final String name) {
 		return name.matches("^" + this.bundlename + "(_\\w{2}(_\\w{2})?)?\\.properties.xml$");
 	}
 

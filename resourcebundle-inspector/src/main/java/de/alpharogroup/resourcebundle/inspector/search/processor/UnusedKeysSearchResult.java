@@ -45,8 +45,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class UnusedKeysSearchResult
-{
+public class UnusedKeysSearchResult {
 
 	/** The unused keys. */
 	@Builder.Default

@@ -27,8 +27,7 @@ package de.alpharogroup.resourcebundle.inspector.core;
 /**
  * The Class {@link Umlaute} have the chars of the german 'umlaute'.
  */
-public final class Umlaute
-{
+public final class Umlaute {
 
 	/** The Constant ae. */
 	public static final char ae = '\u00E4';
@@ -42,12 +41,12 @@ public final class Umlaute
 	/** The Constant OE. */
 	public static final char OE = '\u00D6';
 
+	/** The Constant sss. */
+	public static final char sss = '\u00DF';
+
 	/** The Constant ue. */
 	public static final char ue = '\u00FC';
 
 	/** The Constant UE. */
 	public static final char UE = '\u00DC';
-
-	/** The Constant sss. */
-	public static final char sss = '\u00DF';
 }

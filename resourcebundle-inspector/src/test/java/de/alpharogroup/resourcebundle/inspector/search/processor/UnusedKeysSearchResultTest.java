@@ -36,42 +36,35 @@ import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluat
 /**
  * The unit test class for the class {@link UnusedKeysSearchResult}.
  */
-public class UnusedKeysSearchResultTest
-{
+public class UnusedKeysSearchResultTest {
 
 	/**
 	 * Test method for {@link UnusedKeysSearchResult#equals(Object)} ,
-	 * {@link UnusedKeysSearchResult#hashCode()} and {@link UnusedKeysSearchResult#toString()}
+	 * {@link UnusedKeysSearchResult#hashCode()} and
+	 * {@link UnusedKeysSearchResult#toString()}
 	 */
 	@Test
-	public void testEqualsHashcodeAndToString()
-	{
+	public void testEqualsHashcodeAndToString() {
 		boolean expected;
 		boolean actual;
 
 		final UnusedKeysSearchResult first = UnusedKeysSearchResult.builder().build();
 
-
 		final UnusedKeysSearchResult second = new UnusedKeysSearchResult();
-
 
 		final UnusedKeysSearchResult third = UnusedKeysSearchResult.builder().build();
 		final UnusedKeysSearchResult fourth = UnusedKeysSearchResult.builder().build();
 
-
-		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
-			third, fourth);
+		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second, third, fourth);
 		expected = true;
 		assertEquals(expected, actual);
 	}
-
 
 	/**
 	 * Test method for {@link UnusedKeysSearchResult}
 	 */
 	@Test
-	public void testWithBeanTester()
-	{
+	public void testWithBeanTester() {
 		final Configuration configuration = new ConfigurationBuilder().build();
 		final BeanTester beanTester = new BeanTester();
 		beanTester.addCustomConfiguration(UnusedKeysSearchResult.class, configuration);

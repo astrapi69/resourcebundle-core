@@ -45,8 +45,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class BundleKey implements Serializable
-{
+public class BundleKey implements Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5908869747802483688L;

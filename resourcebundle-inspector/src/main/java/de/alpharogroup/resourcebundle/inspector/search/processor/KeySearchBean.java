@@ -39,8 +39,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The Class KeySearchModel is model for search keys in all kind of files. For instance in java
- * files.
+ * The Class KeySearchModel is model for search keys in all kind of files. For
+ * instance in java files.
  */
 @Getter
 @Setter
@@ -49,8 +49,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class KeySearchBean
-{
+public class KeySearchBean {
 
 	/**
 	 * The Properties that contain the keys to search.
@@ -58,7 +57,7 @@ public class KeySearchBean
 	private Properties base;
 
 	/** The files to be excluded. */
-	@ Builder.Default
+	@Builder.Default
 	private Set<File> exclude = new HashSet<>();
 
 	/** The file extensions to find. */

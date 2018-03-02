@@ -46,13 +46,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class ResourceBundleKey implements Serializable
-{
+public class ResourceBundleKey implements Serializable {
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The default value.
+	 */
+	private String defaultValue;
 
 	/**
 	 * The resource bundle key.
@@ -66,16 +70,10 @@ public class ResourceBundleKey implements Serializable
 	private Object[] parameters;
 
 	/**
-	 * The default value.
-	 */
-	private String defaultValue;
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ResourceBundleKey clone()
-	{
+	public ResourceBundleKey clone() {
 		return CloneObjectQuietlyExtensions.cloneQuietly(this);
 	}
 

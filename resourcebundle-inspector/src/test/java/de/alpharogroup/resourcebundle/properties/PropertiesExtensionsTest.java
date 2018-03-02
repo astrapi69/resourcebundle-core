@@ -43,15 +43,11 @@ import de.alpharogroup.lang.model.MethodModel;
  * @version 1.0
  * @author Asterios Raptis
  */
-public class PropertiesExtensionsTest
-{
+public class PropertiesExtensionsTest {
 
-	private void getClassModels(final Map<String, List<String>> matchedPrefixes,
-		final String localeAnnotationName, final Map<String, ClassModel> interfaces,
-		final Properties ruProperties)
-	{
-		for (final Map.Entry<String, List<String>> entry : matchedPrefixes.entrySet())
-		{
+	private void getClassModels(final Map<String, List<String>> matchedPrefixes, final String localeAnnotationName,
+			final Map<String, ClassModel> interfaces, final Properties ruProperties) {
+		for (final Map.Entry<String, List<String>> entry : matchedPrefixes.entrySet()) {
 			final String key = entry.getKey();
 			final List<String> propertyKeyValues = entry.getValue();
 			ClassModel classModel = null;
@@ -61,94 +57,77 @@ public class PropertiesExtensionsTest
 			String interfaceName = null;
 			String methodName = "";
 			MethodModel method = null;
-			if (0 < lastIndex)
-			{
+			if (0 < lastIndex) {
 				interfaceName = key.substring(lastIndex + 1, key.length());
-				if (interfaces.containsKey(interfaceName))
-				{
+				if (interfaces.containsKey(interfaceName)) {
 					classModel = interfaces.get(interfaceName);
 					methods = classModel.getMethods();
-					for (final String value : propertyKeyValues)
-					{
+					for (final String value : propertyKeyValues) {
 						methodName = value.substring(key.length() + 1, value.length());
 						method = methods.get(methodName);
-						final String propertyValue = (String)ruProperties.get(value);
+						final String propertyValue = (String) ruProperties.get(value);
 						final AnnotationModel annotation = new AnnotationModel();
 						method.getMethodAnnotations().add(annotation);
 						annotation.setName(localeAnnotationName);
 						annotation.setValue(propertyValue);
-						method.setParameters(
-							PropertiesExtensions.getPropertyParameters(propertyValue));
+						method.setParameters(PropertiesExtensions.getPropertyParameters(propertyValue));
 					}
-				}
-				else
-				{
+				} else {
 					classModel = new ClassModel();
 					classModel.setClassName(interfaceName);
 					methods = new LinkedHashMap<>();
 					classModel.setMethods(methods);
 					packageName = key.substring(0, lastIndex);
 					classModel.setPackageName(packageName);
-					for (final String value : propertyKeyValues)
-					{
+					for (final String value : propertyKeyValues) {
 						methodName = value.substring(key.length() + 1, value.length());
 						method = new MethodModel();
 						method.setMethodAnnotations(new ArrayList<AnnotationModel>());
 						methods.put(methodName, method);
 						method.setMethodName(methodName);
-						final String propertyValue = (String)ruProperties.get(value);
+						final String propertyValue = (String) ruProperties.get(value);
 						final AnnotationModel annotation = new AnnotationModel();
 						method.getMethodAnnotations().add(annotation);
 						annotation.setName(localeAnnotationName);
 						annotation.setValue(propertyValue);
-						method.setParameters(
-							PropertiesExtensions.getPropertyParameters(propertyValue));
+						method.setParameters(PropertiesExtensions.getPropertyParameters(propertyValue));
 					}
 					interfaces.put(interfaceName, classModel);
 				}
 
-			}
-			else
-			{
+			} else {
 				interfaceName = key;
-				if (interfaces.containsKey(interfaceName))
-				{
+				if (interfaces.containsKey(interfaceName)) {
 					classModel = interfaces.get(interfaceName);
 					methods = classModel.getMethods();
-					for (final String value : propertyKeyValues)
-					{
+					for (final String value : propertyKeyValues) {
 						methodName = value;
 						method = methods.get(methodName);
-						final String propertyValue = (String)ruProperties.get(value);
+						final String propertyValue = (String) ruProperties.get(value);
 						final AnnotationModel annotation = new AnnotationModel();
 						method.getMethodAnnotations().add(annotation);
 						annotation.setName(localeAnnotationName);
 						annotation.setValue(propertyValue);
-						method.setParameters(
-							PropertiesExtensions.getPropertyParameters(propertyValue));
+						method.setParameters(PropertiesExtensions.getPropertyParameters(propertyValue));
 					}
-				}
-				else
-				{
+				} else {
 					interfaceName = key;
 					classModel = new ClassModel();
 					methods = new LinkedHashMap<>();
 					classModel.setMethods(methods);
 					classModel.setClassName(interfaceName);
-					for (final String value : propertyKeyValues)
-					{
+					for (final String value : propertyKeyValues) {
 						methodName = value;
 						method = new MethodModel();
 						method.setMethodAnnotations(new ArrayList<AnnotationModel>());
 						methods.put(methodName, method);
 						method.setMethodName(methodName);
-						final String propertyValue = (String)ruProperties.get(value);
+						final String propertyValue = (String) ruProperties.get(value);
 						final AnnotationModel annotation = new AnnotationModel();
 						method.getMethodAnnotations().add(annotation);
 						annotation.setName(localeAnnotationName);
 						annotation.setValue(propertyValue);
-						method.setParameters(
-							PropertiesExtensions.getPropertyParameters(propertyValue));
+						method.setParameters(PropertiesExtensions.getPropertyParameters(propertyValue));
 					}
 					interfaces.put(interfaceName, classModel);
 				}
@@ -157,8 +136,7 @@ public class PropertiesExtensionsTest
 	}
 
 	// @Test
-	public void test()
-	{
+	public void test() {
 
 		final Properties enProperties = new SortedProperties();
 
@@ -167,11 +145,9 @@ public class PropertiesExtensionsTest
 		enProperties.put("com.example.gui.window.buttons.ok", "OK");
 		enProperties.put("com.example.gui.window.buttons.cancel", "Cancel");
 
-		Map<String, List<String>> matchedPrefixes = PropertiesExtensions
-			.getMatchedPrefixLists(enProperties);
+		Map<String, List<String>> matchedPrefixes = PropertiesExtensions.getMatchedPrefixLists(enProperties);
 		String localeAnnotationName = "En";
 		final Map<String, ClassModel> interfaces = new LinkedHashMap<>();
-
 
 		getClassModels(matchedPrefixes, localeAnnotationName, interfaces, enProperties);
 

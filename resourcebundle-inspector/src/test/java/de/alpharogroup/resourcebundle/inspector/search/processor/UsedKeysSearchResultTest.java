@@ -36,44 +36,36 @@ import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluat
 /**
  * The unit test class for the class {@link UsedKeysSearchResult}.
  */
-public class UsedKeysSearchResultTest
-{
+public class UsedKeysSearchResultTest {
 
 	/**
 	 * Test method for {@link UsedKeysSearchResult#equals(Object)} ,
-	 * {@link UsedKeysSearchResult#hashCode()} and {@link UsedKeysSearchResult#toString()}
+	 * {@link UsedKeysSearchResult#hashCode()} and
+	 * {@link UsedKeysSearchResult#toString()}
 	 */
 	@Test
-	public void testEqualsHashcodeAndToString()
-	{
+	public void testEqualsHashcodeAndToString() {
 		boolean expected;
 		boolean actual;
 
 		final UsedKeysSearchResult first = UsedKeysSearchResult.builder().build();
 
-
 		final UsedKeysSearchResult second = new UsedKeysSearchResult();
-
 
 		final UsedKeysSearchResult third = UsedKeysSearchResult.builder().build();
 		final UsedKeysSearchResult fourth = UsedKeysSearchResult.builder().build();
 
-
-		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
-			third, fourth);
+		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second, third, fourth);
 		expected = true;
 		assertEquals(expected, actual);
 	}
-
 
 	/**
 	 * Test method for {@link UsedKeysSearchResult}
 	 */
 	@Test
-	public void testWithBeanTester()
-	{
-		final Configuration configuration = new ConfigurationBuilder().ignoreProperty("searchModel")
-			.build();
+	public void testWithBeanTester() {
+		final Configuration configuration = new ConfigurationBuilder().ignoreProperty("searchModel").build();
 		final BeanTester beanTester = new BeanTester();
 		beanTester.addCustomConfiguration(UsedKeysSearchResult.class, configuration);
 		beanTester.testBean(UsedKeysSearchResult.class);

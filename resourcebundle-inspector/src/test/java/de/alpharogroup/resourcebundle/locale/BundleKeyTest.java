@@ -39,38 +39,31 @@ import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluat
 /**
  * The unit test class for the class {@link BundleKey}.
  */
-public class BundleKeyTest
-{
+public class BundleKeyTest {
 
 	/**
-	 * Test method for {@link BundleKey#equals(Object)} , {@link BundleKey#hashCode()} and
-	 * {@link BundleKey#toString()}
+	 * Test method for {@link BundleKey#equals(Object)} ,
+	 * {@link BundleKey#hashCode()} and {@link BundleKey#toString()}
 	 */
 	@Test
-	public void testEqualsHashcodeAndToString()
-	{
+	public void testEqualsHashcodeAndToString() {
 		boolean expected;
 		boolean actual;
 
-
 		final BundleKey first = BundleKey.builder().baseName("resources").locale(Locale.CANADA)
-			.resourceBundleKey(ResourceBundleKey.builder().key("foo").build()).build();
-
+				.resourceBundleKey(ResourceBundleKey.builder().key("foo").build()).build();
 
 		final BundleKey second = BundleKey.builder().baseName("messages").locale(Locale.ENGLISH)
-			.resourceBundleKey(ResourceBundleKey.builder().key("bar").build()).build();
-
+				.resourceBundleKey(ResourceBundleKey.builder().key("bar").build()).build();
 
 		final BundleKey third = new BundleKey();
 		third.setBaseName("resources");
 		third.setLocale(Locale.CANADA);
 		third.setResourceBundleKey(new ResourceBundleKey("foo", null, null));
 		final BundleKey fourth = new BundleKey("resources", Locale.CANADA,
-			ResourceBundleKey.builder().key("foo").build());
+				ResourceBundleKey.builder().key("foo").build());
 
-
-		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
-			third, fourth);
+		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second, third, fourth);
 		expected = true;
 		assertEquals(expected, actual);
 	}
@@ -79,11 +72,9 @@ public class BundleKeyTest
 	 * Test method for {@link BundleKey}
 	 */
 	@Test
-	public void testWithBeanTester()
-	{
-		final Configuration configuration = new ConfigurationBuilder()
-			.ignoreProperty("resourceBundleKey").overrideFactory("locale", new LocaleFactory())
-			.build();
+	public void testWithBeanTester() {
+		final Configuration configuration = new ConfigurationBuilder().ignoreProperty("resourceBundleKey")
+				.overrideFactory("locale", new LocaleFactory()).build();
 		final BeanTester beanTester = new BeanTester();
 		beanTester.addCustomConfiguration(BundleKey.class, configuration);
 		beanTester.testBean(BundleKey.class);

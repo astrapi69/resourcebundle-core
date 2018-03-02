@@ -39,15 +39,13 @@ import com.neovisionaries.i18n.LocaleCode;
 /**
  * The unit test class for the class {@link LocaleValidator}
  */
-public class LocaleValidatorTest
-{
+public class LocaleValidatorTest {
 
 	/**
 	 * Test method for {@link LocaleValidator#validate(String)}.
 	 */
 	@Test
-	public void testValidate()
-	{
+	public void testValidate() {
 		String actual = "de";
 		assertTrue(LocaleValidator.validate(actual));
 		final Locale l = LocaleCode.getByCode(actual, true).toLocale();
@@ -62,8 +60,7 @@ public class LocaleValidatorTest
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
 			UnsupportedOperationException.class })
-	public void testWithBeanTester()
-	{
+	public void testWithBeanTester() {
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(LocaleValidator.class);
 	}

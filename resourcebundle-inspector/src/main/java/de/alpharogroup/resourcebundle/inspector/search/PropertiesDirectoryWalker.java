@@ -37,15 +37,13 @@ import de.alpharogroup.file.filter.MultiplyExtensionsFileFilter;
 /**
  * The Class PropertiesDirectoryWalker finds Properties files.
  */
-public class PropertiesDirectoryWalker extends DirectoryWalker<File>
-{
+public class PropertiesDirectoryWalker extends DirectoryWalker<File> {
 	private final List<File> files;
 
 	/**
 	 * Instantiates a new properties directory walker.
 	 */
-	public PropertiesDirectoryWalker()
-	{
+	public PropertiesDirectoryWalker() {
 		super(new MultiplyExtensionsFileFilter(true, FileExtension.PROPERTIES.getExtension()), -1);
 		files = new ArrayList<>();
 	}
@@ -58,8 +56,7 @@ public class PropertiesDirectoryWalker extends DirectoryWalker<File>
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void start(final File dir) throws IOException
-	{
+	public void start(final File dir) throws IOException {
 		walk(dir, files);
 	}
 }

@@ -36,41 +36,32 @@ import de.alpharogroup.file.search.FileSearchExtensions;
 /**
  * The class {@link UsedKeysSearchFilter} finds the used keys from.
  */
-public class UsedKeysSearchFilter implements FilterProcessor<KeySearchBean, UsedKeysSearchResult>
-{
+public class UsedKeysSearchFilter implements FilterProcessor<KeySearchBean, UsedKeysSearchResult> {
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public UsedKeysSearchResult process(final KeySearchBean searchModel)
-	{
+	public UsedKeysSearchResult process(final KeySearchBean searchModel) {
 		UsedKeysSearchResult result;
-		try
-		{
+		try {
 			// Find
-			final List<File> foundFiles = FileSearchExtensions
-				.findFilesWithFilter(searchModel.getSearchDir(), searchModel.getFileExtensions());
+			final List<File> foundFiles = FileSearchExtensions.findFilesWithFilter(searchModel.getSearchDir(),
+					searchModel.getFileExtensions());
 			result = UsedKeysSearchResult.builder().used(new Properties()).build();
 			result.setSearchModel(searchModel);
-			for (final File file : foundFiles)
-			{
-				if (!searchModel.getExclude().contains(file))
-				{
+			for (final File file : foundFiles) {
+				if (!searchModel.getExclude().contains(file)) {
 					final String fileContent = FileUtils.readFileToString(file, "UTF-8");
-					for (final Object key : searchModel.getBase().keySet())
-					{
+					for (final Object key : searchModel.getBase().keySet()) {
 						final String k = "\"" + key.toString().trim() + "\"";
-						if (fileContent.contains(k))
-						{
+						if (fileContent.contains(k)) {
 							result.getUsed().put(key, searchModel.getBase().get(key));
 						}
 					}
 				}
 			}
-		}
-		catch (final IOException e)
-		{
+		} catch (final IOException e) {
 			throw new RuntimeException(e);
 		}
 		return result;

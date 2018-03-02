@@ -37,24 +37,23 @@ import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 import lombok.Getter;
 
 /**
- * The Class {@link PropertiesListResolver} finds all properties files from the given root directory
- * and save it to a key value list with the locales.
+ * The Class {@link PropertiesListResolver} finds all properties files from the
+ * given root directory and save it to a key value list with the locales.
  */
 @Getter
-public class PropertiesListResolver
-{
+public class PropertiesListResolver {
+
+	/** The default locale. */
+	private final Locale defaultLocale;
 
 	/**
-	 * The properties list with {@linkplain KeyValuePair} objects as properties file as key and the
-	 * locale string code as value.
+	 * The properties list with {@linkplain KeyValuePair} objects as properties
+	 * file as key and the locale string code as value.
 	 */
 	private final List<KeyValuePair<File, Locale>> propertiesList = new ArrayList<>();
 
 	/** The root dir. */
 	private final File rootDir;
-
-	/** The default locale. */
-	private final Locale defaultLocale;
 
 	/**
 	 * Instantiates a new {@link PropertiesListResolver}.
@@ -64,12 +63,10 @@ public class PropertiesListResolver
 	 * @param defaultLocale
 	 *            the default locale
 	 */
-	public PropertiesListResolver(final File rootDir, final Locale defaultLocale)
-	{
+	public PropertiesListResolver(final File rootDir, final Locale defaultLocale) {
 		Check.get().notNull(rootDir, "rootDir");
 		Check.get().notNull(defaultLocale, "defaultLocale");
-		if (!rootDir.isDirectory())
-		{
+		if (!rootDir.isDirectory()) {
 			throw new IllegalArgumentException("rootDir is not a directory.");
 		}
 		this.rootDir = rootDir;
@@ -77,24 +74,20 @@ public class PropertiesListResolver
 	}
 
 	/**
-	 * Resolves the properties file from the given root directory and put the result to the
-	 * properties list with {@linkplain KeyValuePair} objects as properties file as key and the
-	 * locale string code as value.
+	 * Resolves the properties file from the given root directory and put the
+	 * result to the properties list with {@linkplain KeyValuePair} objects as
+	 * properties file as key and the locale string code as value.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void resolve() throws IOException
-	{
-		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
-		{
+	public void resolve() throws IOException {
+		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker() {
 			@Override
-			protected void handleFile(final File file, final int depth,
-				final Collection<File> results) throws IOException
-			{
+			protected void handleFile(final File file, final int depth, final Collection<File> results)
+					throws IOException {
 				final Locale locale = LocaleResolver.resolveLocale(file, defaultLocale, false);
-				propertiesList
-					.add(KeyValuePair.<File, Locale> builder().key(file).value(locale).build());
+				propertiesList.add(KeyValuePair.<File, Locale>builder().key(file).value(locale).build());
 			}
 		};
 		walker.start(rootDir);

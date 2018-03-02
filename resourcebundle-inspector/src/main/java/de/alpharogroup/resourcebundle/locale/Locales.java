@@ -28,25 +28,25 @@ import java.io.Serializable;
 import java.util.Locale;
 
 /**
- * The Class Locales provides constants for different Locales that are not in the Locale class.
+ * The Class Locales provides constants for different Locales that are not in
+ * the Locale class.
  *
  * @author Asterios Raptis
  */
-public final class Locales implements Serializable
-{
+public final class Locales implements Serializable {
 
-	/**
-	 * The serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+	/** Useful constant for the greek language. */
+	public static final Locale GREEK = new Locale("el");
 
 	/** Useful constant for the hellenic language. */
 	public static final Locale HELLENIC = new Locale("el", "GR");
 	/** Useful constant for the greek language. */
-	public static final Locale GREEK = new Locale("el");
-	/** Useful constant for the greek language. */
 	public static final Locale RUSSIAN = new Locale("ru");
 	/** Useful constant for the german language in variant schwaebisch. */
 	public static final Locale SCHWAEBISCH = new Locale("de", "DE", "schw");
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
 
 }

@@ -36,8 +36,7 @@ import org.testng.annotations.Test;
 /**
  * The class {@link PropertiesListResolver}.
  */
-public class PropertiesListResolverTest
-{
+public class PropertiesListResolverTest {
 
 	/**
 	 * Test method for the constructor of {@link PropertiesListResolver}.
@@ -46,12 +45,10 @@ public class PropertiesListResolverTest
 	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testPropertiesListResolver() throws IOException
-	{
+	public void testPropertiesListResolver() throws IOException {
 		final File expectedDir = new File(".");
 		final Locale expectedLocale = Locale.ENGLISH;
-		final PropertiesListResolver propertiesListResolver = new PropertiesListResolver(
-			expectedDir, expectedLocale);
+		final PropertiesListResolver propertiesListResolver = new PropertiesListResolver(expectedDir, expectedLocale);
 		assertNotNull(propertiesListResolver);
 		propertiesListResolver.resolve();
 		final File actualDir = propertiesListResolver.getRootDir();
@@ -61,15 +58,14 @@ public class PropertiesListResolverTest
 	}
 
 	/**
-	 * Test method for the constructor of {@link PropertiesListResolver} with given file and not
-	 * directory
+	 * Test method for the constructor of {@link PropertiesListResolver} with
+	 * given file and not directory
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void testPropertiesListResolverNotDirectory() throws IOException
-	{
+	public void testPropertiesListResolverNotDirectory() throws IOException {
 		final File expectedDir = new File("pom.xml");
 		final Locale expectedLocale = Locale.ENGLISH;
 		new PropertiesListResolver(expectedDir, expectedLocale);

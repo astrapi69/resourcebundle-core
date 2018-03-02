@@ -35,16 +35,14 @@ import de.alpharogroup.check.Check;
 import lombok.experimental.UtilityClass;
 
 /**
- * The class {@link ResourceBundleExtensions} holds extension methods for the class
- * {@link ResourceBundle}.
+ * The class {@link ResourceBundleExtensions} holds extension methods for the
+ * class {@link ResourceBundle}.
  */
 @UtilityClass
-public final class ResourceBundleExtensions
-{
+public final class ResourceBundleExtensions {
 
 	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger
-		.getLogger(ResourceBundleExtensions.class.getName());
+	protected static final Logger LOGGER = Logger.getLogger(ResourceBundleExtensions.class.getName());
 
 	/**
 	 * Gets the string from the given {@link ResourceBundle} object.
@@ -59,9 +57,8 @@ public final class ResourceBundleExtensions
 	 * @throws MissingResourceException
 	 *             is thrown if the given key is missing
 	 */
-	public static String getString(final ResourceBundle resourceBundle, final String key,
-		final Object... parameters) throws MissingResourceException
-	{
+	public static String getString(final ResourceBundle resourceBundle, final String key, final Object... parameters)
+			throws MissingResourceException {
 		return getString(resourceBundle, key, null, parameters);
 	}
 
@@ -77,8 +74,7 @@ public final class ResourceBundleExtensions
 	 * @return the {@link String} value from the given key
 	 */
 	public static String getStringQuietly(final ResourceBundle resourceBundle, final String key,
-		final Object... parameters)
-	{
+			final Object... parameters) {
 		return getStringQuietly(resourceBundle, key, null, parameters);
 	}
 
@@ -95,10 +91,9 @@ public final class ResourceBundleExtensions
 	 * @throws MissingResourceException
 	 *             is thrown if the given key is missing
 	 */
-	public static String getString(final ResourceBundle resourceBundle, final String key,
-		final String defaultValue) throws MissingResourceException
-	{
-		return getString(resourceBundle, key, defaultValue, (Object)null);
+	public static String getString(final ResourceBundle resourceBundle, final String key, final String defaultValue)
+			throws MissingResourceException {
+		return getString(resourceBundle, key, defaultValue, (Object) null);
 	}
 
 	/**
@@ -113,9 +108,8 @@ public final class ResourceBundleExtensions
 	 * @return the {@link String} value from the given key
 	 */
 	public static String getStringQuietly(final ResourceBundle resourceBundle, final String key,
-		final String defaultValue)
-	{
-		return getStringQuietly(resourceBundle, key, defaultValue, (Object)null);
+			final String defaultValue) {
+		return getStringQuietly(resourceBundle, key, defaultValue, (Object) null);
 	}
 
 	/**
@@ -133,9 +127,8 @@ public final class ResourceBundleExtensions
 	 * @throws MissingResourceException
 	 *             is thrown if the given key is missing
 	 */
-	public static String getString(final ResourceBundle resourceBundle, final String key,
-		final String defaultValue, final Object... parameters) throws MissingResourceException
-	{
+	public static String getString(final ResourceBundle resourceBundle, final String key, final String defaultValue,
+			final Object... parameters) throws MissingResourceException {
 		Check.get().notNull(resourceBundle, "resourceBundle").notEmpty(key, "key");
 		String value = null;
 		value = format(resourceBundle.getString(key), parameters);
@@ -145,15 +138,15 @@ public final class ResourceBundleExtensions
 	/**
 	 * Formats the given value with the given parameters.
 	 *
-	 * @param value the value with the pattern
-	 * @param parameters the parameters
+	 * @param value
+	 *            the value with the pattern
+	 * @param parameters
+	 *            the parameters
 	 * @see MessageFormat#format(String, Object...)
-     * @return the formatted string
+	 * @return the formatted string
 	 */
-	public static String format(String value, final Object... parameters)
-	{
-		if (parameters != null && 0 < parameters.length)
-		{
+	public static String format(String value, final Object... parameters) {
+		if (parameters != null && 0 < parameters.length) {
 			value = MessageFormat.format(value, parameters);
 		}
 		return value;
@@ -173,19 +166,14 @@ public final class ResourceBundleExtensions
 	 * @return the {@link String} value from the given key
 	 */
 	public static String getStringQuietly(final ResourceBundle resourceBundle, final String key,
-		final String defaultValue, final Object... parameters)
-	{
+			final String defaultValue, final Object... parameters) {
 		Check.get().notNull(resourceBundle, "resourceBundle").notEmpty(key, "key");
 		String value = null;
-		try
-		{
+		try {
 			value = getString(resourceBundle, key, defaultValue, parameters);
-		}
-		catch (final MissingResourceException e)
-		{
+		} catch (final MissingResourceException e) {
 			final String warnMessage = "Warning:!!!Missing key is '" + key + "'!!!";
-			if (defaultValue != null && !defaultValue.isEmpty())
-			{
+			if (defaultValue != null && !defaultValue.isEmpty()) {
 				LOGGER.warn(warnMessage, e);
 				return defaultValue;
 			}
@@ -196,11 +184,12 @@ public final class ResourceBundleExtensions
 	}
 
 	/**
-	 * Resolves from the given base name and locale the {@link ResourceBundle} and get the
-	 * {@link String} from the given key and parameters.
+	 * Resolves from the given base name and locale the {@link ResourceBundle}
+	 * and get the {@link String} from the given key and parameters.
 	 *
 	 * @param baseName
-	 *            the base name of the resource bundle, a fully qualified class name
+	 *            the base name of the resource bundle, a fully qualified class
+	 *            name
 	 * @param locale
 	 *            the locale for the resource bundle
 	 * @param key
@@ -214,19 +203,19 @@ public final class ResourceBundleExtensions
 	 *             is thrown if the given key is missing
 	 */
 	public static String getString(final String baseName, final Locale locale, final String key,
-		final String defaultValue, final Object... parameters) throws MissingResourceException
-	{
+			final String defaultValue, final Object... parameters) throws MissingResourceException {
 		Check.get().notEmpty(baseName, "baseName").notNull(locale, "locale");
 		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle(baseName, locale);
 		return ResourceBundleExtensions.getString(resourceBundle, key, defaultValue, parameters);
 	}
 
 	/**
-	 * Resolves from the given base name and locale the {@link ResourceBundle} and get the
-	 * {@link String} from the given key and parameters.
+	 * Resolves from the given base name and locale the {@link ResourceBundle}
+	 * and get the {@link String} from the given key and parameters.
 	 *
 	 * @param baseName
-	 *            the base name of the resource bundle, a fully qualified class name
+	 *            the base name of the resource bundle, a fully qualified class
+	 *            name
 	 * @param locale
 	 *            the locale for the resource bundle
 	 * @param key
@@ -237,21 +226,20 @@ public final class ResourceBundleExtensions
 	 *            the parameters
 	 * @return the {@link String} value from the given key
 	 */
-	public static String getStringQuietly(final String baseName, final Locale locale,
-		final String key, final String defaultValue, final Object... parameters)
-	{
+	public static String getStringQuietly(final String baseName, final Locale locale, final String key,
+			final String defaultValue, final Object... parameters) {
 		Check.get().notEmpty(baseName, "baseName").notNull(locale, "locale");
 		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle(baseName, locale);
-		return ResourceBundleExtensions.getStringQuietly(resourceBundle, key, defaultValue,
-			parameters);
+		return ResourceBundleExtensions.getStringQuietly(resourceBundle, key, defaultValue, parameters);
 	}
 
 	/**
-	 * Resolves from the given base name and locale the {@link ResourceBundle} and get the
-	 * {@link String} from the given key and parameters.
+	 * Resolves from the given base name and locale the {@link ResourceBundle}
+	 * and get the {@link String} from the given key and parameters.
 	 *
 	 * @param baseName
-	 *            the base name of the resource bundle, a fully qualified class name
+	 *            the base name of the resource bundle, a fully qualified class
+	 *            name
 	 * @param locale
 	 *            the locale for the resource bundle
 	 * @param key
@@ -263,17 +251,17 @@ public final class ResourceBundleExtensions
 	 *             is thrown if the given key is missing
 	 */
 	public static String getString(final String baseName, final Locale locale, final String key,
-		final Object... parameters) throws MissingResourceException
-	{
+			final Object... parameters) throws MissingResourceException {
 		return getString(baseName, locale, key, null, parameters);
 	}
 
 	/**
-	 * Resolves from the given base name and locale the {@link ResourceBundle} and get the
-	 * {@link String} from the given key and parameters.
+	 * Resolves from the given base name and locale the {@link ResourceBundle}
+	 * and get the {@link String} from the given key and parameters.
 	 *
 	 * @param baseName
-	 *            the base name of the resource bundle, a fully qualified class name
+	 *            the base name of the resource bundle, a fully qualified class
+	 *            name
 	 * @param locale
 	 *            the locale for the resource bundle
 	 * @param key
@@ -283,17 +271,17 @@ public final class ResourceBundleExtensions
 	 *             is thrown if the given key is missing
 	 */
 	public static String getString(final String baseName, final Locale locale, final String key)
-		throws MissingResourceException
-	{
-		return getString(baseName, locale, key, (String)null, (Object)null);
+			throws MissingResourceException {
+		return getString(baseName, locale, key, (String) null, (Object) null);
 	}
 
 	/**
-	 * Resolves from the given base name and locale the {@link ResourceBundle} and get the
-	 * {@link String} from the given key and parameters.
+	 * Resolves from the given base name and locale the {@link ResourceBundle}
+	 * and get the {@link String} from the given key and parameters.
 	 *
 	 * @param baseName
-	 *            the base name of the resource bundle, a fully qualified class name
+	 *            the base name of the resource bundle, a fully qualified class
+	 *            name
 	 * @param locale
 	 *            the locale for the resource bundle
 	 * @param key
@@ -305,9 +293,8 @@ public final class ResourceBundleExtensions
 	 *             is thrown if the given key is missing
 	 */
 	public static String getString(final String baseName, final Locale locale, final String key,
-		final String defaultValue) throws MissingResourceException
-	{
-		return getString(baseName, locale, key, defaultValue, (Object)null);
+			final String defaultValue) throws MissingResourceException {
+		return getString(baseName, locale, key, defaultValue, (Object) null);
 	}
 
 	/**
@@ -319,12 +306,9 @@ public final class ResourceBundleExtensions
 	 * @throws MissingResourceException
 	 *             is thrown if the given key is missing
 	 */
-	public static String getString(final BundleKey bundleKey) throws MissingResourceException
-	{
-		return getString(bundleKey.getBaseName(), bundleKey.getLocale(),
-			bundleKey.getResourceBundleKey().getKey(),
-			bundleKey.getResourceBundleKey().getDefaultValue(),
-			bundleKey.getResourceBundleKey().getParameters());
+	public static String getString(final BundleKey bundleKey) throws MissingResourceException {
+		return getString(bundleKey.getBaseName(), bundleKey.getLocale(), bundleKey.getResourceBundleKey().getKey(),
+				bundleKey.getResourceBundleKey().getDefaultValue(), bundleKey.getResourceBundleKey().getParameters());
 	}
 
 }
