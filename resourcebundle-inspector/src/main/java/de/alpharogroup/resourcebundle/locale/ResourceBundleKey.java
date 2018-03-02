@@ -55,11 +55,6 @@ public class ResourceBundleKey implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value.
-	 */
-	private String defaultValue;
-
-	/**
 	 * The resource bundle key.
 	 */
 	@NonNull
@@ -69,6 +64,11 @@ public class ResourceBundleKey implements Serializable
 	 * The parameters of the resource bundle key.
 	 */
 	private Object[] parameters;
+
+	/**
+	 * The default value.
+	 */
+	private String defaultValue;
 
 	/**
 	 * {@inheritDoc}
