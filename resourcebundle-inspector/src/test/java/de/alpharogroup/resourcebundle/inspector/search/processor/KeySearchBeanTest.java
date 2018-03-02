@@ -40,14 +40,16 @@ import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluat
 /**
  * The unit test class for the class {@link KeySearchBean}.
  */
-public class KeySearchBeanTest {
+public class KeySearchBeanTest
+{
 
 	/**
-	 * Test method for {@link KeyValuesPair#equals(Object)} ,
-	 * {@link KeyValuesPair#hashCode()} and {@link KeyValuesPair#toString()}
+	 * Test method for {@link KeyValuesPair#equals(Object)} , {@link KeyValuesPair#hashCode()} and
+	 * {@link KeyValuesPair#toString()}
 	 */
 	@Test
-	public void testEqualsHashcodeAndToString() {
+	public void testEqualsHashcodeAndToString()
+	{
 		boolean expected;
 		boolean actual;
 
@@ -58,7 +60,8 @@ public class KeySearchBeanTest {
 		final KeySearchBean third = KeySearchBean.builder().build();
 		final KeySearchBean fourth = KeySearchBean.builder().build();
 
-		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second, third, fourth);
+		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
+			third, fourth);
 		expected = true;
 		assertEquals(expected, actual);
 	}
@@ -67,10 +70,12 @@ public class KeySearchBeanTest {
 	 * Test method for {@link KeySearchBean}
 	 */
 	@Test
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		Configuration configuration = new ConfigurationBuilder()
-				.overrideFactory("fileExtensions", new StringArrayFactory())
-				.overrideFactory("searchDir", new FileFactory()).overrideFactory("locale", new LocaleFactory()).build();
+			.overrideFactory("fileExtensions", new StringArrayFactory())
+			.overrideFactory("searchDir", new FileFactory())
+			.overrideFactory("locale", new LocaleFactory()).build();
 		final BeanTester beanTester = new BeanTester();
 		beanTester.addCustomConfiguration(KeySearchBean.class, configuration);
 		beanTester.testBean(KeySearchBean.class);

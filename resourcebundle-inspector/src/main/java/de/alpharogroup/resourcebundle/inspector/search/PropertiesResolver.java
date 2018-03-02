@@ -34,10 +34,11 @@ import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 import lombok.Getter;
 
 /**
- * The Class {@link PropertiesResolver} finds all properties file from the given
- * root directory and save it to a map with the locale string code.
+ * The Class {@link PropertiesResolver} finds all properties file from the given root directory and
+ * save it to a map with the locale string code.
  */
-public class PropertiesResolver {
+public class PropertiesResolver
+{
 
 	/** The properties file as key and the locale string code as value. */
 	@Getter
@@ -53,28 +54,34 @@ public class PropertiesResolver {
 	 * @param rootDir
 	 *            the root dir
 	 */
-	public PropertiesResolver(final File rootDir) {
-		if (rootDir == null) {
+	public PropertiesResolver(final File rootDir)
+	{
+		if (rootDir == null)
+		{
 			throw new IllegalArgumentException("rootDir is null.");
 		}
-		if (!rootDir.isDirectory()) {
+		if (!rootDir.isDirectory())
+		{
 			throw new IllegalArgumentException("rootDir is not a directory.");
 		}
 		this.rootDir = rootDir;
 	}
 
 	/**
-	 * Resolves to the propertiesToLocale {@linkplain Map} where the properties
-	 * file is the key and the locale string code the value.
+	 * Resolves to the propertiesToLocale {@linkplain Map} where the properties file is the key and
+	 * the locale string code the value.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void resolve() throws IOException {
-		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker() {
+	public void resolve() throws IOException
+	{
+		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
+		{
 			@Override
-			protected void handleFile(final File file, final int depth, final Collection<File> results)
-					throws IOException {
+			protected void handleFile(final File file, final int depth,
+				final Collection<File> results) throws IOException
+			{
 				final String localeCode = LocaleResolver.resolveLocaleCode(file);
 				propertiesToLocale.put(file, localeCode);
 			}

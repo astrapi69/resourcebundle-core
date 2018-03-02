@@ -43,22 +43,24 @@ import de.alpharogroup.lang.ClassExtensions;
 /**
  * The unit test class for the class {@link PropertiesNormalizer}.
  */
-public class PropertiesNormalizerTest {
+public class PropertiesNormalizerTest
+{
 
 	/**
-	 * Test method for
-	 * {@link PropertiesNormalizer#findPropertiesFilesWithInvalidCharacters(File)}.
+	 * Test method for {@link PropertiesNormalizer#findPropertiesFilesWithInvalidCharacters(File)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testFindPropertiesFilesWithInvalidCharacters() throws IOException {
+	public void testFindPropertiesFilesWithInvalidCharacters() throws IOException
+	{
 		int expected;
 		int actual;
 
 		final File dir = PathFinder.getSrcTestResourcesDir();
-		final Collection<File> r = PropertiesNormalizer.findPropertiesFilesWithInvalidCharacters(dir);
+		final Collection<File> r = PropertiesNormalizer
+			.findPropertiesFilesWithInvalidCharacters(dir);
 		actual = r.size();
 		expected = 2;
 		assertEquals(actual, expected);
@@ -75,12 +77,15 @@ public class PropertiesNormalizerTest {
 	 *             the file is A directory exception
 	 */
 	@Test(enabled = false)
-	public void testNormalizeProperties() throws URISyntaxException, IOException, FileIsADirectoryException {
+	public void testNormalizeProperties()
+		throws URISyntaxException, IOException, FileIsADirectoryException
+	{
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "foo-write.properties";
 		final File prpFile = new File(dir, propertiesFilename);
 		CreateFileExtensions.newFile(prpFile);
-		WriteFileExtensions.writeLinesToFile(ListExtensions.newArrayList("com=öäüß"), prpFile, "UTF-8");
+		WriteFileExtensions.writeLinesToFile(ListExtensions.newArrayList("com=öäüß"), prpFile,
+			"UTF-8");
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		PropertiesNormalizer.normalizeProperties(propertiesFile.getAbsolutePath());
 		prpFile.delete();

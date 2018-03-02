@@ -38,26 +38,27 @@ import lombok.experimental.UtilityClass;
  * @version 1.0
  */
 @UtilityClass
-public final class LocaleExtensions {
+public final class LocaleExtensions
+{
 
 	/** The available locales on the system. */
 	private static List<Locale> availableLocales;
 
 	/**
-	 * Gets the locale file name suffix that has the format
-	 * 'language_COUNTRY_variant' for instance 'de_DE' for the Locale.GERMANY.
+	 * Gets the locale file name suffix that has the format 'language_COUNTRY_variant' for instance
+	 * 'de_DE' for the Locale.GERMANY.
 	 *
 	 * @param locale
 	 *            the locale
 	 * @return the locale name
 	 */
-	public static String getLocaleFilenameSuffix(final Locale locale) {
+	public static String getLocaleFilenameSuffix(final Locale locale)
+	{
 		return getLocaleFileSuffix(locale, true, true, false);
 	}
 
 	/**
-	 * Gets the locale file name suffix for instance '_de_DE' for the
-	 * Locale.GERMANY.
+	 * Gets the locale file name suffix for instance '_de_DE' for the Locale.GERMANY.
 	 *
 	 * @param locale
 	 *            the locale
@@ -65,13 +66,13 @@ public final class LocaleExtensions {
 	 *            the with country
 	 * @return the locale file suffix
 	 */
-	public static String getLocaleFileSuffix(final Locale locale, final boolean withCountry) {
+	public static String getLocaleFileSuffix(final Locale locale, final boolean withCountry)
+	{
 		return getLocaleFileSuffix(locale, withCountry, false);
 	}
 
 	/**
-	 * Gets the locale file name suffix for instance '_de_DE' for the
-	 * Locale.GERMANY.
+	 * Gets the locale file name suffix for instance '_de_DE' for the Locale.GERMANY.
 	 *
 	 * @param locale
 	 *            the locale
@@ -82,13 +83,13 @@ public final class LocaleExtensions {
 	 * @return the locale file suffix
 	 */
 	public static String getLocaleFileSuffix(final Locale locale, final boolean withCountry,
-			final boolean withVariant) {
+		final boolean withVariant)
+	{
 		return getLocaleFileSuffix(locale, withCountry, withVariant, true);
 	}
 
 	/**
-	 * Gets the locale file name suffix for instance '_de_DE' for the
-	 * Locale.GERMANY.
+	 * Gets the locale file name suffix for instance '_de_DE' for the Locale.GERMANY.
 	 *
 	 * @param locale
 	 *            the locale
@@ -100,21 +101,27 @@ public final class LocaleExtensions {
 	 *            true if the result has to have the underscore prefix
 	 * @return the locale file suffix
 	 */
-	public static String getLocaleFileSuffix(final Locale locale, final boolean withCountry, final boolean withVariant,
-			final boolean withUnderscorePrefix) {
+	public static String getLocaleFileSuffix(final Locale locale, final boolean withCountry,
+		final boolean withVariant, final boolean withUnderscorePrefix)
+	{
 		final StringBuilder localizedName = new StringBuilder();
-		if (locale != null) {
-			if ((locale.getLanguage() != null) && !locale.getLanguage().isEmpty()) {
-				if (withUnderscorePrefix) {
+		if (locale != null)
+		{
+			if ((locale.getLanguage() != null) && !locale.getLanguage().isEmpty())
+			{
+				if (withUnderscorePrefix)
+				{
 					localizedName.append("_");
 				}
 				localizedName.append(locale.getLanguage());
 			}
-			if (withCountry && (locale.getCountry() != null) && !locale.getCountry().isEmpty()) {
+			if (withCountry && (locale.getCountry() != null) && !locale.getCountry().isEmpty())
+			{
 				localizedName.append("_");
 				localizedName.append(locale.getCountry());
 			}
-			if (withVariant && (locale.getVariant() != null) && !locale.getVariant().isEmpty()) {
+			if (withVariant && (locale.getVariant() != null) && !locale.getVariant().isEmpty())
+			{
 				localizedName.append("_");
 				localizedName.append(locale.getVariant());
 			}
@@ -129,19 +136,20 @@ public final class LocaleExtensions {
 	 *            the locale
 	 * @return the locale name
 	 */
-	public static String getLocaleName(final Locale locale) {
+	public static String getLocaleName(final Locale locale)
+	{
 		return getLocaleFileSuffix(locale, true, true, false);
 	}
 
 	/**
-	 * Checks if the given {@link Locale} is in the available locales on the
-	 * current jdk.
+	 * Checks if the given {@link Locale} is in the available locales on the current jdk.
 	 *
 	 * @param locale
 	 *            the locale to check
 	 * @return true, if successful
 	 */
-	public static boolean contains(final Locale locale) {
+	public static boolean contains(final Locale locale)
+	{
 		final List<Locale> availableLocales = getAvailableLocales();
 		final boolean exists = availableLocales.contains(locale);
 		return exists;
@@ -150,13 +158,15 @@ public final class LocaleExtensions {
 	/**
 	 * Returns a list of all available locales on the current jdk.
 	 * 
-	 * @deprecated use instead same name method in LocaleResolver class. Note:
-	 *             will be removed on next minor release.
+	 * @deprecated use instead same name method in LocaleResolver class. Note: will be removed on
+	 *             next minor release.
 	 *
 	 * @return list of all available locales on the current jdk.
 	 */
-	public static List<Locale> getAvailableLocales() {
-		if (availableLocales == null) {
+	public static List<Locale> getAvailableLocales()
+	{
+		if (availableLocales == null)
+		{
 			final Locale localesArray[] = DateFormat.getAvailableLocales();
 			availableLocales = Arrays.asList(localesArray);
 		}
@@ -164,8 +174,7 @@ public final class LocaleExtensions {
 	}
 
 	/**
-	 * Gets the display country name from the given country code in the given
-	 * {@link Locale}.
+	 * Gets the display country name from the given country code in the given {@link Locale}.
 	 *
 	 * @param countryCode
 	 *            the country code
@@ -173,7 +182,8 @@ public final class LocaleExtensions {
 	 *            the in locale
 	 * @return the country name
 	 */
-	public static String getCountryName(String countryCode, Locale inLocale) {
+	public static String getCountryName(String countryCode, Locale inLocale)
+	{
 		Locale locale = LocaleResolver.getLocale(countryCode);
 		return locale.getDisplayCountry(inLocale);
 	}

@@ -34,16 +34,18 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 /**
- * The unit test class {@link ResourceBundleResolverTest} provides unit tests
- * for the class {@link ResourceBundleResolver}.
+ * The unit test class {@link ResourceBundleResolverTest} provides unit tests for the class
+ * {@link ResourceBundleResolver}.
  */
-public class ResourceBundleResolverTest {
+public class ResourceBundleResolverTest
+{
 
 	/**
 	 * Test method for {@link ResourceBundleResolver#getBundle(String, Locale)}
 	 */
 	@Test
-	public void testGetBundle() {
+	public void testGetBundle()
+	{
 		final ResourceBundle expected = ResourceBundle.getBundle("test", Locale.UK);
 		final ResourceBundle actual = ResourceBundleResolver.getBundle("test", Locale.UK);
 		AssertJUnit.assertEquals(expected, actual);
@@ -54,7 +56,8 @@ public class ResourceBundleResolverTest {
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
 			UnsupportedOperationException.class })
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(ResourceBundleResolver.class);
 	}

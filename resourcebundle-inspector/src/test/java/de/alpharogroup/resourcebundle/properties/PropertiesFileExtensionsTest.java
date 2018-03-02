@@ -43,7 +43,8 @@ import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 
-public class PropertiesFileExtensionsTest {
+public class PropertiesFileExtensionsTest
+{
 
 	/**
 	 * Test method for
@@ -53,69 +54,78 @@ public class PropertiesFileExtensionsTest {
 	 *             is thrown if any error occurs on the execution
 	 */
 	@Test
-	public void testGetLocalPropertiesFromClass() throws Exception {
+	public void testGetLocalPropertiesFromClass() throws Exception
+	{
 		Properties propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(
-				PropertiesFileExtensionsTest.class, PropertiesFileExtensionsTest.class, Locale.ENGLISH);
+			PropertiesFileExtensionsTest.class, PropertiesFileExtensionsTest.class, Locale.ENGLISH);
 		assertNotNull(propertiesFromClass);
 		propertiesFromClass = PropertiesFileExtensions.getLocalPropertiesFromClass(null,
-				PropertiesFileExtensionsTest.class, Locale.ENGLISH);
+			PropertiesFileExtensionsTest.class, Locale.ENGLISH);
 		assertNotNull(propertiesFromClass);
 	}
 
 	/**
-	 * Test method for
-	 * {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
+	 * Test method for {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
 	 */
 	@Test
-	public void testGetProjectName() throws IOException {
+	public void testGetProjectName() throws IOException
+	{
 		final String projectName = PropertiesFileExtensions.getProjectName();
 		assertNotNull(projectName);
 	}
 
 	/**
-	 * Test method for
-	 * {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
+	 * Test method for {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
 	 */
 	@Test
-	public void testGetProjectNameQuietly() {
+	public void testGetProjectNameQuietly()
+	{
 		final String projectName = PropertiesFileExtensions.getProjectNameQuietly("foo");
 		assertNotNull(projectName);
 	}
 
 	@Test(enabled = true)
-	public void testGetRedundantKeys() throws IOException {
+	public void testGetRedundantKeys() throws IOException
+	{
 		final File srcTestResourceDir = PathFinder.getSrcTestResourcesDir();
-		final File testDir = PathFinder.getRelativePath(srcTestResourceDir, "resources", "properties");
-		final Map<File, Map<String, List<String>>> fileMap = PropertiesFileExtensions.getRedundantKeys(testDir);
-		for (final Map.Entry<File, Map<String, List<String>>> entry : fileMap.entrySet()) {
+		final File testDir = PathFinder.getRelativePath(srcTestResourceDir, "resources",
+			"properties");
+		final Map<File, Map<String, List<String>>> fileMap = PropertiesFileExtensions
+			.getRedundantKeys(testDir);
+		for (final Map.Entry<File, Map<String, List<String>>> entry : fileMap.entrySet())
+		{
 			final File file = entry.getKey();
 			System.out.println(file);
 		}
 		final File expectedPropertiesFile1 = PathFinder.getRelativePath(testDir, "test.properties");
-		final File expectedPropertiesFile2 = PathFinder.getRelativePath(testDir, "foo", "resources.properties");
+		final File expectedPropertiesFile2 = PathFinder.getRelativePath(testDir, "foo",
+			"resources.properties");
 		assertTrue(fileMap.containsKey(expectedPropertiesFile1));
 		assertTrue(fileMap.containsKey(expectedPropertiesFile2));
 	}
 
 	/**
-	 * Test method for
-	 * {@link PropertiesFileExtensions#loadProperties(Class, String, String)}.
+	 * Test method for {@link PropertiesFileExtensions#loadProperties(Class, String, String)}.
 	 */
 	@Test
-	public void testLoadPropertiesClassOfQStringString() {
+	public void testLoadPropertiesClassOfQStringString()
+	{
 	}
 
 	@Test(enabled = true)
-	public void testLoadPropertiesFromClassObject() throws IOException {
+	public void testLoadPropertiesFromClassObject() throws IOException
+	{
 		final Locale en = Locale.ENGLISH;
-		Properties properties = PropertiesFileExtensions.loadPropertiesFromClassObject(this.getClass(), en);
+		Properties properties = PropertiesFileExtensions
+			.loadPropertiesFromClassObject(this.getClass(), en);
 		assertTrue("", properties.get("test").equals("foo"));
 		properties = PropertiesFileExtensions.loadPropertiesFromClassObject(this.getClass(), null);
 		assertTrue("", properties.get("test").equals("bar"));
 	}
 
 	@Test(enabled = true)
-	public void testLoadPropertiesObjectPropertiesFilename() throws IOException {
+	public void testLoadPropertiesObjectPropertiesFilename() throws IOException
+	{
 		final String propertiesFilename = ClassExtensions.getSimpleName(getClass()) + ".properties";
 		final Properties prop = PropertiesFileExtensions.loadProperties(this, propertiesFilename);
 		final boolean result = null != prop;
@@ -123,7 +133,8 @@ public class PropertiesFileExtensionsTest {
 	}
 
 	@Test(enabled = true)
-	public void testLoadPropertiesPackagePath() throws IOException {
+	public void testLoadPropertiesPackagePath() throws IOException
+	{
 		final String propertiesFilename = "resources.properties";
 		final String pathFromObject = PackageExtensions.getPackagePathWithSlash(this);
 		final String path = pathFromObject + propertiesFilename;
@@ -134,7 +145,8 @@ public class PropertiesFileExtensionsTest {
 	}
 
 	@Test(enabled = true)
-	public void testLoadPropertiesPackagePathPropertiesFilename() throws IOException {
+	public void testLoadPropertiesPackagePathPropertiesFilename() throws IOException
+	{
 		String packagePath = "de/alpharogroup/lang/";
 		String propertiesFilename = "resources.properties";
 		Properties prop = PropertiesFileExtensions.loadProperties(packagePath, propertiesFilename);
@@ -150,7 +162,8 @@ public class PropertiesFileExtensionsTest {
 	}
 
 	@Test(enabled = true)
-	public void testLoadPropertiesPropertiesFilename() throws IOException {
+	public void testLoadPropertiesPropertiesFilename() throws IOException
+	{
 		final String propertiesFilename = "de/alpharogroup/lang/resources.properties";
 		final Properties prop = PropertiesFileExtensions.loadProperties(propertiesFilename);
 		final boolean result = null != prop;
@@ -161,7 +174,8 @@ public class PropertiesFileExtensionsTest {
 	 * Test method for {@link PropertiesFileExtensions#newBackupOf(File)}.
 	 */
 	@Test
-	public void testNewBackupOf() {
+	public void testNewBackupOf()
+	{
 	}
 
 	/**
@@ -171,20 +185,22 @@ public class PropertiesFileExtensionsTest {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test(enabled = true)
-	public void testRemoveComments() throws IOException {
+	public void testRemoveComments() throws IOException
+	{
 		final File srcTestResourceDir = PathFinder.getSrcTestResourcesDir();
-		final File testDir = PathFinder.getRelativePath(srcTestResourceDir, "resources", "properties");
+		final File testDir = PathFinder.getRelativePath(srcTestResourceDir, "resources",
+			"properties");
 		final File propertiesFile = PathFinder.getRelativePath(testDir, "test.properties");
 		final List<String> lines = PropertiesFileExtensions.removeComments(propertiesFile);
 		assertTrue(lines.size() == 5);
 	}
 
 	/**
-	 * Test method for
-	 * {@link PropertiesFileExtensions#resolveAvailableLanguages(String, String)}.
+	 * Test method for {@link PropertiesFileExtensions#resolveAvailableLanguages(String, String)}.
 	 */
 	@Test
-	public void testResolveAvailableLanguages() {
+	public void testResolveAvailableLanguages()
+	{
 	}
 
 	/**
@@ -192,7 +208,8 @@ public class PropertiesFileExtensionsTest {
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
 			UnsupportedOperationException.class })
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(PropertiesFileExtensions.class);
 	}

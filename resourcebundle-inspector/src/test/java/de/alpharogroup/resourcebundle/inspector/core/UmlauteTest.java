@@ -30,13 +30,15 @@ import org.testng.annotations.Test;
 /**
  * The class {@link Umlaute}.
  */
-public class UmlauteTest {
+public class UmlauteTest
+{
 
 	/**
 	 * Test method for {@link Umlaute}
 	 */
 	@Test
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(Umlaute.class);
 	}

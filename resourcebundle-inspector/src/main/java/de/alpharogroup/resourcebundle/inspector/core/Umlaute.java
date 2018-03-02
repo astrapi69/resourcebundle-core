@@ -27,7 +27,8 @@ package de.alpharogroup.resourcebundle.inspector.core;
 /**
  * The Class {@link Umlaute} have the chars of the german 'umlaute'.
  */
-public final class Umlaute {
+public final class Umlaute
+{
 
 	/** The Constant ae. */
 	public static final char ae = '\u00E4';

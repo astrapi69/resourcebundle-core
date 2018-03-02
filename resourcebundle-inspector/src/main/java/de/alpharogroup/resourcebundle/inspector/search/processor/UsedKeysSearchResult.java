@@ -35,8 +35,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The Class UsedKeysSearchResult keeps the result from the search and the a
- * reference from the search model.
+ * The Class UsedKeysSearchResult keeps the result from the search and the a reference from the
+ * search model.
  */
 @Getter
 @Setter
@@ -45,7 +45,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class UsedKeysSearchResult {
+public class UsedKeysSearchResult
+{
 
 	/** The search bean. */
 	private KeySearchBean searchModel;

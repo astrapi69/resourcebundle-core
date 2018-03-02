@@ -29,7 +29,8 @@ import lombok.Getter;
 /**
  * The enum {@link PropertiesFileTypeExtensions}.
  */
-public enum PropertiesFileTypeExtensions {
+public enum PropertiesFileTypeExtensions
+{
 
 	/** The file type with the extension '.properties'. */
 	PROPERTIES(".properties"),
@@ -50,7 +51,8 @@ public enum PropertiesFileTypeExtensions {
 	 * @param propertiesFileExtension
 	 *            the properties file extension
 	 */
-	private PropertiesFileTypeExtensions(final String propertiesFileExtension) {
+	private PropertiesFileTypeExtensions(final String propertiesFileExtension)
+	{
 		this.propertiesFileExtension = propertiesFileExtension;
 	}
 }

@@ -46,7 +46,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class ResourceBundleKey implements Serializable {
+public class ResourceBundleKey implements Serializable
+{
 
 	/**
 	 * The serialVersionUID.
@@ -73,7 +74,8 @@ public class ResourceBundleKey implements Serializable {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ResourceBundleKey clone() {
+	public ResourceBundleKey clone()
+	{
 		return CloneObjectQuietlyExtensions.cloneQuietly(this);
 	}
 

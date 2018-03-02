@@ -32,7 +32,8 @@ package de.alpharogroup.resourcebundle.inspector.search.processor;
  * @param <RESULT>
  *            the generic type for the result
  */
-public interface FilterProcessor<MODEL, RESULT> {
+public interface FilterProcessor<MODEL, RESULT>
+{
 
 	/**
 	 * process the given model.

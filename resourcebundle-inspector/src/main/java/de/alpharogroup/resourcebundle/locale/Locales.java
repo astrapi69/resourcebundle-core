@@ -28,12 +28,12 @@ import java.io.Serializable;
 import java.util.Locale;
 
 /**
- * The Class Locales provides constants for different Locales that are not in
- * the Locale class.
+ * The Class Locales provides constants for different Locales that are not in the Locale class.
  *
  * @author Asterios Raptis
  */
-public final class Locales implements Serializable {
+public final class Locales implements Serializable
+{
 
 	/** Useful constant for the greek language. */
 	public static final Locale GREEK = new Locale("el");

@@ -41,39 +41,43 @@ import de.alpharogroup.io.StreamExtensions;
 import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
 
 /**
- * The class {@link DuplicatePropertiesKeyInspectorTest} provides unit tests for
- * the class {@link DuplicatePropertiesKeyInspector}.
+ * The class {@link DuplicatePropertiesKeyInspectorTest} provides unit tests for the class
+ * {@link DuplicatePropertiesKeyInspector}.
  */
-public class DuplicatePropertiesKeyInspectorTest {
+public class DuplicatePropertiesKeyInspectorTest
+{
 
 	@Test
-	public void testDuplicatePropertiesKeyInspectorFile() throws IOException {
+	public void testDuplicatePropertiesKeyInspectorFile() throws IOException
+	{
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "resources.properties";
 		final File propertiesFile = new File(dir, propertiesFilename);
 		final DuplicatePropertiesKeyInspector duplicatePropertiesKeyInspector = new DuplicatePropertiesKeyInspector(
-				propertiesFile);
+			propertiesFile);
 		assertNotNull(duplicatePropertiesKeyInspector);
 	}
 
 	@Test
-	public void testDuplicatePropertiesKeyInspectorInputStream() throws IOException {
+	public void testDuplicatePropertiesKeyInspectorInputStream() throws IOException
+	{
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "resources.properties";
 		final File propertiesFile = new File(dir, propertiesFilename);
 		final DuplicatePropertiesKeyInspector duplicatePropertiesKeyInspector = new DuplicatePropertiesKeyInspector(
-				StreamExtensions.getInputStream(propertiesFile));
+			StreamExtensions.getInputStream(propertiesFile));
 		assertNotNull(duplicatePropertiesKeyInspector);
 	}
 
 	@Test
-	public void testFindRedundantValues() {
+	public void testFindRedundantValues()
+	{
 		final Properties properties = new Properties();
 		properties.setProperty("com", "bar");
 		properties.setProperty("bar", "foo");
 		properties.setProperty("foo", "foo");
 		final Map<String, List<String>> redundantValues = DuplicatePropertiesKeyInspector
-				.findRedundantValues(properties);
+			.findRedundantValues(properties);
 		assertEquals(redundantValues.size(), 1);
 	}
 
@@ -84,20 +88,24 @@ public class DuplicatePropertiesKeyInspectorTest {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testGetResult() throws IOException {
+	public void testGetResult() throws IOException
+	{
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "resources.properties";
 		final File propertiesFile = new File(dir, propertiesFilename);
-		final KeyValueLists keyValueLists = new DuplicatePropertiesKeyInspector(propertiesFile).getResult();
+		final KeyValueLists keyValueLists = new DuplicatePropertiesKeyInspector(propertiesFile)
+			.getResult();
 		final String duplicateKey = "testkey1";
 		AssertJUnit.assertTrue("Map should contains key 'testkey1'.",
-				keyValueLists.getDuplicateMap().containsKey(duplicateKey));
+			keyValueLists.getDuplicateMap().containsKey(duplicateKey));
 		AssertJUnit.assertTrue("Count of duplicate key should be 2.",
-				keyValueLists.getDuplicateMap().get(duplicateKey).equals(2));
+			keyValueLists.getDuplicateMap().get(duplicateKey).equals(2));
 		final List<String> values = keyValueLists.getDuplicateValueMap().get(duplicateKey);
 		AssertJUnit.assertTrue("Size of value list should be 2.", values.size() == 2);
-		AssertJUnit.assertTrue("Value list should contain value 'testvalue2'.", values.get(0).equals("testvalue2"));
-		AssertJUnit.assertTrue("Value list should contain value 'testvalue3'.", values.get(1).equals("testvalue3"));
+		AssertJUnit.assertTrue("Value list should contain value 'testvalue2'.",
+			values.get(0).equals("testvalue2"));
+		AssertJUnit.assertTrue("Value list should contain value 'testvalue3'.",
+			values.get(1).equals("testvalue3"));
 
 	}
 

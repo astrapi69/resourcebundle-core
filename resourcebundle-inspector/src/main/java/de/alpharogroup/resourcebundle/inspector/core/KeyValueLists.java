@@ -34,11 +34,12 @@ import java.util.TreeMap;
 import lombok.Getter;
 
 /**
- * The Class KeyValueLists holds to lists for the keys and values from a
- * properties file and a map to save duplicate keys and the occurrences of it.
- * It is used to find duplicate keys in a properties file.
+ * The Class KeyValueLists holds to lists for the keys and values from a properties file and a map
+ * to save duplicate keys and the occurrences of it. It is used to find duplicate keys in a
+ * properties file.
  */
-public class KeyValueLists implements Serializable {
+public class KeyValueLists implements Serializable
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;

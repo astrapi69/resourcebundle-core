@@ -34,17 +34,18 @@ import org.testng.annotations.Test;
 import de.alpharogroup.test.objects.Person;
 
 /**
- * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for
- * the class {@link ResourceKeyFactory}.
+ * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for the class
+ * {@link ResourceKeyFactory}.
  */
-public class ResourceKeyFactoryTest {
+public class ResourceKeyFactoryTest
+{
 
 	/**
-	 * Test method for
-	 * {@link ResourceKeyFactory#newResourceKey(Object, boolean, String)}
+	 * Test method for {@link ResourceKeyFactory#newResourceKey(Object, boolean, String)}
 	 */
 	@Test
-	public void testNewResourceKeyTBooleanString() {
+	public void testNewResourceKeyTBooleanString()
+	{
 		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), false, "foo");
 		AssertJUnit.assertEquals("de.alpharogroup.test.objects.Person.foo", resourceKey);
 	}
@@ -53,7 +54,8 @@ public class ResourceKeyFactoryTest {
 	 * Test method for {@link ResourceKeyFactory#newResourceKey(Object, String)}
 	 */
 	@Test
-	public void testNewResourceKeyTString() {
+	public void testNewResourceKeyTString()
+	{
 		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), "foo");
 		AssertJUnit.assertEquals("Person.foo", resourceKey);
 	}
@@ -63,7 +65,8 @@ public class ResourceKeyFactoryTest {
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
 			UnsupportedOperationException.class })
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(ResourceKeyFactory.class);
 	}

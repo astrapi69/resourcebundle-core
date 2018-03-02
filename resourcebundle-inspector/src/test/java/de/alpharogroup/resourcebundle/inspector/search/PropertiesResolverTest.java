@@ -39,13 +39,15 @@ import de.alpharogroup.file.search.PathFinder;
  * The class {@link PropertiesResolverTest} provides unit tests for the class
  * {@link PropertiesResolver}.
  */
-public class PropertiesResolverTest {
+public class PropertiesResolverTest
+{
 
 	/**
 	 * Test method for {@link PropertiesResolver#resolve()}
 	 */
 	@Test
-	public void testFind() throws IOException {
+	public void testFind() throws IOException
+	{
 		final File rootDir = PathFinder.getSrcTestResourcesDir();
 		final PropertiesResolver finder = new PropertiesResolver(rootDir);
 		finder.resolve();
@@ -64,7 +66,8 @@ public class PropertiesResolverTest {
 	 * Test method for {@link PropertiesResolver#resolve()}
 	 */
 	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void testPropertiesResolver() throws IOException {
+	public void testPropertiesResolver() throws IOException
+	{
 		final File dir = PathFinder.getSrcTestResourcesDir();
 		final String propertiesFilename = "resources.properties";
 		final File propertiesFile = new File(dir, propertiesFilename);
@@ -75,7 +78,8 @@ public class PropertiesResolverTest {
 	 * Test method for {@link PropertiesResolver#resolve()}
 	 */
 	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void testPropertiesResolverNull() throws IOException {
+	public void testPropertiesResolverNull() throws IOException
+	{
 		new PropertiesResolver(null);
 	}
 

@@ -37,27 +37,29 @@ import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluat
 /**
  * The unit test class for the class {@link ResourceBundleKey}.
  */
-public class ResourceBundleKeyTest {
+public class ResourceBundleKeyTest
+{
 
 	/**
 	 * Test method for {@link ResourceBundleKey#clone()}
 	 */
 	@Test
-	public void testClone() {
+	public void testClone()
+	{
 		final Object[] params = { "param1", "param2" };
 		final ResourceBundleKey expected = ResourceBundleKey.builder().key("foo").parameters(params)
-				.defaultValue("bla bla").build();
+			.defaultValue("bla bla").build();
 		final ResourceBundleKey actual = expected.clone();
 		assertEquals(expected, actual);
 	}
 
 	/**
 	 * Test method for {@link ResourceBundleKey#equals(Object)} ,
-	 * {@link ResourceBundleKey#hashCode()} and
-	 * {@link ResourceBundleKey#toString()}
+	 * {@link ResourceBundleKey#hashCode()} and {@link ResourceBundleKey#toString()}
 	 */
 	@Test
-	public void testEqualsHashcodeAndToString() {
+	public void testEqualsHashcodeAndToString()
+	{
 		boolean expected;
 		boolean actual;
 
@@ -69,7 +71,8 @@ public class ResourceBundleKeyTest {
 		third.setKey("foo");
 		final ResourceBundleKey fourth = new ResourceBundleKey("foo", null, null);
 
-		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second, third, fourth);
+		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
+			third, fourth);
 		expected = true;
 		assertEquals(expected, actual);
 	}
@@ -78,9 +81,10 @@ public class ResourceBundleKeyTest {
 	 * Test method for {@link ResourceBundleKey}
 	 */
 	@Test
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		final Configuration configuration = new ConfigurationBuilder()
-				.overrideFactory("parameters", new ObjectArrayFactory()).build();
+			.overrideFactory("parameters", new ObjectArrayFactory()).build();
 		final BeanTester beanTester = new BeanTester();
 		beanTester.addCustomConfiguration(ResourceBundleKey.class, configuration);
 		beanTester.testBean(ResourceBundleKey.class);

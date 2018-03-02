@@ -30,13 +30,15 @@ import org.testng.annotations.Test;
 /**
  * The class {@link KeyValueLists}.
  */
-public class KeyValueListsTest {
+public class KeyValueListsTest
+{
 
 	/**
 	 * Test method for {@link KeyValueLists}
 	 */
 	@Test
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(KeyValueLists.class);
 	}

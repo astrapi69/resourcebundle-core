@@ -32,7 +32,8 @@ import lombok.experimental.UtilityClass;
  * The Class {@link LocaleValidator} validates string values for locale objects.
  */
 @UtilityClass
-public final class LocaleValidator {
+public final class LocaleValidator
+{
 
 	/**
 	 * Validate the given code.
@@ -41,7 +42,8 @@ public final class LocaleValidator {
 	 *            the string code
 	 * @return true, if successful
 	 */
-	public static boolean validate(final String stringCode) {
+	public static boolean validate(final String stringCode)
+	{
 		return LocaleCode.getByCode(stringCode) != null;
 	}
 

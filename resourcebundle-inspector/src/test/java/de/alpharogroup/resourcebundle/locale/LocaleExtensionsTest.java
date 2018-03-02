@@ -38,15 +38,17 @@ import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * The unit test class {@link LocaleExtensionsTest} provides unit tests for the
- * class {@link LocaleExtensions}.
+ * The unit test class {@link LocaleExtensionsTest} provides unit tests for the class
+ * {@link LocaleExtensions}.
  */
 @Slf4j
 @ExtensionMethod({ LocaleExtensions.class })
-public class LocaleExtensionsTest {
+public class LocaleExtensionsTest
+{
 
 	@Test
-	public void testContains() {
+	public void testContains()
+	{
 		boolean condition = LocaleExtensions.contains(Locales.GREEK);
 		assertTrue(condition);
 
@@ -58,9 +60,12 @@ public class LocaleExtensionsTest {
 		final String englishName = locale.getDisplayName(Locale.ENGLISH);
 		final String country = locale.getCountry();
 		String iSO3Country = "";
-		try {
+		try
+		{
 			iSO3Country = locale.getISO3Country();
-		} catch (final Exception e) {
+		}
+		catch (final Exception e)
+		{
 			log.error(e.getClass().getName() + ": " + e.getMessage());
 		}
 		final String englishCountryName = locale.getDisplayCountry(Locale.ENGLISH);
@@ -73,16 +78,18 @@ public class LocaleExtensionsTest {
 		final String englishScript = locale.getDisplayScript(Locale.ENGLISH);
 
 		System.out.printf(
-				"Name: %s%n" + "Country: %s; %s - %s%n" + "" + "Language: %s; %s - %s%n" + "Script: %s - %s%n",
-				englishName, country, iSO3Country, englishCountryName, language, iSO3Language, englishLanguageName,
-				script, englishScript);
+			"Name: %s%n" + "Country: %s; %s - %s%n" + "" + "Language: %s; %s - %s%n"
+				+ "Script: %s - %s%n",
+			englishName, country, iSO3Country, englishCountryName, language, iSO3Language,
+			englishLanguageName, script, englishScript);
 	}
 
 	/**
 	 * Test method for {@link LocaleExtensions#getCountryName(String, Locale)}
 	 */
 	@Test(enabled = true)
-	public void testGetCountryName() {
+	public void testGetCountryName()
+	{
 
 		String expected;
 		String actual;
@@ -99,7 +106,8 @@ public class LocaleExtensionsTest {
 	 * Test method for {@link LocaleExtensions#getLocaleFilenameSuffix(Locale)}
 	 */
 	@Test(enabled = true)
-	public void testGetLocaleFilenameSuffix() {
+	public void testGetLocaleFilenameSuffix()
+	{
 
 		String expected = "de_DE";
 		String actual = LocaleExtensions.getLocaleFilenameSuffix(Locale.GERMANY);
@@ -125,11 +133,11 @@ public class LocaleExtensionsTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link LocaleExtensions#getLocaleFileSuffix(Locale, boolean)}
+	 * Test method for {@link LocaleExtensions#getLocaleFileSuffix(Locale, boolean)}
 	 */
 	@Test(enabled = true)
-	public void testGetLocaleFileSuffixLocaleBoolean() {
+	public void testGetLocaleFileSuffixLocaleBoolean()
+	{
 		String expected = "_de_DE";
 		String actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, true);
 		assertEquals(expected, actual);
@@ -150,11 +158,11 @@ public class LocaleExtensionsTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link LocaleExtensions#getLocaleFileSuffix(Locale, boolean, boolean)}
+	 * Test method for {@link LocaleExtensions#getLocaleFileSuffix(Locale, boolean, boolean)}
 	 */
 	@Test(enabled = true)
-	public void testGetLocaleFileSuffixLocaleBooleanBoolean() {
+	public void testGetLocaleFileSuffixLocaleBooleanBoolean()
+	{
 		String expected = "_de_DE";
 		String actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, true, true);
 		assertEquals(expected, actual);
@@ -185,7 +193,8 @@ public class LocaleExtensionsTest {
 	 * {@link LocaleExtensions#getLocaleFileSuffix(Locale, boolean, boolean, boolean)}
 	 */
 	@Test(enabled = true)
-	public void testGetLocaleFileSuffixLocaleBooleanBooleanBoolean() {
+	public void testGetLocaleFileSuffixLocaleBooleanBooleanBoolean()
+	{
 		String expected = "de";
 		String actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, false, false, false);
 		assertEquals(expected, actual);
@@ -207,7 +216,8 @@ public class LocaleExtensionsTest {
 	 * Test method for {@link LocaleExtensions#getLocaleName(Locale)}
 	 */
 	@Test(enabled = true)
-	public void testGetLocaleName() {
+	public void testGetLocaleName()
+	{
 		String expected = "de_DE";
 		String actual = Locale.GERMANY.getLocaleName();
 		assertEquals(expected, actual);
@@ -224,7 +234,8 @@ public class LocaleExtensionsTest {
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
 			UnsupportedOperationException.class })
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(LocaleExtensions.class);
 	}

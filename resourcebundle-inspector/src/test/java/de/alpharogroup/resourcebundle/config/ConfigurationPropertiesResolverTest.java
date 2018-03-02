@@ -32,56 +32,61 @@ import org.testng.annotations.Test;
 /**
  * The unit test class for the class {@link ConfigurationPropertiesResolver}.
  */
-public class ConfigurationPropertiesResolverTest {
+public class ConfigurationPropertiesResolverTest
+{
 
 	/**
-	 * Test the no argument constructor of
-	 * {@link ConfigurationPropertiesResolver}.
+	 * Test the no argument constructor of {@link ConfigurationPropertiesResolver}.
 	 */
 	@Test
-	public void testConfigurationPropertiesResolver() {
+	public void testConfigurationPropertiesResolver()
+	{
 		final ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver();
 		assertEquals(configurationPropertiesResolver.getDefaultHttpPort(),
-				ConfigurationPropertiesResolver.DEFAULT_HTTP_PORT);
+			ConfigurationPropertiesResolver.DEFAULT_HTTP_PORT);
 		assertEquals(configurationPropertiesResolver.getDefaultHttpsPort(),
-				ConfigurationPropertiesResolver.DEFAULT_HTTPS_PORT);
+			ConfigurationPropertiesResolver.DEFAULT_HTTPS_PORT);
 		assertEquals(configurationPropertiesResolver.getPropertiesFilename(),
-				ConfigurationPropertiesResolver.DEFAULT_CONFIGURATION_PROPERTIES_FILENAME);
+			ConfigurationPropertiesResolver.DEFAULT_CONFIGURATION_PROPERTIES_FILENAME);
 		assertEquals(configurationPropertiesResolver.getHttpPort(), 18080);
 		assertEquals(configurationPropertiesResolver.getHttpsPort(), 18443);
 	}
 
 	/**
-	 * Test the constructor with the http, https port and the file name from the
-	 * configuration file from of {@link ConfigurationPropertiesResolver}.
+	 * Test the constructor with the http, https port and the file name from the configuration file
+	 * from of {@link ConfigurationPropertiesResolver}.
 	 */
 	@Test
-	public void testConfigurationPropertiesResolverIntegerIntegerString() {
+	public void testConfigurationPropertiesResolverIntegerIntegerString()
+	{
 		final ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver(
-				9090, 9443, "conf.properties");
+			9090, 9443, "conf.properties");
 		assertEquals(configurationPropertiesResolver.getDefaultHttpPort(), 9090);
 		assertEquals(configurationPropertiesResolver.getDefaultHttpsPort(), 9443);
 		assertEquals(configurationPropertiesResolver.getPropertiesFilename(), "conf.properties");
 	}
 
 	/**
-	 * Test the constructor with the http, https port and the file name from the
-	 * configuration file from of {@link ConfigurationPropertiesResolver}.
+	 * Test the constructor with the http, https port and the file name from the configuration file
+	 * from of {@link ConfigurationPropertiesResolver}.
 	 */
 	@Test
-	public void testConfigurationPropertiesResolverIntegerIntegerStringNumberFormatException() {
+	public void testConfigurationPropertiesResolverIntegerIntegerStringNumberFormatException()
+	{
 		final ConfigurationPropertiesResolver configurationPropertiesResolver = new ConfigurationPropertiesResolver(
-				9090, 9443, "config-ex.properties");
+			9090, 9443, "config-ex.properties");
 		assertEquals(configurationPropertiesResolver.getDefaultHttpPort(), 9090);
 		assertEquals(configurationPropertiesResolver.getDefaultHttpsPort(), 9443);
-		assertEquals(configurationPropertiesResolver.getPropertiesFilename(), "config-ex.properties");
+		assertEquals(configurationPropertiesResolver.getPropertiesFilename(),
+			"config-ex.properties");
 	}
 
 	/**
 	 * Test for method {@link ConfigurationPropertiesResolver#loadProperties()}.
 	 */
 	@Test
-	public void testLoadProperties() {
+	public void testLoadProperties()
+	{
 		new ConfigurationPropertiesResolver(9090, 9443, "not-exists.properties");
 	}
 
@@ -89,7 +94,8 @@ public class ConfigurationPropertiesResolverTest {
 	 * Test method for {@link ConfigurationPropertiesResolver}
 	 */
 	@Test
-	public void testWithBeanTester() {
+	public void testWithBeanTester()
+	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(ConfigurationPropertiesResolver.class);
 	}

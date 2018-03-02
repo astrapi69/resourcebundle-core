@@ -44,12 +44,14 @@ import de.alpharogroup.collections.map.MapExtensions;
 import de.alpharogroup.lang.ClassExtensions;
 
 /**
- * The unit test class {@link LocaleResolverTest} provides unit tests for the
- * class {@link LocaleResolver}.
+ * The unit test class {@link LocaleResolverTest} provides unit tests for the class
+ * {@link LocaleResolver}.
  */
-public class LocaleResolverTest {
+public class LocaleResolverTest
+{
 
-	public static Map<String, String> newCountries() {
+	public static Map<String, String> newCountries()
+	{
 		final Map<String, String> countriesMap = new LinkedHashMap<>();
 		countriesMap.put("AF", "AFG");
 		countriesMap.put("AX", "ALA");
@@ -307,15 +309,18 @@ public class LocaleResolverTest {
 	 * Test method for {@link LocaleExtensions#getAvailableLocales()}
 	 */
 	@Test(enabled = true)
-	public void testGetAvailableLocalesNames() {
+	public void testGetAvailableLocalesNames()
+	{
 		List<Locale> availableLocales = LocaleResolver.getAvailableLocales();
 		final Map<String, String> countriesMap = newCountries();
 		final Map<String, String> countries = MapExtensions.newHashMap();
-		for (Locale locale : availableLocales) {
-			if (countriesMap.containsKey(locale.getCountry())) {
+		for (Locale locale : availableLocales)
+		{
+			if (countriesMap.containsKey(locale.getCountry()))
+			{
 				countries.put(locale.getCountry(), locale.getDisplayCountry(Locale.ENGLISH));
 				System.out.println("countriesMap.put(\"" + locale.getCountry() + "\", \""
-						+ locale.getDisplayCountry(Locale.ENGLISH) + "\");");
+					+ locale.getDisplayCountry(Locale.ENGLISH) + "\");");
 
 			}
 		}
@@ -326,7 +331,8 @@ public class LocaleResolverTest {
 	 * Test method for {@link LocaleResolver#getLocale(String)}
 	 */
 	@Test(enabled = true)
-	public void testGetLocale() {
+	public void testGetLocale()
+	{
 
 		Locale expected;
 		Locale actual;
@@ -339,7 +345,8 @@ public class LocaleResolverTest {
 	 * Test method for {@link LocaleResolver#isISOCountryCode(String)}
 	 */
 	@Test(enabled = true)
-	public void testIsISOCountryCode() {
+	public void testIsISOCountryCode()
+	{
 
 		final String toSmall = "D";
 		final String de = "de";
@@ -353,14 +360,15 @@ public class LocaleResolverTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link LocaleResolver#resolveAvailableLanguages(String, String)}
+	 * Test method for {@link LocaleResolver#resolveAvailableLanguages(String, String)}
 	 */
 	@Test(enabled = true)
-	public void testResolveAvailableLanguages() {
+	public void testResolveAvailableLanguages()
+	{
 		final String bundlepackage = "de/alpharogroup/lang";
 		final String bundlename = "resources";
-		final Set<String> availableLanguages = LocaleResolver.resolveAvailableLanguages(bundlepackage, bundlename);
+		final Set<String> availableLanguages = LocaleResolver
+			.resolveAvailableLanguages(bundlepackage, bundlename);
 		assertTrue(availableLanguages.contains("de"));
 		assertTrue(availableLanguages.contains("de_DE"));
 		assertTrue(availableLanguages.contains("en"));
@@ -374,7 +382,8 @@ public class LocaleResolverTest {
 	 *             the URI syntax exception
 	 */
 	@Test(enabled = true)
-	public void testResolveBundlename() throws URISyntaxException {
+	public void testResolveBundlename() throws URISyntaxException
+	{
 		String expected;
 		String actual;
 		String propertiesFilename;
@@ -401,7 +410,8 @@ public class LocaleResolverTest {
 	 *             the URI syntax exception
 	 */
 	@Test(enabled = true)
-	public void testResolveLocaleCodeFile() throws URISyntaxException {
+	public void testResolveLocaleCodeFile() throws URISyntaxException
+	{
 		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		final String expected = "de";
@@ -413,7 +423,8 @@ public class LocaleResolverTest {
 	 * Test method for {@link LocaleResolver#resolveLocaleCode(String)}
 	 */
 	@Test(enabled = true)
-	public void testResolveLocaleCodeString() {
+	public void testResolveLocaleCodeString()
+	{
 		String code = null;
 		Locale actual = LocaleResolver.resolveLocaleCode(code);
 		code = "";
@@ -440,7 +451,8 @@ public class LocaleResolverTest {
 	 *             the URI syntax exception
 	 */
 	@Test(enabled = true)
-	public void testResolveLocaleFile() throws URISyntaxException {
+	public void testResolveLocaleFile() throws URISyntaxException
+	{
 		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		final String code = "de";
@@ -454,10 +466,12 @@ public class LocaleResolverTest {
 	 * Test method for {@link LocaleResolver#resolveLocales(String, String)}
 	 */
 	@Test(enabled = true)
-	public void testResolveLocales() {
+	public void testResolveLocales()
+	{
 		final String bundlepackage = "de/alpharogroup/lang";
 		final String bundlename = "resources";
-		final Map<File, Locale> fileToLocaleMap = LocaleResolver.resolveLocales(bundlepackage, bundlename);
+		final Map<File, Locale> fileToLocaleMap = LocaleResolver.resolveLocales(bundlepackage,
+			bundlename);
 
 		assertTrue(fileToLocaleMap.containsValue(Locale.GERMAN));
 		assertTrue(fileToLocaleMap.containsValue(Locale.GERMANY));
@@ -468,7 +482,8 @@ public class LocaleResolverTest {
 	 * Test method for {@link LocaleResolver#resolveLocale(String)}
 	 */
 	@Test(enabled = true)
-	public void testResolveLocaleString() {
+	public void testResolveLocaleString()
+	{
 		String code = null;
 		Locale actual = LocaleResolver.resolveLocale(code);
 		code = "";
