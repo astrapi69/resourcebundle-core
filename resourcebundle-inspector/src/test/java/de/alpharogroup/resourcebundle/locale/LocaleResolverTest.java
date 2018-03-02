@@ -359,7 +359,8 @@ public class LocaleResolverTest
 		expected.add(Locale.GERMANY);
 		expected.add(new Locale("de", "GR"));
 		assertEquals(expected.size(), actual.size());
-		for(Locale l : expected) {
+		for (Locale l : expected)
+		{
 			assertTrue(actual.contains(l));
 		}
 	}
