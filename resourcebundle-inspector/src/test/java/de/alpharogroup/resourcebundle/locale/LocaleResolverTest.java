@@ -40,6 +40,7 @@ import java.util.Set;
 
 import org.testng.annotations.Test;
 
+import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.collections.map.MapExtensions;
 import de.alpharogroup.lang.ClassExtensions;
 
@@ -339,6 +340,28 @@ public class LocaleResolverTest
 		actual = LocaleResolver.getLocale("DE");
 		expected = Locale.GERMANY;
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocaleResolver#getLocales(String)}
+	 */
+	@Test(enabled = true)
+	public void testGetLocales()
+	{
+		List<Locale> expected;
+		List<Locale> actual;
+		actual = LocaleResolver.getLocales("de");
+		expected = ListExtensions.newArrayList();
+		expected.add(Locale.GERMAN);
+		expected.add(new Locale("de", "CH"));
+		expected.add(new Locale("de", "AT"));
+		expected.add(new Locale("de", "LU"));
+		expected.add(Locale.GERMANY);
+		expected.add(new Locale("de", "GR"));
+		assertEquals(expected.size(), actual.size());
+		for(Locale l : expected) {
+			assertTrue(actual.contains(l));
+		}
 	}
 
 	/**

@@ -7,6 +7,8 @@ Version 2.19.0-SNAPSHOT
 ADDED:
  
 - new method for format a pattern string with arguments in ResourceBundleExtensions
+- new method for get the country name from a given country code
+- new method for get the language name from a given language code
 
 CHANGED:
 

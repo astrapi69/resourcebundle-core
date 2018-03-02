@@ -90,7 +90,6 @@ public class LocaleExtensionsTest
 	@Test(enabled = true)
 	public void testGetCountryName()
 	{
-
 		String expected;
 		String actual;
 		actual = LocaleExtensions.getCountryName("DE", Locale.GERMANY);
@@ -99,6 +98,23 @@ public class LocaleExtensionsTest
 
 		actual = LocaleExtensions.getCountryName("DE", Locale.ENGLISH);
 		expected = "Germany";
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocaleExtensions#getLanguageName(String, Locale)}
+	 */
+	@Test(enabled = true)
+	public void testGetLanguageName()
+	{
+		String expected;
+		String actual;
+		actual = LocaleExtensions.getLanguageName("de", Locale.GERMANY);
+		expected = "Deutsch";
+		assertEquals(expected, actual);
+
+		actual = LocaleExtensions.getLanguageName("de", Locale.ENGLISH);
+		expected = "German";
 		assertEquals(expected, actual);
 	}
 

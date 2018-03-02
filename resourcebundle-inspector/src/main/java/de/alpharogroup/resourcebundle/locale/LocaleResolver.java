@@ -369,5 +369,23 @@ public class LocaleResolver
 		});
 		return ListExtensions.getFirst(locales);
 	}
+	
+	/**
+	 * Resolves a {@link Locale} objects from the given language code.
+	 *
+	 * @param languageCode the language code
+	 * @return the found {@link Locale} objects or an empty list if nothing found
+	 */
+	public static List<Locale> getLocales(@NonNull String languageCode) {
+
+		List<Locale> locales = ListExtensions.newArrayList();
+		getAvailableLocales().forEach(locale -> {
+			if (locale.getLanguage().equals(languageCode))
+			{
+				locales.add(locale);
+			}
+		});
+		return locales;
+	}
 
 }

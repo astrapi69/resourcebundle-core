@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import de.alpharogroup.collections.list.ListExtensions;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -179,13 +180,33 @@ public final class LocaleExtensions
 	 * @param countryCode
 	 *            the country code
 	 * @param inLocale
-	 *            the in locale
+	 *            The locale for which to retrieve the display country
 	 * @return the country name
 	 */
 	public static String getCountryName(String countryCode, Locale inLocale)
 	{
 		Locale locale = LocaleResolver.getLocale(countryCode);
 		return locale.getDisplayCountry(inLocale);
+	}
+
+	/**
+	 * Gets the display language name from the given language code in the given {@link Locale}.
+	 *
+	 * @param languageCode
+	 *            the language code
+	 * @param inLocale
+	 *            The locale for which to retrieve the display language
+	 * @return the language name
+	 */
+	public static String getLanguageName(String languageCode, Locale inLocale)
+	{
+		List<Locale> locales = LocaleResolver.getLocales(languageCode);
+		Locale first = ListExtensions.getFirst(locales);
+		if (first != null)
+		{
+			return first.getDisplayLanguage(inLocale);
+		}
+		return "";
 	}
 
 }
