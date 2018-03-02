@@ -39,7 +39,7 @@ import lombok.experimental.UtilityClass;
  * {@link ResourceBundle}.
  */
 @UtilityClass
-public class ResourceBundleExtensions
+public final class ResourceBundleExtensions
 {
 
 	/** The Constant logger. */
@@ -138,7 +138,22 @@ public class ResourceBundleExtensions
 	{
 		Check.get().notNull(resourceBundle, "resourceBundle").notEmpty(key, "key");
 		String value = null;
-		value = resourceBundle.getString(key);
+		value = format(resourceBundle.getString(key), parameters);
+		return value;
+	}
+
+	/**
+	 * Formats the given value with the given parameters.
+	 *
+	 * @param value
+	 *            the value with the pattern
+	 * @param parameters
+	 *            the parameters
+	 * @see MessageFormat#format(String, Object...)
+	 * @return the formatted string
+	 */
+	public static String format(String value, final Object... parameters)
+	{
 		if (parameters != null && 0 < parameters.length)
 		{
 			value = MessageFormat.format(value, parameters);
@@ -178,10 +193,7 @@ public class ResourceBundleExtensions
 			}
 			return warnMessage;
 		}
-		if (parameters != null && 0 < parameters.length)
-		{
-			value = MessageFormat.format(value, parameters);
-		}
+		value = format(value, parameters);
 		return value;
 	}
 

@@ -42,12 +42,12 @@ public final class Umlaute
 	/** The Constant OE. */
 	public static final char OE = '\u00D6';
 
+	/** The Constant sss. */
+	public static final char sss = '\u00DF';
+
 	/** The Constant ue. */
 	public static final char ue = '\u00FC';
 
 	/** The Constant UE. */
 	public static final char UE = '\u00DC';
-
-	/** The Constant sss. */
-	public static final char sss = '\u00DF';
 }

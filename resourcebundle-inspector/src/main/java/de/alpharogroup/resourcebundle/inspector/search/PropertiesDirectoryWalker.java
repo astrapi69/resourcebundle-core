@@ -27,6 +27,7 @@ package de.alpharogroup.resourcebundle.inspector.search;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.DirectoryWalker;
 
@@ -38,6 +39,7 @@ import de.alpharogroup.file.filter.MultiplyExtensionsFileFilter;
  */
 public class PropertiesDirectoryWalker extends DirectoryWalker<File>
 {
+	private final List<File> files;
 
 	/**
 	 * Instantiates a new properties directory walker.
@@ -45,11 +47,12 @@ public class PropertiesDirectoryWalker extends DirectoryWalker<File>
 	public PropertiesDirectoryWalker()
 	{
 		super(new MultiplyExtensionsFileFilter(true, FileExtension.PROPERTIES.getExtension()), -1);
+		files = new ArrayList<>();
 	}
 
 	/**
 	 * Start.
-	 * 
+	 *
 	 * @param dir
 	 *            the dir
 	 * @throws IOException
@@ -57,6 +60,6 @@ public class PropertiesDirectoryWalker extends DirectoryWalker<File>
 	 */
 	public void start(final File dir) throws IOException
 	{
-		walk(dir, new ArrayList<File>());
+		walk(dir, files);
 	}
 }

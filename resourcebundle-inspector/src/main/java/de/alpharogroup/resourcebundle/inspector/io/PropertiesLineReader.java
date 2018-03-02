@@ -40,14 +40,14 @@ public class PropertiesLineReader
 	/** The input byte buffer. */
 	private byte[] inputByteBuffer;
 
+	/** The input char buffer. */
+	private char[] inputCharBuffer;
+
 	/** The input limit. */
 	private int inputLimit = 0;
 
 	/** The input off. */
 	private int inputOff = 0;
-
-	/** The input char buffer. */
-	private char[] inputCharBuffer;
 
 	/** The input stream. */
 	private InputStream inputStream;

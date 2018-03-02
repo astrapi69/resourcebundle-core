@@ -24,18 +24,21 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
-import org.testng.AssertJUnit;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * The class {@link LocaleExtensionsTest} provides unit tests for the class
+ * The unit test class {@link LocaleExtensionsTest} provides unit tests for the class
  * {@link LocaleExtensions}.
  */
 @Slf4j
@@ -52,7 +55,7 @@ public class LocaleExtensionsTest
 		condition = LocaleExtensions.contains(Locales.HELLENIC);
 		assertTrue(condition);
 
-		Locale locale = Locales.HELLENIC;
+		final Locale locale = Locales.HELLENIC;
 
 		final String englishName = locale.getDisplayName(Locale.ENGLISH);
 		final String country = locale.getCountry();
@@ -82,6 +85,40 @@ public class LocaleExtensionsTest
 	}
 
 	/**
+	 * Test method for {@link LocaleExtensions#getCountryName(String, Locale)}
+	 */
+	@Test(enabled = true)
+	public void testGetCountryName()
+	{
+		String expected;
+		String actual;
+		actual = LocaleExtensions.getCountryName("DE", Locale.GERMANY);
+		expected = "Deutschland";
+		assertEquals(expected, actual);
+
+		actual = LocaleExtensions.getCountryName("DE", Locale.ENGLISH);
+		expected = "Germany";
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocaleExtensions#getLanguageName(String, Locale)}
+	 */
+	@Test(enabled = true)
+	public void testGetLanguageName()
+	{
+		String expected;
+		String actual;
+		actual = LocaleExtensions.getLanguageName("de", Locale.GERMANY);
+		expected = "Deutsch";
+		assertEquals(expected, actual);
+
+		actual = LocaleExtensions.getLanguageName("de", Locale.ENGLISH);
+		expected = "German";
+		assertEquals(expected, actual);
+	}
+
+	/**
 	 * Test method for {@link LocaleExtensions#getLocaleFilenameSuffix(Locale)}
 	 */
 	@Test(enabled = true)
@@ -90,25 +127,25 @@ public class LocaleExtensionsTest
 
 		String expected = "de_DE";
 		String actual = LocaleExtensions.getLocaleFilenameSuffix(Locale.GERMANY);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 
 		expected = "de";
 		actual = LocaleExtensions.getLocaleFilenameSuffix(Locale.GERMAN);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 
 		expected = "el_GR";
 		actual = LocaleExtensions.getLocaleFilenameSuffix(Locales.HELLENIC);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 
 		expected = "el";
 		actual = LocaleExtensions.getLocaleFilenameSuffix(Locales.GREEK);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "";
 		actual = LocaleExtensions.getLocaleFilenameSuffix(null);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "de_DE_schw";
 		actual = LocaleExtensions.getLocaleFilenameSuffix(Locales.SCHWAEBISCH);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -119,21 +156,21 @@ public class LocaleExtensionsTest
 	{
 		String expected = "_de_DE";
 		String actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, false);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "";
 		actual = LocaleExtensions.getLocaleFileSuffix(null, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		actual = LocaleExtensions.getLocaleFileSuffix(null, false);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de_DE";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.SCHWAEBISCH, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.SCHWAEBISCH, false);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -144,27 +181,27 @@ public class LocaleExtensionsTest
 	{
 		String expected = "_de_DE";
 		String actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, true, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, false, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMAN, true, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_el_GR";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.HELLENIC, true, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_el";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.HELLENIC, false, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.GREEK, true, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "";
 		actual = LocaleExtensions.getLocaleFileSuffix(null, false, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de_DE_schw";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.SCHWAEBISCH, true, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -176,19 +213,19 @@ public class LocaleExtensionsTest
 	{
 		String expected = "de";
 		String actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, false, false, false);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locale.GERMANY, false, false, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de_schw";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.SCHWAEBISCH, false, true, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "_de_DE_schw";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.SCHWAEBISCH, true, true, true);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "de_DE_schw";
 		actual = LocaleExtensions.getLocaleFileSuffix(Locales.SCHWAEBISCH, true, true, false);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -199,13 +236,24 @@ public class LocaleExtensionsTest
 	{
 		String expected = "de_DE";
 		String actual = Locale.GERMANY.getLocaleName();
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "de_DE_schw";
 		actual = LocaleExtensions.getLocaleName(Locales.SCHWAEBISCH);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 		expected = "el_GR";
 		actual = LocaleExtensions.getLocaleName(Locales.HELLENIC);
-		AssertJUnit.assertEquals(expected, actual);
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocaleExtensions}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
+			UnsupportedOperationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(LocaleExtensions.class);
 	}
 
 }

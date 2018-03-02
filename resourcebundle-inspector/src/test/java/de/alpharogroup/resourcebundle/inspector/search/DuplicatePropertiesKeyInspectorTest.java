@@ -24,14 +24,20 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.io.StreamExtensions;
 import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
 
 /**
@@ -40,6 +46,40 @@ import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
  */
 public class DuplicatePropertiesKeyInspectorTest
 {
+
+	@Test
+	public void testDuplicatePropertiesKeyInspectorFile() throws IOException
+	{
+		final File dir = PathFinder.getSrcTestResourcesDir();
+		final String propertiesFilename = "resources.properties";
+		final File propertiesFile = new File(dir, propertiesFilename);
+		final DuplicatePropertiesKeyInspector duplicatePropertiesKeyInspector = new DuplicatePropertiesKeyInspector(
+			propertiesFile);
+		assertNotNull(duplicatePropertiesKeyInspector);
+	}
+
+	@Test
+	public void testDuplicatePropertiesKeyInspectorInputStream() throws IOException
+	{
+		final File dir = PathFinder.getSrcTestResourcesDir();
+		final String propertiesFilename = "resources.properties";
+		final File propertiesFile = new File(dir, propertiesFilename);
+		final DuplicatePropertiesKeyInspector duplicatePropertiesKeyInspector = new DuplicatePropertiesKeyInspector(
+			StreamExtensions.getInputStream(propertiesFile));
+		assertNotNull(duplicatePropertiesKeyInspector);
+	}
+
+	@Test
+	public void testFindRedundantValues()
+	{
+		final Properties properties = new Properties();
+		properties.setProperty("com", "bar");
+		properties.setProperty("bar", "foo");
+		properties.setProperty("foo", "foo");
+		final Map<String, List<String>> redundantValues = DuplicatePropertiesKeyInspector
+			.findRedundantValues(properties);
+		assertEquals(redundantValues.size(), 1);
+	}
 
 	/**
 	 * Test method for {@link DuplicatePropertiesKeyInspector#getResult()}

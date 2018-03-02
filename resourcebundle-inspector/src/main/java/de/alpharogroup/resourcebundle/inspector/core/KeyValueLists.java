@@ -44,19 +44,19 @@ public class KeyValueLists implements Serializable
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The keys of the properties file. */
-	@Getter
-	private final List<String> keys = new ArrayList<String>();
-
-	/** The values of the properties file. */
-	@Getter
-	private final List<String> values = new ArrayList<String>();
-
 	/** The duplicate map. */
 	@Getter
 	private final Map<String, Integer> duplicateMap = new TreeMap<String, Integer>();
+
 	/** The duplicate map. */
 	@Getter
 	private final Map<String, List<String>> duplicateValueMap = new LinkedHashMap<String, List<String>>();
+
+	/** The keys of the properties file. */
+	@Getter
+	private final List<String> keys = new ArrayList<String>();
+	/** The values of the properties file. */
+	@Getter
+	private final List<String> values = new ArrayList<String>();
 
 }

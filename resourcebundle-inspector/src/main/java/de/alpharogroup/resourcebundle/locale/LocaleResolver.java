@@ -34,8 +34,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.file.FilenameExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
+import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -44,6 +46,9 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class LocaleResolver
 {
+
+	/** The available locales on the system. */
+	private static List<Locale> availableLocales;
 
 	/**
 	 * Checks the given code if its a valide ISO 3166-1 countrycode.
@@ -329,6 +334,60 @@ public class LocaleResolver
 	public List<Locale> resolveAvailableLocales()
 	{
 		return Arrays.asList(DateFormat.getAvailableLocales());
+	}
+
+	/**
+	 * Returns a list of all available locales on the current jdk.
+	 *
+	 * @return list of all available locales on the current jdk.
+	 */
+	public static List<Locale> getAvailableLocales()
+	{
+		if (availableLocales == null)
+		{
+			final Locale localesArray[] = DateFormat.getAvailableLocales();
+			availableLocales = Arrays.asList(localesArray);
+		}
+		return availableLocales;
+	}
+
+	/**
+	 * Resolves a {@link Locale} from the given country code.
+	 *
+	 * @param countryCode
+	 *            the country code
+	 * @return the found {@link Locale} or null if not found
+	 */
+	public static Locale getLocale(@NonNull String countryCode)
+	{
+		List<Locale> locales = ListExtensions.newArrayList();
+		getAvailableLocales().forEach(locale -> {
+			if (locale.getCountry().equals(countryCode))
+			{
+				locales.add(locale);
+			}
+		});
+		return ListExtensions.getFirst(locales);
+	}
+
+	/**
+	 * Resolves a {@link Locale} objects from the given language code.
+	 *
+	 * @param languageCode
+	 *            the language code
+	 * @return the found {@link Locale} objects or an empty list if nothing found
+	 */
+	public static List<Locale> getLocales(@NonNull String languageCode)
+	{
+
+		List<Locale> locales = ListExtensions.newArrayList();
+		getAvailableLocales().forEach(locale -> {
+			if (locale.getLanguage().equals(languageCode))
+			{
+				locales.add(locale);
+			}
+		});
+		return locales;
 	}
 
 }

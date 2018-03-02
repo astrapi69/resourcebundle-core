@@ -44,6 +44,9 @@ import lombok.Getter;
 public class PropertiesListResolver
 {
 
+	/** The default locale. */
+	private final Locale defaultLocale;
+
 	/**
 	 * The properties list with {@linkplain KeyValuePair} objects as properties file as key and the
 	 * locale string code as value.
@@ -52,9 +55,6 @@ public class PropertiesListResolver
 
 	/** The root dir. */
 	private final File rootDir;
-
-	/** The default locale. */
-	private final Locale defaultLocale;
 
 	/**
 	 * Instantiates a new {@link PropertiesListResolver}.

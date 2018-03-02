@@ -30,20 +30,28 @@ import java.util.Optional;
 import java.util.Properties;
 
 import de.alpharogroup.check.Check;
+import de.alpharogroup.collections.properties.PropertiesExtensions;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an
  * application like the http, https ports.
  */
+@Slf4j
 public class ConfigurationPropertiesResolver implements Serializable
 {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+	/** The constant for the properties key of the http port. */
+	public static final String APPLICATION_HTTP_PORT_KEY = "application.http.port";
 
-	/** The constant for the default file name of the configuration properties file. */
+	/** The constant for the properties key of the https port. */
+	public static final String APPLICATION_HTTPS_PORT_KEY = "application.https.port";
+
+	/**
+	 * The constant for the default file name of the configuration properties file.
+	 */
 	public static final String DEFAULT_CONFIGURATION_PROPERTIES_FILENAME = "config.properties";
 
 	/** The constant for the default http port. */
@@ -52,11 +60,8 @@ public class ConfigurationPropertiesResolver implements Serializable
 	/** The constant for the default http port. */
 	public static final int DEFAULT_HTTPS_PORT = 8443;
 
-	/** The constant for the properties key of the http port. */
-	public static final String APPLICATION_HTTP_PORT_KEY = "application.http.port";
-
-	/** The constant for the properties key of the https port. */
-	public static final String APPLICATION_HTTPS_PORT_KEY = "application.https.port";
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default http port.
@@ -82,15 +87,15 @@ public class ConfigurationPropertiesResolver implements Serializable
 	@Getter
 	private final int httpsPort;
 
+	/** The configuration properties. */
+	@Getter
+	private final Properties properties;
+
 	/**
 	 * The properties filename.
 	 */
 	@Getter
 	private final String propertiesFilename;
-
-	/** The configuration properties. */
-	@Getter
-	private final Properties properties;
 
 	/**
 	 * Instantiates a new {@link ConfigurationPropertiesResolver} with the default settings.
@@ -125,6 +130,39 @@ public class ConfigurationPropertiesResolver implements Serializable
 	}
 
 	/**
+	 * Try to get a number from the given properties key from the given properties. If it does not
+	 * exists an empty {@link Optional} will be returned and a log message will be logged.
+	 *
+	 * @param properties
+	 *            the properties
+	 * @param propertiesKey
+	 *            the properties key
+	 * @return the port number or an empty {@linkplain Optional}
+	 * @deprecated use instead the corresponding method in the {@link PropertiesExtensions} from the
+	 *             next release.
+	 */
+	@Deprecated
+	private Optional<Integer> getInteger(final Properties properties, final String propertiesKey)
+	{
+		if (properties != null && properties.containsKey(propertiesKey))
+		{
+			final String portAsString = properties.getProperty(propertiesKey);
+			try
+			{
+				final Integer port = Integer.valueOf(portAsString);
+				return Optional.of(port);
+			}
+			catch (final NumberFormatException e)
+			{
+				log.error("Value of given properties key:" + propertiesKey + " is not a number.",
+					e);
+				return Optional.empty();
+			}
+		}
+		return Optional.empty();
+	}
+
+	/**
 	 * Try to get the http port from the properties. If it does not exists an empty {@link Optional}
 	 * will be returned.
 	 *
@@ -132,20 +170,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private Optional<Integer> getOptionalHttpPort()
 	{
-		if (getProperties() != null && getProperties().containsKey(APPLICATION_HTTP_PORT_KEY))
-		{
-			final String httpPortString = getProperties().getProperty(APPLICATION_HTTP_PORT_KEY);
-			try
-			{
-				final Integer httpPort = Integer.valueOf(httpPortString);
-				return Optional.of(httpPort);
-			}
-			catch (final NumberFormatException e)
-			{
-				return Optional.empty();
-			}
-		}
-		return Optional.empty();
+		return getInteger(getProperties(), APPLICATION_HTTP_PORT_KEY);
 	}
 
 	/**
@@ -156,22 +181,8 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private Optional<Integer> getOptionalHttpsPort()
 	{
-		if (getProperties().containsKey(APPLICATION_HTTPS_PORT_KEY))
-		{
-			final String httpsPortString = getProperties().getProperty(APPLICATION_HTTPS_PORT_KEY);
-			try
-			{
-				final Integer httpsPort = Integer.valueOf(httpsPortString);
-				return Optional.of(httpsPort);
-			}
-			catch (final NumberFormatException e)
-			{
-				return Optional.empty();
-			}
-		}
-		return Optional.empty();
+		return getInteger(getProperties(), APPLICATION_HTTPS_PORT_KEY);
 	}
-
 
 	/**
 	 * Try to load the configuration properties file from disk.
@@ -191,7 +202,6 @@ public class ConfigurationPropertiesResolver implements Serializable
 		}
 		return properties;
 	}
-
 
 	/**
 	 * Resolves the http port from the configuration properties file.
@@ -222,6 +232,5 @@ public class ConfigurationPropertiesResolver implements Serializable
 		}
 		return getDefaultHttpsPort();
 	}
-
 
 }

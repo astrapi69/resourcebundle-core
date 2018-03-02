@@ -37,7 +37,8 @@ import de.alpharogroup.lang.model.ClassModel;
 import de.alpharogroup.lang.model.MethodModel;
 
 /**
- * Test class for the class {@link de.alpharogroup.resourcebundle.dep.PropertiesExtensions}.
+ * The unit test class for the class
+ * {@link de.alpharogroup.resourcebundle.dep.PropertiesExtensions}.
  *
  * @version 1.0
  * @author Asterios Raptis
@@ -170,7 +171,6 @@ public class PropertiesExtensionsTest
 			.getMatchedPrefixLists(enProperties);
 		String localeAnnotationName = "En";
 		final Map<String, ClassModel> interfaces = new LinkedHashMap<>();
-
 
 		getClassModels(matchedPrefixes, localeAnnotationName, interfaces, enProperties);
 
