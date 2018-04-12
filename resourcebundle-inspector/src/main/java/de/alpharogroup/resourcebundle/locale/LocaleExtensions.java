@@ -186,7 +186,10 @@ public final class LocaleExtensions
 	public static String getCountryName(String countryCode, Locale inLocale)
 	{
 		Locale locale = LocaleResolver.getLocale(countryCode);
-		return locale.getDisplayCountry(inLocale);
+		if(locale != null) {
+			return locale.getDisplayCountry(inLocale);
+		}
+		return countryCode;
 	}
 
 	/**
