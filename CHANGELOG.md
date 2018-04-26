@@ -4,7 +4,14 @@
 Version 2.20.0-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update of parent version to 3.10.0
+- overload method getCountryName with new parameter defaultCountryName
+- update of silly-collections version to 4.27.0
+- update of test-objects version to 4.24.0
+- update of jcommons-lang to 4.30.0
+- update of jobject-extensions to 1.10.0
 
 Version 2.19.0
 -------------
