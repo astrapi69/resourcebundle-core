@@ -185,8 +185,30 @@ public final class LocaleExtensions
 	 */
 	public static String getCountryName(String countryCode, Locale inLocale)
 	{
+		return getCountryName(countryCode, inLocale, countryCode);
+	}
+
+	/**
+	 * Gets the display country name from the given country code from the given {@link Locale}. If
+	 * not found the given default country name is returned.
+	 *
+	 * @param countryCode
+	 *            the country code
+	 * @param inLocale
+	 *            The locale for which to retrieve the display country
+	 * @param defaultCountryName
+	 *            the default country name
+	 * @return the country name
+	 */
+	public static String getCountryName(String countryCode, Locale inLocale,
+		String defaultCountryName)
+	{
 		Locale locale = LocaleResolver.getLocale(countryCode);
-		return locale.getDisplayCountry(inLocale);
+		if (locale != null)
+		{
+			return locale.getDisplayCountry(inLocale);
+		}
+		return defaultCountryName;
 	}
 
 	/**

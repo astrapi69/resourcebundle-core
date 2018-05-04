@@ -41,7 +41,7 @@ import java.util.Set;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.collections.list.ListExtensions;
-import de.alpharogroup.collections.map.MapExtensions;
+import de.alpharogroup.collections.map.MapFactory;
 import de.alpharogroup.lang.ClassExtensions;
 
 /**
@@ -314,7 +314,7 @@ public class LocaleResolverTest
 	{
 		List<Locale> availableLocales = LocaleResolver.getAvailableLocales();
 		final Map<String, String> countriesMap = newCountries();
-		final Map<String, String> countries = MapExtensions.newHashMap();
+		final Map<String, String> countries = MapFactory.newHashMap();
 		for (Locale locale : availableLocales)
 		{
 			if (countriesMap.containsKey(locale.getCountry()))
