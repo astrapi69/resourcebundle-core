@@ -40,6 +40,16 @@ Than you can add the dependency to your dependencies:
 		</dependencies>
 
 
+## Semantic Versioning
+
+The versions of mystic-crypt are maintained with the Semantic Versioning guidelines.
+
+Release version numbers will be incremented in the following format:
+
+`<major>.<minor>.<patch>`
+
+For more information on SemVer you can visit [semver.org](http://semver.org/).
+
 ## Want to Help and improve it? ###
 
 The source code for resourcebundle-core are on GitHub. Please feel free to fork and send pull requests!
@@ -79,4 +89,18 @@ or over flattr:
 <a href="http://flattr.com/thing/4180911/astrapi69resourcebundle-inspector-on-GitHub" target="_blank">
 <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
 </a>
+
+# Similar projects
+
+Here is a list of awesome projects for resource bundles:
+
+* [ResourceCheck](http://rscbundlecheck.sourceforge.net/) Ant Task for checking Java Resourcebundles. [sourceforge.net](https://sourceforge.net/projects/rscbundlecheck/)
+* [nv-i18n](https://github.com/TakahikoKawasaki/nv-i18n) Package to support internationalization, containing ISO 3166-1 country code enum, ISO 639-1 language code enum, etc.
+
+## Credits
+
+|Travis CI|
+|:-:|
+|![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)|
+|Many thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects.|
 
