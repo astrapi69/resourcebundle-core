@@ -34,7 +34,7 @@ import org.apache.commons.io.FileUtils;
 import de.alpharogroup.file.search.FileSearchExtensions;
 
 /**
- * The class {@link UsedKeysSearchFilter} finds the used keys from.
+ * The class {@link UsedKeysSearchFilter} can process {@link KeySearchBean} and find used keys.
  */
 public class UsedKeysSearchFilter implements FilterProcessor<KeySearchBean, UsedKeysSearchResult>
 {
