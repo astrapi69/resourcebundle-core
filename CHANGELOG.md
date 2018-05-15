@@ -1,9 +1,13 @@
 ## Change log
 ----------------------
 
-Version 2.21.0-SNAPSHOT
+Version 2.21-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of parent version to 3.11
+- removed unneeded .0 at the end of version
 
 Version 2.20.0
 -------------
