@@ -1,6 +1,15 @@
 ## Change log
 ----------------------
 
+Version 2.21
+-------------
+
+CHANGED:
+
+- update of parent version to 3.11
+- removed unneeded .0 at the end of version
+- update of file-worker version to 4.20
+
 Version 2.20.0
 -------------
 
