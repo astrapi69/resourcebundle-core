@@ -13,6 +13,7 @@ CHANGED:
 - update of parent version to 3.11
 - removed unneeded .0 at the end of version
 - update of file-worker version to 4.20
+- update of silly-collections version to 4.28.0
 
 Version 2.20.0
 -------------
