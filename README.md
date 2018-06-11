@@ -48,7 +48,7 @@ Release version numbers will be incremented in the following format:
 
 `<major>.<minor>.<patch>`
 
-For more information on SemVer you can visit [semver.org](http://semver.org/).
+For detailed information on versioning for this project you can visit this [wiki page](https://github.com/lightblueseas/mvn-parent-projects/wiki/Semantic-Versioning).
 
 ## Want to Help and improve it? ###
 
