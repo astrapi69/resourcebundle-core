@@ -35,6 +35,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import de.alpharogroup.collections.list.ListExtensions;
+import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.file.FilenameExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
 import lombok.NonNull;
@@ -360,7 +361,7 @@ public class LocaleResolver
 	 */
 	public static Locale getLocale(@NonNull String countryCode)
 	{
-		List<Locale> locales = ListExtensions.newArrayList();
+		List<Locale> locales = ListFactory.newArrayList();
 		getAvailableLocales().forEach(locale -> {
 			if (locale.getCountry().equals(countryCode))
 			{
@@ -380,7 +381,7 @@ public class LocaleResolver
 	public static List<Locale> getLocales(@NonNull String languageCode)
 	{
 
-		List<Locale> locales = ListExtensions.newArrayList();
+		List<Locale> locales = ListFactory.newArrayList();
 		getAvailableLocales().forEach(locale -> {
 			if (locale.getLanguage().equals(languageCode))
 			{

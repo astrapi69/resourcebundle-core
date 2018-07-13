@@ -35,7 +35,7 @@ import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.collections.array.ArrayExtensions;
+import de.alpharogroup.collections.array.ArrayFactory;
 
 /**
  * The unit test class {@link ResourceBundleExtensionsTest} provides unit tests for the class
@@ -60,7 +60,7 @@ public class ResourceBundleExtensionsTest
 		expected = "Hello i am Brad and i come from Hollywood.";
 		assertEquals(expected, actual);
 
-		parameters = ArrayExtensions.newArray("Brad", "Hollywood");
+		parameters = ArrayFactory.newArray("Brad", "Hollywood");
 
 		value = "Hallo ich bin {0} und komme aus {1}.";
 		actual = ResourceBundleExtensions.format(value, parameters);
@@ -87,7 +87,7 @@ public class ResourceBundleExtensionsTest
 		Object[] parameters;
 		BundleKey bundleKey;
 
-		parameters = ArrayExtensions.newArray("foo", "bar");
+		parameters = ArrayFactory.newArray("foo", "bar");
 		bundleKey = BundleKey.builder().baseName("test").locale(Locale.UK)
 			.resourceBundleKey(
 				ResourceBundleKey.builder().key("com.example.gui.prop.with.params.label")

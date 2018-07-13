@@ -33,11 +33,11 @@ import java.util.Collection;
 
 import org.testng.annotations.Test;
 
-import de.alpharogroup.collections.list.ListExtensions;
+import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.file.create.CreateFileExtensions;
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.file.write.WriteFileExtensions;
+import de.alpharogroup.file.write.WriteFileQuietlyExtensions;
 import de.alpharogroup.lang.ClassExtensions;
 
 /**
@@ -84,7 +84,7 @@ public class PropertiesNormalizerTest
 		final String propertiesFilename = "foo-write.properties";
 		final File prpFile = new File(dir, propertiesFilename);
 		CreateFileExtensions.newFile(prpFile);
-		WriteFileExtensions.writeLinesToFile(ListExtensions.newArrayList("com=öäüß"), prpFile,
+		WriteFileQuietlyExtensions.writeLinesToFile(ListFactory.newArrayList("com=öäüß"), prpFile,
 			"UTF-8");
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		PropertiesNormalizer.normalizeProperties(propertiesFile.getAbsolutePath());

@@ -40,7 +40,7 @@ import java.util.Set;
 
 import org.testng.annotations.Test;
 
-import de.alpharogroup.collections.list.ListExtensions;
+import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.collections.map.MapFactory;
 import de.alpharogroup.lang.ClassExtensions;
 
@@ -351,7 +351,7 @@ public class LocaleResolverTest
 		List<Locale> expected;
 		List<Locale> actual;
 		actual = LocaleResolver.getLocales("de");
-		expected = ListExtensions.newArrayList();
+		expected = ListFactory.newArrayList();
 		expected.add(Locale.GERMAN);
 		expected.add(new Locale("de", "CH"));
 		expected.add(new Locale("de", "AT"));

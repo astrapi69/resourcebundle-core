@@ -4,6 +4,14 @@
 Version 2.22-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of parent version to 3.12
+- update of jcommons-lang to 4.34
+- update of test-objects version to 4.28
+- update of silly-collections version to 4.31
+- update of jobject-extensions to 1.11
+- update of meanbean-factories to 1.1
 
 Version 2.21
 -------------
