@@ -46,6 +46,9 @@ import lombok.extern.slf4j.Slf4j;
 public class LocaleExtensionsTest
 {
 
+	/**
+	 * Test method for {@link LocaleExtensions#contains(Locale)}
+	 */
 	@Test
 	public void testContains()
 	{
@@ -102,6 +105,25 @@ public class LocaleExtensionsTest
 	}
 
 	/**
+	 * Test method for {@link LocaleExtensions#getCountryName(String, Locale, String)}
+	 */
+	@Test
+	public void testGetCountryNameStringLocaleString()
+	{
+		String expected;
+		String actual;
+		String countryCode;
+		Locale inLocale;
+		String defaultCountryName;
+		countryCode = "YU";
+		inLocale = Locale.GERMAN;
+		defaultCountryName = "Yugoslavien";
+		actual = LocaleExtensions.getCountryName(countryCode, inLocale, defaultCountryName);
+		expected = defaultCountryName;
+		assertEquals(expected, actual);
+	}
+
+	/**
 	 * Test method for {@link LocaleExtensions#getLanguageName(String, Locale)}
 	 */
 	@Test(enabled = true)
@@ -115,6 +137,10 @@ public class LocaleExtensionsTest
 
 		actual = LocaleExtensions.getLanguageName("de", Locale.ENGLISH);
 		expected = "German";
+		assertEquals(expected, actual);
+
+		actual = LocaleExtensions.getLanguageName("yu", Locale.GERMANY);
+		expected = "";
 		assertEquals(expected, actual);
 	}
 
