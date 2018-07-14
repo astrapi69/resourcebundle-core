@@ -144,6 +144,13 @@ public class ResourceBundleExtensionsTest
 			"default value of com.example.gui.prop.with.params.label", parameters);
 		expected = "Hello i am foo and i come from bar.";
 		assertEquals(expected, actual);
+
+		parameters = ArrayFactory.newArray("foo", "bar");
+		actual = ResourceBundleExtensions.getStringQuietly("test", Locale.UK,
+			"com.example.gui.prop.with.params.label.not-exists",
+			"default value of com.example.gui.prop.with.params.label", parameters);
+		expected = "default value of com.example.gui.prop.with.params.label";
+		assertEquals(expected, actual);
 	}
 
 	/**
