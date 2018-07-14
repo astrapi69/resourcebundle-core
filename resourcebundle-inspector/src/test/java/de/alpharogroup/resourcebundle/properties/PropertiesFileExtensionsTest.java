@@ -108,6 +108,26 @@ public class PropertiesFileExtensionsTest
 		assertTrue(fileMap.containsKey(expectedPropertiesFile2));
 	}
 
+	/**
+	 * Test method for {@link PropertiesFileExtensions#loadProperties(Class, String, String)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	@Test
+	public void testLoadPropertiesClassOfQStringString() throws IOException
+	{
+		Properties actual;
+		Class<?> clazz;
+		String packagePath;
+		String fileName;
+		clazz = ClassExtensions.class;
+		packagePath = "de/alpharogroup/lang/";
+		fileName = "resources.properties";
+		actual = PropertiesFileExtensions.loadProperties(clazz, packagePath, fileName);
+		assertNotNull(actual);
+	}
+
 	@Test(enabled = true)
 	public void testLoadPropertiesFromClassObject() throws IOException
 	{
@@ -167,23 +187,6 @@ public class PropertiesFileExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link PropertiesFileExtensions#removeComments(File)}.
-	 *
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	@Test(enabled = true)
-	public void testRemoveComments() throws IOException
-	{
-		final File srcTestResourceDir = PathFinder.getSrcTestResourcesDir();
-		final File testDir = PathFinder.getRelativePath(srcTestResourceDir, "resources",
-			"properties");
-		final File propertiesFile = PathFinder.getRelativePath(testDir, "test.properties");
-		final List<String> lines = PropertiesFileExtensions.removeComments(propertiesFile);
-		assertTrue(lines.size() == 5);
-	}
-
-	/**
 	 * Test method for {@link PropertiesFileExtensions#newBackupOf(File)}.
 	 *
 	 * @throws IOException
@@ -206,6 +209,23 @@ public class PropertiesFileExtensionsTest
 	}
 
 	/**
+	 * Test method for {@link PropertiesFileExtensions#removeComments(File)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	@Test(enabled = true)
+	public void testRemoveComments() throws IOException
+	{
+		final File srcTestResourceDir = PathFinder.getSrcTestResourcesDir();
+		final File testDir = PathFinder.getRelativePath(srcTestResourceDir, "resources",
+			"properties");
+		final File propertiesFile = PathFinder.getRelativePath(testDir, "test.properties");
+		final List<String> lines = PropertiesFileExtensions.removeComments(propertiesFile);
+		assertTrue(lines.size() == 5);
+	}
+
+	/**
 	 * Test method for {@link PropertiesFileExtensions#resolveAvailableLanguages(String, String)}
 	 */
 	@Test
@@ -218,26 +238,6 @@ public class PropertiesFileExtensionsTest
 		assertNotNull(actual);
 		expected = SetFactory.newTreeSet("de", "de_DE", "en");
 		assertEquals(expected, actual);
-	}
-
-	/**
-	 * Test method for {@link PropertiesFileExtensions#loadProperties(Class, String, String)}.
-	 *
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	@Test
-	public void testLoadPropertiesClassOfQStringString() throws IOException
-	{
-		Properties actual;
-		Class<?> clazz;
-		String packagePath;
-		String fileName;
-		clazz = ClassExtensions.class;
-		packagePath = "de/alpharogroup/lang/";
-		fileName = "resources.properties";
-		actual = PropertiesFileExtensions.loadProperties(clazz, packagePath, fileName);
-		assertNotNull(actual);
 	}
 
 	/**

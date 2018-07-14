@@ -84,8 +84,8 @@ public class UsedKeysSearchFilterTest
 		{
 			final Properties properties = PropertiesFileExtensions.loadProperties(propertiesFile);
 
-			final KeySearchBean model = KeySearchBean.newKeySearchBean(properties, rootDir, new HashSet<File>(),
-				foundMap.get(propertiesFile), ".java", ".html");
+			final KeySearchBean model = KeySearchBean.newKeySearchBean(properties, rootDir,
+				new HashSet<File>(), foundMap.get(propertiesFile), ".java", ".html");
 			final UsedKeysSearchFilter command = new UsedKeysSearchFilter();
 			final UsedKeysSearchResult actual = command.process(model);
 			final UnusedKeysSearchFilter processor = new UnusedKeysSearchFilter();
@@ -125,8 +125,8 @@ public class UsedKeysSearchFilterTest
 		exclude.add(ex1);
 		exclude.add(ex2);
 		// create the search bean...
-		final KeySearchBean searchBean = KeySearchBean.newKeySearchBean(properties, srcTestJava, exclude, null,
-			fileExtensions);
+		final KeySearchBean searchBean = KeySearchBean.newKeySearchBean(properties, srcTestJava,
+			exclude, null, fileExtensions);
 
 		return searchBean;
 	}
@@ -134,7 +134,7 @@ public class UsedKeysSearchFilterTest
 	/**
 	 * Test method for {@link UnusedKeysSearchFilter#process(UsedKeysSearchResult)}
 	 */
-	@Test(enabled = true) 
+	@Test(enabled = true)
 	public void testExecute() throws IOException
 	{
 		UnusedKeysSearchResult expected;
@@ -146,11 +146,8 @@ public class UsedKeysSearchFilterTest
 		UnusedKeysSearchFilter processor;
 
 		expected = new UnusedKeysSearchResult();
-		unusedKeys = SetFactory.newHashSet(
-			"com.example.gui", 
-			"com.example.gui.window.title",
-			"com.example.gui.window.buttons.ok", 
-			"com.example.gui.window.buttons.cancel");
+		unusedKeys = SetFactory.newHashSet("com.example.gui", "com.example.gui.window.title",
+			"com.example.gui.window.buttons.ok", "com.example.gui.window.buttons.cancel");
 		expected.setUnusedKeys(unusedKeys);
 		model = newKeySearchBean();
 		command = new UsedKeysSearchFilter();

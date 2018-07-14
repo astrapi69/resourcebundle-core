@@ -53,24 +53,6 @@ public class KeySearchBean
 {
 
 	/**
-	 * The Properties that contain the keys to search.
-	 */
-	private Properties base;
-
-	/** The files to be excluded. */
-	@Builder.Default
-	private Set<File> exclude = SetFactory.newHashSet();
-
-	/** The file extensions to find. */
-	private String[] fileExtensions;
-
-	/** The locale from the properties. */
-	private Locale locale;
-
-	/** The directory where the search shell be begin. */
-	private File searchDir;
-
-	/**
 	 * Factory method to create a new {@link KeySearchBean} with the given arguments
 	 *
 	 * @param properties
@@ -92,5 +74,23 @@ public class KeySearchBean
 			.exclude(exclude).locale(locale).fileExtensions(fileExtensions).build();
 		return model;
 	}
+
+	/**
+	 * The Properties that contain the keys to search.
+	 */
+	private Properties base;
+
+	/** The files to be excluded. */
+	@Builder.Default
+	private Set<File> exclude = SetFactory.newHashSet();
+
+	/** The file extensions to find. */
+	private String[] fileExtensions;
+
+	/** The locale from the properties. */
+	private Locale locale;
+
+	/** The directory where the search shell be begin. */
+	private File searchDir;
 
 }
