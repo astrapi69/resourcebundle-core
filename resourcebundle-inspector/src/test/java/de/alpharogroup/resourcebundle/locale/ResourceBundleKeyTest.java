@@ -24,13 +24,18 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
+
+import java.util.Arrays;
 
 import org.meanbean.test.BeanTester;
 import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
+import de.alpharogroup.collections.array.ArrayFactory;
 import de.alpharogroup.evaluate.object.EqualsHashCodeAndToStringEvaluator;
 import de.alpharogroup.meanbean.factories.ObjectArrayFactory;
 
@@ -40,6 +45,23 @@ import de.alpharogroup.meanbean.factories.ObjectArrayFactory;
 public class ResourceBundleKeyTest
 {
 
+	/**
+	 * Test method for {@link ResourceBundleKey} constructors and builders
+	 */
+	@Test
+	public final void testConstructors()
+	{
+		ResourceBundleKey model = new ResourceBundleKey();
+		assertNotNull(model);
+		model = new ResourceBundleKey("name", ArrayFactory.newArray("Martin", "Germany"), "default value");
+		assertNotNull(model);
+		assertEquals(model.getKey(), "name");
+		assertEquals(model.getDefaultValue(), "default value");
+		assertTrue(Arrays.deepEquals(model.getParameters(), ArrayFactory.newArray("Martin", "Germany")));
+		model = ResourceBundleKey.builder().build();
+		assertNotNull(model);
+	}
+	
 	/**
 	 * Test method for {@link ResourceBundleKey#clone()}
 	 */
