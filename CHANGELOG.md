@@ -1,12 +1,12 @@
 ## Change log
 ----------------------
 
-Version 2.22-SNAPSHOT
+Version 2.22
 -------------
 
 CHANGED:
 
-- update of parent version to 3.12
+- update of parent version to 4
 - update of jcommons-lang to 4.34
 - update of test-objects version to 4.28
 - update of silly-collections version to 4.31
