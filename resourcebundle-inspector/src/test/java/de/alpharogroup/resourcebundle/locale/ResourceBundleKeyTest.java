@@ -66,7 +66,7 @@ public class ResourceBundleKeyTest
 	{
 		ResourceBundleKey model = new ResourceBundleKey();
 		assertNotNull(model);
-		model = new ResourceBundleKey("name", "default value",
+		model = new ResourceBundleKey("default value", "name",
 			ArrayFactory.newArray("Martin", "Germany"));
 		assertNotNull(model);
 		assertEquals(model.getKey(), "name");
@@ -91,7 +91,7 @@ public class ResourceBundleKeyTest
 
 		final ResourceBundleKey third = new ResourceBundleKey();
 		third.setKey("foo");
-		final ResourceBundleKey fourth = new ResourceBundleKey("foo", null, null);
+		final ResourceBundleKey fourth = new ResourceBundleKey(null, "foo", null);
 
 		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
 			third, fourth);
