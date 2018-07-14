@@ -25,11 +25,11 @@
 package de.alpharogroup.resourcebundle.inspector.search.processor;
 
 import java.io.File;
-import java.util.HashSet;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
 
+import de.alpharogroup.collections.set.SetFactory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -39,8 +39,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The Class KeySearchModel is model for search keys in all kind of files. For instance in java
- * files.
+ * The class {@link KeySearchBean} is model bean for search keys in all kind of files. For instance
+ * in java files.
  */
 @Getter
 @Setter
@@ -53,13 +53,36 @@ public class KeySearchBean
 {
 
 	/**
+	 * Factory method to create a new {@link KeySearchBean} with the given arguments
+	 *
+	 * @param properties
+	 *            the properties that contain the keys to search
+	 * @param searchDir
+	 *            the directory where the search shell be begin
+	 * @param exclude
+	 *            The files to be excluded
+	 * @param locale
+	 *            the locale from the properties
+	 * @param fileExtensions
+	 *            the file extensions to find
+	 * @return the new {@link KeySearchBean}
+	 */
+	public static KeySearchBean newKeySearchBean(final Properties properties, final File searchDir,
+		final Set<File> exclude, final Locale locale, final String... fileExtensions)
+	{
+		final KeySearchBean model = KeySearchBean.builder().base(properties).searchDir(searchDir)
+			.exclude(exclude).locale(locale).fileExtensions(fileExtensions).build();
+		return model;
+	}
+
+	/**
 	 * The Properties that contain the keys to search.
 	 */
 	private Properties base;
 
 	/** The files to be excluded. */
 	@Builder.Default
-	private Set<File> exclude = new HashSet<>();
+	private Set<File> exclude = SetFactory.newHashSet();
 
 	/** The file extensions to find. */
 	private String[] fileExtensions;

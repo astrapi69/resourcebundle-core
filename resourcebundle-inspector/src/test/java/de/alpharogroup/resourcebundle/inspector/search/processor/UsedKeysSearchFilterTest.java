@@ -24,6 +24,8 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search.processor;
 
+import static org.testng.Assert.assertTrue;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
@@ -34,11 +36,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import com.neovisionaries.i18n.LocaleCode;
 
+import de.alpharogroup.collections.set.SetFactory;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
@@ -82,8 +84,8 @@ public class UsedKeysSearchFilterTest
 		{
 			final Properties properties = PropertiesFileExtensions.loadProperties(propertiesFile);
 
-			final KeySearchBean model = newKeySearchBean(properties, rootDir, new HashSet<File>(),
-				foundMap.get(propertiesFile), ".java", ".html");
+			final KeySearchBean model = KeySearchBean.newKeySearchBean(properties, rootDir,
+				new HashSet<File>(), foundMap.get(propertiesFile), ".java", ".html");
 			final UsedKeysSearchFilter command = new UsedKeysSearchFilter();
 			final UsedKeysSearchResult actual = command.process(model);
 			final UnusedKeysSearchFilter processor = new UnusedKeysSearchFilter();
@@ -93,63 +95,38 @@ public class UsedKeysSearchFilterTest
 	}
 
 	/**
-	 * Factory method to create a new {@link KeySearchBean} with the given arguments.
+	 * Factory method to create a new {@link KeySearchBean} for the unit tests
 	 *
-	 * @param properties
-	 *            the properties
-	 * @param searchDir
-	 *            the search dir
-	 * @param exclude
-	 *            the exclude
-	 * @param locale
-	 *            the locale
-	 * @param fileExtensions
-	 *            the file extensions
-	 * @return the new {@link KeySearchBean}.
+	 * @return the new {@link KeySearchBean}
 	 */
-	protected KeySearchBean newKeySearchBean(final Properties properties, final File searchDir,
-		final Set<File> exclude, final Locale locale, final String... fileExtensions)
-	{
-		final KeySearchBean model = KeySearchBean.builder().base(properties).searchDir(searchDir)
-			.exclude(exclude).locale(locale).fileExtensions(fileExtensions).build();
-		return model;
-	}
-
-	/**
-	 * Factory method to create a new {@link KeySearchBean}.
-	 *
-	 * @return the new {@link KeySearchBean}.
-	 */
-	protected KeySearchBean newKeySearchModel()
+	protected KeySearchBean newKeySearchBean()
 	{
 		final Properties properties = new Properties();
-		// We set the properties that are supposed read from a properties
+		// We set the properties that are supposed to read from a properties
 		// file.
 		properties.put("com.example.gui.window.title", "Hello, there!");
 		properties.put("com.example.gui.window.buttons.ok", "OK");
 		properties.put("com.example.gui.window.buttons.cancel", "Cancel");
 		properties.put("com.example.gui", "Cancel");
 
-		// Set the project directory as search path...
-		final File projectdir = PathFinder.getProjectDirectory();
+		// Set the search path to the test java source folder...
+		final File srcTestJava = PathFinder.getSrcTestJavaDir();
 
-		// We want to search only java files so we set the extension...
+		// We want to search only java files so we set the extension for java files...
 		final String[] fileExtensions = { ".java" };
 
 		// We can set the files that shell be excuded from the search...
 		// these are unit tests that we do not want to include...
-		final Set<File> exclude = new HashSet<>();
+		final Set<File> exclude = SetFactory.newHashSet();
 		final File ex1 = new File(PathFinder.getSrcTestJavaDir(),
 			"/de/alpharogroup/resourcebundle/inspector/search/processor/UsedKeysSearchFilterTest.java");
 		final File ex2 = new File(PathFinder.getSrcTestJavaDir(),
 			"/de/alpharogroup/resourcebundle/locale/ResourceBundleExtensionsTest.java");
-		System.out.println(ex1.exists());
-		System.out.println(ex2.exists());
 		exclude.add(ex1);
 		exclude.add(ex2);
 		// create the search bean...
-		final KeySearchBean searchBean = newKeySearchBean(properties, projectdir, exclude, null,
-			fileExtensions);
+		final KeySearchBean searchBean = KeySearchBean.newKeySearchBean(properties, srcTestJava,
+			exclude, null, fileExtensions);
 
 		return searchBean;
 	}
@@ -157,22 +134,30 @@ public class UsedKeysSearchFilterTest
 	/**
 	 * Test method for {@link UnusedKeysSearchFilter#process(UsedKeysSearchResult)}
 	 */
-	@Test
+	@Test(enabled = true)
 	public void testExecute() throws IOException
 	{
-		final UnusedKeysSearchResult expected = new UnusedKeysSearchResult();
-		final Set<String> unusedKeys = new HashSet<>();
-		unusedKeys.add("com.example.gui");
+		UnusedKeysSearchResult expected;
+		UnusedKeysSearchResult actual;
+		Set<String> unusedKeys;
+		KeySearchBean model;
+		UsedKeysSearchFilter command;
+		UsedKeysSearchResult usedKeysSearchResult;
+		UnusedKeysSearchFilter processor;
+
+		expected = new UnusedKeysSearchResult();
+		unusedKeys = SetFactory.newHashSet("com.example.gui", "com.example.gui.window.title",
+			"com.example.gui.window.buttons.ok", "com.example.gui.window.buttons.cancel");
 		expected.setUnusedKeys(unusedKeys);
-		final KeySearchBean model = newKeySearchModel();
-		final UsedKeysSearchFilter command = new UsedKeysSearchFilter();
-		final UsedKeysSearchResult actual = command.process(model);
-		final UnusedKeysSearchFilter processor = new UnusedKeysSearchFilter();
-		final UnusedKeysSearchResult res = processor.process(actual);
-		AssertJUnit.assertTrue(expected.getUnusedKeys().size() == res.getUnusedKeys().size());
-		for (final String key : res.getUnusedKeys())
+		model = newKeySearchBean();
+		command = new UsedKeysSearchFilter();
+		usedKeysSearchResult = command.process(model);
+		processor = new UnusedKeysSearchFilter();
+		actual = processor.process(usedKeysSearchResult);
+		assertTrue(expected.getUnusedKeys().size() == actual.getUnusedKeys().size());
+		for (final String key : actual.getUnusedKeys())
 		{
-			AssertJUnit.assertTrue(expected.getUnusedKeys().contains(key));
+			assertTrue(expected.getUnusedKeys().contains(key));
 		}
 	}
 

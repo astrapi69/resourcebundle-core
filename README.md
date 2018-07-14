@@ -26,7 +26,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- RESOURCEBUNDLE-CORE versions -->
-		<resourcebundle-core.version>2.21</resourcebundle-core.version>
+		<resourcebundle-core.version>2.22</resourcebundle-core.version>
 		<resourcebundle-inspector.version>${resourcebundle-core.version}</resourcebundle-inspector.version>
 
 		<dependencies>
@@ -42,13 +42,13 @@ Than you can add the dependency to your dependencies:
 
 ## Semantic Versioning
 
-The versions of mystic-crypt are maintained with the Semantic Versioning guidelines.
+The versions of resourcebundle-core are maintained with the Semantic Versioning guidelines.
 
 Release version numbers will be incremented in the following format:
 
 `<major>.<minor>.<patch>`
 
-For more information on SemVer you can visit [semver.org](http://semver.org/).
+For detailed information on versioning for this project you can visit this [wiki page](https://github.com/lightblueseas/mvn-parent-projects/wiki/Semantic-Versioning).
 
 ## Want to Help and improve it? ###
 

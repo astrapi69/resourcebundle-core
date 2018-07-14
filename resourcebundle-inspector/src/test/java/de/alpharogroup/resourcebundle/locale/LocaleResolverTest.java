@@ -38,9 +38,12 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+import org.meanbean.factories.ObjectCreationException;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.collections.list.ListExtensions;
+import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.collections.map.MapFactory;
 import de.alpharogroup.lang.ClassExtensions;
 
@@ -351,7 +354,7 @@ public class LocaleResolverTest
 		List<Locale> expected;
 		List<Locale> actual;
 		actual = LocaleResolver.getLocales("de");
-		expected = ListExtensions.newArrayList();
+		expected = ListFactory.newArrayList();
 		expected.add(Locale.GERMAN);
 		expected.add(new Locale("de", "CH"));
 		expected.add(new Locale("de", "AT"));
@@ -387,7 +390,7 @@ public class LocaleResolverTest
 	 * Test method for {@link LocaleResolver#resolveAvailableLanguages(String, String)}
 	 */
 	@Test(enabled = true)
-	public void testResolveAvailableLanguages()
+	public void testResolveAvailableLanguagesStringString()
 	{
 		final String bundlepackage = "de/alpharogroup/lang";
 		final String bundlename = "resources";
@@ -462,9 +465,15 @@ public class LocaleResolverTest
 		actual = LocaleResolver.resolveLocaleCode(code);
 		expected = new Locale("de", "DE");
 		assertEquals(expected, actual);
+
 		code = "de_DE_platt";
 		actual = LocaleResolver.resolveLocaleCode(code);
 		expected = new Locale("de", "DE", "platt");
+		assertEquals(expected, actual);
+
+		code = "de_DE_platt_flaem";
+		actual = LocaleResolver.resolveLocaleCode(code);
+		expected = null;
 		assertEquals(expected, actual);
 	}
 
@@ -513,18 +522,42 @@ public class LocaleResolverTest
 		code = "";
 		actual = LocaleResolver.resolveLocale(code);
 		assertEquals(Locale.getDefault(), actual);
+
 		code = "de";
 		actual = LocaleResolver.resolveLocale(code);
 		Locale expected = new Locale(code);
 		assertEquals(expected, actual);
+
 		code = "de_DE";
 		actual = LocaleResolver.resolveLocale(code);
 		expected = new Locale("de", "DE");
 		assertEquals(expected, actual);
+
 		code = "de_DE_platt";
 		actual = LocaleResolver.resolveLocale(code);
 		expected = new Locale("de", "DE", "platt");
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocaleResolver#resolveAvailableLocales()}
+	 */
+	@Test(enabled = true)
+	public void testRresolveAvailableLocales()
+	{
+		final List<Locale> availableLocales = LocaleResolver.resolveAvailableLocales();
+		assertNotNull(availableLocales);
+		assertFalse(availableLocales.isEmpty());
+	}
+
+	/**
+	 * Test method for {@link LocaleResolver}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, ObjectCreationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(LocaleResolver.class);
 	}
 
 }

@@ -32,10 +32,10 @@ import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.collections.pairs.KeyValuesPair;
+import de.alpharogroup.evaluate.object.EqualsHashCodeAndToStringEvaluator;
 import de.alpharogroup.meanbean.factories.FileFactory;
 import de.alpharogroup.meanbean.factories.LocaleFactory;
 import de.alpharogroup.meanbean.factories.StringArrayFactory;
-import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluator;
 
 /**
  * The unit test class for the class {@link KeySearchBean}.

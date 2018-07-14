@@ -31,7 +31,7 @@ import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluator;
+import de.alpharogroup.evaluate.object.EqualsHashCodeAndToStringEvaluator;
 
 /**
  * The unit test class for the class {@link UsedKeysSearchResult}.

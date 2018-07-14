@@ -24,15 +24,20 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
+
+import java.util.Arrays;
 
 import org.meanbean.test.BeanTester;
 import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
+import de.alpharogroup.collections.array.ArrayFactory;
+import de.alpharogroup.evaluate.object.EqualsHashCodeAndToStringEvaluator;
 import de.alpharogroup.meanbean.factories.ObjectArrayFactory;
-import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluator;
 
 /**
  * The unit test class for the class {@link ResourceBundleKey}.
@@ -54,6 +59,23 @@ public class ResourceBundleKeyTest
 	}
 
 	/**
+	 * Test method for {@link ResourceBundleKey} constructors and builders
+	 */
+	@Test
+	public final void testConstructors()
+	{
+		ResourceBundleKey model = new ResourceBundleKey();
+		assertNotNull(model);
+		model = new ResourceBundleKey("default value", "name",
+			ArrayFactory.newArray("Martin", "Germany"));
+		assertNotNull(model);
+		assertEquals(model.getKey(), "name");
+		assertEquals(model.getDefaultValue(), "default value");
+		assertTrue(
+			Arrays.deepEquals(model.getParameters(), ArrayFactory.newArray("Martin", "Germany")));
+	}
+
+	/**
 	 * Test method for {@link ResourceBundleKey#equals(Object)} ,
 	 * {@link ResourceBundleKey#hashCode()} and {@link ResourceBundleKey#toString()}
 	 */
@@ -69,7 +91,7 @@ public class ResourceBundleKeyTest
 
 		final ResourceBundleKey third = new ResourceBundleKey();
 		third.setKey("foo");
-		final ResourceBundleKey fourth = new ResourceBundleKey("foo", null, null);
+		final ResourceBundleKey fourth = new ResourceBundleKey(null, "foo", null);
 
 		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
 			third, fourth);

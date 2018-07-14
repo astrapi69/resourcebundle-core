@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>3.11</version>
+		<version>4</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>2.21</version>
+	<version>2.22</version>
 	<packaging>pom</packaging>
 	<inceptionYear>2012</inceptionYear>
 
@@ -25,19 +25,20 @@
 
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->
-		<jcommons-lang.version>4.31.0</jcommons-lang.version>
-		<test-objects.version>4.24.0</test-objects.version>
-		<file-worker.version>4.20</file-worker.version>
-		<silly-collections.version>4.28.0</silly-collections.version>
+		<jcommons-lang.version>4.34</jcommons-lang.version>
+		<test-objects.version>4.28</test-objects.version>
+		<file-worker.version>4.22</file-worker.version>
+		<silly-collections.version>4.31</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
-		<jobject-extensions.version>1.10.0</jobject-extensions.version>		
+		<jobject-extensions.version>1.11</jobject-extensions.version>		
 		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
+		<jobject-evaluate.version>${jobject-extensions.version}</jobject-evaluate.version>
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.23</nv-i18n.version>
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.6</commons-io.version>
 		<!-- MEANBEAN-FACTORIES version -->
-		<meanbean-factories.version>1.0.0</meanbean-factories.version>
+		<meanbean-factories.version>1.1</meanbean-factories.version>	
 	</properties>
 
 	<modules>
@@ -114,6 +115,12 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jobject-clone</artifactId>
 				<version>${jobject-clone.version}</version>
+			</dependency>
+			<!-- JOBJECT-EVALUATE DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jobject-evaluate</artifactId>
+				<version>${jobject-evaluate.version}</version>
 			</dependency>
 
 			<dependency>

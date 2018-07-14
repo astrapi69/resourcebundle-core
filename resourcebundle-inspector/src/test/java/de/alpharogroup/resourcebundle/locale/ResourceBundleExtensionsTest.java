@@ -35,7 +35,7 @@ import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.collections.array.ArrayExtensions;
+import de.alpharogroup.collections.array.ArrayFactory;
 
 /**
  * The unit test class {@link ResourceBundleExtensionsTest} provides unit tests for the class
@@ -60,7 +60,7 @@ public class ResourceBundleExtensionsTest
 		expected = "Hello i am Brad and i come from Hollywood.";
 		assertEquals(expected, actual);
 
-		parameters = ArrayExtensions.newArray("Brad", "Hollywood");
+		parameters = ArrayFactory.newArray("Brad", "Hollywood");
 
 		value = "Hallo ich bin {0} und komme aus {1}.";
 		actual = ResourceBundleExtensions.format(value, parameters);
@@ -87,7 +87,7 @@ public class ResourceBundleExtensionsTest
 		Object[] parameters;
 		BundleKey bundleKey;
 
-		parameters = ArrayExtensions.newArray("foo", "bar");
+		parameters = ArrayFactory.newArray("foo", "bar");
 		bundleKey = BundleKey.builder().baseName("test").locale(Locale.UK)
 			.resourceBundleKey(
 				ResourceBundleKey.builder().key("com.example.gui.prop.with.params.label")
@@ -118,9 +118,10 @@ public class ResourceBundleExtensionsTest
 	{
 		String expected;
 		String actual;
-		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		ResourceBundle resourceBundle;
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		expected = "Hello, there!";
-		actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.window.title");
 		actual = ResourceBundleExtensions.getStringQuietly(resourceBundle,
 			"com.example.gui.window.title", "default value of com.example.gui.window.title");
 		assertEquals(expected, actual);
@@ -135,11 +136,20 @@ public class ResourceBundleExtensionsTest
 	{
 		String expected;
 		String actual;
-		final Object[] parameters = { "foo", "bar" };
+		Object[] parameters;
+
+		parameters = ArrayFactory.newArray("foo", "bar");
 		actual = ResourceBundleExtensions.getStringQuietly("test", Locale.UK,
 			"com.example.gui.prop.with.params.label",
 			"default value of com.example.gui.prop.with.params.label", parameters);
 		expected = "Hello i am foo and i come from bar.";
+		assertEquals(expected, actual);
+
+		parameters = ArrayFactory.newArray("foo", "bar");
+		actual = ResourceBundleExtensions.getStringQuietly("test", Locale.UK,
+			"com.example.gui.prop.with.params.label.not-exists",
+			"default value of com.example.gui.prop.with.params.label", parameters);
+		expected = "default value of com.example.gui.prop.with.params.label";
 		assertEquals(expected, actual);
 	}
 
@@ -151,13 +161,17 @@ public class ResourceBundleExtensionsTest
 	{
 		String expected;
 		String actual;
-		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		ResourceBundle resourceBundle;
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		expected = "Hello, there!";
 		actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.window.title");
 		assertEquals(expected, actual);
+
 		actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.window.title",
 			(Object)null);
 		assertEquals(expected, actual);
+
 		expected = "Warning:!!!Missing key is 'foo.bar'!!!";
 		actual = ResourceBundleExtensions.getStringQuietly(resourceBundle, "foo.bar");
 		assertEquals(expected, actual);
@@ -171,14 +185,31 @@ public class ResourceBundleExtensionsTest
 	{
 		String expected;
 		String actual;
-		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		ResourceBundle resourceBundle;
+		Object[] parameters;
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		expected = "Hello i am Martin and i come from Germany.";
-		final Object[] parameters = { "Martin", "Germany" };
+		parameters = ArrayFactory.newArray("Martin", "Germany");
 		actual = ResourceBundleExtensions.getString(resourceBundle,
 			"com.example.gui.prop.with.params.label", parameters);
 		assertEquals(expected, actual);
+
 		expected = "Warning:!!!Missing key is 'foo.bar'!!!";
 		actual = ResourceBundleExtensions.getStringQuietly(resourceBundle, "foo.bar", parameters);
+		assertEquals(expected, actual);
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		expected = "Hello i am Martin and i come from Germany.";
+		actual = ResourceBundleExtensions.getString(resourceBundle,
+			"com.example.gui.prop.with.params.label", parameters);
+		assertEquals(expected, actual);
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.GERMANY);
+		parameters = ArrayFactory.newArray("Martin", "Deutschland");
+		expected = "Hallo ich bin Martin und komme aus Deutschland.";
+		actual = ResourceBundleExtensions.getString(resourceBundle,
+			"com.example.gui.prop.with.params.label", parameters);
 		assertEquals(expected, actual);
 	}
 
@@ -189,15 +220,31 @@ public class ResourceBundleExtensionsTest
 	@Test(expectedExceptions = MissingResourceException.class)
 	public void testGetStringResourceBundleStringObjectArrayWithDefaultValue()
 	{
-		final String expected;
-		final String actual;
+		String expected;
+		String actual;
 		String defaultValue;
-		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
-		final Object[] parameters = { "Martin", "Germany" };
+		ResourceBundle resourceBundle;
+		Object[] parameters;
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		parameters = ArrayFactory.newArray("Martin", "Germany");
 		defaultValue = "Default value";
 		expected = defaultValue;
 		actual = ResourceBundleExtensions.getString(resourceBundle, "foo.bar", defaultValue,
 			parameters);
+		assertEquals(expected, actual);
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		expected = "Hello i am Martin and i come from Germany.";
+		actual = ResourceBundleExtensions.getString(resourceBundle,
+			"com.example.gui.prop.with.params.label", defaultValue, parameters);
+		assertEquals(expected, actual);
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.GERMANY);
+		parameters = ArrayFactory.newArray("Martin", "Deutschland");
+		expected = "Hallo ich bin Martin und komme aus Deutschland.";
+		actual = ResourceBundleExtensions.getString(resourceBundle,
+			"com.example.gui.prop.with.params.label", defaultValue, parameters);
 		assertEquals(expected, actual);
 	}
 
@@ -210,7 +257,9 @@ public class ResourceBundleExtensionsTest
 		final String expected;
 		final String actual;
 		final String defaultValue;
-		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		ResourceBundle resourceBundle;
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		defaultValue = "Default value";
 		actual = ResourceBundleExtensions.getString(resourceBundle, "com.example.gui.window.title",
 			defaultValue);
@@ -224,8 +273,10 @@ public class ResourceBundleExtensionsTest
 	@Test(expectedExceptions = MissingResourceException.class)
 	public void testGetStringResourceBundleStringStringException()
 	{
-		final String defaultValue;
-		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		String defaultValue;
+		ResourceBundle resourceBundle;
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
 		defaultValue = "Default value";
 		ResourceBundleExtensions.getString(resourceBundle, "foo.bar", defaultValue);
 	}
@@ -237,11 +288,17 @@ public class ResourceBundleExtensionsTest
 	@Test
 	public void testGetStringResourceBundleStringStringObjectArray()
 	{
-		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
-		final String defaultValue = "Default value";
-		final String expected = "Hello i am Martin and i come from Germany.";
-		final Object[] parameters = { "Martin", "Germany" };
-		final String actual = ResourceBundleExtensions.getString(resourceBundle,
+		String expected;
+		String actual;
+		String defaultValue;
+		ResourceBundle resourceBundle;
+		Object[] parameters;
+
+		resourceBundle = ResourceBundleResolver.getBundle("test", Locale.UK);
+		defaultValue = "Default value";
+		expected = "Hello i am Martin and i come from Germany.";
+		parameters = ArrayFactory.newArray("Martin", "Germany");
+		actual = ResourceBundleExtensions.getString(resourceBundle,
 			"com.example.gui.prop.with.params.label", defaultValue, parameters);
 		assertEquals(expected, actual);
 	}
@@ -252,8 +309,11 @@ public class ResourceBundleExtensionsTest
 	@Test
 	public void testGetStringStringLocaleString()
 	{
-		final String expected = "Hello, there!";
-		final String actual = ResourceBundleExtensions.getString("test", Locale.UK,
+		String expected;
+		String actual;
+
+		expected = "Hello, there!";
+		actual = ResourceBundleExtensions.getString("test", Locale.UK,
 			"com.example.gui.window.title");
 		assertEquals(expected, actual);
 	}
@@ -264,9 +324,13 @@ public class ResourceBundleExtensionsTest
 	@Test
 	public void testGetStringStringLocaleStringObjectArray()
 	{
-		final String expected = "Hello i am Martin and i come from Germany.";
-		final Object[] parameters = { "Martin", "Germany" };
-		final String actual = ResourceBundleExtensions.getString("test", Locale.UK,
+		String expected;
+		String actual;
+		Object[] parameters;
+
+		expected = "Hello i am Martin and i come from Germany.";
+		parameters = ArrayFactory.newArray("Martin", "Germany");
+		actual = ResourceBundleExtensions.getString("test", Locale.UK,
 			"com.example.gui.prop.with.params.label", parameters);
 		assertEquals(expected, actual);
 	}
@@ -279,6 +343,7 @@ public class ResourceBundleExtensionsTest
 	{
 		String expected;
 		String actual;
+
 		actual = ResourceBundleExtensions.getString("test", Locale.UK,
 			"com.example.gui.window.title", "foo bar");
 		expected = "Hello, there!";

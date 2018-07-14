@@ -24,6 +24,7 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -34,11 +35,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
+import de.alpharogroup.collections.set.SetFactory;
+import de.alpharogroup.file.FileExtension;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
@@ -106,10 +110,22 @@ public class PropertiesFileExtensionsTest
 
 	/**
 	 * Test method for {@link PropertiesFileExtensions#loadProperties(Class, String, String)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testLoadPropertiesClassOfQStringString()
+	public void testLoadPropertiesClassOfQStringString() throws IOException
 	{
+		Properties actual;
+		Class<?> clazz;
+		String packagePath;
+		String fileName;
+		clazz = ClassExtensions.class;
+		packagePath = "de/alpharogroup/lang/";
+		fileName = "resources.properties";
+		actual = PropertiesFileExtensions.loadProperties(clazz, packagePath, fileName);
+		assertNotNull(actual);
 	}
 
 	@Test(enabled = true)
@@ -172,10 +188,24 @@ public class PropertiesFileExtensionsTest
 
 	/**
 	 * Test method for {@link PropertiesFileExtensions#newBackupOf(File)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testNewBackupOf()
+	public void testNewBackupOf() throws IOException
 	{
+		File actual;
+		File expected;
+		final File srcTestResourceDir = PathFinder.getSrcTestResourcesDir();
+		final File testDir = PathFinder.getRelativePath(srcTestResourceDir, "resources",
+			"properties");
+		final File propertiesFile = PathFinder.getRelativePath(testDir, "test.properties");
+		actual = PropertiesFileExtensions.newBackupOf(propertiesFile);
+		expected = new File(propertiesFile.getParentFile(),
+			"test.properties" + FileExtension.BACKUP.getExtension());
+		assertEquals(expected, actual);
+		expected.deleteOnExit();
 	}
 
 	/**
@@ -196,11 +226,18 @@ public class PropertiesFileExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link PropertiesFileExtensions#resolveAvailableLanguages(String, String)}.
+	 * Test method for {@link PropertiesFileExtensions#resolveAvailableLanguages(String, String)}
 	 */
 	@Test
 	public void testResolveAvailableLanguages()
 	{
+		Set<String> actual;
+		Set<String> expected;
+		actual = PropertiesFileExtensions.resolveAvailableLanguages("de.alpharogroup.lang",
+			"resources");
+		assertNotNull(actual);
+		expected = SetFactory.newTreeSet("de", "de_DE", "en");
+		assertEquals(expected, actual);
 	}
 
 	/**

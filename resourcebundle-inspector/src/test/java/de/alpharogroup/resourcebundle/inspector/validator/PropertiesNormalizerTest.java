@@ -25,20 +25,25 @@
 package de.alpharogroup.resourcebundle.inspector.validator;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.Properties;
 
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.collections.list.ListExtensions;
+import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.file.create.CreateFileExtensions;
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.file.write.WriteFileExtensions;
-import de.alpharogroup.lang.ClassExtensions;
+import de.alpharogroup.file.write.WriteFileQuietlyExtensions;
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 
 /**
  * The unit test class for the class {@link PropertiesNormalizer}.
@@ -57,11 +62,12 @@ public class PropertiesNormalizerTest
 	{
 		int expected;
 		int actual;
+		File dir;
+		Collection<File> foundFiles;
 
-		final File dir = PathFinder.getSrcTestResourcesDir();
-		final Collection<File> r = PropertiesNormalizer
-			.findPropertiesFilesWithInvalidCharacters(dir);
-		actual = r.size();
+		dir = PathFinder.getSrcTestResourcesDir();
+		foundFiles = PropertiesNormalizer.findPropertiesFilesWithInvalidCharacters(dir);
+		actual = foundFiles.size();
 		expected = 2;
 		assertEquals(actual, expected);
 	}
@@ -76,19 +82,46 @@ public class PropertiesNormalizerTest
 	 * @throws FileIsADirectoryException
 	 *             the file is A directory exception
 	 */
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void testNormalizeProperties()
 		throws URISyntaxException, IOException, FileIsADirectoryException
 	{
-		final File dir = PathFinder.getSrcTestResourcesDir();
-		final String propertiesFilename = "foo-write.properties";
-		final File prpFile = new File(dir, propertiesFilename);
+		String key;
+		String value;
+		File dir;
+		String propertiesFilename;
+		String propertiesFilenameBak;
+		File prpFile;
+		File prpFileBak;
+		Properties properties;
+
+		dir = PathFinder.getSrcTestResourcesDir();
+		propertiesFilename = "foo-write.properties";
+		propertiesFilenameBak = propertiesFilename + ".bak";
+		prpFile = new File(dir, propertiesFilename);
+		prpFileBak = new File(dir, propertiesFilenameBak);
 		CreateFileExtensions.newFile(prpFile);
-		WriteFileExtensions.writeLinesToFile(ListExtensions.newArrayList("com=öäüß"), prpFile,
-			"UTF-8");
-		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
-		PropertiesNormalizer.normalizeProperties(propertiesFile.getAbsolutePath());
-		prpFile.delete();
+		key = "com";
+		value = "öäüß";
+		WriteFileQuietlyExtensions.writeLinesToFile(ListFactory.newArrayList(key + "=" + value),
+			prpFile, "ISO-8859-1");
+		PropertiesNormalizer.normalizeProperties(prpFile.getAbsolutePath());
+		properties = PropertiesFileExtensions.loadProperties(prpFile);
+		assertTrue(properties.containsKey(key));
+		assertTrue(properties.get(key).equals(value));
+		prpFile.deleteOnExit();
+		prpFileBak.deleteOnExit();
+	}
+
+	/**
+	 * Test method for {@link PropertiesNormalizer}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
+			UnsupportedOperationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(PropertiesNormalizer.class);
 	}
 
 }

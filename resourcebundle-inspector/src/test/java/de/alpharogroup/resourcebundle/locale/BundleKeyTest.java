@@ -33,8 +33,8 @@ import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
+import de.alpharogroup.evaluate.object.EqualsHashCodeAndToStringEvaluator;
 import de.alpharogroup.meanbean.factories.LocaleFactory;
-import de.alpharogroup.test.objects.evaluations.EqualsHashCodeAndToStringEvaluator;
 
 /**
  * The unit test class for the class {@link BundleKey}.
@@ -61,7 +61,7 @@ public class BundleKeyTest
 		final BundleKey third = new BundleKey();
 		third.setBaseName("resources");
 		third.setLocale(Locale.CANADA);
-		third.setResourceBundleKey(new ResourceBundleKey("foo", null, null));
+		third.setResourceBundleKey(new ResourceBundleKey(null, "foo", null));
 		final BundleKey fourth = new BundleKey("resources", Locale.CANADA,
 			ResourceBundleKey.builder().key("foo").build());
 
