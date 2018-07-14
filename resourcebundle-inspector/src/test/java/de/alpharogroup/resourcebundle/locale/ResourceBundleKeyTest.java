@@ -66,8 +66,8 @@ public class ResourceBundleKeyTest
 	{
 		ResourceBundleKey model = new ResourceBundleKey();
 		assertNotNull(model);
-		model = new ResourceBundleKey("name", ArrayFactory.newArray("Martin", "Germany"),
-			"default value");
+		model = new ResourceBundleKey("name", "default value",
+			ArrayFactory.newArray("Martin", "Germany"));
 		assertNotNull(model);
 		assertEquals(model.getKey(), "name");
 		assertEquals(model.getDefaultValue(), "default value");

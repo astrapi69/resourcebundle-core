@@ -61,7 +61,7 @@ public class BundleKeyTest
 		final BundleKey third = new BundleKey();
 		third.setBaseName("resources");
 		third.setLocale(Locale.CANADA);
-		third.setResourceBundleKey(new ResourceBundleKey("foo", null, null));
+		third.setResourceBundleKey(new ResourceBundleKey(null, "foo", null));
 		final BundleKey fourth = new BundleKey("resources", Locale.CANADA,
 			ResourceBundleKey.builder().key("foo").build());
 
