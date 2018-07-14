@@ -58,8 +58,6 @@ public class ResourceBundleKeyTest
 		assertEquals(model.getKey(), "name");
 		assertEquals(model.getDefaultValue(), "default value");
 		assertTrue(Arrays.deepEquals(model.getParameters(), ArrayFactory.newArray("Martin", "Germany")));
-		model = ResourceBundleKey.builder().build();
-		assertNotNull(model);
 	}
 	
 	/**
