@@ -64,10 +64,9 @@ public class PropertiesNormalizerTest
 		int actual;
 		File dir;
 		Collection<File> foundFiles;
-		
+
 		dir = PathFinder.getSrcTestResourcesDir();
-		foundFiles = PropertiesNormalizer
-			.findPropertiesFilesWithInvalidCharacters(dir);
+		foundFiles = PropertiesNormalizer.findPropertiesFilesWithInvalidCharacters(dir);
 		actual = foundFiles.size();
 		expected = 2;
 		assertEquals(actual, expected);

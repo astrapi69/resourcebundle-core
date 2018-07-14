@@ -46,21 +46,6 @@ public class ResourceBundleKeyTest
 {
 
 	/**
-	 * Test method for {@link ResourceBundleKey} constructors and builders
-	 */
-	@Test
-	public final void testConstructors()
-	{
-		ResourceBundleKey model = new ResourceBundleKey();
-		assertNotNull(model);
-		model = new ResourceBundleKey("name", ArrayFactory.newArray("Martin", "Germany"), "default value");
-		assertNotNull(model);
-		assertEquals(model.getKey(), "name");
-		assertEquals(model.getDefaultValue(), "default value");
-		assertTrue(Arrays.deepEquals(model.getParameters(), ArrayFactory.newArray("Martin", "Germany")));
-	}
-	
-	/**
 	 * Test method for {@link ResourceBundleKey#clone()}
 	 */
 	@Test
@@ -71,6 +56,23 @@ public class ResourceBundleKeyTest
 			.defaultValue("bla bla").build();
 		final ResourceBundleKey actual = expected.clone();
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ResourceBundleKey} constructors and builders
+	 */
+	@Test
+	public final void testConstructors()
+	{
+		ResourceBundleKey model = new ResourceBundleKey();
+		assertNotNull(model);
+		model = new ResourceBundleKey("name", ArrayFactory.newArray("Martin", "Germany"),
+			"default value");
+		assertNotNull(model);
+		assertEquals(model.getKey(), "name");
+		assertEquals(model.getDefaultValue(), "default value");
+		assertTrue(
+			Arrays.deepEquals(model.getParameters(), ArrayFactory.newArray("Martin", "Germany")));
 	}
 
 	/**
