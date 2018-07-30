@@ -4,6 +4,13 @@
 Version 3-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of parent version to 4.1
+- update of jcommons-lang to 4.35
+- update of silly-collections version to 4.33
+- update of jobject-extensions to 1.12
+
 Version 2.22
 -------------
 
