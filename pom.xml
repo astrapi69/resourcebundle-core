@@ -27,7 +27,7 @@
 		<!-- NEW EXTENSIONS LIB versions -->
 		<jcommons-lang.version>4.35</jcommons-lang.version>
 		<test-objects.version>4.28</test-objects.version>
-		<file-worker.version>4.22</file-worker.version>
+		<file-worker.version>4.23</file-worker.version>
 		<silly-collections.version>4.33</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
 		<jobject-extensions.version>1.12</jobject-extensions.version>		

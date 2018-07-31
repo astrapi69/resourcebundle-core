@@ -10,6 +10,7 @@ CHANGED:
 - update of jcommons-lang to 4.35
 - update of silly-collections version to 4.33
 - update of jobject-extensions to 1.12
+- update of file-worker version to 4.23
 
 Version 2.22
 -------------
