@@ -26,43 +26,47 @@ package de.alpharogroup.resourcebundle.inspector.search.processor;
 
 import static org.testng.AssertJUnit.assertEquals;
 
+import java.util.Locale;
+import java.util.Optional;
+
 import org.meanbean.test.BeanTester;
 import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.collections.pairs.KeyValuesPair;
-import de.alpharogroup.evaluate.object.EqualsHashCodeAndToStringEvaluator;
+import de.alpharogroup.evaluate.object.api.ContractViolation;
+import de.alpharogroup.evaluate.object.checkers.EqualsHashCodeAndToStringCheck;
 import de.alpharogroup.meanbean.factories.FileFactory;
 import de.alpharogroup.meanbean.factories.LocaleFactory;
 import de.alpharogroup.meanbean.factories.StringArrayFactory;
 
 /**
- * The unit test class for the class {@link KeySearchBean}.
+ * The unit test class for the class {@link KeySearchBean}
  */
 public class KeySearchBeanTest
 {
 
 	/**
-	 * Test method for {@link KeyValuesPair#equals(Object)} , {@link KeyValuesPair#hashCode()} and
-	 * {@link KeyValuesPair#toString()}
+	 * Test method for {@link KeySearchBean#equals(Object)} , {@link KeySearchBean#hashCode()} and
+	 * {@link KeySearchBean#toString()}
 	 */
 	@Test
 	public void testEqualsHashcodeAndToString()
 	{
-		boolean expected;
-		boolean actual;
+		Optional<ContractViolation> expected;
+		Optional<ContractViolation> actual;
 
 		final KeySearchBean first = KeySearchBean.builder().build();
 
 		final KeySearchBean second = new KeySearchBean();
+		second.setLocale(Locale.CANADA);
 
 		final KeySearchBean third = KeySearchBean.builder().build();
 		final KeySearchBean fourth = KeySearchBean.builder().build();
 
-		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
-			third, fourth);
-		expected = true;
+		actual = EqualsHashCodeAndToStringCheck.equalsHashcodeAndToString(first, second, third,
+			fourth);
+		expected = Optional.empty();
 		assertEquals(expected, actual);
 	}
 

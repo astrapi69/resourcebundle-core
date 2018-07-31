@@ -26,12 +26,16 @@ package de.alpharogroup.resourcebundle.inspector.search.processor;
 
 import static org.testng.AssertJUnit.assertEquals;
 
+import java.util.Optional;
+
 import org.meanbean.test.BeanTester;
 import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.evaluate.object.EqualsHashCodeAndToStringEvaluator;
+import de.alpharogroup.collections.set.SetFactory;
+import de.alpharogroup.evaluate.object.api.ContractViolation;
+import de.alpharogroup.evaluate.object.checkers.EqualsHashCodeAndToStringCheck;
 
 /**
  * The unit test class for the class {@link UnusedKeysSearchResult}.
@@ -46,19 +50,20 @@ public class UnusedKeysSearchResultTest
 	@Test
 	public void testEqualsHashcodeAndToString()
 	{
-		boolean expected;
-		boolean actual;
+		Optional<ContractViolation> expected;
+		Optional<ContractViolation> actual;
 
 		final UnusedKeysSearchResult first = UnusedKeysSearchResult.builder().build();
 
 		final UnusedKeysSearchResult second = new UnusedKeysSearchResult();
+		second.setUnusedKeys(SetFactory.newHashSet("foo"));
 
 		final UnusedKeysSearchResult third = UnusedKeysSearchResult.builder().build();
 		final UnusedKeysSearchResult fourth = UnusedKeysSearchResult.builder().build();
 
-		actual = EqualsHashCodeAndToStringEvaluator.evaluateEqualsHashcodeAndToString(first, second,
-			third, fourth);
-		expected = true;
+		actual = EqualsHashCodeAndToStringCheck.equalsHashcodeAndToString(first, second, third,
+			fourth);
+		expected = Optional.empty();
 		assertEquals(expected, actual);
 	}
 
