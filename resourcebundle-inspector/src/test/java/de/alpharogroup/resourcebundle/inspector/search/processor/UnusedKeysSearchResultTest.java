@@ -60,9 +60,9 @@ public class UnusedKeysSearchResultTest
 
 		final UnusedKeysSearchResult third = UnusedKeysSearchResult.builder().build();
 		final UnusedKeysSearchResult fourth = UnusedKeysSearchResult.builder().build();
-		
-		actual = EqualsHashCodeAndToStringCheck
-			.equalsHashcodeAndToString(first, second, third, fourth);
+
+		actual = EqualsHashCodeAndToStringCheck.equalsHashcodeAndToString(first, second, third,
+			fourth);
 		expected = Optional.empty();
 		assertEquals(expected, actual);
 	}

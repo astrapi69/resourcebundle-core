@@ -63,9 +63,9 @@ public class KeySearchBeanTest
 
 		final KeySearchBean third = KeySearchBean.builder().build();
 		final KeySearchBean fourth = KeySearchBean.builder().build();
-		
-		actual = EqualsHashCodeAndToStringCheck
-			.equalsHashcodeAndToString(first, second, third, fourth);
+
+		actual = EqualsHashCodeAndToStringCheck.equalsHashcodeAndToString(first, second, third,
+			fourth);
 		expected = Optional.empty();
 		assertEquals(expected, actual);
 	}

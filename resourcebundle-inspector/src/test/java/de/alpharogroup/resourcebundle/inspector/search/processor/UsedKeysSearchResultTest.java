@@ -59,9 +59,9 @@ public class UsedKeysSearchResultTest
 
 		final UsedKeysSearchResult third = UsedKeysSearchResult.builder().build();
 		final UsedKeysSearchResult fourth = UsedKeysSearchResult.builder().build();
-		
-		actual = EqualsHashCodeAndToStringCheck
-			.equalsHashcodeAndToString(first, second, third, fourth);
+
+		actual = EqualsHashCodeAndToStringCheck.equalsHashcodeAndToString(first, second, third,
+			fourth);
 		expected = Optional.empty();
 		assertEquals(expected, actual);
 	}
@@ -78,5 +78,5 @@ public class UsedKeysSearchResultTest
 		beanTester.addCustomConfiguration(UsedKeysSearchResult.class, configuration);
 		beanTester.testBean(UsedKeysSearchResult.class);
 	}
-	
+
 }
