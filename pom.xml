@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>4.1</version>
+		<version>4.4</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -25,12 +25,12 @@
 
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->
-		<jcommons-lang.version>4.35</jcommons-lang.version>
-		<test-objects.version>4.28</test-objects.version>
-		<file-worker.version>4.23</file-worker.version>
-		<silly-collections.version>4.33</silly-collections.version>
+		<jcommons-lang.version>5.1</jcommons-lang.version>
+		<test-objects.version>5</test-objects.version>
+		<file-worker.version>5</file-worker.version>
+		<silly-collections.version>5</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
-		<jobject-extensions.version>1.12</jobject-extensions.version>		
+		<jobject-extensions.version>2.5</jobject-extensions.version>		
 		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
 		<jobject-evaluate.version>${jobject-extensions.version}</jobject-evaluate.version>
 		<!-- NV-I18N version -->
@@ -38,7 +38,7 @@
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.6</commons-io.version>
 		<!-- MEANBEAN-FACTORIES version -->
-		<meanbean-factories.version>1.1</meanbean-factories.version>	
+		<meanbean-factories.version>1.1.1</meanbean-factories.version>	
 	</properties>
 
 	<modules>
