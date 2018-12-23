@@ -46,19 +46,6 @@ public class ResourceBundleKeyTest
 {
 
 	/**
-	 * Test method for {@link ResourceBundleKey#clone()}
-	 */
-	@Test
-	public void testClone()
-	{
-		final Object[] params = { "param1", "param2" };
-		final ResourceBundleKey expected = ResourceBundleKey.builder().key("foo").parameters(params)
-			.defaultValue("bla bla").build();
-		final ResourceBundleKey actual = expected.clone();
-		assertEquals(expected, actual);
-	}
-
-	/**
 	 * Test method for {@link ResourceBundleKey} constructors and builders
 	 */
 	@Test
