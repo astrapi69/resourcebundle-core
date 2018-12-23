@@ -35,13 +35,11 @@ import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import lombok.experimental.ExtensionMethod;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * The unit test class {@link LocaleExtensionsTest} provides unit tests for the class
  * {@link LocaleExtensions}.
  */
-@Slf4j
 @ExtensionMethod({ LocaleExtensions.class })
 public class LocaleExtensionsTest
 {
@@ -63,14 +61,9 @@ public class LocaleExtensionsTest
 		final String englishName = locale.getDisplayName(Locale.ENGLISH);
 		final String country = locale.getCountry();
 		String iSO3Country = "";
-		try
-		{
-			iSO3Country = locale.getISO3Country();
-		}
-		catch (final Exception e)
-		{
-			log.error(e.getClass().getName() + ": " + e.getMessage());
-		}
+
+		iSO3Country = locale.getISO3Country();
+
 		final String englishCountryName = locale.getDisplayCountry(Locale.ENGLISH);
 
 		final String language = locale.getLanguage();

@@ -78,16 +78,6 @@ public class PropertiesFileExtensionsTest
 		assertNotNull(projectName);
 	}
 
-	/**
-	 * Test method for {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
-	 */
-	@Test
-	public void testGetProjectNameQuietly()
-	{
-		final String projectName = PropertiesFileExtensions.getProjectNameQuietly("foo");
-		assertNotNull(projectName);
-	}
-
 	@Test(enabled = true)
 	public void testGetRedundantKeys() throws IOException
 	{

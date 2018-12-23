@@ -50,13 +50,11 @@ import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * The class {@link PropertiesFileExtensions}.
  */
 @UtilityClass
-@Slf4j
 public final class PropertiesFileExtensions
 {
 
@@ -70,11 +68,11 @@ public final class PropertiesFileExtensions
 	 * @param locale
 	 *            the locale
 	 * @return the properties
-	 * @throws Exception
-	 *             the exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	public static Properties getLocalPropertiesFromClass(final Class<?> componentClass,
-		final Class<?> defaultClass, final Locale locale) throws Exception
+		final Class<?> defaultClass, final Locale locale) throws IOException
 	{
 		// Try to find the properties file and the resource
 		Properties properties = null;
@@ -117,28 +115,6 @@ public final class PropertiesFileExtensions
 		{
 			throw new RuntimeException("No properties file project.properties exist.");
 		}
-	}
-
-	/**
-	 * Gets the project name from the 'project.properties'. In this properties file is only a
-	 * reference of the artifactId from the pom.
-	 *
-	 * @param defaultName
-	 *            the default project name if
-	 * @return the project name
-	 */
-	public static String getProjectNameQuietly(final String defaultName)
-	{
-		try
-		{
-			getProjectName();
-		}
-		catch (final Exception e)
-		{
-			// default project name will be returned...
-			log.error(e.getMessage(), e);
-		}
-		return defaultName;
 	}
 
 	/**
@@ -370,38 +346,20 @@ public final class PropertiesFileExtensions
 	 * @param propertiesFilename
 	 *            the properties filename
 	 * @return the loaded {@link Properties} or null if the loading process failed.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	public static <T> Properties loadProperties(final T object, final String propertiesFilename)
+		throws IOException
 	{
 		Properties properties = null;
 		final String packagePath = PackageExtensions.getPackagePathWithSlash(object);
 		final String propertiespath = packagePath + propertiesFilename;
-		try
-		{
-			properties = PropertiesFileExtensions.loadProperties(object.getClass(), propertiespath);
-		}
-		catch (final IOException e)
-		{
-			log.error(
-				"Loading properties file '" + propertiespath
-					+ "' with method 'PropertiesExtensions.loadProperties(object.getClass(), propertiespath)' failed.",
-				e);
-		}
-		if (properties == null)
-		{
-			try
-			{
-				properties = PropertiesFileExtensions.getLocalPropertiesFromClass(object.getClass(),
+		properties = PropertiesFileExtensions.loadProperties(object.getClass(),
+			propertiespath) != null
+				? PropertiesFileExtensions.loadProperties(object.getClass(), propertiespath)
+				: PropertiesFileExtensions.getLocalPropertiesFromClass(object.getClass(),
 					object.getClass(), null);
-			}
-			catch (final Exception e)
-			{
-				log.error(
-					"Loading properties file '" + propertiespath
-						+ "' with method 'PropertiesExtensions.getLocalPropertiesFromClass(object.getClass(), object.getClass(), null)' failed.",
-					e);
-			}
-		}
 		return properties;
 	}
 
@@ -536,14 +494,6 @@ public final class PropertiesFileExtensions
 				properties = PropertiesFileExtensions.loadProperties(pathAndFilename);
 			}
 		}
-		if (properties == null)
-		{
-			for (final String string : missedFiles)
-			{
-				log.info(string);
-			}
-		}
-
 		return properties;
 	}
 
