@@ -1,8 +1,18 @@
 ## Change log
 ----------------------
 
-Version 3.1-SNAPSHOT
+Version 3.0.1
 -------------
+
+CHANGED:
+
+- update of parent version to 4.4
+- update of jcommons-lang to 5.1
+- update of silly-collections version to 5
+- update of jobject-extensions to 2.5
+- update of file-worker version to 5.0.1
+- update of meanbean-factories to 1.1.1
+- removed logging dependencies
 
 Version 3
 -------------
