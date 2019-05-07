@@ -31,8 +31,8 @@ import java.util.List;
 
 import org.apache.commons.io.DirectoryWalker;
 
-import de.alpharogroup.file.FileExtension;
-import de.alpharogroup.file.filter.MultiplyExtensionsFileFilter;
+import de.alpharogroup.io.file.FileExtension;
+import de.alpharogroup.io.file.filter.MultiplyExtensionsFileFilter;
 
 /**
  * The Class PropertiesDirectoryWalker finds Properties files.

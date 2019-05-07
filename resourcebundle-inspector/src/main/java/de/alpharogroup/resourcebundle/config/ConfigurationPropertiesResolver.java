@@ -33,13 +33,11 @@ import de.alpharogroup.check.Check;
 import de.alpharogroup.collections.properties.PropertiesExtensions;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an
  * application like the http, https ports.
  */
-@Slf4j
 public class ConfigurationPropertiesResolver implements Serializable
 {
 
@@ -154,8 +152,6 @@ public class ConfigurationPropertiesResolver implements Serializable
 			}
 			catch (final NumberFormatException e)
 			{
-				log.error("Value of given properties key:" + propertiesKey + " is not a number.",
-					e);
 				return Optional.empty();
 			}
 		}

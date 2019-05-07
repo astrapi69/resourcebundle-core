@@ -29,8 +29,6 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import org.apache.log4j.Logger;
-
 import de.alpharogroup.check.Check;
 import lombok.experimental.UtilityClass;
 
@@ -41,10 +39,6 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public final class ResourceBundleExtensions
 {
-
-	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger
-		.getLogger(ResourceBundleExtensions.class.getName());
 
 	/**
 	 * Gets the string from the given {@link ResourceBundle} object.
@@ -188,7 +182,6 @@ public final class ResourceBundleExtensions
 			final String warnMessage = "Warning:!!!Missing key is '" + key + "'!!!";
 			if (defaultValue != null && !defaultValue.isEmpty())
 			{
-				LOGGER.warn(warnMessage, e);
 				return defaultValue;
 			}
 			return warnMessage;

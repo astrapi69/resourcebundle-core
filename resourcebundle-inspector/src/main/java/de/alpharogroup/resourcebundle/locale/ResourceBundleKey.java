@@ -26,7 +26,6 @@ package de.alpharogroup.resourcebundle.locale;
 
 import java.io.Serializable;
 
-import de.alpharogroup.clone.object.CloneObjectQuietlyExtensions;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -69,14 +68,5 @@ public class ResourceBundleKey implements Serializable
 	 * The parameters of the resource bundle key.
 	 */
 	private Object[] parameters;
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public ResourceBundleKey clone()
-	{
-		return CloneObjectQuietlyExtensions.cloneQuietly(this);
-	}
 
 }

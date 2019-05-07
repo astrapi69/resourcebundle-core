@@ -36,7 +36,7 @@ import java.util.TreeSet;
 
 import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.collections.list.ListFactory;
-import de.alpharogroup.file.FilenameExtensions;
+import de.alpharogroup.io.file.FilenameExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;

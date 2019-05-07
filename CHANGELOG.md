@@ -1,6 +1,34 @@
 ## Change log
 ----------------------
 
+Version 3.0.2
+-------------
+
+ADDED:
+ 
+- new dependency silly-io added in version 1.1
+
+CHANGED:
+
+- update of parent version to 4.8
+- update of jcommons-lang to 5.2.1
+- update of jobject-extensions to 3.1.1
+- update of file-worker version to 5.2
+- update of nv-i18n version to 1.25
+
+Version 3.0.1
+-------------
+
+CHANGED:
+
+- update of parent version to 4.4
+- update of jcommons-lang to 5.1
+- update of silly-collections version to 5
+- update of jobject-extensions to 2.5
+- update of file-worker version to 5.0.1
+- update of meanbean-factories to 1.1.1
+- removed logging dependencies
+
 Version 3
 -------------
 
