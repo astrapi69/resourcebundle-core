@@ -16,6 +16,11 @@
 	<description>The resourcebundle.inspector project can inspect projects of unused properties keys or duplicate keys.</description>
 
 	<dependencies>
+        <!-- SILLY-IO DEPENDENCY -->
+        <dependency>
+            <groupId>de.alpharogroup</groupId>
+            <artifactId>silly-io</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
@@ -64,12 +69,12 @@
 			<artifactId>meanbean-factories</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- JOBJECT-EVALUATE DEPENDENCY -->
-		<dependency>
-			<groupId>de.alpharogroup</groupId>
-			<artifactId>jobject-evaluate</artifactId>
-			<scope>test</scope>
-		</dependency>
+			<!-- JOBJ-CONTRACT-VERIFIER DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jobj-contract-verifier</artifactId>
+				<scope>test</scope>
+			</dependency>
 
 	</dependencies>
 

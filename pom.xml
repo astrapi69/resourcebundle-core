@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>4.4</version>
+		<version>4.8</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -25,20 +26,23 @@
 
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->
-		<jcommons-lang.version>5.1</jcommons-lang.version>
-		<test-objects.version>5</test-objects.version>
-		<file-worker.version>5.0.1</file-worker.version>
-		<silly-collections.version>5</silly-collections.version>
+		<jcommons-lang.version>5.2.1</jcommons-lang.version>
+		<!-- SILLY-IO version -->
+		<silly-io.version>1.1</silly-io.version>
+		<test-objects.version>5.0.1</test-objects.version>
+		<file-worker.version>5.2</file-worker.version>
+		<silly-collections.version>5.2</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
-		<jobject-extensions.version>2.5</jobject-extensions.version>		
+		<jobject-extensions.version>3.1.1</jobject-extensions.version>
 		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
-		<jobject-evaluate.version>${jobject-extensions.version}</jobject-evaluate.version>
+		<!-- JOBJ-CONTRACT-VERIFIER version -->
+		<jobj-contract-verifier.version>3.1</jobj-contract-verifier.version>
 		<!-- NV-I18N version -->
-		<nv-i18n.version>1.23</nv-i18n.version>
+		<nv-i18n.version>1.25</nv-i18n.version>
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.6</commons-io.version>
 		<!-- MEANBEAN-FACTORIES version -->
-		<meanbean-factories.version>1.1.1</meanbean-factories.version>	
+		<meanbean-factories.version>1.1.1</meanbean-factories.version>
 	</properties>
 
 	<modules>
@@ -86,6 +90,12 @@
 	<dependencyManagement>
 
 		<dependencies>
+			<!-- SILLY-IO DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>silly-io</artifactId>
+				<version>${silly-io.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -116,11 +126,11 @@
 				<artifactId>jobject-clone</artifactId>
 				<version>${jobject-clone.version}</version>
 			</dependency>
-			<!-- JOBJECT-EVALUATE DEPENDENCY -->
+			<!-- JOBJ-CONTRACT-VERIFIER DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
-				<artifactId>jobject-evaluate</artifactId>
-				<version>${jobject-evaluate.version}</version>
+				<artifactId>jobj-contract-verifier</artifactId>
+				<version>${jobj-contract-verifier.version}</version>
 			</dependency>
 
 			<dependency>
@@ -143,7 +153,7 @@
 
 		</dependencies>
 
-	</dependencyManagement>	
+	</dependencyManagement>
 
 	<build>
 
@@ -213,7 +223,7 @@
 								<!-- explicit abstract classes -->
 								<!-- explicit bean classes -->
 								<!-- explicit deprecated classes -->
-								<exclude>de/alpharogroup/resourcebundle/inspector/search/PropertiesFinder.class</exclude>								
+								<exclude>de/alpharogroup/resourcebundle/inspector/search/PropertiesFinder.class</exclude>
 								<!-- explicit enums -->
 								<!-- explicit interfaces -->
 								<exclude>de/alpharogroup/resourcebundle/inspector/search/processor/FilterProcessor.class</exclude>

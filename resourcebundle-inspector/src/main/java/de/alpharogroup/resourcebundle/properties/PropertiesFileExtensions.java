@@ -42,7 +42,7 @@ import java.util.TreeSet;
 import org.apache.commons.io.FilenameUtils;
 
 import de.alpharogroup.collections.properties.PropertiesExtensions;
-import de.alpharogroup.file.FileExtension;
+import de.alpharogroup.io.file.FileExtension;
 import de.alpharogroup.file.copy.CopyFileExtensions;
 import de.alpharogroup.file.read.ReadFileExtensions;
 import de.alpharogroup.file.search.FileSearchExtensions;

@@ -4,6 +4,18 @@
 Version 3.1-SNAPSHOT
 -------------
 
+ADDED:
+ 
+- new dependency silly-io added in version 1.1
+
+CHANGED:
+
+- update of parent version to 4.8
+- update of jcommons-lang to 5.2.1
+- update of jobject-extensions to 3.1.1
+- update of file-worker version to 5.2
+- update of nv-i18n version to 1.25
+
 Version 3.0.1
 -------------
 
