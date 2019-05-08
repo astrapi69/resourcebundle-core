@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>resourcebundle-core</artifactId>
-		<version>3.0.2</version>
+		<version>3.0.3</version>
 	</parent>
 
 	<artifactId>resourcebundle-inspector</artifactId>
@@ -16,15 +17,15 @@
 	<description>The resourcebundle.inspector project can inspect projects of unused properties keys or duplicate keys.</description>
 
 	<dependencies>
-        <!-- SILLY-IO DEPENDENCY -->
-        <dependency>
-            <groupId>de.alpharogroup</groupId>
-            <artifactId>silly-io</artifactId>
-        </dependency>
-
+		<!-- SILLY-BEANS DEPENDENCY -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jcommons-lang</artifactId>
+			<artifactId>silly-beans</artifactId>
+		</dependency>
+		<!-- SILLY-IO DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>silly-io</artifactId>
 		</dependency>
 		<!-- SILLY-COLLECTIONS DEPENDENCY -->
 		<dependency>
@@ -69,12 +70,12 @@
 			<artifactId>meanbean-factories</artifactId>
 			<scope>test</scope>
 		</dependency>
-			<!-- JOBJ-CONTRACT-VERIFIER DEPENDENCY -->
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>jobj-contract-verifier</artifactId>
-				<scope>test</scope>
-			</dependency>
+		<!-- JOBJ-CONTRACT-VERIFIER DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jobj-contract-verifier</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 

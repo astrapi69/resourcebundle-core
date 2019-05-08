@@ -12,7 +12,7 @@
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>3.0.2</version>
+	<version>3.0.3</version>
 	<packaging>pom</packaging>
 	<inceptionYear>2012</inceptionYear>
 
@@ -25,13 +25,13 @@
 	<url>https://github.com/astrapi69/resourcebundle-core</url>
 
 	<properties>
-		<!-- NEW EXTENSIONS LIB versions -->
-		<jcommons-lang.version>5.2.1</jcommons-lang.version>
 		<!-- SILLY-IO version -->
 		<silly-io.version>1.1</silly-io.version>
+		<!-- SILLY-BEANS version -->
+		<silly-beans.version>1</silly-beans.version>
 		<test-objects.version>5.0.1</test-objects.version>
 		<file-worker.version>5.2</file-worker.version>
-		<silly-collections.version>5.2</silly-collections.version>
+		<silly-collections.version>5.2.1</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
 		<jobject-extensions.version>3.1.1</jobject-extensions.version>
 		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
@@ -90,17 +90,17 @@
 	<dependencyManagement>
 
 		<dependencies>
+			<!-- SILLY-BEANS DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>silly-beans</artifactId>
+				<version>${silly-beans.version}</version>
+			</dependency>
 			<!-- SILLY-IO DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>silly-io</artifactId>
 				<version>${silly-io.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>jcommons-lang</artifactId>
-				<version>${jcommons-lang.version}</version>
 			</dependency>
 			<!-- SILLY-COLLECTIONS DEPENDENCY -->
 			<dependency>

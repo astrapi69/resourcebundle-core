@@ -1,6 +1,17 @@
 ## Change log
 ----------------------
 
+Version 3.0.3
+-------------
+
+ADDED:
+ 
+- new dependency silly-beans added in version 1
+
+CHANGED:
+
+- removed dependency jcommons-lang
+
 Version 3.0.2
 -------------
 
