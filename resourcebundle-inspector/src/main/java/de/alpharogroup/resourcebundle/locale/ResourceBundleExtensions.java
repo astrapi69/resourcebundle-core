@@ -30,6 +30,7 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import de.alpharogroup.check.Check;
+import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -127,10 +128,9 @@ public final class ResourceBundleExtensions
 	 * @throws MissingResourceException
 	 *             is thrown if the given key is missing
 	 */
-	public static String getString(final ResourceBundle resourceBundle, final String key,
+	public static String getString(final @NonNull ResourceBundle resourceBundle, final @NonNull String key,
 		final String defaultValue, final Object... parameters) throws MissingResourceException
 	{
-		Check.get().notNull(resourceBundle, "resourceBundle").notEmpty(key, "key");
 		String value = null;
 		value = format(resourceBundle.getString(key), parameters);
 		return value;
@@ -168,10 +168,10 @@ public final class ResourceBundleExtensions
 	 *            the parameters
 	 * @return the {@link String} value from the given key
 	 */
-	public static String getStringQuietly(final ResourceBundle resourceBundle, final String key,
+	public static String getStringQuietly(final @NonNull ResourceBundle resourceBundle, final String key,
 		final String defaultValue, final Object... parameters)
 	{
-		Check.get().notNull(resourceBundle, "resourceBundle").notEmpty(key, "key");
+		Check.get().notEmpty(key, "key");
 		String value = null;
 		try
 		{
@@ -208,10 +208,10 @@ public final class ResourceBundleExtensions
 	 * @throws MissingResourceException
 	 *             is thrown if the given key is missing
 	 */
-	public static String getString(final String baseName, final Locale locale, final String key,
+	public static String getString(final String baseName, final @NonNull Locale locale, final String key,
 		final String defaultValue, final Object... parameters) throws MissingResourceException
 	{
-		Check.get().notEmpty(baseName, "baseName").notNull(locale, "locale");
+		Check.get().notEmpty(baseName, "baseName");
 		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle(baseName, locale);
 		return ResourceBundleExtensions.getString(resourceBundle, key, defaultValue, parameters);
 	}
@@ -232,10 +232,10 @@ public final class ResourceBundleExtensions
 	 *            the parameters
 	 * @return the {@link String} value from the given key
 	 */
-	public static String getStringQuietly(final String baseName, final Locale locale,
+	public static String getStringQuietly(final String baseName, final @NonNull Locale locale,
 		final String key, final String defaultValue, final Object... parameters)
 	{
-		Check.get().notEmpty(baseName, "baseName").notNull(locale, "locale");
+		Check.get().notEmpty(baseName, "baseName");
 		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle(baseName, locale);
 		return ResourceBundleExtensions.getStringQuietly(resourceBundle, key, defaultValue,
 			parameters);

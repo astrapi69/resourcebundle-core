@@ -28,7 +28,7 @@ import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 /**
- * The class {@link KeyValueLists}.
+ * The class {@link KeyValueLists}
  */
 public class KeyValueListsTest
 {

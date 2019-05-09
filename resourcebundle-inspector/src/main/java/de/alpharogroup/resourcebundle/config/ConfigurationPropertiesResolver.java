@@ -29,10 +29,10 @@ import java.io.Serializable;
 import java.util.Optional;
 import java.util.Properties;
 
-import de.alpharogroup.check.Check;
 import de.alpharogroup.collections.properties.PropertiesExtensions;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import lombok.Getter;
+import lombok.NonNull;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an
@@ -113,12 +113,9 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 * @param propertiesFilename
 	 *            the properties filename
 	 */
-	public ConfigurationPropertiesResolver(final Integer defaultHttpPort,
-		final Integer defaultHttpsPort, final String propertiesFilename)
+	public ConfigurationPropertiesResolver(final @NonNull Integer defaultHttpPort,
+		final @NonNull Integer defaultHttpsPort, final @NonNull String propertiesFilename)
 	{
-		Check.get().notNull(defaultHttpPort, "defaultHttpPort")
-			.notNull(defaultHttpsPort, "defaultHttpsPort")
-			.notNull(propertiesFilename, "propertiesFilename");
 		this.defaultHttpPort = defaultHttpPort;
 		this.defaultHttpsPort = defaultHttpsPort;
 		this.propertiesFilename = propertiesFilename;
