@@ -31,10 +31,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-import de.alpharogroup.check.Check;
 import de.alpharogroup.collections.pairs.KeyValuePair;
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 import lombok.Getter;
+import lombok.NonNull;
 
 /**
  * The Class {@link PropertiesListResolver} finds all properties files from the given root directory
@@ -64,10 +64,8 @@ public class PropertiesListResolver
 	 * @param defaultLocale
 	 *            the default locale
 	 */
-	public PropertiesListResolver(final File rootDir, final Locale defaultLocale)
+	public PropertiesListResolver(final @NonNull File rootDir, final @NonNull Locale defaultLocale)
 	{
-		Check.get().notNull(rootDir, "rootDir");
-		Check.get().notNull(defaultLocale, "defaultLocale");
 		if (!rootDir.isDirectory())
 		{
 			throw new IllegalArgumentException("rootDir is not a directory.");

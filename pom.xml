@@ -12,7 +12,7 @@
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>3.0.3</version>
+	<version>3.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<inceptionYear>2012</inceptionYear>
 
@@ -29,14 +29,15 @@
 		<silly-io.version>1.1</silly-io.version>
 		<!-- SILLY-BEANS version -->
 		<silly-beans.version>1</silly-beans.version>
-		<test-objects.version>5.0.1</test-objects.version>
+		<test-objects.version>5.2</test-objects.version>
 		<file-worker.version>5.2</file-worker.version>
 		<silly-collections.version>5.2.1</silly-collections.version>
-		<!-- JOBJECT-EXTENSIONS versions -->
-		<jobject-extensions.version>3.1.1</jobject-extensions.version>
-		<jobject-clone.version>${jobject-extensions.version}</jobject-clone.version>
+		<!-- JOBJECT-CLONE version -->
+		<jobject-clone.version>3.1.2</jobject-clone.version>
+		<!-- JOBJ-CORE version -->
+		<jobj-core.version>3.1</jobj-core.version>
 		<!-- JOBJ-CONTRACT-VERIFIER version -->
-		<jobj-contract-verifier.version>3.1</jobj-contract-verifier.version>
+		<jobj-contract-verifier.version>3.1.2</jobj-contract-verifier.version>
 		<!-- NV-I18N version -->
 		<nv-i18n.version>1.25</nv-i18n.version>
 		<!-- COMMONS-IO version -->
@@ -90,6 +91,12 @@
 	<dependencyManagement>
 
 		<dependencies>
+			<!-- JOBJ-CORE DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jobj-core</artifactId>
+				<version>${jobj-core.version}</version>
+			</dependency>
 			<!-- SILLY-BEANS DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>

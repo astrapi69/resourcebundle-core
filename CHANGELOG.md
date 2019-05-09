@@ -1,6 +1,19 @@
 ## Change log
 ----------------------
 
+Version 3.1-SNAPSHOT
+-------------
+
+ADDED:
+ 
+- new dependency jobj-core added in version 3.1
+
+CHANGED:
+
+- update of test-objects version to 5.2
+- update of jobject-clone version to 3.1.2
+- update of jobj-contract-verifier version to 3.1.2
+
 Version 3.0.3
 -------------
 

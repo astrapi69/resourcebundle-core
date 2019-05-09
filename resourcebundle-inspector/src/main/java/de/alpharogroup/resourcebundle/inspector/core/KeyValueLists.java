@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import lombok.Data;
 import lombok.Getter;
 
 /**
@@ -38,6 +39,7 @@ import lombok.Getter;
  * to save duplicate keys and the occurrences of it. It is used to find duplicate keys in a
  * properties file.
  */
+@Data
 public class KeyValueLists implements Serializable
 {
 

@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>resourcebundle-core</artifactId>
-		<version>3.0.3</version>
+		<version>3.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>resourcebundle-inspector</artifactId>
@@ -17,6 +17,11 @@
 	<description>The resourcebundle.inspector project can inspect projects of unused properties keys or duplicate keys.</description>
 
 	<dependencies>
+			<!-- JOBJ-CORE DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jobj-core</artifactId>
+			</dependency>
 		<!-- SILLY-BEANS DEPENDENCY -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
