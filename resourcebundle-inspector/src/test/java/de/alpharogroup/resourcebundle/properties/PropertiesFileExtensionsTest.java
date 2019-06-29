@@ -47,6 +47,9 @@ import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 
+/**
+ * The unit test class for the class {@link PropertiesFileExtensions}
+ */
 public class PropertiesFileExtensionsTest
 {
 
