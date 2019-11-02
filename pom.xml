@@ -7,19 +7,18 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>4.8</version>
+		<version>5.3</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>resourcebundle-core</artifactId>
-	<version>3.1</version>
-	<packaging>pom</packaging>
+	<version>3.2-SNAPSHOT</version>
 	<inceptionYear>2012</inceptionYear>
 
 	<name>${project.artifactId}</name>
 
 	<description>
-		The resourcebundle-core project can inspect projects of unused properties keys or duplicate keys.
+		The resourcebundle-core project can inspect projects of unused properties keys or duplicate keys
 	</description>
 
 	<url>https://github.com/astrapi69/resourcebundle-core</url>
@@ -31,24 +30,21 @@
 		<silly-beans.version>1</silly-beans.version>
 		<test-objects.version>5.2</test-objects.version>
 		<file-worker.version>5.2</file-worker.version>
-		<silly-collections.version>5.2.1</silly-collections.version>
+		<silly-collections.version>5.4</silly-collections.version>
 		<!-- JOBJECT-CLONE version -->
 		<jobject-clone.version>3.1.2</jobject-clone.version>
 		<!-- JOBJ-CORE version -->
-		<jobj-core.version>3.1</jobj-core.version>
+		<jobj-core.version>3.3</jobj-core.version>
 		<!-- JOBJ-CONTRACT-VERIFIER version -->
-		<jobj-contract-verifier.version>3.1.2</jobj-contract-verifier.version>
+		<jobj-contract-verifier.version>3.2</jobj-contract-verifier.version>
 		<!-- NV-I18N version -->
-		<nv-i18n.version>1.25</nv-i18n.version>
+		<nv-i18n.version>1.27</nv-i18n.version>
 		<!-- COMMONS-IO version -->
 		<commons-io.version>2.6</commons-io.version>
 		<!-- MEANBEAN-FACTORIES version -->
 		<meanbean-factories.version>1.1.1</meanbean-factories.version>
+		<snakeyaml.version>1.25</snakeyaml.version>
 	</properties>
-
-	<modules>
-		<module>resourcebundle-inspector</module>
-	</modules>
 
 	<licenses>
 		<license>
@@ -91,6 +87,12 @@
 	<dependencyManagement>
 
 		<dependencies>
+			<!-- SNAKEYAML DEPENDENCY -->
+			<dependency>
+				<groupId>org.yaml</groupId>
+				<artifactId>snakeyaml</artifactId>
+				<version>${snakeyaml.version}</version>
+			</dependency>
 			<!-- JOBJ-CORE DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -162,6 +164,79 @@
 
 	</dependencyManagement>
 
+	<dependencies>
+		<!-- SNAKEYAML DEPENDENCY -->
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+		</dependency>
+		<!-- JOBJ-CORE DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jobj-core</artifactId>
+		</dependency>
+		<!-- SILLY-BEANS DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>silly-beans</artifactId>
+		</dependency>
+		<!-- SILLY-IO DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>silly-io</artifactId>
+		</dependency>
+		<!-- SILLY-COLLECTIONS DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>silly-collections</artifactId>
+		</dependency>
+		<!-- JOBJECT-CLONE DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jobject-clone</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>file-worker</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.neovisionaries</groupId>
+			<artifactId>nv-i18n</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>test-objects</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- MEANBEAN DEPENDENCY -->
+		<dependency>
+			<groupId>org.meanbean</groupId>
+			<artifactId>meanbean</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- MEANBEAN-FACTORIES DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>meanbean-factories</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- JOBJ-CONTRACT-VERIFIER DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jobj-contract-verifier</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
 	<build>
 
 		<resources>
@@ -213,6 +288,21 @@
 		<pluginManagement>
 
 			<plugins>
+
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-compiler-plugin</artifactId>
+				</plugin>
+
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-source-plugin</artifactId>
+				</plugin>
+
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-eclipse-plugin</artifactId>
+				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>

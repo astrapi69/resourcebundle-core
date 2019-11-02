@@ -164,6 +164,7 @@ public final class LocaleExtensions
 	 *
 	 * @return list of all available locales on the current jdk.
 	 */
+	@Deprecated
 	public static List<Locale> getAvailableLocales()
 	{
 		if (availableLocales == null)

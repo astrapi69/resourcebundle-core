@@ -128,8 +128,9 @@ public final class ResourceBundleExtensions
 	 * @throws MissingResourceException
 	 *             is thrown if the given key is missing
 	 */
-	public static String getString(final @NonNull ResourceBundle resourceBundle, final @NonNull String key,
-		final String defaultValue, final Object... parameters) throws MissingResourceException
+	public static String getString(final @NonNull ResourceBundle resourceBundle,
+		final @NonNull String key, final String defaultValue, final Object... parameters)
+		throws MissingResourceException
 	{
 		String value = null;
 		value = format(resourceBundle.getString(key), parameters);
@@ -168,8 +169,8 @@ public final class ResourceBundleExtensions
 	 *            the parameters
 	 * @return the {@link String} value from the given key
 	 */
-	public static String getStringQuietly(final @NonNull ResourceBundle resourceBundle, final String key,
-		final String defaultValue, final Object... parameters)
+	public static String getStringQuietly(final @NonNull ResourceBundle resourceBundle,
+		final String key, final String defaultValue, final Object... parameters)
 	{
 		Check.get().notEmpty(key, "key");
 		String value = null;
@@ -208,8 +209,9 @@ public final class ResourceBundleExtensions
 	 * @throws MissingResourceException
 	 *             is thrown if the given key is missing
 	 */
-	public static String getString(final String baseName, final @NonNull Locale locale, final String key,
-		final String defaultValue, final Object... parameters) throws MissingResourceException
+	public static String getString(final String baseName, final @NonNull Locale locale,
+		final String key, final String defaultValue, final Object... parameters)
+		throws MissingResourceException
 	{
 		Check.get().notEmpty(baseName, "baseName");
 		final ResourceBundle resourceBundle = ResourceBundleResolver.getBundle(baseName, locale);

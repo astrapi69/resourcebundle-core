@@ -57,7 +57,7 @@ public class PropertiesNormalizerTest
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	@Test(enabled = false)  // TODO fixit...
+	@Test(enabled = false) // TODO fixit...
 	public void testFindPropertiesFilesWithInvalidCharacters() throws IOException
 	{
 		int expected;

@@ -42,10 +42,10 @@ import java.util.TreeSet;
 import org.apache.commons.io.FilenameUtils;
 
 import de.alpharogroup.collections.properties.PropertiesExtensions;
-import de.alpharogroup.io.file.FileExtension;
 import de.alpharogroup.file.copy.CopyFileExtensions;
 import de.alpharogroup.file.read.ReadFileExtensions;
 import de.alpharogroup.file.search.FileSearchExtensions;
+import de.alpharogroup.io.file.FileExtension;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;

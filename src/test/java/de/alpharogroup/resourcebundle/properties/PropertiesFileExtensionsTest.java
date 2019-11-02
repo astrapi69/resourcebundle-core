@@ -42,8 +42,8 @@ import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.collections.set.SetFactory;
-import de.alpharogroup.io.file.FileExtension;
 import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.io.file.FileExtension;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 
