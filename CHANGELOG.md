@@ -1,6 +1,17 @@
 ## Change log
 ----------------------
 
+Version 3.2
+-------------
+
+ADDED:
+ 
+- added gradle nature to project
+
+CHANGED:
+
+- changed from mvn module project to simple project
+
 Version 3.1
 -------------
 
