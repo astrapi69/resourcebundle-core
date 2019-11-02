@@ -8,6 +8,8 @@ plugins {
 //    id "com.github.hierynomus.license" version "0.15.0"
 }
 
+apply plugin: "jacoco"
+
 group = "de.alpharogroup"
 version = "3.2-SNAPSHOT"
 description = "resourcebundle-core"
@@ -142,3 +144,12 @@ tasks.withType(JavaCompile) {
 test {
     useTestNG()
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
+check.dependsOn jacocoTestReport
