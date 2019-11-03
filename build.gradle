@@ -15,7 +15,7 @@ gradle.startParameter.excludedTaskNames += "licenseMain"
 gradle.startParameter.excludedTaskNames += "licenseTest"
 
 group = "de.alpharogroup"
-version = "3.2"
+version = "3.3-SNAPSHOT"
 description = "resourcebundle-core"
 sourceCompatibility = "1.8"
 
