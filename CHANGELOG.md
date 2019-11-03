@@ -11,6 +11,7 @@ ADDED:
 CHANGED:
 
 - changed from mvn module project to simple project
+- removed maven nature
 
 Version 3.1
 -------------
