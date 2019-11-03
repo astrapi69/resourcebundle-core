@@ -1,9 +1,9 @@
-# resourcebundle.inspector .travis.yml
+# resourcebundle-core .travis.yml
 
 language: java
 
 jdk:
-    - oraclejdk8
+    - openjdk8
 
 notifications:
     email:
@@ -12,4 +12,5 @@ notifications:
         on_failure: always
 
 after_success:
-  - mvn clean cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
+    - if [ -e ./gradlew ]; then ./gradlew jacocoTestReport;else gradle jacocoTestReport;fi
+    - bash <(curl -s https://codecov.io/bash)

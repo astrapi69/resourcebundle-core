@@ -1,0 +1,159 @@
+
+plugins {
+    id "io.franzbecker.gradle-lombok" version "3.2.0"
+    id "java"
+    id "maven-publish"
+    id "signing"
+    id "com.github.ben-manes.versions" version "0.27.0"
+    id "com.github.hierynomus.license" version "0.15.0"
+}
+
+apply plugin: "jacoco"
+
+// workhack for license issue #76
+gradle.startParameter.excludedTaskNames += "licenseMain"
+gradle.startParameter.excludedTaskNames += "licenseTest"
+
+group = "de.alpharogroup"
+version = "3.2"
+description = "resourcebundle-core"
+sourceCompatibility = "1.8"
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+ext {
+    lombokVersion = "1.18.10"
+    commonsIoVersion = "2.6"
+    snakeyamlVersion = "1.25"
+    nvI18nVersion = "1.27"
+    jobjCoreVersion = "3.3"
+    sillyBeansVersion = "1"
+    sillyIoVersion = "1.1"
+    sillyCollectionsVersion = "5.4"
+    jobjectCloneVersion = "3.1.2"
+    fileWorkerVersion = "5.2"
+    testObjectsVersion = "5.2"
+    jobjContractVerifierVersion = "3.2"
+    testngVersion = "7.0.0"
+    junitVersion = "4.12"
+    meanbeanVersion = "2.0.3"
+    meanbeanFactoriesVersion = "1.1.1"
+    mockitoCoreVersion = "3.1.0"
+}
+
+dependencies {
+    compile "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compile "commons-io:commons-io:${commonsIoVersion}"
+    compile "org.yaml:snakeyaml:${snakeyamlVersion}"
+    compile "com.neovisionaries:nv-i18n:${nvI18nVersion}"
+    compile "de.alpharogroup:jobj-core:${jobjCoreVersion}"
+    compile "de.alpharogroup:silly-beans:${sillyBeansVersion}"
+    compile "de.alpharogroup:silly-io:${sillyIoVersion}"
+    compile "de.alpharogroup:silly-collections:${sillyCollectionsVersion}"
+    compile "de.alpharogroup:jobject-clone:${jobjectCloneVersion}"
+    compile "de.alpharogroup:file-worker:${fileWorkerVersion}"
+    testCompile "de.alpharogroup:test-objects:${testObjectsVersion}"
+    testCompile "de.alpharogroup:jobj-contract-verifier:${jobjContractVerifierVersion}"
+    testCompile "org.testng:testng:${testngVersion}"
+    testCompile "junit:junit:${junitVersion}"
+    testCompile "org.meanbean:meanbean:${meanbeanVersion}"
+    testCompile "de.alpharogroup:meanbean-factories:${meanbeanFactoriesVersion}"
+    testCompile "org.mockito:mockito-core:${mockitoCoreVersion}"
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set("sources")
+    from(sourceSets.main.allJava)
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier.set("javadoc")
+    javadoc.properties.failOnError = true
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = "${rootProject.name}"
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            pom {
+                name = "${rootProject.name}"
+                description = "The resourcebundle-core project can inspect projects of unused properties keys or duplicate keys"
+                url = "https://github.com/astrapi69/"+"${rootProject.name}"
+                organization {
+                    name = "Alpha Ro Group UG (haftungsbeschrängt)"
+                    url = "http://www.alpharogroup.de/"
+                }
+                issueManagement {
+                    system = "GitHub"
+                    url = "https://github.com/astrapi69/"+"${rootProject.name}"+"/issues"
+                }
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "http://www.opensource.org/licenses/mit-license.php"
+                        distribution = "repo"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "astrapi69"
+                        name = "Asterios Raptis"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git:@github.com:astrapi69/"+"${rootProject.name}"+".git"
+                    developerConnection = "scm:git:git@github.com:astrapi69/"+"${rootProject.name}"+".git"
+                    url = "git:@github.com:astrapi69/"+"${rootProject.name}"+".git"
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username System.getenv("ossrhUsername") ?: project.property("ossrhUsername")
+                password System.getenv("ossrhPassword") ?: project.property("ossrhPassword")
+            }
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption("html5", true)
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+test {
+    useTestNG()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
+check.dependsOn jacocoTestReport

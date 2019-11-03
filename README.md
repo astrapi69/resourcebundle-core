@@ -25,19 +25,36 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 
 Than you can add the dependency to your dependencies:
 
-		<!-- RESOURCEBUNDLE-CORE versions -->
-		<resourcebundle-core.version>3.1</resourcebundle-core.version>
-		<resourcebundle-inspector.version>${resourcebundle-core.version}</resourcebundle-inspector.version>
-
+		<!-- RESOURCEBUNDLE-CORE version -->
+		<resourcebundle-core.version>3.2</resourcebundle-core.version>
+		
 		<dependencies>
 			...
+		    <!-- RESOURCEBUNDLE-CORE DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
-				<artifactId>resourcebundle-inspector</artifactId>
-				<version>${resourcebundle-inspector.version}</version>
+				<artifactId>resourcebundle-core</artifactId>
+				<version>${resourcebundle-core.version}</version>
 			</dependency>
 			...
-		</dependencies>
+		</dependencies>	
+			
+## gradle dependency
+
+You can first define the version in the ext section and add than the following gradle dependency to your project `build.gradle` if you want to import the core functionality of mystic-crypt:
+
+```
+ext {
+			...
+    resourcebundleCoreVersion = "3.2"
+			...
+}
+dependencies {
+			...
+compile "de.alpharogroup:resourcebundle-core:${resourcebundleCoreVersion}"
+			...
+}
+```
 
 
 ## Semantic Versioning
