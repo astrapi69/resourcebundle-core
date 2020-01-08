@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,11 +24,11 @@
  */
 package de.alpharogroup.resourcebundle.inspector.io;
 
+import lombok.Getter;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
-
-import lombok.Getter;
 
 /**
  * The Class PropertiesLineReader that can read from an Reader or inputstream all lines from a
@@ -93,7 +93,7 @@ public class PropertiesLineReader
 	public int readLine() throws IOException
 	{
 		int len = 0;
-		char c = 0;
+		char c;
 
 		boolean skipWhiteSpace = true;
 		boolean isCommentLine = false;

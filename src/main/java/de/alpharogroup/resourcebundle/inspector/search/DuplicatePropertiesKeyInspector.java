@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,21 +24,15 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
+import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
+import de.alpharogroup.resourcebundle.inspector.io.PropertiesLineReader;
+import lombok.Getter;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.TreeSet;
-
-import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
-import de.alpharogroup.resourcebundle.inspector.io.PropertiesLineReader;
-import lombok.Getter;
+import java.util.*;
 
 /**
  * The Class {@link DuplicatePropertiesKeyInspector}.
@@ -141,7 +135,7 @@ public class DuplicatePropertiesKeyInspector
 	 */
 	private KeyValueLists findDuplicateKeys(final InputStream inputStream) throws IOException
 	{
-		final Set<String> set = new TreeSet<String>();
+		final Set<String> set = new TreeSet<>();
 		final KeyValueLists keyValueLists = read(inputStream);
 		final List<String> keys = keyValueLists.getKeys();
 		for (int i = 0; i < keys.size(); i++)
@@ -152,7 +146,7 @@ public class DuplicatePropertiesKeyInspector
 				if (keyValueLists.getDuplicateMap().containsKey(key))
 				{
 					keyValueLists.getDuplicateMap().put(key,
-						keyValueLists.getDuplicateMap().get(key).intValue() + 1);
+						keyValueLists.getDuplicateMap().get(key) + 1);
 					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap()
 						.get(key);
 					final String currentValue = keyValueLists.getValues().get(i);
@@ -161,7 +155,7 @@ public class DuplicatePropertiesKeyInspector
 				else
 				{
 					keyValueLists.getDuplicateMap().put(key, 1);
-					keyValueLists.getDuplicateValueMap().put(key, new ArrayList<String>());
+					keyValueLists.getDuplicateValueMap().put(key, new ArrayList<>());
 					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap()
 						.get(key);
 					final String currentValue = keyValueLists.getValues().get(i);
@@ -207,7 +201,6 @@ public class DuplicatePropertiesKeyInspector
 		final KeyValueLists keyValueLists = new KeyValueLists();
 		while ((limit = propertiesLineReader.readLine()) >= 0)
 		{
-			c = 0;
 			keyLength = 0;
 			valueStart = limit;
 			hasSep = false;

@@ -4,6 +4,22 @@
 Version 3.3-SNAPSHOT
 -------------
 
+ADDED:
+ 
+- new method for get Locale object from language code and country code
+- added new constant for a regular expression pattern that can find comments in properties file
+
+CHANGED:
+
+- changed jdk from version 8 to 11
+- update of dependency file-worker version to 5.4
+- update of dependency silly-collections version to 6
+- update of test dependency testng version to 7.1.1
+- update of test dependency junit version to 4.13
+- update of test dependency mockito-core version to 3.2.4
+- tagged method getLocale with country code as deprecated
+- deleted obsolete eclipse launch scripts
+
 Version 3.2
 -------------
 

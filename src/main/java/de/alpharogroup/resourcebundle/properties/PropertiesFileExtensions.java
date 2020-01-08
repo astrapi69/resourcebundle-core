@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,23 +24,6 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.TreeSet;
-
-import org.apache.commons.io.FilenameUtils;
-
 import de.alpharogroup.collections.properties.PropertiesExtensions;
 import de.alpharogroup.file.copy.CopyFileExtensions;
 import de.alpharogroup.file.read.ReadFileExtensions;
@@ -50,14 +33,21 @@ import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
 import lombok.experimental.UtilityClass;
+import org.apache.commons.io.FilenameUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.*;
 
 /**
- * The class {@link PropertiesFileExtensions}.
+ * The class {@link PropertiesFileExtensions} provides methods for load properties file
  */
 @UtilityClass
 public final class PropertiesFileExtensions
 {
-
 	/**
 	 * Gets the properties.
 	 *

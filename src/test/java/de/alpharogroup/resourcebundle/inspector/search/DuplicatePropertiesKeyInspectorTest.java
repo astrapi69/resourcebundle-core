@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,8 +24,11 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
+import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.io.StreamExtensions;
+import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,12 +36,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-
-import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.io.StreamExtensions;
-import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 /**
  * The class {@link DuplicatePropertiesKeyInspectorTest} provides unit tests for the class

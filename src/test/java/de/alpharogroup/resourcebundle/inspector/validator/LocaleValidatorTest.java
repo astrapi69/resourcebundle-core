@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,17 +24,16 @@
  */
 package de.alpharogroup.resourcebundle.inspector.validator;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
-
+import com.neovisionaries.i18n.LocaleCode;
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import com.neovisionaries.i18n.LocaleCode;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Locale;
+
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * The unit test class for the class {@link LocaleValidator}

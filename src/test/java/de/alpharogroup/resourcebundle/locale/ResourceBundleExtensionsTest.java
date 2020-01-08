@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,18 +24,17 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import static org.testng.AssertJUnit.assertEquals;
+import de.alpharogroup.collections.array.ArrayFactory;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
-
-import de.alpharogroup.collections.array.ArrayFactory;
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * The unit test class {@link ResourceBundleExtensionsTest} provides unit tests for the class
@@ -154,7 +153,7 @@ public class ResourceBundleExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link ResourceBundleExtensions#getString(ResourceBundle, String)}
+	 * Test method for {@link ResourceBundleExtensions#getString(ResourceBundle, String, Object...)}
 	 */
 	@Test
 	public void testGetStringResourceBundleString()

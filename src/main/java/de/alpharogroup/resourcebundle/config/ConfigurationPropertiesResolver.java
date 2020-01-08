@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,15 +24,15 @@
  */
 package de.alpharogroup.resourcebundle.config;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Optional;
-import java.util.Properties;
-
 import de.alpharogroup.collections.properties.PropertiesExtensions;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import lombok.Getter;
 import lombok.NonNull;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Optional;
+import java.util.Properties;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an
@@ -125,37 +125,6 @@ public class ConfigurationPropertiesResolver implements Serializable
 	}
 
 	/**
-	 * Try to get a number from the given properties key from the given properties. If it does not
-	 * exists an empty {@link Optional} will be returned and a log message will be logged.
-	 *
-	 * @param properties
-	 *            the properties
-	 * @param propertiesKey
-	 *            the properties key
-	 * @return the port number or an empty {@linkplain Optional}
-	 * @deprecated use instead the corresponding method in the {@link PropertiesExtensions} from the
-	 *             next release.
-	 */
-	@Deprecated
-	private Optional<Integer> getInteger(final Properties properties, final String propertiesKey)
-	{
-		if (properties != null && properties.containsKey(propertiesKey))
-		{
-			final String portAsString = properties.getProperty(propertiesKey);
-			try
-			{
-				final Integer port = Integer.valueOf(portAsString);
-				return Optional.of(port);
-			}
-			catch (final NumberFormatException e)
-			{
-				return Optional.empty();
-			}
-		}
-		return Optional.empty();
-	}
-
-	/**
 	 * Try to get the http port from the properties. If it does not exists an empty {@link Optional}
 	 * will be returned.
 	 *
@@ -163,7 +132,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private Optional<Integer> getOptionalHttpPort()
 	{
-		return getInteger(getProperties(), APPLICATION_HTTP_PORT_KEY);
+		return PropertiesExtensions.getInteger(getProperties(), APPLICATION_HTTP_PORT_KEY);
 	}
 
 	/**
@@ -174,7 +143,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private Optional<Integer> getOptionalHttpsPort()
 	{
-		return getInteger(getProperties(), APPLICATION_HTTPS_PORT_KEY);
+		return PropertiesExtensions.getInteger(getProperties(), APPLICATION_HTTPS_PORT_KEY);
 	}
 
 	/**
@@ -203,12 +172,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private int resolveHttpPort()
 	{
-		final Optional<Integer> optionalHttpPort = getOptionalHttpPort();
-		if (optionalHttpPort.isPresent())
-		{
-			return optionalHttpPort.get();
-		}
-		return getDefaultHttpPort();
+		return getOptionalHttpPort().map(port -> port).orElse(getDefaultHttpPort());
 	}
 
 	/**
@@ -218,12 +182,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	private int resolveHttpsPort()
 	{
-		final Optional<Integer> optionalHttpsPort = getOptionalHttpsPort();
-		if (optionalHttpsPort.isPresent())
-		{
-			return optionalHttpsPort.get();
-		}
-		return getDefaultHttpsPort();
+		return getOptionalHttpsPort().map(port -> port).orElse(getDefaultHttpsPort());
 	}
 
 }

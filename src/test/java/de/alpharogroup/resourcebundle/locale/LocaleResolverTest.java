@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,28 +24,19 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertNotNull;
-import static org.testng.AssertJUnit.assertNull;
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.io.File;
-import java.net.URISyntaxException;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-
+import de.alpharogroup.collections.list.ListFactory;
+import de.alpharogroup.collections.map.MapFactory;
+import de.alpharogroup.lang.ClassExtensions;
 import org.meanbean.factories.ObjectCreationException;
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.collections.list.ListFactory;
-import de.alpharogroup.collections.map.MapFactory;
-import de.alpharogroup.lang.ClassExtensions;
+import java.io.File;
+import java.net.URISyntaxException;
+import java.util.*;
+
+import static org.testng.AssertJUnit.*;
 
 /**
  * The unit test class {@link LocaleResolverTest} provides unit tests for the class
@@ -310,7 +301,7 @@ public class LocaleResolverTest
 	}
 
 	/**
-	 * Test method for {@link LocaleExtensions#getAvailableLocales()}
+	 * Test method for {@link LocaleResolver#getAvailableLocales()}
 	 */
 	@Test(enabled = true)
 	public void testGetAvailableLocalesNames()
@@ -332,15 +323,14 @@ public class LocaleResolverTest
 	}
 
 	/**
-	 * Test method for {@link LocaleResolver#getLocale(String)}
+	 * Test method for {@link LocaleResolver#getLocale(String, String)}
 	 */
 	@Test(enabled = true)
 	public void testGetLocale()
 	{
-
 		Locale expected;
 		Locale actual;
-		actual = LocaleResolver.getLocale("DE");
+		actual = LocaleResolver.getLocale("de","DE");
 		expected = Locale.GERMANY;
 		assertEquals(expected, actual);
 	}
@@ -355,13 +345,11 @@ public class LocaleResolverTest
 		List<Locale> actual;
 		actual = LocaleResolver.getLocales("de");
 		expected = ListFactory.newArrayList();
-		expected.add(Locale.GERMAN);
 		expected.add(new Locale("de", "CH"));
 		expected.add(new Locale("de", "AT"));
 		expected.add(new Locale("de", "LU"));
+		expected.add(Locale.GERMAN);
 		expected.add(Locale.GERMANY);
-		expected.add(new Locale("de", "GR"));
-		assertEquals(expected.size(), actual.size());
 		for (Locale l : expected)
 		{
 			assertTrue(actual.contains(l));

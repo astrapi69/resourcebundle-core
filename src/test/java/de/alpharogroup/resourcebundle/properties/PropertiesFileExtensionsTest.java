@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,28 +24,23 @@
  */
 package de.alpharogroup.resourcebundle.properties;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
-
 import de.alpharogroup.collections.set.SetFactory;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.io.file.FileExtension;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * The unit test class for the class {@link PropertiesFileExtensions}
@@ -72,7 +67,7 @@ public class PropertiesFileExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link PropertiesFileExtensions#getProjectNameQuietly(String)}.
+	 * Test method for {@link PropertiesFileExtensions#getProjectName()}
 	 */
 	@Test
 	public void testGetProjectName() throws IOException

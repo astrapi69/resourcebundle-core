@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,14 +24,13 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import java.lang.reflect.InvocationTargetException;
-
+import de.alpharogroup.test.objects.Person;
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.test.objects.Person;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for the class

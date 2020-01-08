@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,15 +24,14 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
+import de.alpharogroup.io.file.FileExtension;
+import de.alpharogroup.io.file.filter.MultiplyExtensionsFileFilter;
+import org.apache.commons.io.DirectoryWalker;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.io.DirectoryWalker;
-
-import de.alpharogroup.io.file.FileExtension;
-import de.alpharogroup.io.file.filter.MultiplyExtensionsFileFilter;
 
 /**
  * The Class PropertiesDirectoryWalker finds Properties files.

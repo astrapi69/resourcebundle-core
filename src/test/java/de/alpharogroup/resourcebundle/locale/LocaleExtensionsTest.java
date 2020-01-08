@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,17 +24,16 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
-
+import lombok.experimental.ExtensionMethod;
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import lombok.experimental.ExtensionMethod;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Locale;
+
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * The unit test class {@link LocaleExtensionsTest} provides unit tests for the class
@@ -98,7 +97,7 @@ public class LocaleExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link LocaleExtensions#getCountryName(String, Locale, String)}
+	 * Test method for {@link LocaleExtensions#getCountryName(String, String, Locale, String)}
 	 */
 	@Test
 	public void testGetCountryNameStringLocaleString()
@@ -111,7 +110,7 @@ public class LocaleExtensionsTest
 		countryCode = "YU";
 		inLocale = Locale.GERMAN;
 		defaultCountryName = "Yugoslavien";
-		actual = LocaleExtensions.getCountryName(countryCode, inLocale, defaultCountryName);
+		actual = LocaleExtensions.getCountryName("yu", countryCode, inLocale, defaultCountryName);
 		expected = defaultCountryName;
 		assertEquals(expected, actual);
 	}
@@ -254,7 +253,7 @@ public class LocaleExtensionsTest
 	public void testGetLocaleName()
 	{
 		String expected = "de_DE";
-		String actual = Locale.GERMANY.getLocaleName();
+		String actual = LocaleExtensions.getLocaleName(Locale.GERMANY);
 		assertEquals(expected, actual);
 		expected = "de_DE_schw";
 		actual = LocaleExtensions.getLocaleName(Locales.SCHWAEBISCH);

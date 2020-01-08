@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,12 +24,11 @@
  */
 package de.alpharogroup.resourcebundle.file.namefilter;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNotNull;
-
+import de.alpharogroup.file.search.PathFinder;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.file.search.PathFinder;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 
 /**
  * The class {@link PropertiesResourceBundleFilenameFilter}.

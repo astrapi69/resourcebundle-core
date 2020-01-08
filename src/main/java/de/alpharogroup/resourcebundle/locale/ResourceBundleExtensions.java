@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,14 +24,14 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
+import de.alpharogroup.check.Check;
+import lombok.NonNull;
+import lombok.experimental.UtilityClass;
+
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-
-import de.alpharogroup.check.Check;
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
 
 /**
  * The class {@link ResourceBundleExtensions} holds extension methods for the class

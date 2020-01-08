@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,27 +24,16 @@
  */
 package de.alpharogroup.resourcebundle.inspector.validator;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import lombok.experimental.UtilityClass;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Normalizes Properties and replaces existing invalid characters to utf8 characters.

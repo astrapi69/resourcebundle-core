@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,13 +24,13 @@
  */
 package de.alpharogroup.resourcebundle.file.namefilter;
 
-import static org.testng.AssertJUnit.assertEquals;
-
-import java.lang.reflect.InvocationTargetException;
-
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
+
+import java.lang.reflect.InvocationTargetException;
+
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * The unit test class for the class {@link PropertiesFileTypeExtensions}.

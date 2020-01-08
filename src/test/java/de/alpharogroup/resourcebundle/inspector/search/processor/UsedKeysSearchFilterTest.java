@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,27 +24,19 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search.processor;
 
-import static org.testng.Assert.assertTrue;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
-import org.testng.annotations.Test;
-
 import com.neovisionaries.i18n.LocaleCode;
-
 import de.alpharogroup.collections.set.SetFactory;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
+import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * The class {@link UsedKeysSearchFilterTest} provides unit tests for the class

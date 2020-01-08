@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -41,7 +41,7 @@ public class UnusedKeysSearchFilter
 	public UnusedKeysSearchResult process(final UsedKeysSearchResult result)
 	{
 		final UnusedKeysSearchResult searchResult = UnusedKeysSearchResult.builder()
-			.unusedKeys(new HashSet<String>()).build();
+			.unusedKeys(new HashSet<>()).build();
 		for (final Object key : result.getSearchModel().getBase().keySet())
 		{
 			if (!result.getUsed().containsKey(key))
