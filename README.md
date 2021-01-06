@@ -26,7 +26,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- RESOURCEBUNDLE-CORE version -->
-		<resourcebundle-core.version>3.2</resourcebundle-core.version>
+		<resourcebundle-core.version>4</resourcebundle-core.version>
 		
 		<dependencies>
 			...
@@ -48,7 +48,7 @@ your project `build.gradle` if you want to import the core functionality of reso
 ```
 define version in file gradle.properties
 
-resourcebundleCoreVersion=3.2
+resourcebundleCoreVersion=4
 ```
 
 or in build.gradle ext area
@@ -56,7 +56,7 @@ or in build.gradle ext area
 ```
 ext {
 			...
-    resourcebundleCoreVersion = "3.2"
+    resourcebundleCoreVersion = "4"
 			...
 }
 ```
