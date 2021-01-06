@@ -1,24 +1,37 @@
 ## Change log
 ----------------------
 
-Version 3.3-SNAPSHOT
+Version 4-SNAPSHOT
 -------------
 
 ADDED:
  
 - new method for get Locale object from language code and country code
 - added new constant for a regular expression pattern that can find comments in properties file
+- new idea run configurations for gradle builds created
 
 CHANGED:
 
-- changed jdk from version 8 to 11
-- update of dependency file-worker version to 5.4
-- update of dependency silly-collections version to 6
-- update of test dependency testng version to 7.1.1
-- update of test dependency junit version to 4.13
-- update of test dependency mockito-core version to 3.2.4
+- update jdk from version 8 to 11
+- update of gradle to new version 6.7.1
+  
+- update of dependency lombok version to 1.18.16
+- update of dependency snakeyaml version to 1.27
+- update of dependency file-worker version to 5.7
+- update of dependency commons-io version to 2.8.0
+- update of dependency silly-collections version to 8.4
+- update of dependency silly-io version to 1.3
+- update of dependency silly-beans version to 1.1
+- update of dependency jobj-core version to 3.6
+- update of test dependency test-objects version to 5.3
+- update of test dependency meanbean-factories version to 2
+- update of test dependency testng version to 7.3.0
+- remove of test dependency junit version 
+- remove of test dependency mockito-core 
 - tagged method getLocale with country code as deprecated
 - deleted obsolete eclipse launch scripts
+- extracted project properties to gradle.properties
+- extracted project gradle plugin versions to buildscript.ext area in gradle.properties
 
 Version 3.2
 -------------

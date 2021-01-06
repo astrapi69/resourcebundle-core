@@ -1,20 +1,28 @@
 
-plugins {
-    id "io.franzbecker.gradle-lombok" version "3.2.0"
-    id "java"
-    id "maven-publish"
-    id "signing"
-    id "com.github.ben-manes.versions" version "0.27.0"
-    id "com.github.hierynomus.license" version "0.15.0"
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.github.ben-manes:gradle-versions-plugin:$gradlePluginVersionsVersion"
+        classpath "gradle.plugin.com.hierynomus.gradle.plugins:license-gradle-plugin:$licenseGradlePluginVersion"
+    }
 }
 
+apply plugin: "java"
+apply plugin: "java-library"
+apply plugin: "maven-publish"
+apply plugin: "signing"
+apply plugin: "com.github.ben-manes.versions"
+apply plugin: "com.github.hierynomus.license"
 apply plugin: "jacoco"
 
-group = "de.alpharogroup"
-version = "3.3-SNAPSHOT"
-description = "resourcebundle-core"
-sourceCompatibility = "1.8"
-
+group = "$groupPackage"
+version = "$projectVersion"
+description = "$rootProject.name"
+sourceCompatibility = "$projectSourceCompatibility"
 
 repositories {
     mavenLocal()
@@ -22,136 +30,12 @@ repositories {
     jcenter()
 }
 
-dependencies {
-    compile "org.projectlombok:lombok:${lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
-    compile "commons-io:commons-io:${commonsIoVersion}"
-    compile "org.yaml:snakeyaml:${snakeyamlVersion}"
-    compile "com.neovisionaries:nv-i18n:${nvI18nVersion}"
-    compile "de.alpharogroup:jobj-core:${jobjCoreVersion}"
-    compile "de.alpharogroup:silly-beans:${sillyBeansVersion}"
-    compile "de.alpharogroup:silly-io:${sillyIoVersion}"
-    compile "de.alpharogroup:silly-collections:${sillyCollectionsVersion}"
-    compile "de.alpharogroup:jobject-clone:${jobjectCloneVersion}"
-    compile "de.alpharogroup:file-worker:${fileWorkerVersion}"
-    testCompile "de.alpharogroup:test-objects:${testObjectsVersion}"
-    testCompile "de.alpharogroup:jobj-contract-verifier:${jobjContractVerifierVersion}"
-    testCompile "org.testng:testng:${testngVersion}"
-    testCompile "junit:junit:${junitVersion}"
-    testCompile "org.meanbean:meanbean:${meanbeanVersion}"
-    testCompile "de.alpharogroup:meanbean-factories:${meanbeanFactoriesVersion}"
-    testCompile "org.mockito:mockito-core:${mockitoCoreVersion}"
-}
-
-license {
-    ext.year="2015"
-    ext.owner="Asterios Raptis"
-    header rootProject.file("src/main/resources/LICENSE.txt")
-    excludes(["**/README",
-              "**/README.md",
-              "**/LICENSE",
-              "**/NOTICE",
-              "**/*.xml",
-              "**/*.xsl",
-              "**/*.xsd",
-              "**/*.dtd",
-              "**/*.html",
-              "**/*.json",
-              "**/*.jsp",
-              "**/*.jpa",
-              "**/*.sql",
-              "**/*.properties",
-              "**/*.bat",
-              "**/*.gradle",
-              "**/*.MF",
-              "**/*.txt",
-              "**/*.vm",
-              "**/*.log",
-              "**/*.map",
-              "**/*.js.map",
-              "**/*.tmpl",
-              "**/*.js.tmpl",
-              "**/*.editorconfig",
-              "**/*.lombok.config",
-              "src/test/resources/**",
-              "src/main/resources/**",
-              "out/**",
-              "build/**"])
-}
-
-// workhack for license issue #76
-gradle.startParameter.excludedTaskNames += "licenseMain"
-gradle.startParameter.excludedTaskNames += "licenseTest"
-
-task sourcesJar(type: Jar) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.allJava)
-}
-
-task javadocJar(type: Jar) {
-    from javadoc
-    archiveClassifier.set("javadoc")
-    javadoc.properties.failOnError = true
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = "${rootProject.name}"
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-            pom {
-                name = "${rootProject.name}"
-                description = "The resourcebundle-core project can inspect projects of unused properties keys or duplicate keys"
-                url = "https://github.com/astrapi69/"+"${rootProject.name}"
-                organization {
-                    name = "Alpha Ro Group UG (haftungsbeschrängt)"
-                    url = "http://www.alpharogroup.de/"
-                }
-                issueManagement {
-                    system = "GitHub"
-                    url = "https://github.com/astrapi69/"+"${rootProject.name}"+"/issues"
-                }
-                licenses {
-                    license {
-                        name = "MIT License"
-                        url = "http://www.opensource.org/licenses/mit-license.php"
-                        distribution = "repo"
-                    }
-                }
-                developers {
-                    developer {
-                        id = "astrapi69"
-                        name = "Asterios Raptis"
-                    }
-                }
-                scm {
-                    connection = "scm:git:git:@github.com:astrapi69/"+"${rootProject.name}"+".git"
-                    developerConnection = "scm:git:git@github.com:astrapi69/"+"${rootProject.name}"+".git"
-                    url = "git:@github.com:astrapi69/"+"${rootProject.name}"+".git"
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            credentials {
-                username System.getenv("ossrhUsername") ?: project.property("ossrhUsername")
-                password System.getenv("ossrhPassword") ?: project.property("ossrhPassword")
-            }
-            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
-            url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
-        }
-    }
-}
-
-signing {
-    sign publishing.publications.mavenJava
+tasks.withType(GenerateModuleMetadata) {
+    enabled = false
 }
 
 javadoc {
+    failOnError = false
     if(JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption("html5", true)
     }
@@ -180,3 +64,147 @@ jacocoTestReport {
 }
 
 check.dependsOn jacocoTestReport
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set("sources")
+    from(sourceSets.main.allJava)
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier.set("javadoc")
+    javadoc.properties.failOnError = true
+}
+
+def releaseVersion = !version.endsWith("SNAPSHOT")
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = "$rootProject.name"
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            pom {
+                name = "$rootProject.name"
+                description = "$projectDescription"
+                url = "$projectScmProviderUrl"+"$projectHolderUsername"+"$slash"+"$rootProject.name"
+                organization {
+                    name = "$projectOrganizationName"
+                    url = "$projectOrganizationUrl"
+                }
+                issueManagement {
+                    system = "$projectIssueManagementSystem"
+                    url = "$projectScmProviderUrl"+"$projectHolderUsername"+"$slash"+"$rootProject.name"+"$issuesPath"
+                }
+                licenses {
+                    license {
+                        name = "$projectLicenseName"
+                        url = "$projectLicenseUrl"
+                        distribution = "$projectLicenseDistribution"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "$projectHolderUsername"
+                        name = "$projectLeaderName"
+                    }
+                }
+                scm {
+                    connection = "$projectScmGitUrlPrefix" + "$projectScmProviderDomain" + "$colon" + "$projectHolderUsername" + "$slash" + "$rootProject.name" + "$projectScmGitUrlSuffix"
+                    developerConnection = "$projectScmGitUrlPrefix" + "$projectScmProviderDomain" + "$colon" + "$projectHolderUsername" + "$slash" + "$rootProject.name" + "$projectScmGitUrlSuffix"
+                    url = "$projectScmGitUrlPrefix" + "$projectScmProviderDomain" + "$colon" + "$projectHolderUsername" + "$slash" + "$rootProject.name" + "$projectScmGitUrlSuffix"
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username System.getenv("$projectRepositoriesUserNameKey") ?: project.property("$projectRepositoriesUserNameKey")
+                password System.getenv("$projectRepositoriesPasswordKey") ?: project.property("$projectRepositoriesPasswordKey")
+            }
+            def releasesRepoUrl = "$projectRepositoriesReleasesRepoUrl"
+            def snapshotsRepoUrl = "$projectRepositoriesSnapshotsRepoUrl"
+            url = releaseVersion ? releasesRepoUrl : snapshotsRepoUrl
+        }
+    }
+}
+
+signing {
+    if (releaseVersion) {
+        sign publishing.publications.mavenJava
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                "Name"                  : project.name,
+                "Manifest-Version"      : project.version,
+                "Implementation-Title"  : "$groupPackage" + "." + "$rootProject.name",
+                "Implementation-Version": project.version,
+                "Implementation-Vendor" : "$projectLeaderName",
+                "Created-By"            : "Gradle ${gradle.gradleVersion}",
+                "Built-By"              : "$projectLeaderName",
+                "Build-Timestamp"       : new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+                "Build-Jdk"             : "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS"              : "${System.properties['os.name']} ${System.properties['os.arch']} ${System.properties['os.version']}")
+    }
+}
+
+license {
+    ext.year="$projectInceptionYear"
+    ext.owner="$projectLeaderName"
+    header rootProject.file("src/main/resources/LICENSE.txt")
+    excludes(["**/README",
+              "**/README.md",
+              "**/LICENSE",
+              "**/NOTICE",
+              "**/*.xml",
+              "**/*.xsl",
+              "**/*.xsd",
+              "**/*.dtd",
+              "**/*.html",
+              "**/*.jsp",
+              "**/*.jpa",
+              "**/*.sql",
+              "**/*.properties",
+              "**/*.bat",
+              "**/*.gradle",
+              "**/*.MF",
+              "**/*.txt",
+              "**/*.vm",
+              "**/*.log",
+              "**/*.map",
+              "**/*.js.map",
+              "**/*.tmpl",
+              "**/*.js.tmpl",
+              "**/*.editorconfig",
+              "src/test/resources/**",
+              "src/main/resources/**",
+              "out/**",
+              "build/**"])
+}
+// workhack for license issue #76
+gradle.startParameter.excludedTaskNames += "licenseMain"
+gradle.startParameter.excludedTaskNames += "licenseTest"
+
+dependencies {
+    implementation("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation("org.yaml:snakeyaml:$snakeyamlVersion")
+    implementation("com.neovisionaries:nv-i18n:$nvI18nVersion")
+    implementation("de.alpharogroup:jobj-core:$jobjCoreVersion")
+    implementation("de.alpharogroup:silly-beans:$sillyBeansVersion")
+    implementation("de.alpharogroup:silly-io:$sillyIoVersion")
+    implementation("de.alpharogroup:silly-collections:$sillyCollectionsVersion")
+    implementation("de.alpharogroup:jobject-clone:$jobjectCloneVersion")
+    implementation("de.alpharogroup:file-worker:$fileWorkerVersion")
+    testImplementation("de.alpharogroup:test-objects:$testObjectsVersion")
+    testImplementation("de.alpharogroup:jobj-contract-verifier:$jobjContractVerifierVersion")
+    testImplementation("org.testng:testng:$testngVersion")
+    testImplementation("org.meanbean:meanbean:$meanbeanVersion")
+    testImplementation("de.alpharogroup:meanbean-factories:$meanbeanFactoriesVersion")
+}
