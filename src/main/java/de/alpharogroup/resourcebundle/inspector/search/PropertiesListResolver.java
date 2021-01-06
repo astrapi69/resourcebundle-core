@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -31,10 +31,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-import de.alpharogroup.collections.pairs.KeyValuePair;
-import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 import lombok.Getter;
 import lombok.NonNull;
+import de.alpharogroup.collections.pairs.KeyValuePair;
+import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
  * The Class {@link PropertiesListResolver} finds all properties files from the given root directory

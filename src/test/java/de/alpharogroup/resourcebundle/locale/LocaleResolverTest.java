@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -310,7 +310,7 @@ public class LocaleResolverTest
 	}
 
 	/**
-	 * Test method for {@link LocaleExtensions#getAvailableLocales()}
+	 * Test method for {@link LocaleResolver#getAvailableLocales()}
 	 */
 	@Test(enabled = true)
 	public void testGetAvailableLocalesNames()
@@ -332,15 +332,14 @@ public class LocaleResolverTest
 	}
 
 	/**
-	 * Test method for {@link LocaleResolver#getLocale(String)}
+	 * Test method for {@link LocaleResolver#getLocale(String, String)}
 	 */
 	@Test(enabled = true)
 	public void testGetLocale()
 	{
-
 		Locale expected;
 		Locale actual;
-		actual = LocaleResolver.getLocale("DE");
+		actual = LocaleResolver.getLocale("de", "DE");
 		expected = Locale.GERMANY;
 		assertEquals(expected, actual);
 	}
@@ -355,13 +354,11 @@ public class LocaleResolverTest
 		List<Locale> actual;
 		actual = LocaleResolver.getLocales("de");
 		expected = ListFactory.newArrayList();
-		expected.add(Locale.GERMAN);
 		expected.add(new Locale("de", "CH"));
 		expected.add(new Locale("de", "AT"));
 		expected.add(new Locale("de", "LU"));
+		expected.add(Locale.GERMAN);
 		expected.add(Locale.GERMANY);
-		expected.add(new Locale("de", "GR"));
-		assertEquals(expected.size(), actual.size());
 		for (Locale l : expected)
 		{
 			assertTrue(actual.contains(l));

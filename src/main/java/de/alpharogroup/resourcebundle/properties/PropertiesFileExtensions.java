@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -39,6 +39,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 
+import lombok.experimental.UtilityClass;
+
 import org.apache.commons.io.FilenameUtils;
 
 import de.alpharogroup.collections.properties.PropertiesExtensions;
@@ -49,15 +51,13 @@ import de.alpharogroup.io.file.FileExtension;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
-import lombok.experimental.UtilityClass;
 
 /**
- * The class {@link PropertiesFileExtensions}.
+ * The class {@link PropertiesFileExtensions} provides methods for load properties file
  */
 @UtilityClass
 public final class PropertiesFileExtensions
 {
-
 	/**
 	 * Gets the properties.
 	 *

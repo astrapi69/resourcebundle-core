@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -39,7 +39,7 @@ import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.collections.list.ListFactory;
-import de.alpharogroup.file.create.CreateFileExtensions;
+import de.alpharogroup.file.create.FileFactory;
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.file.write.WriteFileExtensions;
@@ -100,7 +100,7 @@ public class PropertiesNormalizerTest
 		propertiesFilenameBak = propertiesFilename + ".bak";
 		prpFile = new File(dir, propertiesFilename);
 		prpFileBak = new File(dir, propertiesFilenameBak);
-		CreateFileExtensions.newFile(prpFile);
+		FileFactory.newFile(prpFile);
 		key = "com";
 		value = "öäüß";
 		WriteFileExtensions.writeLinesToFile(ListFactory.newArrayList(key + "=" + value), prpFile,

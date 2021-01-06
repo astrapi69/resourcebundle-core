@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -154,7 +154,7 @@ public class ResourceBundleExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link ResourceBundleExtensions#getString(ResourceBundle, String)}
+	 * Test method for {@link ResourceBundleExtensions#getString(ResourceBundle, String, Object...)}
 	 */
 	@Test
 	public void testGetStringResourceBundleString()

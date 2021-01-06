@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -34,12 +34,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import lombok.NonNull;
+import lombok.experimental.UtilityClass;
 import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.io.file.FilenameExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
 
 /**
  * The Class {@link LocaleResolver} helps to resolve locale objects and languages.
@@ -358,8 +358,47 @@ public class LocaleResolver
 	 * @param countryCode
 	 *            the country code
 	 * @return the found {@link Locale} or null if not found
+	 * @deprecated use instead the same name method with language code and country code<br>
+	 *             <br>
+	 *             Note: will be removed in the next minor version
 	 */
+	@Deprecated
 	public static Locale getLocale(@NonNull String countryCode)
+	{
+		List<Locale> locales = getLocalesFromCountryCode(countryCode);
+		return ListExtensions.getFirst(locales);
+	}
+
+	/**
+	 * Resolves a {@link Locale} from the given country code.
+	 *
+	 * @param languageCode
+	 *            the language code
+	 * @param countryCode
+	 *            the country code
+	 * @return the found {@link Locale} or null if not found
+	 */
+	public static Locale getLocale(@NonNull String languageCode, @NonNull String countryCode)
+	{
+		List<Locale> locales = ListFactory.newArrayList();
+		getAvailableLocales().forEach(locale -> {
+			if (locale.getLanguage().equals(languageCode)
+				&& locale.getCountry().equals(countryCode))
+			{
+				locales.add(locale);
+			}
+		});
+		return ListExtensions.getFirst(locales);
+	}
+
+	/**
+	 * Resolves a list of {@link Locale} from the given country code
+	 *
+	 * @param countryCode
+	 *            the country code
+	 * @return the found {@link Locale} or null if not found
+	 */
+	public static List<Locale> getLocalesFromCountryCode(@NonNull String countryCode)
 	{
 		List<Locale> locales = ListFactory.newArrayList();
 		getAvailableLocales().forEach(locale -> {
@@ -368,7 +407,7 @@ public class LocaleResolver
 				locales.add(locale);
 			}
 		});
-		return ListExtensions.getFirst(locales);
+		return locales;
 	}
 
 	/**

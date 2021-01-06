@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -29,7 +29,6 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
 
-import de.alpharogroup.collections.set.SetFactory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -37,6 +36,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import de.alpharogroup.collections.set.SetFactory;
 
 /**
  * The class {@link KeySearchBean} is model bean for search keys in all kind of files. For instance
@@ -51,6 +51,20 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class KeySearchBean
 {
+
+	/**
+	 * The Properties that contain the keys to search.
+	 */
+	private Properties base;
+	/** The files to be excluded. */
+	@Builder.Default
+	private Set<File> exclude = SetFactory.newHashSet();
+	/** The file extensions to find. */
+	private String[] fileExtensions;
+	/** The locale from the properties. */
+	private Locale locale;
+	/** The directory where the search shell be begin. */
+	private File searchDir;
 
 	/**
 	 * Factory method to create a new {@link KeySearchBean} with the given arguments
@@ -70,27 +84,8 @@ public class KeySearchBean
 	public static KeySearchBean newKeySearchBean(final Properties properties, final File searchDir,
 		final Set<File> exclude, final Locale locale, final String... fileExtensions)
 	{
-		final KeySearchBean model = KeySearchBean.builder().base(properties).searchDir(searchDir)
-			.exclude(exclude).locale(locale).fileExtensions(fileExtensions).build();
-		return model;
+		return KeySearchBean.builder().base(properties).searchDir(searchDir).exclude(exclude)
+			.locale(locale).fileExtensions(fileExtensions).build();
 	}
-
-	/**
-	 * The Properties that contain the keys to search.
-	 */
-	private Properties base;
-
-	/** The files to be excluded. */
-	@Builder.Default
-	private Set<File> exclude = SetFactory.newHashSet();
-
-	/** The file extensions to find. */
-	private String[] fileExtensions;
-
-	/** The locale from the properties. */
-	private Locale locale;
-
-	/** The directory where the search shell be begin. */
-	private File searchDir;
 
 }

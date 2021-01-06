@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -41,10 +41,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.experimental.UtilityClass;
 import de.alpharogroup.file.exceptions.FileIsADirectoryException;
 import de.alpharogroup.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
-import lombok.experimental.UtilityClass;
 
 /**
  * Normalizes Properties and replaces existing invalid characters to utf8 characters.

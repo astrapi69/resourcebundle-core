@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -36,15 +36,45 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 
+import lombok.Getter;
 import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
 import de.alpharogroup.resourcebundle.inspector.io.PropertiesLineReader;
-import lombok.Getter;
 
 /**
  * The Class {@link DuplicatePropertiesKeyInspector}.
  */
 public class DuplicatePropertiesKeyInspector
 {
+	/** The result. */
+	@Getter
+	private final KeyValueLists result;
+
+	/**
+	 * Instantiates a new duplicate properties key finder.
+	 *
+	 * @param propertiesFile
+	 *            the properties file
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public DuplicatePropertiesKeyInspector(final File propertiesFile) throws IOException
+	{
+		this.result = findDuplicateKeys(propertiesFile);
+	}
+
+	/**
+	 * Instantiates a new duplicate properties key finder.
+	 *
+	 * @param inputStream
+	 *            the input stream
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public DuplicatePropertiesKeyInspector(final InputStream inputStream) throws IOException
+	{
+		this.result = findDuplicateKeys(inputStream);
+	}
+
 	/**
 	 * Finds redundant values from the given Properties object and saves it to a Map.
 	 *
@@ -85,36 +115,6 @@ public class DuplicatePropertiesKeyInspector
 		return redundantValues;
 	}
 
-	/** The result. */
-	@Getter
-	private final KeyValueLists result;
-
-	/**
-	 * Instantiates a new duplicate properties key finder.
-	 *
-	 * @param propertiesFile
-	 *            the properties file
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	public DuplicatePropertiesKeyInspector(final File propertiesFile) throws IOException
-	{
-		this.result = findDuplicateKeys(propertiesFile);
-	}
-
-	/**
-	 * Instantiates a new duplicate properties key finder.
-	 *
-	 * @param inputStream
-	 *            the input stream
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	public DuplicatePropertiesKeyInspector(final InputStream inputStream) throws IOException
-	{
-		this.result = findDuplicateKeys(inputStream);
-	}
-
 	/**
 	 * Find duplicate keys from the given properties file.
 	 *
@@ -141,7 +141,7 @@ public class DuplicatePropertiesKeyInspector
 	 */
 	private KeyValueLists findDuplicateKeys(final InputStream inputStream) throws IOException
 	{
-		final Set<String> set = new TreeSet<String>();
+		final Set<String> set = new TreeSet<>();
 		final KeyValueLists keyValueLists = read(inputStream);
 		final List<String> keys = keyValueLists.getKeys();
 		for (int i = 0; i < keys.size(); i++)
@@ -152,7 +152,7 @@ public class DuplicatePropertiesKeyInspector
 				if (keyValueLists.getDuplicateMap().containsKey(key))
 				{
 					keyValueLists.getDuplicateMap().put(key,
-						keyValueLists.getDuplicateMap().get(key).intValue() + 1);
+						keyValueLists.getDuplicateMap().get(key) + 1);
 					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap()
 						.get(key);
 					final String currentValue = keyValueLists.getValues().get(i);
@@ -161,7 +161,7 @@ public class DuplicatePropertiesKeyInspector
 				else
 				{
 					keyValueLists.getDuplicateMap().put(key, 1);
-					keyValueLists.getDuplicateValueMap().put(key, new ArrayList<String>());
+					keyValueLists.getDuplicateValueMap().put(key, new ArrayList<>());
 					final List<String> duplicateValues = keyValueLists.getDuplicateValueMap()
 						.get(key);
 					final String currentValue = keyValueLists.getValues().get(i);
@@ -207,7 +207,6 @@ public class DuplicatePropertiesKeyInspector
 		final KeyValueLists keyValueLists = new KeyValueLists();
 		while ((limit = propertiesLineReader.readLine()) >= 0)
 		{
-			c = 0;
 			keyLength = 0;
 			valueStart = limit;
 			hasSep = false;

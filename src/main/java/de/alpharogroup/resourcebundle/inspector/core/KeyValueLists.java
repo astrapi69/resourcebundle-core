@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -48,17 +48,17 @@ public class KeyValueLists implements Serializable
 
 	/** The duplicate map. */
 	@Getter
-	private final Map<String, Integer> duplicateMap = new TreeMap<String, Integer>();
+	private final Map<String, Integer> duplicateMap = new TreeMap<>();
 
 	/** The duplicate map. */
 	@Getter
-	private final Map<String, List<String>> duplicateValueMap = new LinkedHashMap<String, List<String>>();
+	private final Map<String, List<String>> duplicateValueMap = new LinkedHashMap<>();
 
 	/** The keys of the properties file. */
 	@Getter
-	private final List<String> keys = new ArrayList<String>();
+	private final List<String> keys = new ArrayList<>();
 	/** The values of the properties file. */
 	@Getter
-	private final List<String> values = new ArrayList<String>();
+	private final List<String> values = new ArrayList<>();
 
 }

@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,13 +24,11 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import java.text.DateFormat;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-import de.alpharogroup.collections.list.ListExtensions;
 import lombok.experimental.UtilityClass;
+import de.alpharogroup.collections.list.ListExtensions;
 
 /**
  * Extension class for Locales.
@@ -151,29 +149,27 @@ public final class LocaleExtensions
 	 */
 	public static boolean contains(final Locale locale)
 	{
-		final List<Locale> availableLocales = getAvailableLocales();
-		final boolean exists = availableLocales.contains(locale);
-		return exists;
+		return LocaleResolver.getAvailableLocales().contains(locale);
 	}
 
-	/**
-	 * Returns a list of all available locales on the current jdk.
-	 * 
-	 * @deprecated use instead same name method in LocaleResolver class. Note: will be removed on
-	 *             next minor release.
-	 *
-	 * @return list of all available locales on the current jdk.
-	 */
-	@Deprecated
-	public static List<Locale> getAvailableLocales()
-	{
-		if (availableLocales == null)
-		{
-			final Locale localesArray[] = DateFormat.getAvailableLocales();
-			availableLocales = Arrays.asList(localesArray);
-		}
-		return availableLocales;
-	}
+	// /**
+	// * Returns a list of all available locales on the current jdk.
+	// *
+	// * @deprecated use instead same name method in LocaleResolver class. Note: will be removed on
+	// * next minor release.
+	// *
+	// * @return list of all available locales on the current jdk.
+	// */
+	// @Deprecated
+	// public static List<Locale> getAvailableLocales()
+	// {
+	// if (availableLocales == null)
+	// {
+	// final Locale localesArray[] = DateFormat.getAvailableLocales();
+	// availableLocales = Arrays.asList(localesArray);
+	// }
+	// return availableLocales;
+	// }
 
 	/**
 	 * Gets the display country name from the given country code in the given {@link Locale}.
@@ -200,11 +196,39 @@ public final class LocaleExtensions
 	 * @param defaultCountryName
 	 *            the default country name
 	 * @return the country name
+	 * @deprecated use instead same name method with the Note: will be removed on next minor
+	 *             release.
 	 */
+	@Deprecated
 	public static String getCountryName(String countryCode, Locale inLocale,
 		String defaultCountryName)
 	{
 		Locale locale = LocaleResolver.getLocale(countryCode);
+		if (locale != null)
+		{
+			return locale.getDisplayCountry(inLocale);
+		}
+		return defaultCountryName;
+	}
+
+	/**
+	 * Gets the display country name from the given language code and country code from the given
+	 * {@link Locale}. If not found the given default country name is returned.
+	 *
+	 * @param languageCode
+	 *            the language code
+	 * @param countryCode
+	 *            the country code
+	 * @param inLocale
+	 *            The locale for which to retrieve the display country
+	 * @param defaultCountryName
+	 *            the default country name
+	 * @return the country name
+	 */
+	public static String getCountryName(String languageCode, String countryCode, Locale inLocale,
+		String defaultCountryName)
+	{
+		Locale locale = LocaleResolver.getLocale(languageCode, countryCode);
 		if (locale != null)
 		{
 			return locale.getDisplayCountry(inLocale);

@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -45,17 +45,15 @@ import lombok.Getter;
 public abstract class PropertiesKeysListResolver<T>
 {
 
-	/** The properties key prefix. */
-	@Getter
-	private String propertiesKeyPrefix;
-
-	/** The properties key suffix. */
-	@Getter
-	private String propertiesKeySuffix;
-
 	/** The values. */
 	@Getter
 	private final List<T> values;
+	/** The properties key prefix. */
+	@Getter
+	private String propertiesKeyPrefix;
+	/** The properties key suffix. */
+	@Getter
+	private String propertiesKeySuffix;
 
 	/**
 	 * Instantiates a new properties list view renderer.

@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2012 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -93,7 +93,7 @@ public class PropertiesLineReader
 	public int readLine() throws IOException
 	{
 		int len = 0;
-		char c = 0;
+		char c;
 
 		boolean skipWhiteSpace = true;
 		boolean isCommentLine = false;
