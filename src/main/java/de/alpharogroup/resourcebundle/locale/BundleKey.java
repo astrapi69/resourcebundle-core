@@ -24,10 +24,16 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import lombok.*;
-
 import java.io.Serializable;
 import java.util.Locale;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * The class {@link BundleKey}.

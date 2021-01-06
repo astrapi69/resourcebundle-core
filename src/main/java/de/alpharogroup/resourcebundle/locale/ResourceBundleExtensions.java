@@ -24,14 +24,14 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import de.alpharogroup.check.Check;
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
-
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+
+import lombok.NonNull;
+import lombok.experimental.UtilityClass;
+import de.alpharogroup.check.Check;
 
 /**
  * The class {@link ResourceBundleExtensions} holds extension methods for the class

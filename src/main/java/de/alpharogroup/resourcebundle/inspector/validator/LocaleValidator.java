@@ -24,8 +24,9 @@
  */
 package de.alpharogroup.resourcebundle.inspector.validator;
 
-import com.neovisionaries.i18n.LocaleCode;
 import lombok.experimental.UtilityClass;
+
+import com.neovisionaries.i18n.LocaleCode;
 
 /**
  * The Class {@link LocaleValidator} validates string values for locale objects.

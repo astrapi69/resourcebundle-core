@@ -24,13 +24,14 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import de.alpharogroup.test.objects.Person;
+import java.lang.reflect.InvocationTargetException;
+
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.InvocationTargetException;
+import de.alpharogroup.test.objects.Person;
 
 /**
  * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for the class

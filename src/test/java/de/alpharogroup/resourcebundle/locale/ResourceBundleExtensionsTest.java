@@ -24,17 +24,18 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import de.alpharogroup.collections.array.ArrayFactory;
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+import static org.testng.AssertJUnit.assertEquals;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import static org.testng.AssertJUnit.assertEquals;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
+
+import de.alpharogroup.collections.array.ArrayFactory;
 
 /**
  * The unit test class {@link ResourceBundleExtensionsTest} provides unit tests for the class

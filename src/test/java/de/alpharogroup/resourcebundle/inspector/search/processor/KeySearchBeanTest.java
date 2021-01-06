@@ -24,20 +24,21 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search.processor;
 
-import de.alpharogroup.evaluate.object.api.ContractViolation;
-import de.alpharogroup.evaluate.object.checkers.EqualsHashCodeAndToStringCheck;
-import de.alpharogroup.meanbean.factories.FileFactory;
-import de.alpharogroup.meanbean.factories.LocaleFactory;
-import de.alpharogroup.meanbean.factories.StringArrayFactory;
+import static org.testng.AssertJUnit.assertEquals;
+
+import java.util.Locale;
+import java.util.Optional;
+
 import org.meanbean.test.BeanTester;
 import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import java.util.Locale;
-import java.util.Optional;
-
-import static org.testng.AssertJUnit.assertEquals;
+import de.alpharogroup.evaluate.object.api.ContractViolation;
+import de.alpharogroup.evaluate.object.checkers.EqualsHashCodeAndToStringCheck;
+import de.alpharogroup.meanbean.factories.FileFactory;
+import de.alpharogroup.meanbean.factories.LocaleFactory;
+import de.alpharogroup.meanbean.factories.StringArrayFactory;
 
 /**
  * The unit test class for the class {@link KeySearchBean}

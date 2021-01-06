@@ -24,16 +24,22 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
+import lombok.NonNull;
+import lombok.experimental.UtilityClass;
 import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.io.file.FilenameExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
-
-import java.io.File;
-import java.text.DateFormat;
-import java.util.*;
 
 /**
  * The Class {@link LocaleResolver} helps to resolve locale objects and languages.
@@ -352,8 +358,9 @@ public class LocaleResolver
 	 * @param countryCode
 	 *            the country code
 	 * @return the found {@link Locale} or null if not found
-	 * @deprecated use instead the same name method with language code and country code<br><br>
-	 *     Note: will be removed in the next minor version
+	 * @deprecated use instead the same name method with language code and country code<br>
+	 *             <br>
+	 *             Note: will be removed in the next minor version
 	 */
 	@Deprecated
 	public static Locale getLocale(@NonNull String countryCode)
@@ -375,7 +382,8 @@ public class LocaleResolver
 	{
 		List<Locale> locales = ListFactory.newArrayList();
 		getAvailableLocales().forEach(locale -> {
-			if (locale.getLanguage().equals(languageCode) && locale.getCountry().equals(countryCode))
+			if (locale.getLanguage().equals(languageCode)
+				&& locale.getCountry().equals(countryCode))
 			{
 				locales.add(locale);
 			}

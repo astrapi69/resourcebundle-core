@@ -24,15 +24,16 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
-import de.alpharogroup.file.search.PathFinder;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.testng.Assert.assertEquals;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+
+import de.alpharogroup.file.search.PathFinder;
 
 /**
  * The class {@link PropertiesResolverTest} provides unit tests for the class

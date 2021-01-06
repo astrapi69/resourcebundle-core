@@ -24,8 +24,8 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import de.alpharogroup.lang.ClassExtensions;
 import lombok.experimental.UtilityClass;
+import de.alpharogroup.lang.ClassExtensions;
 
 /**
  * A factory for creating new resource(properties) key as {@link String} objects.

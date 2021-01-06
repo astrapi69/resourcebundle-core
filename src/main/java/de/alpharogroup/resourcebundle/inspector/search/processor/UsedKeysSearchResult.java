@@ -24,9 +24,15 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search.processor;
 
-import lombok.*;
-
 import java.util.Properties;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * The Class UsedKeysSearchResult keeps the result from the search and the a reference from the

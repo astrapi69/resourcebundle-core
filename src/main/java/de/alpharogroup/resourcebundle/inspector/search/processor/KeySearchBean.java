@@ -24,13 +24,19 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search.processor;
 
-import de.alpharogroup.collections.set.SetFactory;
-import lombok.*;
-
 import java.io.File;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import de.alpharogroup.collections.set.SetFactory;
 
 /**
  * The class {@link KeySearchBean} is model bean for search keys in all kind of files. For instance
@@ -45,6 +51,20 @@ import java.util.Set;
 @Builder(toBuilder = true)
 public class KeySearchBean
 {
+
+	/**
+	 * The Properties that contain the keys to search.
+	 */
+	private Properties base;
+	/** The files to be excluded. */
+	@Builder.Default
+	private Set<File> exclude = SetFactory.newHashSet();
+	/** The file extensions to find. */
+	private String[] fileExtensions;
+	/** The locale from the properties. */
+	private Locale locale;
+	/** The directory where the search shell be begin. */
+	private File searchDir;
 
 	/**
 	 * Factory method to create a new {@link KeySearchBean} with the given arguments
@@ -64,26 +84,8 @@ public class KeySearchBean
 	public static KeySearchBean newKeySearchBean(final Properties properties, final File searchDir,
 		final Set<File> exclude, final Locale locale, final String... fileExtensions)
 	{
-		return KeySearchBean.builder().base(properties).searchDir(searchDir)
-				.exclude(exclude).locale(locale).fileExtensions(fileExtensions).build();
+		return KeySearchBean.builder().base(properties).searchDir(searchDir).exclude(exclude)
+			.locale(locale).fileExtensions(fileExtensions).build();
 	}
-
-	/**
-	 * The Properties that contain the keys to search.
-	 */
-	private Properties base;
-
-	/** The files to be excluded. */
-	@Builder.Default
-	private Set<File> exclude = SetFactory.newHashSet();
-
-	/** The file extensions to find. */
-	private String[] fileExtensions;
-
-	/** The locale from the properties. */
-	private Locale locale;
-
-	/** The directory where the search shell be begin. */
-	private File searchDir;
 
 }

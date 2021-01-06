@@ -24,19 +24,20 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import de.alpharogroup.collections.array.ArrayFactory;
-import de.alpharogroup.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
-import de.alpharogroup.meanbean.factories.ObjectArrayFactory;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
+
+import java.util.Arrays;
+
 import org.meanbean.test.BeanTester;
 import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertEquals;
+import de.alpharogroup.collections.array.ArrayFactory;
+import de.alpharogroup.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
+import de.alpharogroup.meanbean.factories.ObjectArrayFactory;
 
 /**
  * The unit test class for the class {@link ResourceBundleKey}.

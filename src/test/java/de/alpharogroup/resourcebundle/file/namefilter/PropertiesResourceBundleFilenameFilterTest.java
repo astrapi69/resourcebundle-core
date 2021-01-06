@@ -24,11 +24,12 @@
  */
 package de.alpharogroup.resourcebundle.file.namefilter;
 
-import de.alpharogroup.file.search.PathFinder;
-import org.testng.annotations.Test;
-
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
+
+import org.testng.annotations.Test;
+
+import de.alpharogroup.file.search.PathFinder;
 
 /**
  * The class {@link PropertiesResourceBundleFilenameFilter}.

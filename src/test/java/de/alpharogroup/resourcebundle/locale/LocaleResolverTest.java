@@ -24,19 +24,28 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import de.alpharogroup.collections.list.ListFactory;
-import de.alpharogroup.collections.map.MapFactory;
-import de.alpharogroup.lang.ClassExtensions;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertNull;
+import static org.testng.AssertJUnit.assertTrue;
+
+import java.io.File;
+import java.net.URISyntaxException;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+
 import org.meanbean.factories.ObjectCreationException;
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.net.URISyntaxException;
-import java.util.*;
-
-import static org.testng.AssertJUnit.*;
+import de.alpharogroup.collections.list.ListFactory;
+import de.alpharogroup.collections.map.MapFactory;
+import de.alpharogroup.lang.ClassExtensions;
 
 /**
  * The unit test class {@link LocaleResolverTest} provides unit tests for the class
@@ -330,7 +339,7 @@ public class LocaleResolverTest
 	{
 		Locale expected;
 		Locale actual;
-		actual = LocaleResolver.getLocale("de","DE");
+		actual = LocaleResolver.getLocale("de", "DE");
 		expected = Locale.GERMANY;
 		assertEquals(expected, actual);
 	}

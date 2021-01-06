@@ -24,15 +24,8 @@
  */
 package de.alpharogroup.resourcebundle.inspector.validator;
 
-import de.alpharogroup.collections.list.ListFactory;
-import de.alpharogroup.file.create.FileFactory;
-import de.alpharogroup.file.exceptions.FileIsADirectoryException;
-import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.file.write.WriteFileExtensions;
-import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,8 +34,16 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Properties;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
+
+import de.alpharogroup.collections.list.ListFactory;
+import de.alpharogroup.file.create.FileFactory;
+import de.alpharogroup.file.exceptions.FileIsADirectoryException;
+import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.file.write.WriteFileExtensions;
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 
 /**
  * The unit test class for the class {@link PropertiesNormalizer}.

@@ -24,14 +24,15 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
-import de.alpharogroup.io.file.FileExtension;
-import de.alpharogroup.io.file.filter.MultiplyExtensionsFileFilter;
-import org.apache.commons.io.DirectoryWalker;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.io.DirectoryWalker;
+
+import de.alpharogroup.io.file.FileExtension;
+import de.alpharogroup.io.file.filter.MultiplyExtensionsFileFilter;
 
 /**
  * The Class PropertiesDirectoryWalker finds Properties files.

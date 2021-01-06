@@ -24,11 +24,11 @@
  */
 package de.alpharogroup.resourcebundle.inspector.io;
 
-import lombok.Getter;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+
+import lombok.Getter;
 
 /**
  * The Class PropertiesLineReader that can read from an Reader or inputstream all lines from a

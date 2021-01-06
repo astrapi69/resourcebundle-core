@@ -24,16 +24,17 @@
  */
 package de.alpharogroup.resourcebundle.inspector.validator;
 
-import com.neovisionaries.i18n.LocaleCode;
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
+
+import com.neovisionaries.i18n.LocaleCode;
 
 /**
  * The unit test class for the class {@link LocaleValidator}

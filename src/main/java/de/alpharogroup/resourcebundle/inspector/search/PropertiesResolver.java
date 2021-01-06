@@ -24,14 +24,14 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
-import de.alpharogroup.resourcebundle.locale.LocaleResolver;
-import lombok.Getter;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import lombok.Getter;
+import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
  * The Class {@link PropertiesResolver} finds all properties file from the given root directory and

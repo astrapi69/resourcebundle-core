@@ -24,10 +24,10 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Getter;
 
 /**
  * The abstract class AbstractPropertiesKeysListResolver provides the properties key for every value
@@ -45,17 +45,15 @@ import java.util.List;
 public abstract class PropertiesKeysListResolver<T>
 {
 
-	/** The properties key prefix. */
-	@Getter
-	private String propertiesKeyPrefix;
-
-	/** The properties key suffix. */
-	@Getter
-	private String propertiesKeySuffix;
-
 	/** The values. */
 	@Getter
 	private final List<T> values;
+	/** The properties key prefix. */
+	@Getter
+	private String propertiesKeyPrefix;
+	/** The properties key suffix. */
+	@Getter
+	private String propertiesKeySuffix;
 
 	/**
 	 * Instantiates a new properties list view renderer.

@@ -24,10 +24,10 @@
  */
 package de.alpharogroup.resourcebundle.config;
 
+import static org.testng.AssertJUnit.assertEquals;
+
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
-
-import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * The unit test class for the class {@link ConfigurationPropertiesResolver}.

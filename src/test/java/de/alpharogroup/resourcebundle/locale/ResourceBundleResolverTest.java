@@ -24,14 +24,14 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * The unit test class {@link ResourceBundleResolverTest} provides unit tests for the class

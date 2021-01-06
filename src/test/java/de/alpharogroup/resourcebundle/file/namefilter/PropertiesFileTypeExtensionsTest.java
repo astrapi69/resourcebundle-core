@@ -24,13 +24,13 @@
  */
 package de.alpharogroup.resourcebundle.file.namefilter;
 
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+import static org.testng.AssertJUnit.assertEquals;
 
 import java.lang.reflect.InvocationTargetException;
 
-import static org.testng.AssertJUnit.assertEquals;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
 
 /**
  * The unit test class for the class {@link PropertiesFileTypeExtensions}.

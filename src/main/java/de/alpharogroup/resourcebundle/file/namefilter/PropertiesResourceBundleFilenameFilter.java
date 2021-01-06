@@ -24,10 +24,10 @@
  */
 package de.alpharogroup.resourcebundle.file.namefilter;
 
-import lombok.Getter;
-
 import java.io.File;
 import java.io.FilenameFilter;
+
+import lombok.Getter;
 
 /**
  * The class {@link PropertiesResourceBundleFilenameFilter} for accept only bundle properties files

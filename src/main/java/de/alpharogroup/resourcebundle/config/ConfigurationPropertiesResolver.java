@@ -24,15 +24,15 @@
  */
 package de.alpharogroup.resourcebundle.config;
 
-import de.alpharogroup.collections.properties.PropertiesExtensions;
-import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
-import lombok.Getter;
-import lombok.NonNull;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Optional;
 import java.util.Properties;
+
+import lombok.Getter;
+import lombok.NonNull;
+import de.alpharogroup.collections.properties.PropertiesExtensions;
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an

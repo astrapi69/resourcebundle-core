@@ -24,11 +24,15 @@
  */
 package de.alpharogroup.resourcebundle.inspector.core;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import lombok.Data;
 import lombok.Getter;
-
-import java.io.Serializable;
-import java.util.*;
 
 /**
  * The Class KeyValueLists holds to lists for the keys and values from a properties file and a map

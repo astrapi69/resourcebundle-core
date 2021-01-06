@@ -24,21 +24,57 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
-import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
-import de.alpharogroup.resourcebundle.inspector.io.PropertiesLineReader;
-import lombok.Getter;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+import java.util.TreeSet;
+
+import lombok.Getter;
+import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
+import de.alpharogroup.resourcebundle.inspector.io.PropertiesLineReader;
 
 /**
  * The Class {@link DuplicatePropertiesKeyInspector}.
  */
 public class DuplicatePropertiesKeyInspector
 {
+	/** The result. */
+	@Getter
+	private final KeyValueLists result;
+
+	/**
+	 * Instantiates a new duplicate properties key finder.
+	 *
+	 * @param propertiesFile
+	 *            the properties file
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public DuplicatePropertiesKeyInspector(final File propertiesFile) throws IOException
+	{
+		this.result = findDuplicateKeys(propertiesFile);
+	}
+
+	/**
+	 * Instantiates a new duplicate properties key finder.
+	 *
+	 * @param inputStream
+	 *            the input stream
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public DuplicatePropertiesKeyInspector(final InputStream inputStream) throws IOException
+	{
+		this.result = findDuplicateKeys(inputStream);
+	}
+
 	/**
 	 * Finds redundant values from the given Properties object and saves it to a Map.
 	 *
@@ -77,36 +113,6 @@ public class DuplicatePropertiesKeyInspector
 			}
 		}
 		return redundantValues;
-	}
-
-	/** The result. */
-	@Getter
-	private final KeyValueLists result;
-
-	/**
-	 * Instantiates a new duplicate properties key finder.
-	 *
-	 * @param propertiesFile
-	 *            the properties file
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	public DuplicatePropertiesKeyInspector(final File propertiesFile) throws IOException
-	{
-		this.result = findDuplicateKeys(propertiesFile);
-	}
-
-	/**
-	 * Instantiates a new duplicate properties key finder.
-	 *
-	 * @param inputStream
-	 *            the input stream
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	public DuplicatePropertiesKeyInspector(final InputStream inputStream) throws IOException
-	{
-		this.result = findDuplicateKeys(inputStream);
 	}
 
 	/**

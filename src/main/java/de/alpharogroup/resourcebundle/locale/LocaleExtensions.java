@@ -24,11 +24,11 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import de.alpharogroup.collections.list.ListExtensions;
-import lombok.experimental.UtilityClass;
-
 import java.util.List;
 import java.util.Locale;
+
+import lombok.experimental.UtilityClass;
+import de.alpharogroup.collections.list.ListExtensions;
 
 /**
  * Extension class for Locales.
@@ -152,24 +152,24 @@ public final class LocaleExtensions
 		return LocaleResolver.getAvailableLocales().contains(locale);
 	}
 
-//	/**
-//	 * Returns a list of all available locales on the current jdk.
-//	 *
-//	 * @deprecated use instead same name method in LocaleResolver class. Note: will be removed on
-//	 *             next minor release.
-//	 *
-//	 * @return list of all available locales on the current jdk.
-//	 */
-//	@Deprecated
-//	public static List<Locale> getAvailableLocales()
-//	{
-//		if (availableLocales == null)
-//		{
-//			final Locale localesArray[] = DateFormat.getAvailableLocales();
-//			availableLocales = Arrays.asList(localesArray);
-//		}
-//		return availableLocales;
-//	}
+	// /**
+	// * Returns a list of all available locales on the current jdk.
+	// *
+	// * @deprecated use instead same name method in LocaleResolver class. Note: will be removed on
+	// * next minor release.
+	// *
+	// * @return list of all available locales on the current jdk.
+	// */
+	// @Deprecated
+	// public static List<Locale> getAvailableLocales()
+	// {
+	// if (availableLocales == null)
+	// {
+	// final Locale localesArray[] = DateFormat.getAvailableLocales();
+	// availableLocales = Arrays.asList(localesArray);
+	// }
+	// return availableLocales;
+	// }
 
 	/**
 	 * Gets the display country name from the given country code in the given {@link Locale}.
@@ -196,12 +196,12 @@ public final class LocaleExtensions
 	 * @param defaultCountryName
 	 *            the default country name
 	 * @return the country name
-	 * @deprecated use instead same name method with the  Note: will be removed on
-	 *              next minor release.
+	 * @deprecated use instead same name method with the Note: will be removed on next minor
+	 *             release.
 	 */
 	@Deprecated
 	public static String getCountryName(String countryCode, Locale inLocale,
-										String defaultCountryName)
+		String defaultCountryName)
 	{
 		Locale locale = LocaleResolver.getLocale(countryCode);
 		if (locale != null)
@@ -212,8 +212,8 @@ public final class LocaleExtensions
 	}
 
 	/**
-	 * Gets the display country name from the given language code and country code from the given {@link Locale}. If
-	 * not found the given default country name is returned.
+	 * Gets the display country name from the given language code and country code from the given
+	 * {@link Locale}. If not found the given default country name is returned.
 	 *
 	 * @param languageCode
 	 *            the language code
@@ -226,7 +226,7 @@ public final class LocaleExtensions
 	 * @return the country name
 	 */
 	public static String getCountryName(String languageCode, String countryCode, Locale inLocale,
-										String defaultCountryName)
+		String defaultCountryName)
 	{
 		Locale locale = LocaleResolver.getLocale(languageCode, countryCode);
 		if (locale != null)

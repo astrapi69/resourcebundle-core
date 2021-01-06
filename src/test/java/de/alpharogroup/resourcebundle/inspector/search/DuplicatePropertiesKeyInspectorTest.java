@@ -24,11 +24,8 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
-import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.io.StreamExtensions;
-import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,8 +33,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+
+import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.io.StreamExtensions;
+import de.alpharogroup.resourcebundle.inspector.core.KeyValueLists;
 
 /**
  * The class {@link DuplicatePropertiesKeyInspectorTest} provides unit tests for the class

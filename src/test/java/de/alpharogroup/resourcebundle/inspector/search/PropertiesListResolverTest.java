@@ -24,14 +24,14 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
-import org.testng.annotations.Test;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNotNull;
+import org.testng.annotations.Test;
 
 /**
  * The class {@link PropertiesListResolver}.

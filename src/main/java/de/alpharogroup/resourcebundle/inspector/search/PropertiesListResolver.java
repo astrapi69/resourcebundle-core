@@ -24,17 +24,17 @@
  */
 package de.alpharogroup.resourcebundle.inspector.search;
 
-import de.alpharogroup.collections.pairs.KeyValuePair;
-import de.alpharogroup.resourcebundle.locale.LocaleResolver;
-import lombok.Getter;
-import lombok.NonNull;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
+
+import lombok.Getter;
+import lombok.NonNull;
+import de.alpharogroup.collections.pairs.KeyValuePair;
+import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
  * The Class {@link PropertiesListResolver} finds all properties files from the given root directory

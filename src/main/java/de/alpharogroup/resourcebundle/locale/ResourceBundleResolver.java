@@ -24,10 +24,10 @@
  */
 package de.alpharogroup.resourcebundle.locale;
 
-import lombok.experimental.UtilityClass;
-
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+import lombok.experimental.UtilityClass;
 
 /**
  * The class {@link ResourceBundleResolver}.
