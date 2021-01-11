@@ -4,6 +4,10 @@
 Version 4.1-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of gradle to new version 6.8
+
 Version 4
 -------------
 
