@@ -202,6 +202,7 @@ dependencies {
     implementation("de.alpharogroup:silly-collections:$sillyCollectionsVersion")
     implementation("de.alpharogroup:jobject-clone:$jobjectCloneVersion")
     implementation("de.alpharogroup:file-worker:$fileWorkerVersion")
+    implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
     testImplementation("de.alpharogroup:test-objects:$testObjectsVersion")
     testImplementation("de.alpharogroup:jobj-contract-verifier:$jobjContractVerifierVersion")
     testImplementation("org.testng:testng:$testngVersion")

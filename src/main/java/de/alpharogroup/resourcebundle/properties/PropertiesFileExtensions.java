@@ -50,7 +50,7 @@ import de.alpharogroup.file.search.FileSearchExtensions;
 import de.alpharogroup.io.file.FileExtension;
 import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.lang.PackageExtensions;
-import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
+import de.alpharogroup.resourcebundle.locale.LocaleResolver;
 
 /**
  * The class {@link PropertiesFileExtensions} provides methods for load properties file
@@ -553,9 +553,7 @@ public final class PropertiesFileExtensions
 	public static Set<String> resolveAvailableLanguages(final String bundlepackage,
 		final String bundlename)
 	{
-		final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		final File root = new File(loader.getResource(bundlepackage.replace('.', '/')).getFile());
-		final File[] files = root.listFiles(new PropertiesResourceBundleFilenameFilter(bundlename));
+		final File[] files = LocaleResolver.getBundleFiles(bundlepackage, bundlename);
 
 		final Set<String> languages = new TreeSet<>();
 		for (final File file : files)

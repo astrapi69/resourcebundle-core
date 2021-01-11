@@ -29,6 +29,7 @@ import java.io.Serializable;
 import java.util.Optional;
 import java.util.Properties;
 
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 import lombok.Getter;
 import lombok.NonNull;
 import de.alpharogroup.collections.properties.PropertiesExtensions;
@@ -153,16 +154,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	protected Properties loadProperties()
 	{
-		final Properties properties;
-		try
-		{
-			properties = PropertiesFileExtensions.loadProperties(getPropertiesFilename());
-		}
-		catch (final IOException e)
-		{
-			throw new RuntimeException(e);
-		}
-		return properties;
+		return RuntimeExceptionDecorator.decorate(() -> PropertiesFileExtensions.loadProperties(getPropertiesFilename()));
 	}
 
 	/**

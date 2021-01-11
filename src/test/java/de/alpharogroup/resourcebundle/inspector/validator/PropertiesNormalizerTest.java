@@ -57,7 +57,7 @@ public class PropertiesNormalizerTest
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	@Test(enabled = false) // TODO fixit...
+	@Test(enabled = true)
 	public void testFindPropertiesFilesWithInvalidCharacters() throws IOException
 	{
 		int expected;
@@ -75,16 +75,14 @@ public class PropertiesNormalizerTest
 	/**
 	 * Test method for {@link PropertiesNormalizer#normalizeProperties(String)}.
 	 *
-	 * @throws URISyntaxException
-	 *             the URI syntax exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 * @throws FileIsADirectoryException
 	 *             the file is A directory exception
 	 */
-	@Test(enabled = false) // TODO fixit...
+	@Test(enabled = true) // TODO fixit...
 	public void testNormalizeProperties()
-		throws URISyntaxException, IOException, FileIsADirectoryException
+		throws IOException, FileIsADirectoryException
 	{
 		String key;
 		String value;

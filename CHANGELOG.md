@@ -4,9 +4,14 @@
 Version 4.1-SNAPSHOT
 -------------
 
+ADDED:
+
+- new dependency throw-able added in version 1.5
+
 CHANGED:
 
 - update of gradle to new version 6.8
+- increase code coverage
 
 Version 4
 -------------

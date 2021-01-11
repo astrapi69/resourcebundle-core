@@ -25,6 +25,7 @@
 package de.alpharogroup.resourcebundle.locale;
 
 import java.io.File;
+import java.net.URL;
 import java.text.DateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,13 +34,16 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import de.alpharogroup.collections.list.ListExtensions;
 import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.io.file.FilenameExtensions;
+import de.alpharogroup.lang.ClassExtensions;
 import de.alpharogroup.resourcebundle.file.namefilter.PropertiesResourceBundleFilenameFilter;
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
  * The Class {@link LocaleResolver} helps to resolve locale objects and languages.
@@ -85,25 +89,88 @@ public class LocaleResolver
 	public static Set<String> resolveAvailableLanguages(final String bundlepackage,
 		final String bundlename)
 	{
-		final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		final File root = new File(loader.getResource(bundlepackage.replace('.', '/')).getFile());
-		final File[] files = root.listFiles(new PropertiesResourceBundleFilenameFilter(bundlename));
-
+		final File[] files = getBundleFiles(bundlepackage, bundlename);
 		final Set<String> languages = new TreeSet<>();
-		for (final File file : files)
+		if (files != null && 0 < files.length)
 		{
-			final String language = file.getName()
-				.replaceAll("^" + bundlename + "(_)?|\\.properties$", "");
-			if ((language != null) && !language.isEmpty())
+			for (final File file : files)
 			{
-				languages.add(language);
-			}
-			else
-			{
-				languages.add("default");
+				final String language = file.getName()
+					.replaceAll("^" + bundlename + "(_)?|\\.properties$", "");
+				if ((language != null) && !language.isEmpty())
+				{
+					languages.add(language);
+				}
+				else
+				{
+					languages.add("default");
+				}
 			}
 		}
 		return languages;
+	}
+
+	/**
+	 * Gets all bundle files from the given resource bundle name in the given bundle package
+	 *
+	 * @param bundlepackage
+	 *            The package that contains the properties files.
+	 * @param bundlename
+	 *            The name of the resource bundle.
+	 * @return an array with all bundle files from the given resource bundle name in the given
+	 *         bundle package
+	 */
+	public static File[] getBundleFiles(String bundlepackage, String bundlename)
+	{
+		String bundlePackagePath = bundlepackage.replace('.', '/');
+		List<URL> resources = getResources(bundlePackagePath, true);
+		URL packagePathUrl = ListExtensions.getFirst(resources);
+		final File root = new File(packagePathUrl.getFile());
+		final File[] files = root.listFiles(new PropertiesResourceBundleFilenameFilter(bundlename));
+		return files;
+	}
+
+
+	/**
+	 * Gets a list with urls from the given path for all resources.
+	 *
+	 * @param path
+	 *            The base path.
+	 * @param excludeJarFiles
+	 *            flag for exclude jor files from the result
+	 * @return The resources.
+	 */
+	public static List<URL> getResources(final @NonNull String path, boolean excludeJarFiles)
+	{
+		List<URL> resources = RuntimeExceptionDecorator
+			.decorate(() -> ClassExtensions.getResources(path));
+		return !excludeJarFiles
+			? resources
+			: resources.stream().filter(LocaleResolver::isNotJarFile).collect(Collectors.toList());
+	}
+
+	/**
+	 * Checks if the given {@link URL} is a jar file.
+	 *
+	 * @param url
+	 *            the url to check
+	 * @return true, if the given {@link URL} is a jar file otherwise false
+	 */
+	public static boolean isJarFile(final @NonNull URL url)
+	{
+		return "jar".equals(url.getProtocol());
+	}
+
+	/**
+	 * Checks if the given {@link URL} is not a jar file.
+	 *
+	 * @param url
+	 *            the url to check
+	 * @return true, if the given {@link URL} is not a jar file otherwise false
+	 */
+	public static boolean isNotJarFile(final @NonNull URL url)
+	{
+		return !isJarFile(url);
 	}
 
 	/**
@@ -315,9 +382,7 @@ public class LocaleResolver
 	public static Map<File, Locale> resolveLocales(final String bundlepackage,
 		final String bundlename, final boolean systemsDefault)
 	{
-		final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		final File root = new File(loader.getResource(bundlepackage.replace('.', '/')).getFile());
-		final File[] files = root.listFiles(new PropertiesResourceBundleFilenameFilter(bundlename));
+		final File[] files = getBundleFiles(bundlepackage, bundlename);
 		final Map<File, Locale> locales = new HashMap<>();
 		for (final File file : files)
 		{

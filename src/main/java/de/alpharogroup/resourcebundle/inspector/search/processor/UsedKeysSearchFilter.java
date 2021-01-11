@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 import org.apache.commons.io.FileUtils;
 
 import de.alpharogroup.file.search.FileSearchExtensions;
@@ -45,33 +46,31 @@ public class UsedKeysSearchFilter implements FilterProcessor<KeySearchBean, Used
 	@Override
 	public UsedKeysSearchResult process(final KeySearchBean searchModel)
 	{
+		return RuntimeExceptionDecorator.decorate(() -> getUsedKeysSearchResult(searchModel));
+	}
+
+	private UsedKeysSearchResult getUsedKeysSearchResult(KeySearchBean searchModel)
+		throws IOException
+	{
 		UsedKeysSearchResult result;
-		try
+		final List<File> foundFiles = FileSearchExtensions
+			.findFilesWithFilter(searchModel.getSearchDir(), searchModel.getFileExtensions());
+		result = UsedKeysSearchResult.builder().used(new Properties()).build();
+		result.setSearchModel(searchModel);
+		for (final File file : foundFiles)
 		{
-			// Find
-			final List<File> foundFiles = FileSearchExtensions
-				.findFilesWithFilter(searchModel.getSearchDir(), searchModel.getFileExtensions());
-			result = UsedKeysSearchResult.builder().used(new Properties()).build();
-			result.setSearchModel(searchModel);
-			for (final File file : foundFiles)
+			if (!searchModel.getExclude().contains(file))
 			{
-				if (!searchModel.getExclude().contains(file))
+				final String fileContent = FileUtils.readFileToString(file, "UTF-8");
+				for (final Object key : searchModel.getBase().keySet())
 				{
-					final String fileContent = FileUtils.readFileToString(file, "UTF-8");
-					for (final Object key : searchModel.getBase().keySet())
+					final String k = "\"" + key.toString().trim() + "\"";
+					if (fileContent.contains(k))
 					{
-						final String k = "\"" + key.toString().trim() + "\"";
-						if (fileContent.contains(k))
-						{
-							result.getUsed().put(key, searchModel.getBase().get(key));
-						}
+						result.getUsed().put(key, searchModel.getBase().get(key));
 					}
 				}
 			}
-		}
-		catch (final IOException e)
-		{
-			throw new RuntimeException(e);
 		}
 		return result;
 	}
