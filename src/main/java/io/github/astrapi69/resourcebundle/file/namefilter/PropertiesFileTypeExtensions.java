@@ -51,7 +51,7 @@ public enum PropertiesFileTypeExtensions
 	 * @param propertiesFileExtension
 	 *            the properties file extension
 	 */
-	private PropertiesFileTypeExtensions(final String propertiesFileExtension)
+	PropertiesFileTypeExtensions(final String propertiesFileExtension)
 	{
 		this.propertiesFileExtension = propertiesFileExtension;
 	}

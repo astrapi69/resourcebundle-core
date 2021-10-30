@@ -28,11 +28,11 @@ import java.io.Serializable;
 import java.util.Optional;
 import java.util.Properties;
 
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 import lombok.Getter;
 import lombok.NonNull;
 import io.github.astrapi69.collections.properties.PropertiesExtensions;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an
@@ -153,7 +153,8 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 */
 	protected Properties loadProperties()
 	{
-		return RuntimeExceptionDecorator.decorate(() -> PropertiesFileExtensions.loadProperties(getPropertiesFilename()));
+		return RuntimeExceptionDecorator
+			.decorate(() -> PropertiesFileExtensions.loadProperties(getPropertiesFilename()));
 	}
 
 	/**

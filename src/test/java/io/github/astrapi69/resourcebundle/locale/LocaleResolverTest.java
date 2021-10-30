@@ -314,20 +314,20 @@ public class LocaleResolverTest
 	@Test(enabled = true)
 	public void testGetAvailableLocalesNames()
 	{
-//		List<Locale> availableLocales = LocaleResolver.getAvailableLocales();
-//		final Map<String, String> countriesMap = newCountries();
-//		final Map<String, String> countries = MapFactory.newHashMap();
-//		for (Locale locale : availableLocales)
-//		{
-//			if (countriesMap.containsKey(locale.getCountry()))
-//			{
-//				countries.put(locale.getCountry(), locale.getDisplayCountry(Locale.ENGLISH));
-//				System.out.println("countriesMap.put(\"" + locale.getCountry() + "\", \""
-//					+ locale.getDisplayCountry(Locale.ENGLISH) + "\");");
-//
-//			}
-//		}
-//		System.out.println(countries.size());
+		// List<Locale> availableLocales = LocaleResolver.getAvailableLocales();
+		// final Map<String, String> countriesMap = newCountries();
+		// final Map<String, String> countries = MapFactory.newHashMap();
+		// for (Locale locale : availableLocales)
+		// {
+		// if (countriesMap.containsKey(locale.getCountry()))
+		// {
+		// countries.put(locale.getCountry(), locale.getDisplayCountry(Locale.ENGLISH));
+		// System.out.println("countriesMap.put(\"" + locale.getCountry() + "\", \""
+		// + locale.getDisplayCountry(Locale.ENGLISH) + "\");");
+		//
+		// }
+		// }
+		// System.out.println(countries.size());
 	}
 
 	/**

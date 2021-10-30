@@ -315,7 +315,7 @@ public class LocaleResolver
 		String stringCode = "default";
 		if (0 < underscoreIndex)
 		{
-			stringCode = filename.substring(underscoreIndex + 1, filename.length());
+			stringCode = filename.substring(underscoreIndex + 1);
 		}
 		return stringCode;
 	}
@@ -411,7 +411,7 @@ public class LocaleResolver
 	{
 		if (availableLocales == null)
 		{
-			final Locale localesArray[] = DateFormat.getAvailableLocales();
+			final Locale[] localesArray = DateFormat.getAvailableLocales();
 			availableLocales = Arrays.asList(localesArray);
 		}
 		return availableLocales;

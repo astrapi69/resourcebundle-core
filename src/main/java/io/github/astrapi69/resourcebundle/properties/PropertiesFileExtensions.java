@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -305,12 +306,12 @@ public final class PropertiesFileExtensions
 			// remove first slash...
 			if (packagePath.endsWith(slash))
 			{
-				sb.append(packagePath.substring(1, packagePath.length()));
+				sb.append(packagePath.substring(1));
 			}
 			else
 			{
 				// append slash at the end...
-				sb.append(packagePath.substring(1, packagePath.length())).append(slash);
+				sb.append(packagePath.substring(1)).append(slash);
 			}
 		}
 		else
@@ -330,7 +331,7 @@ public final class PropertiesFileExtensions
 		sb = new StringBuilder();
 		if (fileName.startsWith(slash))
 		{
-			sb.append(fileName.substring(1, fileName.length()));
+			sb.append(fileName.substring(1));
 		}
 		fileName = sb.toString().trim();
 		return loadProperties(packagePath + fileName);
@@ -508,8 +509,8 @@ public final class PropertiesFileExtensions
 	 */
 	public static File newBackupOf(final File file) throws IOException
 	{
-		return CopyFileExtensions.newBackupOf(file, Charset.forName("ISO-8859-1"),
-			Charset.forName("UTF-8"));
+		return CopyFileExtensions.newBackupOf(file, StandardCharsets.ISO_8859_1,
+			StandardCharsets.UTF_8);
 	}
 
 	/**

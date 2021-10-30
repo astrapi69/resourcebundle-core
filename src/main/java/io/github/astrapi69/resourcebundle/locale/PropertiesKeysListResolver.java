@@ -50,10 +50,10 @@ public abstract class PropertiesKeysListResolver<T>
 	private final List<T> values;
 	/** The properties key prefix. */
 	@Getter
-	private String propertiesKeyPrefix;
+	private final String propertiesKeyPrefix;
 	/** The properties key suffix. */
 	@Getter
-	private String propertiesKeySuffix;
+	private final String propertiesKeySuffix;
 
 	/**
 	 * Instantiates a new properties list view renderer.

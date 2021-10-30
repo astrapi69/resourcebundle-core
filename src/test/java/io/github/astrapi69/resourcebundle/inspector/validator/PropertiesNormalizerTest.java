@@ -80,8 +80,7 @@ public class PropertiesNormalizerTest
 	 *             the file is A directory exception
 	 */
 	@Test(enabled = true) // TODO fixit...
-	public void testNormalizeProperties()
-		throws IOException, FileIsADirectoryException
+	public void testNormalizeProperties() throws IOException, FileIsADirectoryException
 	{
 		String key;
 		String value;

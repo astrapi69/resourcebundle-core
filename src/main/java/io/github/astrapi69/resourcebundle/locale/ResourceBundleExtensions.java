@@ -282,7 +282,7 @@ public final class ResourceBundleExtensions
 	public static String getString(final String baseName, final Locale locale, final String key)
 		throws MissingResourceException
 	{
-		return getString(baseName, locale, key, (String)null, (Object)null);
+		return getString(baseName, locale, key, null, (Object)null);
 	}
 
 	/**

@@ -29,10 +29,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 import org.apache.commons.io.FileUtils;
 
 import io.github.astrapi69.file.search.FileSearchExtensions;
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
  * The class {@link UsedKeysSearchFilter} can process {@link KeySearchBean} and find used keys.
