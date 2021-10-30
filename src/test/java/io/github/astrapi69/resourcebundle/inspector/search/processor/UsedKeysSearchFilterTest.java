@@ -119,9 +119,9 @@ public class UsedKeysSearchFilterTest
 		// these are unit tests that we do not want to include...
 		final Set<File> exclude = SetFactory.newHashSet();
 		final File ex1 = new File(PathFinder.getSrcTestJavaDir(),
-			"/de/alpharogroup/resourcebundle/inspector/search/processor/UsedKeysSearchFilterTest.java");
+			"/io/github/astrapi69/resourcebundle/inspector/search/processor/UsedKeysSearchFilterTest.java");
 		final File ex2 = new File(PathFinder.getSrcTestJavaDir(),
-			"/de/alpharogroup/resourcebundle/locale/ResourceBundleExtensionsTest.java");
+			"/io/github/astrapi69/resourcebundle/locale/ResourceBundleExtensionsTest.java");
 		exclude.add(ex1);
 		exclude.add(ex2);
 		// create the search bean...

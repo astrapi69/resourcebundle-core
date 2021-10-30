@@ -57,8 +57,8 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it,
-                    exclude: ["de/alpharogroup/resourcebundle/inspector/search/processor/FilterProcessor.class",
-                              "de/alpharogroup/resourcebundle/locale/PropertiesKeysListResolver.class"])
+                    exclude: ["io/github/astrapi69/resourcebundle/inspector/search/processor/FilterProcessor.class",
+                              "io/github/astrapi69/resourcebundle/locale/PropertiesKeysListResolver.class"])
         }))
     }
 }

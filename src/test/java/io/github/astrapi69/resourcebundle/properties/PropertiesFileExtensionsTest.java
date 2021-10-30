@@ -115,7 +115,7 @@ public class PropertiesFileExtensionsTest
 		String packagePath;
 		String fileName;
 		clazz = ClassExtensions.class;
-		packagePath = "de/alpharogroup/lang/";
+		packagePath = "io/github/astrapi69/lang/";
 		fileName = "resources.properties";
 		actual = PropertiesFileExtensions.loadProperties(clazz, packagePath, fileName);
 		assertNotNull(actual);
@@ -156,13 +156,13 @@ public class PropertiesFileExtensionsTest
 	@Test(enabled = true)
 	public void testLoadPropertiesPackagePathPropertiesFilename() throws IOException
 	{
-		String packagePath = "de/alpharogroup/lang/";
+		String packagePath = "io/github/astrapi69/lang/";
 		String propertiesFilename = "resources.properties";
 		Properties prop = PropertiesFileExtensions.loadProperties(packagePath, propertiesFilename);
 		boolean result = null != prop;
 		assertTrue("", result);
 
-		packagePath = "/de/alpharogroup/lang//";
+		packagePath = "/io/github/astrapi69/lang//";
 		propertiesFilename = "//resources.properties";
 		prop = PropertiesFileExtensions.loadProperties(packagePath, propertiesFilename);
 		result = null != prop;
@@ -173,7 +173,7 @@ public class PropertiesFileExtensionsTest
 	@Test(enabled = true)
 	public void testLoadPropertiesPropertiesFilename() throws IOException
 	{
-		final String propertiesFilename = "de/alpharogroup/lang/resources.properties";
+		final String propertiesFilename = "io/github/astrapi69/lang/resources.properties";
 		final Properties prop = PropertiesFileExtensions.loadProperties(propertiesFilename);
 		final boolean result = null != prop;
 		assertTrue("", result);
@@ -226,7 +226,7 @@ public class PropertiesFileExtensionsTest
 	{
 		Set<String> actual;
 		Set<String> expected;
-		actual = PropertiesFileExtensions.resolveAvailableLanguages("de.alpharogroup.lang",
+		actual = PropertiesFileExtensions.resolveAvailableLanguages("io.github.astrapi69.lang",
 			"resources");
 		assertNotNull(actual);
 		expected = SetFactory.newTreeSet("de", "de_DE", "en");

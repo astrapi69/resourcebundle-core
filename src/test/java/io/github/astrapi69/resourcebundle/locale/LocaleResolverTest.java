@@ -388,7 +388,7 @@ public class LocaleResolverTest
 	@Test(enabled = true)
 	public void testResolveAvailableLanguagesStringString()
 	{
-		final String bundlepackage = "de/alpharogroup/lang";
+		final String bundlepackage = "io/github/astrapi69/lang";
 		final String bundlename = "resources";
 		final Set<String> availableLanguages = LocaleResolver
 			.resolveAvailableLanguages(bundlepackage, bundlename);
@@ -414,12 +414,12 @@ public class LocaleResolverTest
 
 		expected = "resources";
 
-		propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
+		propertiesFilename = "io/github/astrapi69/lang/resources_de.properties";
 		propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		actual = LocaleResolver.resolveBundlename(propertiesFile);
 		assertTrue(expected.equals(actual));
 
-		propertiesFilename = "de/alpharogroup/lang/resources.properties";
+		propertiesFilename = "io/github/astrapi69/lang/resources.properties";
 		propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		actual = LocaleResolver.resolveBundlename(propertiesFile);
 		assertTrue(expected.equals(actual));
@@ -435,7 +435,7 @@ public class LocaleResolverTest
 	@Test(enabled = true)
 	public void testResolveLocaleCodeFile() throws URISyntaxException
 	{
-		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
+		final String propertiesFilename = "io/github/astrapi69/lang/resources_de.properties";
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		final String expected = "de";
 		final String actual = LocaleResolver.resolveLocaleCode(propertiesFile);
@@ -482,7 +482,7 @@ public class LocaleResolverTest
 	@Test(enabled = true)
 	public void testResolveLocaleFile() throws URISyntaxException
 	{
-		final String propertiesFilename = "de/alpharogroup/lang/resources_de.properties";
+		final String propertiesFilename = "io/github/astrapi69/lang/resources_de.properties";
 		final File propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
 		final String code = "de";
 		final Locale expected = new Locale(code);
@@ -497,7 +497,7 @@ public class LocaleResolverTest
 	@Test(enabled = true)
 	public void testResolveLocales()
 	{
-		final String bundlepackage = "de/alpharogroup/lang";
+		final String bundlepackage = "io/github/astrapi69/lang";
 		final String bundlename = "resources";
 		final Map<File, Locale> fileToLocaleMap = LocaleResolver.resolveLocales(bundlepackage,
 			bundlename);
