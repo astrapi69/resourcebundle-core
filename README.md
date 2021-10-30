@@ -1,6 +1,6 @@
 # Overview
 
-<div align="center">
+<div style="text-align: center">
 
 [![Build Status](https://travis-ci.org/astrapi69/resourcebundle-core.svg?branch=develop)](https://travis-ci.org/astrapi69/resourcebundle-core)
 [![Coverage Status](https://codecov.io/gh/astrapi69/resourcebundle-core/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/resourcebundle-core)
