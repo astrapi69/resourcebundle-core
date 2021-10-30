@@ -1,6 +1,30 @@
 ## Change log
 ----------------------
 
+Version 4.1
+-------------
+
+ADDED:
+
+- new dependency throw-able added in version 1.7
+
+CHANGED:
+
+- update of gradle to new version 7.2
+- changed to new package io.github.astrapi69
+- increase code coverage
+- update of dependency lombok version to 1.18.22
+- update of dependency snakeyaml version to 1.29
+- update of dependency file-worker version to 5.10
+- update of dependency commons-io version to 2.11.0
+- update of dependency silly-collections version to 18
+- update of dependency silly-io version to 1.6
+- update of dependency silly-beans version to 1.2
+- update of dependency jobj-core version to 3.9
+- update of test dependency test-objects version to 5.5
+- update of test dependency meanbean-factories version to 1.3
+- update of test dependency testng version to 7.4.0
+
 Version 4
 -------------
 

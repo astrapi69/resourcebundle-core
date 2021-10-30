@@ -1,11 +1,11 @@
 # Overview
 
-<div align="center">
+<div style="text-align: center">
 
 [![Build Status](https://travis-ci.org/astrapi69/resourcebundle-core.svg?branch=develop)](https://travis-ci.org/astrapi69/resourcebundle-core)
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/resourcebundle-core/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/resourcebundle-core?branch=develop)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/resourcebundle-core)
-[![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/resourcebundle-inspector.svg)](http://www.javadoc.io/doc/de.alpharogroup/resourcebundle-inspector)
+[![Coverage Status](https://codecov.io/gh/astrapi69/resourcebundle-core/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/resourcebundle-core)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core)
+[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/resourcebundle-inspector.svg)](http://www.javadoc.io/doc/io.github.astrapi69/resourcebundle-inspector)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 </div>
@@ -26,13 +26,13 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- RESOURCEBUNDLE-CORE version -->
-		<resourcebundle-core.version>4</resourcebundle-core.version>
+		<resourcebundle-core.version>4.1</resourcebundle-core.version>
 		
 		<dependencies>
 			...
 		    <!-- RESOURCEBUNDLE-CORE DEPENDENCY -->
 			<dependency>
-				<groupId>de.alpharogroup</groupId>
+				<groupId>io.github.astrapi69</groupId>
 				<artifactId>resourcebundle-core</artifactId>
 				<version>${resourcebundle-core.version}</version>
 			</dependency>
@@ -44,11 +44,10 @@ Than you can add the dependency to your dependencies:
 You can first define the version in the ext section and add than the following gradle dependency to 
 your project `build.gradle` if you want to import the core functionality of resourcebundle-core:
 
-
 ```
 define version in file gradle.properties
 
-resourcebundleCoreVersion=4
+resourcebundleCoreVersion=4.1
 ```
 
 or in build.gradle ext area
@@ -56,7 +55,7 @@ or in build.gradle ext area
 ```
 ext {
 			...
-    resourcebundleCoreVersion = "4"
+    resourcebundleCoreVersion = "4.1"
 			...
 }
 ```
@@ -66,7 +65,7 @@ and than add the dependency to the dependencies area
 ```
 dependencies {
 			...
-    implementation("de.alpharogroup:resourcebundle-core:$resourcebundleCoreVersion")
+    implementation("io.github.astrapi69:resourcebundle-core:$resourcebundleCoreVersion")
 			...
 }
 ```
@@ -102,23 +101,60 @@ No animals were harmed in the making of this library.
 
 # Donations
 
-This project is kept as an open source product and relies on contributions to remain being developed. 
-If you like this project, please consider a donation through paypal: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=GUGLK2W5PX29G&lc=GB&item_name=Open%2dsource%20developer&no_note=0&cn=Notice&no_shipping=1&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest" target="_blank">
-<img src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" alt="PayPal this" title="PayPal – The safer, easier way to pay online!" border="0" />
+This project is kept as an open source product and relies on contributions to remain being
+developed. If you like this library, please consider a donation
+
+over paypal: <br><br>
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MJ7V43GU2H386" target="_blank">
+<img src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" alt="PayPal this" title="PayPal – The safer, easier way to pay online!" style="border: none" />
 </a>
+<br><br>
+or over bitcoin(BTC) with this address:
 
-or over bitcoin or bitcoin-cash with:
+bc1ql2y99q7e8psndhcc3gferk03esw3qqf677rhjy
 
-1Jzso5h7U82QCNmgxxSCya1yUK7UVcSXsW
+<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/bc1ql2y99q7e8psndhcc3gferk03esw3qqf677rhjy.png"
+alt="Donation Bitcoin Wallet" width="250"/>
 
-or over ether with:
+or over FIO with this address:
 
-0xaB6EaE10F352268B0CA672Dd6e999C86344D49D8
+FIO7tFMUVAA9cHiPPqKMfMXiSxHrbpiFyRYqTketNuM67aULuwjop
+
+<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/FIO7tFMUVAA9cHiPPqKMfMXiSxHrbpiFyRYqTketNuM67aULuwjop.png"
+alt="Donation FIO Wallet" width="250"/>
+
+or over Ethereum(ETH) with:
+
+0xc057D159D3C8f3311E73568b334FF6fE82EB2b7D
+
+<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/0xc057D159D3C8f3311E73568b334FF6fE82EB2b7D.png"
+alt="Donation Ethereum Wallet" width="250"/>
+
+or over Ethereum Classic(ETC) with:
+
+0xF708cA86D86C246B69c3F4BAe431eBbe0c2bfddD
+
+<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/0xF708cA86D86C246B69c3F4BAe431eBbe0c2bfddD.png"
+alt="Donation Ethereum Classic Wallet" width="250"/>
+
+or over Dogecoin(DOGE) with:
+
+D5yi4Um8cpakd6yPRm2hGWuQ5nrVzhSSW1
+
+<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/D5yi4Um8cpakd6yPRm2hGWuQ5nrVzhSSW1.png"
+alt="Donation Dogecoin Wallet" width="250"/>
+
+or over Monero(XMR) with:
+
+49bqeRQ7Bf49oJFVC72pqpe5hFbb62pfXDYPdLsadGGF81KZW2ZfrPZ8PbAVu5X2v1TYAspeczMya3cYQysNS4usRRPQHVw
+
+<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/49bqeRQ7Bf49oJFVC72pqpe5hFbb62pfXDYPdLsadGGF81KZW2ZfrPZ8PbAVu5X2v1TYAspeczMya3cYQysNS4usRRPQHVw.png"
+alt="Donation Monero Wallet" width="250"/>
 
 or over flattr:
   
 <a href="http://flattr.com/thing/4180911/astrapi69resourcebundle-inspector-on-GitHub" target="_blank">
-<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
+<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" style="border: none" />
 </a>
 
 # Similar projects
