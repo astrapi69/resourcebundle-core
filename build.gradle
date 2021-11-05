@@ -202,6 +202,8 @@ dependencies {
     implementation("io.github.astrapi69:silly-collections:$sillyCollectionsVersion")
     implementation("io.github.astrapi69:file-worker:$fileWorkerVersion")
     implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
+    implementation("io.github.astrapi69:json-extensions:$jsonExtensionsVersion")
+    implementation("io.github.astrapi69:gson-extensions:$gsonExtensionsVersion")
     testImplementation("io.github.astrapi69:test-objects:$testObjectsVersion")
     testImplementation("io.github.astrapi69:jobj-contract-verifier:$jobjContractVerifierVersion")
     testImplementation("org.testng:testng:$testngVersion")
