@@ -27,11 +27,6 @@ sourceCompatibility = "$projectSourceCompatibility"
 repositories {
     mavenLocal()
     mavenCentral()
-    jcenter()
-}
-
-tasks.withType(GenerateModuleMetadata) {
-    enabled = false
 }
 
 javadoc {
@@ -43,6 +38,8 @@ javadoc {
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
+    // uncomment the next line for build with compiler argument -Xlint:deprecation
+    // options.compilerArgs << "-Xlint:deprecation"
 }
 
 test {
@@ -52,7 +49,7 @@ test {
 jacocoTestReport {
     reports {
         xml.enabled true
-        html.enabled false
+        html.enabled true
     }
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
@@ -62,8 +59,6 @@ jacocoTestReport {
         }))
     }
 }
-
-check.dependsOn jacocoTestReport
 
 task sourcesJar(type: Jar) {
     archiveClassifier.set("sources")
@@ -75,6 +70,8 @@ task javadocJar(type: Jar) {
     archiveClassifier.set("javadoc")
     javadoc.properties.failOnError = true
 }
+
+check.dependsOn jacocoTestReport
 
 def releaseVersion = !version.endsWith("SNAPSHOT")
 
