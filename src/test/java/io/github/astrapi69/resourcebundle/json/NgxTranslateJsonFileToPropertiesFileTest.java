@@ -37,7 +37,8 @@ import io.github.astrapi69.file.search.PathFinder;
 public class NgxTranslateJsonFileToPropertiesFileTest
 {
 
-	@Test public void testConvert() throws IOException
+	@Test
+	public void testConvert() throws IOException
 	{
 		String actual;
 		String expected;
@@ -50,12 +51,9 @@ public class NgxTranslateJsonFileToPropertiesFileTest
 		jsonDir = new File(PathFinder.getSrcTestResourcesDir(), "json");
 		ngxTranslateJsonFile = new File(jsonDir, "en.json");
 		ngxTranslatePropertiesFile = new File(jsonDir, ngxTranslatePropertiesFileName);
-		NgxTranslateJsonFileToPropertiesFile translateJsonFileToPropertiesFile =
-			NgxTranslateJsonFileToPropertiesFile
-				.builder()
-			.ngxTranslateJsonFile(ngxTranslateJsonFile)
-			.generatedPropertiesFile(ngxTranslatePropertiesFile)
-			.build();
+		NgxTranslateJsonFileToPropertiesFile translateJsonFileToPropertiesFile = NgxTranslateJsonFileToPropertiesFile
+			.builder().ngxTranslateJsonFile(ngxTranslateJsonFile)
+			.generatedPropertiesFile(ngxTranslatePropertiesFile).build();
 		translateJsonFileToPropertiesFile.convert();
 		actual = ReadFileExtensions.readFromFile(ngxTranslatePropertiesFile);
 		expected = "\n" + "\n" + "myapp.title=Translation app\n"
