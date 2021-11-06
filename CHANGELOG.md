@@ -1,6 +1,20 @@
 ## Change log
 ----------------------
 
+Version 4.2
+-------------
+
+ADDED:
+
+- new class PropertiesKeyExtensions provides methods for split properties keys to parts and to concatenate properties parts back again
+- new class NgxTranslateJsonFileToPropertiesFile that can convert a ngx-translate json file to a java properties file with the corresponding line number
+- new dependency jsonExtensions in the version 1.2 
+- new dependency gsonExtensions in the version 1.5
+
+CHANGED:
+
+- update of dependency file-worker version to 8
+
 Version 4.1
 -------------
 
