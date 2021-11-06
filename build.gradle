@@ -177,6 +177,7 @@ license {
               "**/*.vm",
               "**/*.log",
               "**/*.map",
+              "**/*.json",
               "**/*.js.map",
               "**/*.tmpl",
               "**/*.js.tmpl",
