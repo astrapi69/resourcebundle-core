@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/astrapi69/resourcebundle-core.svg?branch=develop)](https://travis-ci.org/astrapi69/resourcebundle-core)
 [![Coverage Status](https://codecov.io/gh/astrapi69/resourcebundle-core/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/resourcebundle-core)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core)
-[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/resourcebundle-inspector.svg)](http://www.javadoc.io/doc/io.github.astrapi69/resourcebundle-inspector)
+[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/resourcebundle-core.svg)](http://www.javadoc.io/doc/io.github.astrapi69/resourcebundle-core)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 </div>
@@ -26,7 +26,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- RESOURCEBUNDLE-CORE version -->
-		<resourcebundle-core.version>4.2</resourcebundle-core.version>
+		<resourcebundle-core.version>4.3</resourcebundle-core.version>
 		
 		<dependencies>
 			...
@@ -47,7 +47,7 @@ your project `build.gradle` if you want to import the core functionality of reso
 ```
 define version in file gradle.properties
 
-resourcebundleCoreVersion=4.2
+resourcebundleCoreVersion=4.3
 ```
 
 or in build.gradle ext area
@@ -55,7 +55,7 @@ or in build.gradle ext area
 ```
 ext {
 			...
-    resourcebundleCoreVersion = "4.2"
+    resourcebundleCoreVersion = "4.3"
 			...
 }
 ```
@@ -163,6 +163,7 @@ Here is a list of awesome projects for resource bundles:
 
 * [ResourceCheck](http://rscbundlecheck.sourceforge.net/) Ant Task for checking Java Resourcebundles. [sourceforge.net](https://sourceforge.net/projects/rscbundlecheck/)
 * [nv-i18n](https://github.com/TakahikoKawasaki/nv-i18n) Package to support internationalization, containing ISO 3166-1 country code enum, ISO 639-1 language code enum, etc.
+* [ngx-translate-json-from-properties](https://github.com/matthewurch/ngx-translate-json-from-properties) Convert properties files to simple JSON objects for ngx-translate (angular)
 
 ## Credits
 

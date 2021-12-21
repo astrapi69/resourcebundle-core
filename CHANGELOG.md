@@ -1,6 +1,13 @@
 ## Change log
 ----------------------
 
+Version 4.3
+-------------
+
+CHANGED:
+
+- downgrade to openjdk8
+
 Version 4.2
 -------------
 
