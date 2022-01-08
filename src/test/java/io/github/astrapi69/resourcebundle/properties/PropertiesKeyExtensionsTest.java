@@ -28,7 +28,6 @@ import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.meanbean.test.BeanTester;
