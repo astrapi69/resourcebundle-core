@@ -25,8 +25,11 @@
 package io.github.astrapi69.resourcebundle.properties;
 
 import java.util.Arrays;
+import java.util.List;
 
 import lombok.NonNull;
+import io.github.astrapi69.collections.list.ListExtensions;
+import io.github.astrapi69.collections.list.ListFactory;
 
 /**
  * The class {@link PropertiesKeyExtensions} provides methods for split properties keys to parts and
@@ -40,7 +43,7 @@ public final class PropertiesKeyExtensions
 
 	/**
 	 * Gets the parts of a properties key as a string array
-	 * 
+	 *
 	 * @param propertiesKey
 	 *            the properties key
 	 * @param separator
@@ -50,8 +53,34 @@ public final class PropertiesKeyExtensions
 	public static String[] getKeyParts(@NonNull final String propertiesKey,
 		@NonNull final PropertiesKeySeperator separator)
 	{
-		String[] keyParts = propertiesKey.split(separator.getSeparatorAsRegex());
-		return keyParts;
+		return propertiesKey.split(separator.getSeparatorAsRegex());
+	}
+
+	/**
+	 * Gets the parts of a properties key as list
+	 *
+	 * @param propertiesKey
+	 *            the properties key
+	 * @param separator
+	 *            the used separator
+	 * @return the parts of a properties key as list
+	 */
+	public static List<String> getKeyPartsAsList(@NonNull final String propertiesKey,
+		@NonNull final PropertiesKeySeperator separator)
+	{
+		return ListFactory.newArrayList(getKeyParts(propertiesKey, separator));
+	}
+
+	/**
+	 * Gets the parts of a properties key as list
+	 *
+	 * @param propertiesKey
+	 *            the properties key
+	 * @return the parts of a properties key as list
+	 */
+	public static List<String> getKeyPartsAsList(@NonNull final String propertiesKey)
+	{
+		return getKeyPartsAsList(propertiesKey, PropertiesKeySeperator.DOT);
 	}
 
 	/**
@@ -97,7 +126,7 @@ public final class PropertiesKeyExtensions
 
 	/**
 	 * Concatenates the given string array to a properties key with the given separator
-	 * 
+	 *
 	 * @param keyParts
 	 *            the key parts of the properties key
 	 * @param separator
@@ -120,9 +149,37 @@ public final class PropertiesKeyExtensions
 	}
 
 	/**
+	 * Concatenates the given string list to a properties key with the given separator
+	 *
+	 * @param keyParts
+	 *            the key parts of the properties key
+	 * @param separator
+	 *            the used separator
+	 * @return the concatenated properties key
+	 */
+	public static String concatenate(List<String> keyParts,
+		@NonNull final PropertiesKeySeperator separator)
+	{
+		return concatenate(ListExtensions.toArray(keyParts), separator);
+	}
+
+	/**
+	 * Concatenates the given string list to a properties key with the default separator that is a
+	 * dot
+	 *
+	 * @param keyParts
+	 *            the key parts of the properties key
+	 * @return the concatenated properties key
+	 */
+	public static String concatenate(List<String> keyParts)
+	{
+		return concatenate(keyParts, PropertiesKeySeperator.DOT);
+	}
+
+	/**
 	 * Concatenates the given string array to a properties key with the default separator that is a
 	 * dot
-	 * 
+	 *
 	 * @param keyParts
 	 *            the key parts of the properties key
 	 * @return the concatenated properties key

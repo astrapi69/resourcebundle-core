@@ -4,6 +4,11 @@
 Version 4.4-SNAPSHOT
 -------------
 
+ADDED:
+
+- new methods for split properties keys to parts in List and to concatenate properties parts back again
+
+
 Version 4.3
 -------------
 

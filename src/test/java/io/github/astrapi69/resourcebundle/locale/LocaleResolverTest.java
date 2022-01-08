@@ -399,7 +399,7 @@ public class LocaleResolverTest
 	}
 
 	/**
-	 * Test method for {@link LocaleResolver#resolveBundlename(File)}
+	 * Test method for {@link LocaleResolver#resolveBundleName(File)}
 	 *
 	 * @throws URISyntaxException
 	 *             the URI syntax exception
@@ -416,12 +416,12 @@ public class LocaleResolverTest
 
 		propertiesFilename = "io/github/astrapi69/lang/resources_de.properties";
 		propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
-		actual = LocaleResolver.resolveBundlename(propertiesFile);
+		actual = LocaleResolver.resolveBundleName(propertiesFile);
 		assertTrue(expected.equals(actual));
 
 		propertiesFilename = "io/github/astrapi69/lang/resources.properties";
 		propertiesFile = ClassExtensions.getResourceAsFile(propertiesFilename);
-		actual = LocaleResolver.resolveBundlename(propertiesFile);
+		actual = LocaleResolver.resolveBundleName(propertiesFile);
 		assertTrue(expected.equals(actual));
 
 	}
