@@ -1,6 +1,26 @@
 ## Change log
 ----------------------
 
+Version 4.4
+-------------
+
+ADDED:
+
+- new gradle-plugin org.ajoberstar.grgit:grgit-gradle in version 4.1.1 for create git tags
+- new gradle options for improve gradle build performance
+- new methods for split properties keys to parts in List and to concatenate properties parts back again
+
+CHANGED:
+
+- update gradle to new version 7.3.3
+- update of com.github.ben-manes.versions.gradle.plugin to new version 0.41.0
+- update of dependency jobj-core version to 5.2
+- update of dependency file-worker version to 8.1
+- update of dependency snakeyaml version to 1.30
+- update of test dependency test-objects version to 5.7
+- update of test dependency jobj-contract-verifier version to 3.5
+- update of test dependency testng version to 7.5
+
 Version 4.3
 -------------
 

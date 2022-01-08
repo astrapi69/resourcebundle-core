@@ -26,12 +26,16 @@ package io.github.astrapi69.resourcebundle.properties;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 
-import java.util.Arrays;
+import java.util.List;
 
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
+import io.github.astrapi69.collections.CollectionExtensions;
 import io.github.astrapi69.collections.array.ArrayFactory;
+import io.github.astrapi69.collections.list.ListFactory;
 
 /**
  * The unit test class for the class {@link PropertiesKeyExtensions}
@@ -54,18 +58,18 @@ public class PropertiesKeyExtensionsTest
 		seperator = PropertiesKeySeperator.DOT;
 		actual = PropertiesKeyExtensions.getKeyParts(propertiesKey, seperator);
 		expected = ArrayFactory.newArray("foo", "bar", "one", "five", "zero");
-		assertTrue(Arrays.equals(actual, expected));
+		assertArrayEquals(actual, expected);
 		// new scenario...
 		propertiesKey = "";
 		actual = PropertiesKeyExtensions.getKeyParts(propertiesKey, seperator);
 		expected = ArrayFactory.newArray("");
-		assertTrue(Arrays.equals(actual, expected));
+		assertArrayEquals(actual, expected);
 		// new scenario...
 		propertiesKey = "foo_bar_one_five_zero";
 		seperator = PropertiesKeySeperator.UNDERSCORE;
 		actual = PropertiesKeyExtensions.getKeyParts(propertiesKey, seperator);
 		expected = ArrayFactory.newArray("foo", "bar", "one", "five", "zero");
-		assertTrue(Arrays.equals(actual, expected));
+		assertArrayEquals(actual, expected);
 	}
 
 	/**
@@ -106,7 +110,41 @@ public class PropertiesKeyExtensionsTest
 		propertiesKey = "foo.bar.one.five.zero";
 		actual = PropertiesKeyExtensions.getKeyParts(propertiesKey);
 		expected = ArrayFactory.newArray("foo", "bar", "one", "five", "zero");
-		assertTrue(Arrays.equals(actual, expected));
+		assertArrayEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for
+	 * {@link PropertiesKeyExtensions#getKeyPartsAsList(String, PropertiesKeySeperator)}
+	 */
+	@Test
+	public void testGetKeyPartsAsListWithSeperator()
+	{
+		List<String> actual;
+		List<String> expected;
+		String propertiesKey;
+		// new scenario...
+		propertiesKey = "foo.bar.one.five.zero";
+		actual = PropertiesKeyExtensions.getKeyPartsAsList(propertiesKey,
+			PropertiesKeySeperator.DOT);
+		expected = ListFactory.newArrayList("foo", "bar", "one", "five", "zero");
+		assertTrue(CollectionExtensions.isEqualCollection(actual, expected));
+	}
+
+	/**
+	 * Test method for {@link PropertiesKeyExtensions#getKeyPartsAsList(String)}
+	 */
+	@Test
+	public void testGetKeyPartsAsList()
+	{
+		List<String> actual;
+		List<String> expected;
+		String propertiesKey;
+		// new scenario...
+		propertiesKey = "foo.bar.one.five.zero";
+		actual = PropertiesKeyExtensions.getKeyPartsAsList(propertiesKey);
+		expected = ListFactory.newArrayList("foo", "bar", "one", "five", "zero");
+		assertTrue(CollectionExtensions.isEqualCollection(actual, expected));
 	}
 
 	/**
@@ -151,6 +189,31 @@ public class PropertiesKeyExtensionsTest
 	}
 
 	/**
+	 * Test method for {@link PropertiesKeyExtensions#concatenate(List, PropertiesKeySeperator)}
+	 */
+	@Test
+	public void testConcatenateWithSeperatorWithList()
+	{
+
+		String actual;
+		String expected;
+		List<String> keyParts;
+		PropertiesKeySeperator seperator;
+		// new scenario...
+		seperator = PropertiesKeySeperator.DOT;
+		keyParts = ListFactory.newArrayList("foo", "bar", "one", "five", "zero");
+		actual = PropertiesKeyExtensions.concatenate(keyParts, seperator);
+		expected = "foo.bar.one.five.zero";
+		assertEquals(expected, actual);
+		// new scenario...
+		seperator = PropertiesKeySeperator.UNDERSCORE;
+		keyParts = ListFactory.newArrayList("foo", "bar", "one", "five", "zero");
+		actual = PropertiesKeyExtensions.concatenate(keyParts, seperator);
+		expected = "foo_bar_one_five_zero";
+		assertEquals(expected, actual);
+	}
+
+	/**
 	 * Test method for {@link PropertiesKeyExtensions#concatenate(String[])}
 	 */
 	@Test
@@ -165,5 +228,32 @@ public class PropertiesKeyExtensionsTest
 		actual = PropertiesKeyExtensions.concatenate(keyParts);
 		expected = "foo.bar.one.five.zero";
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link PropertiesKeyExtensions#concatenate(List)}
+	 */
+	@Test
+	public void testConcatenateList()
+	{
+
+		String actual;
+		String expected;
+		List<String> keyParts;
+		// new scenario...
+		keyParts = ListFactory.newArrayList("foo", "bar", "one", "five", "zero");
+		actual = PropertiesKeyExtensions.concatenate(keyParts);
+		expected = "foo.bar.one.five.zero";
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link PropertiesKeyExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(PropertiesKeyExtensions.class);
 	}
 }

@@ -7,14 +7,46 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/resourcebundle-core.svg)](http://www.javadoc.io/doc/io.github.astrapi69/resourcebundle-core)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
+[![Hits Of Code](https://hitsofcode.com/github/astrapi69/resourcebundle-core)](https://hitsofcode.com/github/astrapi69/resourcebundle-core/view)
+[![Lines Of Code](https://tokei.rs/b1/github/astrapi69/resourcebundle-core)](https://github.com/astrapi69/resourcebundle-core)
 
 </div>
 
 The resourcebundle-core project can inspect projects and find unused properties keys or duplicate keys.
+
+> Please support this project by simply putting a Github <!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/astrapi69/resourcebundle-core" data-icon="octicon-star" aria-label="Star astrapi69/resourcebundle-core on GitHub">Star ⭐</a>
+>
+> Share this library with friends on Twitter and everywhere else you can
+>
+> If you love this project [![donation](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 		
 ## License
 
 The source code comes under the liberal MIT License, making resourcebundle-inspector great for all types of applications.
+
+## gradle dependency
+
+You can first define the version in the ext section and add than the following gradle dependency to
+your project `build.gradle` if you want to import the core functionality of resourcebundle-core:
+
+
+define version in file gradle.properties
+```
+resourcebundleCoreVersion=4.4
+```
+
+or in build.gradle ext area
+
+```
+    resourcebundleCoreVersion = "4.4"
+```
+
+and then add the dependency to the dependencies area
+
+```
+    implementation("io.github.astrapi69:resourcebundle-core:$resourcebundleCoreVersion")
+```
 
 ## Maven dependency
 
@@ -26,7 +58,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- RESOURCEBUNDLE-CORE version -->
-		<resourcebundle-core.version>4.3</resourcebundle-core.version>
+		<resourcebundle-core.version>4.4</resourcebundle-core.version>
 		
 		<dependencies>
 			...
@@ -38,37 +70,7 @@ Than you can add the dependency to your dependencies:
 			</dependency>
 			...
 		</dependencies>	
-			
-## gradle dependency
 
-You can first define the version in the ext section and add than the following gradle dependency to 
-your project `build.gradle` if you want to import the core functionality of resourcebundle-core:
-
-```
-define version in file gradle.properties
-
-resourcebundleCoreVersion=4.3
-```
-
-or in build.gradle ext area
-
-```
-ext {
-			...
-    resourcebundleCoreVersion = "4.3"
-			...
-}
-```
-
-and than add the dependency to the dependencies area
-
-```
-dependencies {
-			...
-    implementation("io.github.astrapi69:resourcebundle-core:$resourcebundleCoreVersion")
-			...
-}
-```
 
 ## Semantic Versioning
 

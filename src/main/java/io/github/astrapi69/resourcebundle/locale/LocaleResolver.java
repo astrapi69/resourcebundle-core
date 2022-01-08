@@ -97,7 +97,7 @@ public class LocaleResolver
 			{
 				final String language = file.getName()
 					.replaceAll("^" + bundlename + "(_)?|\\.properties$", "");
-				if ((language != null) && !language.isEmpty())
+				if (!language.isEmpty())
 				{
 					languages.add(language);
 				}
@@ -126,8 +126,7 @@ public class LocaleResolver
 		List<URL> resources = getResources(bundlePackagePath, true);
 		URL packagePathUrl = ListExtensions.getFirst(resources);
 		final File root = new File(packagePathUrl.getFile());
-		final File[] files = root.listFiles(new PropertiesResourceBundleFilenameFilter(bundlename));
-		return files;
+		return root.listFiles(new PropertiesResourceBundleFilenameFilter(bundlename));
 	}
 
 
@@ -180,20 +179,20 @@ public class LocaleResolver
 	 *            the properties file
 	 * @return the bundle name
 	 */
-	public static String resolveBundlename(final File propertiesFile)
+	public static String resolveBundleName(final File propertiesFile)
 	{
 		final String filename = propertiesFile.getName();
 		final int indexOfUnderscore = filename.indexOf("_");
-		String bundlename = filename;
+		String bundleName;
 		if (0 < indexOfUnderscore)
 		{
-			bundlename = propertiesFile.getName().substring(0, filename.indexOf("_"));
+			bundleName = propertiesFile.getName().substring(0, filename.indexOf("_"));
 		}
 		else
 		{
-			bundlename = FilenameExtensions.getFilenameWithoutExtension(propertiesFile);
+			bundleName = FilenameExtensions.getFilenameWithoutExtension(propertiesFile);
 		}
-		return bundlename;
+		return bundleName;
 	}
 
 	/**
@@ -237,7 +236,7 @@ public class LocaleResolver
 		final boolean systemsDefault)
 	{
 		final String localeCode = propertiesFile.getName()
-			.replaceAll("^" + resolveBundlename(propertiesFile) + "(_)?|\\.properties$", "");
+			.replaceAll("^" + resolveBundleName(propertiesFile) + "(_)?|\\.properties$", "");
 		return LocaleResolver.resolveLocale(localeCode, defaultLocale, systemsDefault);
 	}
 
@@ -423,11 +422,7 @@ public class LocaleResolver
 	 * @param countryCode
 	 *            the country code
 	 * @return the found {@link Locale} or null if not found
-	 * @deprecated use instead the same name method with language code and country code<br>
-	 *             <br>
-	 *             Note: will be removed in the next minor version
 	 */
-	@Deprecated
 	public static Locale getLocale(@NonNull String countryCode)
 	{
 		List<Locale> locales = getLocalesFromCountryCode(countryCode);

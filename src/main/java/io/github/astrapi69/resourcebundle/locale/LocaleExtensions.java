@@ -196,10 +196,7 @@ public final class LocaleExtensions
 	 * @param defaultCountryName
 	 *            the default country name
 	 * @return the country name
-	 * @deprecated use instead same name method with the Note: will be removed on next minor
-	 *             release.
 	 */
-	@Deprecated
 	public static String getCountryName(String countryCode, Locale inLocale,
 		String defaultCountryName)
 	{

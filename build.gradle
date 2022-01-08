@@ -1,3 +1,6 @@
+group = "$groupPackage" as Object
+version = "$projectVersion" as Object
+description = "$rootProject.name"
 
 buildscript {
     repositories {
@@ -8,6 +11,7 @@ buildscript {
     dependencies {
         classpath "com.github.ben-manes:gradle-versions-plugin:$gradlePluginVersionsVersion"
         classpath "gradle.plugin.com.hierynomus.gradle.plugins:license-gradle-plugin:$licenseGradlePluginVersion"
+        classpath "org.ajoberstar.grgit:grgit-gradle:$grgitGradlePluginVersion"
     }
 }
 
@@ -19,9 +23,18 @@ apply plugin: "com.github.ben-manes.versions"
 apply plugin: "com.github.hierynomus.license"
 apply plugin: "jacoco"
 
-group = "$groupPackage"
-version = "$projectVersion"
-description = "$rootProject.name"
+apply plugin: "org.ajoberstar.grgit"
+
+task tagRelease {
+    description = "Tags the current head with the project\'s version."
+    doLast {
+        grgit.tag.add {
+            name = "RELEASE-${project.version.toString()}"
+            message = "New release in version ${version}"
+        }
+    }
+}
+
 sourceCompatibility = "$projectSourceCompatibility"
 
 repositories {
@@ -29,35 +42,12 @@ repositories {
     mavenCentral()
 }
 
-javadoc {
-    failOnError = false
-    if(JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption("html5", true)
-    }
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
     // uncomment the next line for build with compiler argument -Xlint:deprecation
     // options.compilerArgs << "-Xlint:deprecation"
-}
-
-test {
-    useTestNG()
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled true
-    }
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it,
-                    exclude: ["io/github/astrapi69/resourcebundle/inspector/search/processor/FilterProcessor.class",
-                              "io/github/astrapi69/resourcebundle/locale/PropertiesKeysListResolver.class"])
-        }))
-    }
+    // uncomment the next line for build with compiler argument -Xlint:unchecked
+    // options.compilerArgs << "-Xlint:unchecked"
 }
 
 task sourcesJar(type: Jar) {
@@ -71,7 +61,12 @@ task javadocJar(type: Jar) {
     javadoc.properties.failOnError = true
 }
 
-check.dependsOn jacocoTestReport
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption("html5", true)
+    }
+    failOnError = false
+}
 
 def releaseVersion = !version.endsWith("SNAPSHOT")
 
@@ -187,6 +182,26 @@ license {
 // workhack for license issue #76
 gradle.startParameter.excludedTaskNames += "licenseMain"
 gradle.startParameter.excludedTaskNames += "licenseTest"
+
+test {
+    useTestNG()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: ["io/github/astrapi69/resourcebundle/inspector/search/processor/FilterProcessor.class",
+                              "io/github/astrapi69/resourcebundle/locale/PropertiesKeysListResolver.class"])
+        }))
+    }
+}
+
+check.dependsOn jacocoTestReport
 
 dependencies {
     implementation("org.projectlombok:lombok:$lombokVersion")
