@@ -33,7 +33,7 @@ import java.util.Locale;
 
 import lombok.Getter;
 import lombok.NonNull;
-import io.github.astrapi69.collections.pairs.KeyValuePair;
+import io.github.astrapi69.collection.pair.KeyValuePair;
 import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
 
 /**

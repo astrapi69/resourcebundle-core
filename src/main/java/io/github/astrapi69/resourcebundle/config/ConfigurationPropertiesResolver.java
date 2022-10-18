@@ -30,7 +30,7 @@ import java.util.Properties;
 
 import lombok.Getter;
 import lombok.NonNull;
-import io.github.astrapi69.collections.properties.PropertiesExtensions;
+import io.github.astrapi69.collection.properties.PropertiesExtensions;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 

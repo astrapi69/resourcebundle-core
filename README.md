@@ -20,7 +20,7 @@ The resourcebundle-core project can inspect projects and find unused properties 
 > Share this library with friends on Twitter and everywhere else you can
 >
 > If you love this project [![donation](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
-		
+
 ## License
 
 The source code comes under the liberal MIT License, making resourcebundle-inspector great for all types of applications.
@@ -33,13 +33,13 @@ your project `build.gradle` if you want to import the core functionality of reso
 
 define version in file gradle.properties
 ```
-resourcebundleCoreVersion=4.4
+resourcebundleCoreVersion=5
 ```
 
 or in build.gradle ext area
 
 ```
-    resourcebundleCoreVersion = "4.4"
+    resourcebundleCoreVersion = "5"
 ```
 
 and then add the dependency to the dependencies area
@@ -57,19 +57,19 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 
 Than you can add the dependency to your dependencies:
 
-		<!-- RESOURCEBUNDLE-CORE version -->
-		<resourcebundle-core.version>4.4</resourcebundle-core.version>
-		
-		<dependencies>
-			...
-		    <!-- RESOURCEBUNDLE-CORE DEPENDENCY -->
-			<dependency>
-				<groupId>io.github.astrapi69</groupId>
-				<artifactId>resourcebundle-core</artifactId>
-				<version>${resourcebundle-core.version}</version>
-			</dependency>
-			...
-		</dependencies>	
+        <!-- RESOURCEBUNDLE-CORE version -->
+        <resourcebundle-core.version>5</resourcebundle-core.version>
+
+        <dependencies>
+            ...
+            <!-- RESOURCEBUNDLE-CORE DEPENDENCY -->
+            <dependency>
+                <groupId>io.github.astrapi69</groupId>
+                <artifactId>resourcebundle-core</artifactId>
+                <version>${resourcebundle-core.version}</version>
+            </dependency>
+            ...
+        </dependencies>
 
 
 ## Semantic Versioning
@@ -154,7 +154,7 @@ or over Monero(XMR) with:
 alt="Donation Monero Wallet" width="250"/>
 
 or over flattr:
-  
+
 <a href="http://flattr.com/thing/4180911/astrapi69resourcebundle-inspector-on-GitHub" target="_blank">
 <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" style="border: none" />
 </a>
@@ -173,4 +173,3 @@ Here is a list of awesome projects for resource bundles:
 |:-:|
 |![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)|
 |Many thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects.|
-

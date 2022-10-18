@@ -28,8 +28,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import lombok.NonNull;
-import io.github.astrapi69.collections.list.ListExtensions;
-import io.github.astrapi69.collections.list.ListFactory;
+import io.github.astrapi69.collection.list.ListExtensions;
+import io.github.astrapi69.collection.list.ListFactory;
 
 /**
  * The class {@link PropertiesKeyExtensions} provides methods for split properties keys to parts and

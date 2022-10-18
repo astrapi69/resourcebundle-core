@@ -1,10 +1,27 @@
 ## Change log
 ----------------------
 
-Version 4.5-SNAPSHOT
+Version 5
 -------------
 
+ADDED:
 
+- new gradle-plugin com.diffplug.spotless:spotless-plugin-gradle in version 6.11.0
+
+CHANGED:
+
+- update of JDK to newer version 11
+- update of gradle version to 7.5.1
+- update of gradle-plugin dependency com.github.ben-manes.versions.gradle.plugin to new version 0.43.0
+- update of gradle-plugin dependency org.ajoberstar.grgit:grgit-gradle to new version 5.0.0
+- update of dependency lombok version to 1.18.24
+- update of dependency silly-collection to new minor version 20.1
+- update of dependency jobj-core version to 7
+- update of dependency file-worker version to 11.4
+- update of dependency snakeyaml version to 1.33
+- update of test dependency test-object version to 7.1
+- update of test dependency jobj-contract-verifier version to 4
+- update of test dependency testng version to 7.6.1
 
 Version 4.4
 -------------
@@ -39,8 +56,9 @@ Version 4.2
 ADDED:
 
 - new class PropertiesKeyExtensions provides methods for split properties keys to parts and to concatenate properties parts back again
-- new class NgxTranslateJsonFileToPropertiesFile that can convert a ngx-translate json file to a java properties file with the corresponding line number
-- new dependency jsonExtensions in the version 1.2 
+- new class NgxTranslateJsonFileToPropertiesFile that can convert a ngx-translate json file to a java properties file
+  with the corresponding line number
+- new dependency jsonExtensions in the version 1.2
 - new dependency gsonExtensions in the version 1.5
 
 CHANGED:
@@ -75,7 +93,7 @@ Version 4
 -------------
 
 ADDED:
- 
+
 - new method for get Locale object from language code and country code
 - added new constant for a regular expression pattern that can find comments in properties file
 - new idea run configurations for gradle builds created
@@ -84,7 +102,7 @@ CHANGED:
 
 - update jdk from version 8 to 11
 - update of gradle to new version 6.7.1
-  
+
 - update of dependency lombok version to 1.18.16
 - update of dependency snakeyaml version to 1.27
 - update of dependency file-worker version to 5.7
@@ -96,8 +114,8 @@ CHANGED:
 - update of test dependency test-objects version to 5.3
 - update of test dependency meanbean-factories version to 2
 - update of test dependency testng version to 7.3.0
-- remove of test dependency junit version 
-- remove of test dependency mockito-core 
+- remove of test dependency junit version
+- remove of test dependency mockito-core
 - tagged method getLocale with country code as deprecated
 - deleted obsolete eclipse launch scripts
 - extracted project properties to gradle.properties
@@ -107,7 +125,7 @@ Version 3.2
 -------------
 
 ADDED:
- 
+
 - added gradle nature to project
 
 CHANGED:
@@ -119,7 +137,7 @@ Version 3.1
 -------------
 
 ADDED:
- 
+
 - new dependency jobj-core added in version 3.1
 
 CHANGED:
@@ -132,7 +150,7 @@ Version 3.0.3
 -------------
 
 ADDED:
- 
+
 - new dependency silly-beans added in version 1
 
 CHANGED:
@@ -143,7 +161,7 @@ Version 3.0.2
 -------------
 
 ADDED:
- 
+
 - new dependency silly-io added in version 1.1
 
 CHANGED:
@@ -216,7 +234,7 @@ Version 2.19.0
 -------------
 
 ADDED:
- 
+
 - new method for format a pattern string with arguments in ResourceBundleExtensions
 - new method for get the country name from a given country code
 - new method for get the language name from a given language code
@@ -232,21 +250,21 @@ Version 2.18.0
 -------------
 
 ADDED:
- 
-- new unit tests 
+
+- new unit tests
 
 CHANGED:
 
 - update of parent version and of dependencies versions
 - javadoc extended and improved
-- unit tests extended 
+- unit tests extended
 - improve of code coverage
 
 Version 2.17.0
 -------------
 
 ADDED:
- 
+
 - this changelog file
 - provide package.html for the javadoc of new packages
 - Donation buttons extended for paypal and bitcoin

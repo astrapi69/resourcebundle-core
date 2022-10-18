@@ -33,9 +33,9 @@ import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import io.github.astrapi69.collections.set.SetFactory;
+import io.github.astrapi69.collection.set.SetFactory;
 import io.github.astrapi69.evaluate.object.api.ContractViolation;
-import io.github.astrapi69.evaluate.object.checkers.EqualsHashCodeAndToStringCheck;
+import io.github.astrapi69.evaluate.object.checker.EqualsHashCodeAndToStringCheck;
 
 /**
  * The unit test class for the class {@link UnusedKeysSearchResult}.

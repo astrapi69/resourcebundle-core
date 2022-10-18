@@ -37,9 +37,9 @@ import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import io.github.astrapi69.collections.list.ListFactory;
+import io.github.astrapi69.collection.list.ListFactory;
 import io.github.astrapi69.file.create.FileFactory;
-import io.github.astrapi69.file.exceptions.FileIsADirectoryException;
+import io.github.astrapi69.file.exception.FileIsADirectoryException;
 import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.file.write.WriteFileExtensions;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;

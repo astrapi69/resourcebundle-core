@@ -40,7 +40,7 @@ import org.testng.annotations.Test;
 
 import com.neovisionaries.i18n.LocaleCode;
 
-import io.github.astrapi69.collections.set.SetFactory;
+import io.github.astrapi69.collection.set.SetFactory;
 import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import io.github.astrapi69.resourcebundle.locale.LocaleResolver;

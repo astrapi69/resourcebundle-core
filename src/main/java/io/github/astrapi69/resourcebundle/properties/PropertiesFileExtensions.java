@@ -43,7 +43,7 @@ import lombok.experimental.UtilityClass;
 
 import org.apache.commons.io.FilenameUtils;
 
-import io.github.astrapi69.collections.properties.PropertiesExtensions;
+import io.github.astrapi69.collection.properties.PropertiesExtensions;
 import io.github.astrapi69.file.copy.CopyFileExtensions;
 import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.file.search.FileSearchExtensions;

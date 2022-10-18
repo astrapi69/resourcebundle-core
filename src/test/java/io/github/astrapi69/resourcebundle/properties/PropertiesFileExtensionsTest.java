@@ -41,7 +41,7 @@ import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import io.github.astrapi69.collections.set.SetFactory;
+import io.github.astrapi69.collection.set.SetFactory;
 import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.io.file.FileExtension;
 import io.github.astrapi69.lang.ClassExtensions;

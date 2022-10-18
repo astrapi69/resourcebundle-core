@@ -42,7 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lombok.experimental.UtilityClass;
-import io.github.astrapi69.file.exceptions.FileIsADirectoryException;
+import io.github.astrapi69.file.exception.FileIsADirectoryException;
 import io.github.astrapi69.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
 
