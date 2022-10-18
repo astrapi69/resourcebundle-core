@@ -31,7 +31,7 @@ import org.meanbean.test.BeanTester;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import io.github.astrapi69.test.objects.Person;
+import io.github.astrapi69.test.object.Person;
 
 /**
  * The unit test class {@link ResourceKeyFactoryTest} provides unit tests for the class
@@ -47,7 +47,7 @@ public class ResourceKeyFactoryTest
 	public void testNewResourceKeyTBooleanString()
 	{
 		final String resourceKey = ResourceKeyFactory.newResourceKey(new Person(), false, "foo");
-		AssertJUnit.assertEquals("io.github.astrapi69.test.objects.Person.foo", resourceKey);
+		AssertJUnit.assertEquals("io.github.astrapi69.test.object.Person.foo", resourceKey);
 	}
 
 	/**

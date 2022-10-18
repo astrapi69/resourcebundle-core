@@ -35,7 +35,7 @@ import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import io.github.astrapi69.collections.array.ArrayFactory;
+import io.github.astrapi69.collection.array.ArrayFactory;
 
 /**
  * The unit test class {@link ResourceBundleExtensionsTest} provides unit tests for the class

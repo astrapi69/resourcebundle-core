@@ -36,7 +36,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import io.github.astrapi69.collections.set.SetFactory;
+import io.github.astrapi69.collection.set.SetFactory;
 
 /**
  * The class {@link KeySearchBean} is model bean for search keys in all kind of files. For instance

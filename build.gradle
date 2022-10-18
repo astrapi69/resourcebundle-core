@@ -12,6 +12,7 @@ buildscript {
         classpath "com.github.ben-manes:gradle-versions-plugin:$gradlePluginVersionsVersion"
         classpath "gradle.plugin.com.hierynomus.gradle.plugins:license-gradle-plugin:$licenseGradlePluginVersion"
         classpath "org.ajoberstar.grgit:grgit-gradle:$grgitGradlePluginVersion"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:$spotlessGradlePluginVersion"
     }
 }
 
@@ -22,25 +23,19 @@ apply plugin: "signing"
 apply plugin: "com.github.ben-manes.versions"
 apply plugin: "com.github.hierynomus.license"
 apply plugin: "jacoco"
-
 apply plugin: "org.ajoberstar.grgit"
+apply plugin: "com.diffplug.spotless"
+// import gradle files
+apply from: "gradle/dependencies.gradle"
+apply from: "gradle/formatting.gradle"
+apply from: "gradle/grgit.gradle"
+apply from: "gradle/licensing.gradle"
+apply from: "gradle/packaging.gradle"
+apply from: "gradle/publishing.gradle"
+apply from: "gradle/repositories.gradle"
+apply from: "gradle/testing.gradle"
 
-task tagRelease {
-    description = "Tags the current head with the project\'s version."
-    doLast {
-        grgit.tag.add {
-            name = "RELEASE-${project.version.toString()}"
-            message = "New release in version ${version}"
-        }
-    }
-}
-
-sourceCompatibility = "$projectSourceCompatibility"
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
+sourceCompatibility = "$projectSourceCompatibility" as Object
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
@@ -48,178 +43,4 @@ tasks.withType(JavaCompile) {
     // options.compilerArgs << "-Xlint:deprecation"
     // uncomment the next line for build with compiler argument -Xlint:unchecked
     // options.compilerArgs << "-Xlint:unchecked"
-}
-
-task sourcesJar(type: Jar) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.allJava)
-}
-
-task javadocJar(type: Jar) {
-    from javadoc
-    archiveClassifier.set("javadoc")
-    javadoc.properties.failOnError = true
-}
-
-javadoc {
-    if(JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption("html5", true)
-    }
-    failOnError = false
-}
-
-def releaseVersion = !version.endsWith("SNAPSHOT")
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = "$rootProject.name"
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-            pom {
-                name = "$rootProject.name"
-                description = "$projectDescription"
-                url = "$projectScmProviderUrl"+"$projectHolderUsername"+"$slash"+"$rootProject.name"
-                organization {
-                    name = "$projectOrganizationName"
-                    url = "$projectOrganizationUrl"
-                }
-                issueManagement {
-                    system = "$projectIssueManagementSystem"
-                    url = "$projectScmProviderUrl"+"$projectHolderUsername"+"$slash"+"$rootProject.name"+"$issuesPath"
-                }
-                licenses {
-                    license {
-                        name = "$projectLicenseName"
-                        url = "$projectLicenseUrl"
-                        distribution = "$projectLicenseDistribution"
-                    }
-                }
-                developers {
-                    developer {
-                        id = "$projectHolderUsername"
-                        name = "$projectLeaderName"
-                    }
-                }
-                scm {
-                    connection = "$projectScmGitUrlPrefix" + "$projectScmProviderDomain" + "$colon" + "$projectHolderUsername" + "$slash" + "$rootProject.name" + "$projectScmGitUrlSuffix"
-                    developerConnection = "$projectScmGitUrlPrefix" + "$projectScmProviderDomain" + "$colon" + "$projectHolderUsername" + "$slash" + "$rootProject.name" + "$projectScmGitUrlSuffix"
-                    url = "$projectScmGitUrlPrefix" + "$projectScmProviderDomain" + "$colon" + "$projectHolderUsername" + "$slash" + "$rootProject.name" + "$projectScmGitUrlSuffix"
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            credentials {
-                username System.getenv("$projectRepositoriesUserNameKey") ?: project.property("$projectRepositoriesUserNameKey")
-                password System.getenv("$projectRepositoriesPasswordKey") ?: project.property("$projectRepositoriesPasswordKey")
-            }
-            def releasesRepoUrl = "$projectRepositoriesReleasesRepoUrl"
-            def snapshotsRepoUrl = "$projectRepositoriesSnapshotsRepoUrl"
-            url = releaseVersion ? releasesRepoUrl : snapshotsRepoUrl
-        }
-    }
-}
-
-signing {
-    if (releaseVersion) {
-        sign publishing.publications.mavenJava
-    }
-}
-
-jar {
-    manifest {
-        attributes(
-                "Name"                  : project.name,
-                "Manifest-Version"      : project.version,
-                "Implementation-Title"  : "$groupPackage" + "." + "$rootProject.name",
-                "Implementation-Version": project.version,
-                "Implementation-Vendor" : "$projectLeaderName",
-                "Created-By"            : "Gradle ${gradle.gradleVersion}",
-                "Built-By"              : "$projectLeaderName",
-                "Build-Timestamp"       : new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
-                "Build-Jdk"             : "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
-                "Build-OS"              : "${System.properties['os.name']} ${System.properties['os.arch']} ${System.properties['os.version']}")
-    }
-}
-
-license {
-    ext.year="$projectInceptionYear"
-    ext.owner="$projectLeaderName"
-    header rootProject.file("src/main/resources/LICENSE.txt")
-    excludes(["**/README",
-              "**/README.md",
-              "**/LICENSE",
-              "**/NOTICE",
-              "**/*.xml",
-              "**/*.xsl",
-              "**/*.xsd",
-              "**/*.dtd",
-              "**/*.html",
-              "**/*.jsp",
-              "**/*.jpa",
-              "**/*.sql",
-              "**/*.properties",
-              "**/*.bat",
-              "**/*.gradle",
-              "**/*.MF",
-              "**/*.txt",
-              "**/*.vm",
-              "**/*.log",
-              "**/*.map",
-              "**/*.json",
-              "**/*.js.map",
-              "**/*.tmpl",
-              "**/*.js.tmpl",
-              "**/*.editorconfig",
-              "src/test/resources/**",
-              "src/main/resources/**",
-              "out/**",
-              "build/**"])
-}
-// workhack for license issue #76
-gradle.startParameter.excludedTaskNames += "licenseMain"
-gradle.startParameter.excludedTaskNames += "licenseTest"
-
-test {
-    useTestNG()
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled true
-    }
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it,
-                    exclude: ["io/github/astrapi69/resourcebundle/inspector/search/processor/FilterProcessor.class",
-                              "io/github/astrapi69/resourcebundle/locale/PropertiesKeysListResolver.class"])
-        }))
-    }
-}
-
-check.dependsOn jacocoTestReport
-
-dependencies {
-    implementation("org.projectlombok:lombok:$lombokVersion")
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    implementation("commons-io:commons-io:$commonsIoVersion")
-    implementation("org.yaml:snakeyaml:$snakeyamlVersion")
-    implementation("com.neovisionaries:nv-i18n:$nvI18nVersion")
-    implementation("io.github.astrapi69:jobj-core:$jobjCoreVersion")
-    implementation("io.github.astrapi69:silly-beans:$sillyBeansVersion")
-    implementation("io.github.astrapi69:silly-io:$sillyIoVersion")
-    implementation("io.github.astrapi69:silly-collections:$sillyCollectionsVersion")
-    implementation("io.github.astrapi69:file-worker:$fileWorkerVersion")
-    implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
-    implementation("io.github.astrapi69:json-extensions:$jsonExtensionsVersion")
-    implementation("io.github.astrapi69:gson-extensions:$gsonExtensionsVersion")
-    testImplementation("io.github.astrapi69:test-objects:$testObjectsVersion")
-    testImplementation("io.github.astrapi69:jobj-contract-verifier:$jobjContractVerifierVersion")
-    testImplementation("org.testng:testng:$testngVersion")
-    testImplementation("org.meanbean:meanbean:$meanbeanVersion")
-    testImplementation("io.github.astrapi69:meanbean-factories:$meanbeanFactoriesVersion")
 }

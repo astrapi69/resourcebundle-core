@@ -1,0 +1,19 @@
+test {
+    useTestNG()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: ["io/github/astrapi69/resourcebundle/inspector/search/processor/FilterProcessor.class",
+                              "io/github/astrapi69/resourcebundle/locale/PropertiesKeysListResolver.class"])
+        }))
+    }
+}
+
+check.dependsOn jacocoTestReport

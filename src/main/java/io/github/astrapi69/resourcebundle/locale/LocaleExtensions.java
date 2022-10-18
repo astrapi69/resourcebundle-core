@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Locale;
 
 import lombok.experimental.UtilityClass;
-import io.github.astrapi69.collections.list.ListExtensions;
+import io.github.astrapi69.collection.list.ListExtensions;
 
 /**
  * Extension class for Locales.
