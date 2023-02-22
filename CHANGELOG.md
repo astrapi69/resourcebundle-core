@@ -4,7 +4,22 @@
 Version 5.1-SNAPSHOT
 -------------
 
+ADDED:
 
+- new class PropertiesExtensions that provides helper methods for Properties objects
+
+CHANGED:
+
+- update of gradle version to 8.0.1
+- update of gradle-plugin dependency com.github.ben-manes.versions.gradle.plugin to new version 0.46.0
+- update of gradle-plugin dependency com.diffplug.spotless:spotless-plugin-gradle to new version 6.15.0
+- update of dependency lombok version to 1.18.26
+- update of dependency silly-collection to new minor version 21
+- update of dependency file-worker version to 11.6
+- update of test dependency test-object version to 7.2
+- update of test dependency testng version to 7.7.1
+- update of dependency silly-io version to 2.2
+- update of dependency json-extensions version to 2.1
 
 Version 5
 -------------
