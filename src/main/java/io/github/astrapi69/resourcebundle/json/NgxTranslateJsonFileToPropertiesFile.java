@@ -54,15 +54,30 @@ public class NgxTranslateJsonFileToPropertiesFile
 
 	public void convert() throws IOException
 	{
-		long lineCount = ReadFileExtensions.countAllLines(ngxTranslateJsonFile);
+		WriteFileExtensions.string2File(generatedPropertiesFile,
+			getPropertiesAsString(ngxTranslateJsonFile));
+	}
+
+	private static String getPropertiesAsString(@NonNull File ngxTranslateJsonFile) throws IOException
+	{
 		Properties properties = JsonToPropertiesExtensions.toProperties(ngxTranslateJsonFile);
-		TreeMap<Integer, String> lineNumberToKeyMap = new TreeMap<>();
-		for (Map.Entry entry : properties.entrySet())
-		{
-			String key = (String)entry.getKey();
-			int lineNumber = JsonLineNumberResolver.getLineNumber(ngxTranslateJsonFile, "$." + key);
-			lineNumberToKeyMap.put(lineNumber, key);
-		}
+		return getPropertiesAsString(properties, ngxTranslateJsonFile);
+	}
+
+	private static String getPropertiesAsString(@NonNull Properties properties,
+		@NonNull File ngxTranslateJsonFile) throws IOException
+	{
+		long lineCount = ReadFileExtensions.countAllLines(ngxTranslateJsonFile);
+		TreeMap<Integer, String> lineNumberToKeyMap = generateLineNumberKeyMap(ngxTranslateJsonFile,
+			properties);
+		String propertiesAsString = getPropertiesAsString(lineCount, properties,
+			lineNumberToKeyMap);
+		return propertiesAsString;
+	}
+
+	private static String getPropertiesAsString(long lineCount, Properties properties,
+		TreeMap<Integer, String> lineNumberToKeyMap)
+	{
 		StringBuilder sb = new StringBuilder();
 		for (int i = 1; i <= lineCount; i++)
 		{
@@ -77,6 +92,19 @@ public class NgxTranslateJsonFileToPropertiesFile
 				sb.append(propertiesKey).append("=").append(value).append(System.lineSeparator());
 			}
 		}
-		WriteFileExtensions.string2File(generatedPropertiesFile, sb.toString());
+		return sb.toString();
+	}
+
+	private static TreeMap<Integer, String> generateLineNumberKeyMap(
+		@NonNull File ngxTranslateJsonFile, @NonNull Properties properties) throws IOException
+	{
+		TreeMap<Integer, String> lineNumberToKeyMap = new TreeMap<>();
+		for (Map.Entry entry : properties.entrySet())
+		{
+			String key = (String)entry.getKey();
+			int lineNumber = JsonLineNumberResolver.getLineNumber(ngxTranslateJsonFile, "$." + key);
+			lineNumberToKeyMap.put(lineNumber, key);
+		}
+		return lineNumberToKeyMap;
 	}
 }

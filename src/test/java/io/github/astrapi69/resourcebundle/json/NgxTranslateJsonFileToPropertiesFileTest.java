@@ -46,12 +46,14 @@ public class NgxTranslateJsonFileToPropertiesFileTest
 		File jsonDir;
 		File ngxTranslateJsonFile;
 		File ngxTranslatePropertiesFile;
+		NgxTranslateJsonFileToPropertiesFile translateJsonFileToPropertiesFile;
+
 		String ngxTranslatePropertiesFileName = "ngxtranslate.properties";
 
 		jsonDir = new File(PathFinder.getSrcTestResourcesDir(), "json");
 		ngxTranslateJsonFile = new File(jsonDir, "en.json");
 		ngxTranslatePropertiesFile = new File(jsonDir, ngxTranslatePropertiesFileName);
-		NgxTranslateJsonFileToPropertiesFile translateJsonFileToPropertiesFile = NgxTranslateJsonFileToPropertiesFile
+		translateJsonFileToPropertiesFile = NgxTranslateJsonFileToPropertiesFile
 			.builder().ngxTranslateJsonFile(ngxTranslateJsonFile)
 			.generatedPropertiesFile(ngxTranslatePropertiesFile).build();
 		translateJsonFileToPropertiesFile.convert();
@@ -60,6 +62,22 @@ public class NgxTranslateJsonFileToPropertiesFileTest
 			+ "myapp.text=Translation app for test with ngx-translate\n" + "\n"
 			+ "myapp.menu.new=Translation new\n" + "myapp.menu.edit=Translation edit\n" + "\n"
 			+ "myapp.menu.popup.copy=Copy\n" + "\n" + "\n" + "\n" + "\n";
+		assertEquals(actual, expected);
+
+		ngxTranslateJsonFile = new File(jsonDir, "en-long.json");
+		ngxTranslatePropertiesFile = new File(jsonDir, ngxTranslatePropertiesFileName);
+		translateJsonFileToPropertiesFile = NgxTranslateJsonFileToPropertiesFile
+			.builder().ngxTranslateJsonFile(ngxTranslateJsonFile)
+			.generatedPropertiesFile(ngxTranslatePropertiesFile).build();
+		translateJsonFileToPropertiesFile.convert();
+		actual = ReadFileExtensions.readFromFile(ngxTranslatePropertiesFile);
+		expected = "\n" + "\n" + "myapp.title=Translation app\n"
+			+ "myapp.text=Translation app for test with ngx-translate\n" + "\n"
+			+ "foo.menu.new=Translation new\n" + "foo.menu.edit=Translation edit\n" + "\n"
+			+ "foo.menu.popup.copy=Copy\n" + "\n" + "\n" + "\n" + "\n"
+			+ "foo.title=Translation foo\n"
+			+ "foo.text=Translation foo for test with ngx-translate\n" + "\n" + "\n" + "\n" + "\n"
+			+ "\n" + "\n" + "\n" + "\n" + "\n";
 		assertEquals(actual, expected);
 	}
 }
