@@ -30,11 +30,11 @@ import static org.testng.AssertJUnit.assertTrue;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
-import lombok.experimental.ExtensionMethod;
-
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
+
+import lombok.experimental.ExtensionMethod;
 
 /**
  * The unit test class {@link LocaleExtensionsTest} provides unit tests for the class

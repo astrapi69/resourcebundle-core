@@ -41,10 +41,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.experimental.UtilityClass;
 import io.github.astrapi69.file.exception.FileIsADirectoryException;
 import io.github.astrapi69.resourcebundle.inspector.search.PropertiesDirectoryWalker;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
+import lombok.experimental.UtilityClass;
 
 /**
  * Normalizes Properties and replaces existing invalid characters to utf8 characters.

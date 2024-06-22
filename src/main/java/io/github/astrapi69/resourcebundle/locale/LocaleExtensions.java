@@ -27,8 +27,8 @@ package io.github.astrapi69.resourcebundle.locale;
 import java.util.List;
 import java.util.Locale;
 
-import lombok.experimental.UtilityClass;
 import io.github.astrapi69.collection.list.ListExtensions;
+import lombok.experimental.UtilityClass;
 
 /**
  * Extension class for Locales.

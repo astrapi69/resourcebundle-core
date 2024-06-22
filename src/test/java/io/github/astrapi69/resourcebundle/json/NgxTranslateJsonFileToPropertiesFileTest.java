@@ -53,8 +53,8 @@ public class NgxTranslateJsonFileToPropertiesFileTest
 		jsonDir = new File(PathFinder.getSrcTestResourcesDir(), "json");
 		ngxTranslateJsonFile = new File(jsonDir, "en.json");
 		ngxTranslatePropertiesFile = new File(jsonDir, ngxTranslatePropertiesFileName);
-		translateJsonFileToPropertiesFile = NgxTranslateJsonFileToPropertiesFile
-			.builder().ngxTranslateJsonFile(ngxTranslateJsonFile)
+		translateJsonFileToPropertiesFile = NgxTranslateJsonFileToPropertiesFile.builder()
+			.ngxTranslateJsonFile(ngxTranslateJsonFile)
 			.generatedPropertiesFile(ngxTranslatePropertiesFile).build();
 		translateJsonFileToPropertiesFile.convert();
 		actual = ReadFileExtensions.readFromFile(ngxTranslatePropertiesFile);
@@ -66,8 +66,8 @@ public class NgxTranslateJsonFileToPropertiesFileTest
 
 		ngxTranslateJsonFile = new File(jsonDir, "en-long.json");
 		ngxTranslatePropertiesFile = new File(jsonDir, ngxTranslatePropertiesFileName);
-		translateJsonFileToPropertiesFile = NgxTranslateJsonFileToPropertiesFile
-			.builder().ngxTranslateJsonFile(ngxTranslateJsonFile)
+		translateJsonFileToPropertiesFile = NgxTranslateJsonFileToPropertiesFile.builder()
+			.ngxTranslateJsonFile(ngxTranslateJsonFile)
 			.generatedPropertiesFile(ngxTranslatePropertiesFile).build();
 		translateJsonFileToPropertiesFile.convert();
 		actual = ReadFileExtensions.readFromFile(ngxTranslatePropertiesFile);

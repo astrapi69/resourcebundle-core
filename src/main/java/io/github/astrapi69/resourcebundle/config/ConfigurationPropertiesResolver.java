@@ -28,11 +28,11 @@ import java.io.Serializable;
 import java.util.Optional;
 import java.util.Properties;
 
-import lombok.Getter;
-import lombok.NonNull;
 import io.github.astrapi69.collection.properties.PropertiesExtensions;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
+import lombok.Getter;
+import lombok.NonNull;
 
 /**
  * The class {@link ConfigurationPropertiesResolver} resolves the configuration properties for an

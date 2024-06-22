@@ -6,6 +6,7 @@ Version 5.1-SNAPSHOT
 
 ADDED:
 
+- new libs.versions.toml file for new automatic catalog versions update
 - new class PropertiesExtensions that provides helper methods for Properties objects
 
 CHANGED:

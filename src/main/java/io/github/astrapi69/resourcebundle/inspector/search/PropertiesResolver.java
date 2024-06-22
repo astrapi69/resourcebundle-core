@@ -30,8 +30,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.Getter;
 import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
+import lombok.Getter;
 
 /**
  * The Class {@link PropertiesResolver} finds all properties file from the given root directory and

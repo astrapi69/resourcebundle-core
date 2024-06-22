@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.resourcebundle.inspector.validator;
 
-import lombok.experimental.UtilityClass;
-
 import com.neovisionaries.i18n.LocaleCode;
+
+import lombok.experimental.UtilityClass;
 
 /**
  * The Class {@link LocaleValidator} validates string values for locale objects.

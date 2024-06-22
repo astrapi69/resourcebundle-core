@@ -24,8 +24,8 @@
  */
 package io.github.astrapi69.resourcebundle.locale;
 
-import lombok.experimental.UtilityClass;
 import io.github.astrapi69.lang.ClassExtensions;
+import lombok.experimental.UtilityClass;
 
 /**
  * A factory for creating new resource(properties) key as {@link String} objects.

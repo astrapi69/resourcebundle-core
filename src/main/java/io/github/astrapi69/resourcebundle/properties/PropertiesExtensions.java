@@ -24,12 +24,12 @@
  */
 package io.github.astrapi69.resourcebundle.properties;
 
-import io.github.astrapi69.io.StringOutputStream;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Optional;
 import java.util.Properties;
+
+import io.github.astrapi69.io.StringOutputStream;
 
 /**
  * The class {@link PropertiesExtensions} provides helper methods for {@link Properties} objects

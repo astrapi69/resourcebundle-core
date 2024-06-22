@@ -30,16 +30,16 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
 
+import io.github.astrapi69.file.read.ReadFileExtensions;
+import io.github.astrapi69.file.write.WriteFileExtensions;
+import io.github.astrapi69.gson.JsonToPropertiesExtensions;
+import io.github.astrapi69.json.JsonLineNumberResolver;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
-import io.github.astrapi69.file.read.ReadFileExtensions;
-import io.github.astrapi69.file.write.WriteFileExtensions;
-import io.github.astrapi69.gson.JsonToPropertiesExtensions;
-import io.github.astrapi69.json.JsonLineNumberResolver;
 
 @Data
 @AllArgsConstructor
@@ -58,7 +58,8 @@ public class NgxTranslateJsonFileToPropertiesFile
 			getPropertiesAsString(ngxTranslateJsonFile));
 	}
 
-	private static String getPropertiesAsString(@NonNull File ngxTranslateJsonFile) throws IOException
+	private static String getPropertiesAsString(@NonNull File ngxTranslateJsonFile)
+		throws IOException
 	{
 		Properties properties = JsonToPropertiesExtensions.toProperties(ngxTranslateJsonFile);
 		return getPropertiesAsString(properties, ngxTranslateJsonFile);

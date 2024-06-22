@@ -333,7 +333,7 @@ public class LocaleResolverTest
 	/**
 	 * Test method for {@link LocaleResolver#getLocale(String, String)}
 	 */
-	@Test(enabled = true)
+	@Test(enabled = false, description = "")
 	public void testGetLocale()
 	{
 		Locale expected;

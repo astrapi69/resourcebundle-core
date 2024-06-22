@@ -31,10 +31,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-import lombok.Getter;
-import lombok.NonNull;
 import io.github.astrapi69.collection.pair.KeyValuePair;
 import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
+import lombok.Getter;
+import lombok.NonNull;
 
 /**
  * The Class {@link PropertiesListResolver} finds all properties files from the given root directory
