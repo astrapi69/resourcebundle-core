@@ -1,7 +1,7 @@
 ## Change log
 ----------------------
 
-Version 5.1-SNAPSHOT
+Version 6-SNAPSHOT
 -------------
 
 ADDED:
@@ -11,16 +11,18 @@ ADDED:
 
 CHANGED:
 
-- update of gradle version to 8.0.1
-- update of gradle-plugin dependency com.github.ben-manes.versions.gradle.plugin to new version 0.46.0
-- update of gradle-plugin dependency com.diffplug.spotless:spotless-plugin-gradle to new version 6.15.0
-- update of dependency lombok version to 1.18.26
-- update of dependency silly-collection to new minor version 21
-- update of dependency file-worker version to 11.6
-- update of test dependency test-object version to 7.2
-- update of test dependency testng version to 7.7.1
-- update of dependency silly-io version to 2.2
-- update of dependency json-extensions version to 2.1
+- update of JDK to version 17
+- update of gradle version to 8.8
+- update of gradle-plugin dependency com.github.ben-manes.versions.gradle.plugin to new version 0.51.0
+- update of gradle-plugin dependency com.diffplug.spotless:spotless-plugin-gradle to new version 7.0.0.BETA1
+- update of dependency lombok version to 1.18.32
+- update of dependency silly-collection to new minor version 27.1
+- update of dependency file-worker version to 17.2
+- update of test dependency test-object version to 8.2
+- update of test dependency testng version to 7.10.2
+- update of dependency silly-io version to 3
+- update of dependency json-extensions version to 3
+- remove of unused class NgxTranslateJsonFileToPropertiesFile
 
 Version 5
 -------------
