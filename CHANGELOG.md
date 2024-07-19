@@ -23,6 +23,7 @@ CHANGED:
 - update of dependency silly-io version to 3
 - update of dependency json-extensions version to 3
 - remove of unused class NgxTranslateJsonFileToPropertiesFile
+- replaced obsolete package.html with package-info.java files
 
 Version 5
 -------------
