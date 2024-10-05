@@ -28,7 +28,11 @@ import static org.testng.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Locale;
@@ -40,7 +44,7 @@ import org.testng.annotations.Test;
 
 import io.github.astrapi69.collection.set.SetFactory;
 import io.github.astrapi69.file.search.PathFinder;
-import io.github.astrapi69.resourcebundle.inspector.search.PropertiesDirectoryWalker;
+import io.github.astrapi69.io.file.FileExtension;
 import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
 
@@ -59,35 +63,53 @@ public class UsedKeysSearchFilterTest
 	{
 		final Map<File, Locale> foundMap = new HashMap<>();
 		final File rootDir = PathFinder.getSrcMainJavaDir();
-		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
+
+		// Walk the directory and process files
+		Files.walkFileTree(rootDir.toPath(), new SimpleFileVisitor<Path>()
 		{
 			@Override
-			protected void handleFile(final File file, final int depth,
-				final Collection<File> results) throws IOException
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+				throws IOException
 			{
-				final String localeCode = LocaleResolver.resolveLocaleCode(file);
-				if (localeCode.equals("default"))
+				File asFile = file.toFile();
+				if (asFile.getName().endsWith(FileExtension.PROPERTIES.getExtension()))
 				{
-					foundMap.put(file, Locale.GERMAN);
+					final String localeCode = LocaleResolver.resolveLocaleCode(asFile);
+					if (localeCode.equals("default"))
+					{
+						foundMap.put(asFile, Locale.GERMAN);
+					}
+					else
+					{
+						final Locale locale = LocaleResolver.resolveLocale(localeCode);
+						foundMap.put(asFile, locale);
+					}
 				}
-				else
-				{
-					final Locale locale = LocaleResolver.resolveLocale(localeCode);
-					foundMap.put(file, locale);
-				}
+				return FileVisitResult.CONTINUE;
 			}
-		};
-		walker.start(rootDir);
+
+			@Override
+			public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException
+			{
+				// Handle failure case if needed
+				return FileVisitResult.CONTINUE;
+			}
+		});
+
+		// Process the found properties files
 		for (final File propertiesFile : foundMap.keySet())
 		{
 			final Properties properties = PropertiesFileExtensions.loadProperties(propertiesFile);
 
 			final KeySearchBean model = KeySearchBean.newKeySearchBean(properties, rootDir,
 				new HashSet<File>(), foundMap.get(propertiesFile), ".java", ".html");
+
 			final UsedKeysSearchFilter command = new UsedKeysSearchFilter();
 			final UsedKeysSearchResult actual = command.process(model);
+
 			final UnusedKeysSearchFilter processor = new UnusedKeysSearchFilter();
 			final UnusedKeysSearchResult res = processor.process(actual);
+
 			System.out.println(res.getUnusedKeys());
 		}
 	}

@@ -42,6 +42,7 @@ throwable = { module = "io.github.astrapi69:throwable", version.ref = "throwable
 
 [bundles]
 unit-testing = [
+    "jobj-contract-verifier",
     "meanbean",
     "meanbean-factories",
     "test-object",

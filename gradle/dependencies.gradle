@@ -15,8 +15,6 @@ dependencies {
     implementation libs.throwable
     implementation libs.json.extensions
     implementation libs.gson.extensions
-    testImplementation libs.jobj.contract.verifier
     // Note: use of bundles...
-    testImplementation libs.meanbean.factories
     testImplementation libs.bundles.unit.testing
 }
