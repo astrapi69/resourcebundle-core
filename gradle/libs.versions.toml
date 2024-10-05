@@ -1,0 +1,58 @@
+[versions]
+commons-io-version = "2.17.0"
+file-worker-version = "17.4"
+gradle-plugin-grgit-version = "5.2.2"
+gradle-plugin-license-version = "0.16.1"
+gradle-plugin-lombok-version = "8.10"
+gradle-plugin-spotless-version = "7.0.0.BETA2"
+gradle-plugin-version-catalog-update-version = "0.8.4"
+gradle-plugin-versions-version = "0.51.0"
+gson-extensions-version = "3.1"
+jobj-contract-verifier-version = "5.2"
+jobj-core-version = "9"
+json-extensions-version = "3"
+lombok-version = "1.18.34"
+meanbean-factories-version = "3"
+meanbean-version = "2.0.3"
+silly-bean-version = "3.0"
+silly-collection-version = "28"
+silly-io-version = "3.1"
+snakeyaml-version = "2.3"
+test-object-version = "9"
+testng-version = "7.10.2"
+throwable-version = "3"
+
+[libraries]
+commons-io = { module = "commons-io:commons-io", version.ref = "commons-io-version" }
+file-worker = { module = "io.github.astrapi69:file-worker", version.ref = "file-worker-version" }
+gson-extensions = { module = "io.github.astrapi69:gson-extensions", version.ref = "gson-extensions-version" }
+jobj-contract-verifier = { module = "io.github.astrapi69:jobj-contract-verifier", version.ref = "jobj-contract-verifier-version" }
+jobj-core = { module = "io.github.astrapi69:jobj-core", version.ref = "jobj-core-version" }
+json-extensions = { module = "io.github.astrapi69:json-extensions", version.ref = "json-extensions-version" }
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok-version" }
+meanbean = { module = "org.meanbean:meanbean", version.ref = "meanbean-version" }
+meanbean-factories = { module = "io.github.astrapi69:meanbean-factories", version.ref = "meanbean-factories-version" }
+silly-bean = { module = "io.github.astrapi69:silly-bean", version.ref = "silly-bean-version" }
+silly-collection = { module = "io.github.astrapi69:silly-collection", version.ref = "silly-collection-version" }
+silly-io = { module = "io.github.astrapi69:silly-io", version.ref = "silly-io-version" }
+snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml-version" }
+test-object = { module = "io.github.astrapi69:test-object", version.ref = "test-object-version" }
+testng = { module = "org.testng:testng", version.ref = "testng-version" }
+throwable = { module = "io.github.astrapi69:throwable", version.ref = "throwable-version" }
+
+[bundles]
+unit-testing = [
+    "jobj-contract-verifier",
+    "meanbean",
+    "meanbean-factories",
+    "test-object",
+    "testng",
+]
+
+[plugins]
+gradle-versions-plugin = { id = "com.github.ben-manes.versions", version.ref = "gradle-plugin-versions-version" }
+grgit-gradle = { id = "org.ajoberstar.grgit", version.ref = "gradle-plugin-grgit-version" }
+license-gradle-plugin = { id = "com.github.hierynomus.license", version.ref = "gradle-plugin-license-version" }
+lombok-plugin = { id = "io.freefair.lombok", version.ref = "gradle-plugin-lombok-version" }
+spotless-plugin-gradle = { id = "com.diffplug.spotless", version.ref = "gradle-plugin-spotless-version" }
+version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradle-plugin-version-catalog-update-version" }

@@ -29,6 +29,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
 
+import io.github.astrapi69.collection.set.SetFactory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -36,7 +37,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import io.github.astrapi69.collection.set.SetFactory;
 
 /**
  * The class {@link KeySearchBean} is model bean for search keys in all kind of files. For instance

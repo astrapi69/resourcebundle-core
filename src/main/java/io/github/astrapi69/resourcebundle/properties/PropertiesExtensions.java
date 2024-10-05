@@ -22,28 +22,38 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.resourcebundle.inspector.validator;
+package io.github.astrapi69.resourcebundle.properties;
 
-import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
-import lombok.experimental.UtilityClass;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Optional;
+import java.util.Properties;
+
+import io.github.astrapi69.io.StringOutputStream;
 
 /**
- * The Class {@link LocaleValidator} validates string values for locale objects.
+ * The class {@link PropertiesExtensions} provides helper methods for {@link Properties} objects
  */
-@UtilityClass
-public final class LocaleValidator
+public class PropertiesExtensions
 {
-
 	/**
-	 * Validate the given code.
-	 *
-	 * @param stringCode
-	 *            the string code
-	 * @return true, if successful
+	 * Converts the given {@link Properties} object to a {@link String} object
+	 * 
+	 * @param properties
+	 *            the {@link Properties} object
+	 * @return the given {@link Properties} object as a {@link String} object
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
 	 */
-	public static boolean validate(final String stringCode)
+	public static Optional<String> toString(Properties properties) throws IOException
 	{
-		return LocaleResolver.resolveLocale(stringCode, false) != null;
+		Optional<String> result;
+		try (OutputStream outputStream = new StringOutputStream())
+		{
+			io.github.astrapi69.collection.properties.PropertiesExtensions.export(properties,
+				outputStream);
+			result = Optional.of(outputStream.toString());
+		}
+		return result;
 	}
-
 }

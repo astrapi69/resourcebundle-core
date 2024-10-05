@@ -39,8 +39,6 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 
-import lombok.experimental.UtilityClass;
-
 import org.apache.commons.io.FilenameUtils;
 
 import io.github.astrapi69.collection.properties.PropertiesExtensions;
@@ -51,6 +49,7 @@ import io.github.astrapi69.io.file.FileExtension;
 import io.github.astrapi69.lang.ClassExtensions;
 import io.github.astrapi69.lang.PackageExtensions;
 import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
+import lombok.experimental.UtilityClass;
 
 /**
  * The class {@link PropertiesFileExtensions} provides methods for load properties file

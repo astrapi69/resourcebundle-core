@@ -36,15 +36,20 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.experimental.UtilityClass;
 import io.github.astrapi69.file.exception.FileIsADirectoryException;
-import io.github.astrapi69.resourcebundle.inspector.search.PropertiesDirectoryWalker;
+import io.github.astrapi69.io.file.FileExtension;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
+import lombok.experimental.UtilityClass;
 
 /**
  * Normalizes Properties and replaces existing invalid characters to utf8 characters.
@@ -180,11 +185,11 @@ public class PropertiesNormalizer
 	}
 
 	/**
-	 * Finds properties files that contains invalid characters and adds them to the collection from
+	 * Finds properties files that contain invalid characters and adds them to the collection from
 	 * the given directory recursively.
 	 *
 	 * @param rootDir
-	 *            the root directory that shall be search for all properties files.
+	 *            the root directory that shall be searched for all properties files.
 	 * @return a collection with all found properties files.
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -193,19 +198,30 @@ public class PropertiesNormalizer
 		throws IOException
 	{
 		final Collection<File> found = new ArrayList<>();
-		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
+
+		Files.walkFileTree(rootDir.toPath(), new SimpleFileVisitor<Path>()
 		{
 			@Override
-			protected void handleFile(final File file, final int depth,
-				final Collection<File> results) throws IOException
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+				throws IOException
 			{
-				if (containsInvalidCharacters(file))
+				File asFile = file.toFile();
+				if (asFile.getName().endsWith(FileExtension.PROPERTIES.getExtension())
+					&& containsInvalidCharacters(asFile))
 				{
-					found.add(file);
+					found.add(asFile);
 				}
+				return FileVisitResult.CONTINUE;
 			}
-		};
-		walker.start(rootDir);
+
+			@Override
+			public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException
+			{
+				// Handle failure case if needed
+				return FileVisitResult.CONTINUE;
+			}
+		});
+
 		return found;
 	}
 

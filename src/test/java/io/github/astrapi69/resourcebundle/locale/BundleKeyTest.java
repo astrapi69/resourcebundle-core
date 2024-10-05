@@ -34,7 +34,7 @@ import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
 import io.github.astrapi69.evaluate.object.evaluator.EqualsHashCodeAndToStringEvaluator;
-import io.github.astrapi69.meanbean.factories.LocaleFactory;
+import io.github.astrapi69.meanbean.factory.LocaleFactory;
 
 /**
  * The unit test class for the class {@link BundleKey}.

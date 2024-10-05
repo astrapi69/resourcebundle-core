@@ -36,9 +36,9 @@ import org.testng.annotations.Test;
 
 import io.github.astrapi69.evaluate.object.api.ContractViolation;
 import io.github.astrapi69.evaluate.object.checker.EqualsHashCodeAndToStringCheck;
-import io.github.astrapi69.meanbean.factories.FileFactory;
-import io.github.astrapi69.meanbean.factories.LocaleFactory;
-import io.github.astrapi69.meanbean.factories.StringArrayFactory;
+import io.github.astrapi69.meanbean.factory.FileFactory;
+import io.github.astrapi69.meanbean.factory.LocaleFactory;
+import io.github.astrapi69.meanbean.factory.StringArrayFactory;
 
 /**
  * The unit test class for the class {@link KeySearchBean}

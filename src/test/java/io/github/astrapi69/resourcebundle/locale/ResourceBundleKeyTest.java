@@ -37,7 +37,7 @@ import org.testng.annotations.Test;
 
 import io.github.astrapi69.collection.array.ArrayFactory;
 import io.github.astrapi69.evaluate.object.evaluator.EqualsHashCodeAndToStringEvaluator;
-import io.github.astrapi69.meanbean.factories.ObjectArrayFactory;
+import io.github.astrapi69.meanbean.factory.ObjectArrayFactory;
 
 /**
  * The unit test class for the class {@link ResourceBundleKey}.

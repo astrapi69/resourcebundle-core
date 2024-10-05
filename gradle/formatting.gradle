@@ -10,6 +10,12 @@ spotless {
         endWithNewline()
     }
     java {
-        eclipse("4.19.0").configFile("src/test/resources/alpharo-formatter.xml")
+        // export config file:
+        // https://github.com/diffplug/spotless/blob/main/ECLIPSE_SCREENSHOTS.md#creating-spotlessimportorder
+        importOrderFile('src/test/resources/spotless/importorder.properties')
+        // removes any unused imports
+        removeUnusedImports()
+        // import order file as exported from eclipse
+        eclipse("4.21").configFile("src/test/resources/spotless/alpharo-formatter.xml")
     }
 }

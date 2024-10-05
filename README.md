@@ -25,51 +25,136 @@ The resourcebundle-core project can inspect projects and find unused properties 
 
 The source code comes under the liberal MIT License, making resourcebundle-inspector great for all types of applications.
 
+## Import dependencies to your project
+
+<details>
+  <summary>gradle (click to expand)</summary>
+
 ## gradle dependency
+
+Replace the variable ${latestVersion} with the current latest
+version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core)
 
 You can first define the version in the ext section and add than the following gradle dependency to
 your project `build.gradle` if you want to import the core functionality of resourcebundle-core:
 
-
 define version in file gradle.properties
+
 ```
-resourcebundleCoreVersion=5
+resourcebundleCoreVersion=${latestVersion}
 ```
 
 or in build.gradle ext area
 
 ```
-    resourcebundleCoreVersion = "5"
+    resourcebundleCoreVersion = "${latestVersion}"
 ```
 
-and then add the dependency to the dependencies area
+then add the dependency to the dependencies area
 
 ```
     implementation("io.github.astrapi69:resourcebundle-core:$resourcebundleCoreVersion")
 ```
 
+# with new libs.versions.toml file
+
+If you use the new libs.versions.toml file for new automatic catalog versions update
+
+```
+[versions]
+```
+```
+resourcebundle-core-version= "${latestVersion}"
+```
+```
+[libraries]
+```
+```
+resourcebundle-core = { module = "io.github.astrapi69:resourcebundle-core", version.ref = "resourcebundle-core-version" }
+```
+
+then add the dependency to the dependencies area
+
+```
+    implementation libs.resourcebundle.core
+```
+
+</details>
+
+<details>
+  <summary>Maven (click to expand)</summary>
+
 ## Maven dependency
 
 Maven dependency is now on sonatype.
-Check out [sonatype repository](https://oss.sonatype.org/#nexus-search;quick~resourcebundle-inspector) for latest snapshots and releases.
+Check
+out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~resourcebundle-core~~~)
+for latest snapshots and releases.
 
-Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of resourcebundle-core:
+Add the following maven dependency to your project `pom.xml` if you want to import the core
+functionality of resourcebundle-core:
 
-Than you can add the dependency to your dependencies:
+Then you can add the dependency to your dependencies:
 
-        <!-- RESOURCEBUNDLE-CORE version -->
-        <resourcebundle-core.version>5</resourcebundle-core.version>
+    <properties>
+        ...
 
+```xml
+        <!-- resourcebundle-core version -->
+        <resourcebundle-core.version>${latestVersion}</resourcebundle-core.version>
+```
+
+        ...
+    </properties>
+        ...
         <dependencies>
-            ...
-            <!-- RESOURCEBUNDLE-CORE DEPENDENCY -->
+        ...
+
+```xml
+            <!-- resourcebundle-core DEPENDENCY -->
             <dependency>
                 <groupId>io.github.astrapi69</groupId>
                 <artifactId>resourcebundle-core</artifactId>
                 <version>${resourcebundle-core.version}</version>
             </dependency>
-            ...
+```
+
+        ...
         </dependencies>
+
+</details>
+
+
+<details>
+  <summary>Snapshots (click to expand)</summary>
+
+## 📸 Snapshots
+
+[![Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://oss.sonatype.org/service/local/repositories/snapshots/content/io/github/astrapi69/resourcebundle-core/maven-metadata.xml&label=snapshot&color=red&query=.//versioning/latest)](https://oss.sonatype.org/content/repositories/snapshots/io/github/astrapi69/resourcebundle-core/)
+
+This section describes how to import snapshot versions into your project.
+Add the following code snippet to your gradle file in the repositories section:
+
+```
+repositories {
+   //...
+```
+
+```groovy
+    maven {
+        name "Sonatype Nexus Snapshots"
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
+```
+
+```
+}
+```
+
+</details>
 
 
 ## Semantic Versioning

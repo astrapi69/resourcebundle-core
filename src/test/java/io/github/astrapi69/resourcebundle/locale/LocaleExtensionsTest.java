@@ -27,14 +27,12 @@ package io.github.astrapi69.resourcebundle.locale;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
-import lombok.experimental.ExtensionMethod;
-
-import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
+
+import lombok.experimental.ExtensionMethod;
 
 /**
  * The unit test class {@link LocaleExtensionsTest} provides unit tests for the class
@@ -267,8 +265,7 @@ public class LocaleExtensionsTest
 	/**
 	 * Test method for {@link LocaleExtensions}
 	 */
-	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
-			UnsupportedOperationException.class })
+	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();

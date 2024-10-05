@@ -26,18 +26,22 @@ package io.github.astrapi69.resourcebundle.inspector.search;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileVisitOption;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
-import org.apache.commons.io.DirectoryWalker;
-
 import io.github.astrapi69.io.file.FileExtension;
-import io.github.astrapi69.io.file.filter.MultiplyExtensionsFileFilter;
 
 /**
  * The Class PropertiesDirectoryWalker finds Properties files.
  */
-public class PropertiesDirectoryWalker extends DirectoryWalker<File>
+public class PropertiesDirectoryWalker
 {
 	private final List<File> files;
 
@@ -46,7 +50,6 @@ public class PropertiesDirectoryWalker extends DirectoryWalker<File>
 	 */
 	public PropertiesDirectoryWalker()
 	{
-		super(new MultiplyExtensionsFileFilter(true, FileExtension.PROPERTIES.getExtension()), -1);
 		files = new ArrayList<>();
 	}
 
@@ -60,6 +63,38 @@ public class PropertiesDirectoryWalker extends DirectoryWalker<File>
 	 */
 	public void start(final File dir) throws IOException
 	{
-		walk(dir, files);
+		Path startPath = dir.toPath();
+		Files.walkFileTree(startPath, EnumSet.noneOf(FileVisitOption.class), Integer.MAX_VALUE,
+			new SimpleFileVisitor<Path>()
+			{
+				@Override
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+					throws IOException
+				{
+					if (file.toString().endsWith(FileExtension.PROPERTIES.getExtension()))
+					{
+						files.add(file.toFile());
+					}
+					return FileVisitResult.CONTINUE;
+				}
+
+				@Override
+				public FileVisitResult visitFileFailed(Path file, IOException exc)
+					throws IOException
+				{
+					// Handle the failure case here if necessary
+					return FileVisitResult.CONTINUE;
+				}
+			});
+	}
+
+	/**
+	 * Gets the list of found properties files.
+	 *
+	 * @return the list of files
+	 */
+	public List<File> getFiles()
+	{
+		return files;
 	}
 }

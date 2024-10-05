@@ -26,15 +26,20 @@ package io.github.astrapi69.resourcebundle.inspector.search;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
+import io.github.astrapi69.collection.pair.KeyValuePair;
+import io.github.astrapi69.io.file.FileExtension;
+import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
 import lombok.Getter;
 import lombok.NonNull;
-import io.github.astrapi69.collection.pair.KeyValuePair;
-import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
 
 /**
  * The Class {@link PropertiesListResolver} finds all properties files from the given root directory
@@ -84,18 +89,28 @@ public class PropertiesListResolver
 	 */
 	public void resolve() throws IOException
 	{
-		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
+		Files.walkFileTree(rootDir.toPath(), new SimpleFileVisitor<Path>()
 		{
 			@Override
-			protected void handleFile(final File file, final int depth,
-				final Collection<File> results) throws IOException
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+				throws IOException
 			{
-				final Locale locale = LocaleResolver.resolveLocale(file, defaultLocale, false);
-				propertiesList
-					.add(KeyValuePair.<File, Locale> builder().key(file).value(locale).build());
+				File asFile = file.toFile();
+				if (asFile.getName().endsWith(FileExtension.PROPERTIES.getExtension()))
+				{
+					Locale locale = LocaleResolver.resolveLocale(asFile, defaultLocale, false);
+					propertiesList.add(
+						KeyValuePair.<File, Locale> builder().key(asFile).value(locale).build());
+				}
+				return FileVisitResult.CONTINUE;
 			}
-		};
-		walker.start(rootDir);
-	}
 
+			@Override
+			public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException
+			{
+				// Handle failure case if needed
+				return FileVisitResult.CONTINUE;
+			}
+		});
+	}
 }

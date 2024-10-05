@@ -36,9 +36,9 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 
-import lombok.Getter;
 import io.github.astrapi69.resourcebundle.inspector.core.KeyValueLists;
 import io.github.astrapi69.resourcebundle.inspector.io.PropertiesLineReader;
+import lombok.Getter;
 
 /**
  * The Class {@link DuplicatePropertiesKeyInspector}.

@@ -26,12 +26,17 @@ package io.github.astrapi69.resourcebundle.inspector.search;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.Getter;
+import io.github.astrapi69.io.file.FileExtension;
 import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
+import lombok.Getter;
 
 /**
  * The Class {@link PropertiesResolver} finds all properties file from the given root directory and
@@ -76,17 +81,28 @@ public class PropertiesResolver
 	 */
 	public void resolve() throws IOException
 	{
-		final PropertiesDirectoryWalker walker = new PropertiesDirectoryWalker()
+		Files.walkFileTree(rootDir.toPath(), new SimpleFileVisitor<Path>()
 		{
 			@Override
-			protected void handleFile(final File file, final int depth,
-				final Collection<File> results) throws IOException
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+				throws IOException
 			{
-				final String localeCode = LocaleResolver.resolveLocaleCode(file);
-				propertiesToLocale.put(file, localeCode);
+				File asFile = file.toFile();
+				if (asFile.getName().endsWith(FileExtension.PROPERTIES.getExtension()))
+				{
+					String localeCode = LocaleResolver.resolveLocaleCode(asFile);
+					propertiesToLocale.put(asFile, localeCode);
+				}
+				return FileVisitResult.CONTINUE;
 			}
-		};
-		walker.start(rootDir);
+
+			@Override
+			public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException
+			{
+				// Handle failure if needed
+				return FileVisitResult.CONTINUE;
+			}
+		});
 	}
 
 }
