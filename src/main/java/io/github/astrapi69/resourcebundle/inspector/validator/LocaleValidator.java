@@ -24,8 +24,7 @@
  */
 package io.github.astrapi69.resourcebundle.inspector.validator;
 
-import com.neovisionaries.i18n.LocaleCode;
-
+import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -44,7 +43,7 @@ public final class LocaleValidator
 	 */
 	public static boolean validate(final String stringCode)
 	{
-		return LocaleCode.getByCode(stringCode) != null;
+		return LocaleResolver.resolveLocale(stringCode, false) != null;
 	}
 
 }

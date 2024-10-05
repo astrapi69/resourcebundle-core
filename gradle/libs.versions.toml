@@ -1,27 +1,26 @@
 [versions]
-commons-io-version = "2.16.1"
-file-worker-version = "17.2"
+commons-io-version = "2.17.0"
+file-worker-version = "17.4"
 gradle-plugin-grgit-version = "5.2.2"
 gradle-plugin-license-version = "0.16.1"
-gradle-plugin-lombok-version = "8.6"
-gradle-plugin-spotless-version = "7.0.0.BETA1"
+gradle-plugin-lombok-version = "8.10"
+gradle-plugin-spotless-version = "7.0.0.BETA2"
 gradle-plugin-version-catalog-update-version = "0.8.4"
 gradle-plugin-versions-version = "0.51.0"
-gson-extensions-version = "2.1"
-jobj-contract-verifier-version = "4"
-jobj-core-version = "8.2"
+gson-extensions-version = "3.1"
+jobj-contract-verifier-version = "5.2"
+jobj-core-version = "9"
 json-extensions-version = "3"
-lombok-version = "1.18.32"
-meanbean-factories-version = "1.3"
+lombok-version = "1.18.34"
+meanbean-factories-version = "3"
 meanbean-version = "2.0.3"
-nv-i18n-version = "1.29"
-silly-bean-version = "2"
-silly-collection-version = "27.1"
-silly-io-version = "3"
-snakeyaml-version = "2.2"
-test-object-version = "8.2"
+silly-bean-version = "3.0"
+silly-collection-version = "28"
+silly-io-version = "3.1"
+snakeyaml-version = "2.3"
+test-object-version = "9"
 testng-version = "7.10.2"
-throwable-version = "2.3"
+throwable-version = "3"
 
 [libraries]
 commons-io = { module = "commons-io:commons-io", version.ref = "commons-io-version" }
@@ -33,7 +32,6 @@ json-extensions = { module = "io.github.astrapi69:json-extensions", version.ref 
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok-version" }
 meanbean = { module = "org.meanbean:meanbean", version.ref = "meanbean-version" }
 meanbean-factories = { module = "io.github.astrapi69:meanbean-factories", version.ref = "meanbean-factories-version" }
-nv-i18n = { module = "com.neovisionaries:nv-i18n", version.ref = "nv-i18n-version" }
 silly-bean = { module = "io.github.astrapi69:silly-bean", version.ref = "silly-bean-version" }
 silly-collection = { module = "io.github.astrapi69:silly-collection", version.ref = "silly-collection-version" }
 silly-io = { module = "io.github.astrapi69:silly-io", version.ref = "silly-io-version" }

@@ -34,7 +34,9 @@ import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import com.neovisionaries.i18n.LocaleCode;
+import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
+
+//import com.neovisionaries.i18n.LocaleCode;
 
 /**
  * The unit test class for the class {@link LocaleValidator}
@@ -50,7 +52,7 @@ public class LocaleValidatorTest
 	{
 		String actual = "de";
 		assertTrue(LocaleValidator.validate(actual));
-		final Locale l = LocaleCode.getByCode(actual, true).toLocale();
+		final Locale l = LocaleResolver.resolveLocale(actual);
 		assertTrue(l.getLanguage().equals(actual));
 		actual = "de_DE";
 		assertTrue(LocaleValidator.validate(actual));

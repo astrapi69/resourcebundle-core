@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Locale;
 
 import io.github.astrapi69.collection.list.ListExtensions;
-import lombok.experimental.UtilityClass;
 
 /**
  * Extension class for Locales.
@@ -36,9 +35,15 @@ import lombok.experimental.UtilityClass;
  * @author Asterios Raptis
  * @version 1.0
  */
-@UtilityClass
 public final class LocaleExtensions
 {
+
+	/**
+	 * Private constructor to prevent instantiation
+	 */
+	private LocaleExtensions()
+	{
+	}
 
 	/** The available locales on the system. */
 	private static List<Locale> availableLocales;
@@ -151,25 +156,6 @@ public final class LocaleExtensions
 	{
 		return LocaleResolver.getAvailableLocales().contains(locale);
 	}
-
-	// /**
-	// * Returns a list of all available locales on the current jdk.
-	// *
-	// * @deprecated use instead same name method in LocaleResolver class. Note: will be removed on
-	// * next minor release.
-	// *
-	// * @return list of all available locales on the current jdk.
-	// */
-	// @Deprecated
-	// public static List<Locale> getAvailableLocales()
-	// {
-	// if (availableLocales == null)
-	// {
-	// final Locale localesArray[] = DateFormat.getAvailableLocales();
-	// availableLocales = Arrays.asList(localesArray);
-	// }
-	// return availableLocales;
-	// }
 
 	/**
 	 * Gets the display country name from the given country code in the given {@link Locale}.

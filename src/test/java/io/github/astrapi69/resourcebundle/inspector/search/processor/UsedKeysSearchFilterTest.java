@@ -38,8 +38,6 @@ import java.util.Set;
 
 import org.testng.annotations.Test;
 
-import com.neovisionaries.i18n.LocaleCode;
-
 import io.github.astrapi69.collection.set.SetFactory;
 import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.resourcebundle.inspector.search.PropertiesDirectoryWalker;
@@ -74,7 +72,7 @@ public class UsedKeysSearchFilterTest
 				}
 				else
 				{
-					final Locale locale = LocaleCode.getByCode(localeCode, true).toLocale();
+					final Locale locale = LocaleResolver.resolveLocale(localeCode);
 					foundMap.put(file, locale);
 				}
 			}
