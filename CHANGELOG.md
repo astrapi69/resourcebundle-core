@@ -1,24 +1,25 @@
 ## Change log
 ----------------------
 
-Version 6-SNAPSHOT
+Version 6.0
 -------------
 
 ADDED:
 
+- new module-info.java file for modularization
 - new libs.versions.toml file for new automatic catalog versions update
 - new class PropertiesExtensions that provides helper methods for Properties objects
 
 CHANGED:
 
 - update of JDK to version 17
-- update of gradle version to 8.8
+- update of gradle version to 8.10.2
 - update of gradle-plugin dependency com.github.ben-manes.versions.gradle.plugin to new version 0.51.0
-- update of gradle-plugin dependency com.diffplug.spotless:spotless-plugin-gradle to new version 7.0.0.BETA1
-- update of dependency lombok version to 1.18.32
-- update of dependency silly-collection to new minor version 27.1
-- update of dependency file-worker version to 17.2
-- update of test dependency test-object version to 8.2
+- update of gradle-plugin dependency com.diffplug.spotless:spotless-plugin-gradle to new version 7.0.0.BETA2
+- update of dependency lombok version to 1.18.34
+- update of dependency silly-collection to new minor version 28
+- update of dependency file-worker version to 17.4
+- update of test dependency test-object version to 9
 - update of test dependency testng version to 7.10.2
 - update of dependency silly-io version to 3
 - update of dependency json-extensions version to 3
