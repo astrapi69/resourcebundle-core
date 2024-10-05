@@ -40,6 +40,7 @@ public class PropertiesExtensions
 	 * Converts the given {@link Properties} object to a {@link String} object
 	 * 
 	 * @param properties
+	 *            the {@link Properties} object
 	 * @return the given {@link Properties} object as a {@link String} object
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
