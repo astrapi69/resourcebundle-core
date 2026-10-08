@@ -4,6 +4,13 @@
 Version 6.2-SNAPSHOT
 -------------
 
+CHANGED:
+
+- the jar no longer contains `test.properties`, `test_en_GB.properties` and `test_de_DE.properties`.
+  They are the tests' bundles and sat in `src/main/resources`, so every consumer had a bundle named
+  `test` on its classpath; they are in `src/test/resources` now. No consumer under astrapi69 reads
+  them, checked in the issue (#28)
+
 
 Version 6.1
 -------------
