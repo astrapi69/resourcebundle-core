@@ -42,6 +42,14 @@ public final class ResourceBundleExtensions
 {
 
 	/**
+	 * What the variants without parameters pass on: nothing to format with, so the value comes back
+	 * as the bundle holds it. Passing {@code (Object)null} instead is an array with one element,
+	 * which {@link #format(String, Object...)} formats, and MessageFormat reads every apostrophe as
+	 * the start of a quoted section (#21).
+	 */
+	private static final Object[] NO_PARAMETERS = new Object[0];
+
+	/**
 	 * Gets the string from the given {@link ResourceBundle} object.
 	 *
 	 * @param resourceBundle
@@ -93,7 +101,7 @@ public final class ResourceBundleExtensions
 	public static String getString(final ResourceBundle resourceBundle, final String key,
 		final String defaultValue) throws MissingResourceException
 	{
-		return getString(resourceBundle, key, defaultValue, (Object)null);
+		return getString(resourceBundle, key, defaultValue, NO_PARAMETERS);
 	}
 
 	/**
@@ -110,7 +118,7 @@ public final class ResourceBundleExtensions
 	public static String getStringQuietly(final ResourceBundle resourceBundle, final String key,
 		final String defaultValue)
 	{
-		return getStringQuietly(resourceBundle, key, defaultValue, (Object)null);
+		return getStringQuietly(resourceBundle, key, defaultValue, NO_PARAMETERS);
 	}
 
 	/**
@@ -187,7 +195,6 @@ public final class ResourceBundleExtensions
 			}
 			return warnMessage;
 		}
-		value = format(value, parameters);
 		return value;
 	}
 
@@ -282,7 +289,7 @@ public final class ResourceBundleExtensions
 	public static String getString(final String baseName, final Locale locale, final String key)
 		throws MissingResourceException
 	{
-		return getString(baseName, locale, key, null, (Object)null);
+		return getString(baseName, locale, key, null, NO_PARAMETERS);
 	}
 
 	/**
@@ -304,7 +311,7 @@ public final class ResourceBundleExtensions
 	public static String getString(final String baseName, final Locale locale, final String key,
 		final String defaultValue) throws MissingResourceException
 	{
-		return getString(baseName, locale, key, defaultValue, (Object)null);
+		return getString(baseName, locale, key, defaultValue, NO_PARAMETERS);
 	}
 
 	/**

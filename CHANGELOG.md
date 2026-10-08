@@ -4,6 +4,14 @@
 Version 6.1-SNAPSHOT
 -------------
 
+FIXED:
+
+- apostrophes in a value were lost: `ResourceBundleExtensions.getStringQuietly(bundle, key, defaultValue)`
+  and the other variants without parameters ran the value through `MessageFormat`, which reads an
+  apostrophe as the start of a quoted section, so `don't` came back as `dont`; and the variants with
+  parameters formatted the value twice, so a doubled apostrophe was lost as well and `''{0}''` came back
+  without its quotes. A value read without parameters now comes back as the bundle holds it, and one
+  read with parameters is formatted once (#21)
 
 Version 6.0
 -------------
