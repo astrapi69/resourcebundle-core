@@ -4,6 +4,14 @@
 Version 6.1-SNAPSHOT
 -------------
 
+CHANGED:
+
+- releases go to Maven Central through the Central Portal, as in the rest of the family: the
+  `com.gradleup.nmcp` plugin uploads, the maintainer releases each deployment in the Portal, and a
+  `RELEASE-*` tag runs the new `publish.yml`. The OSSRH staging endpoint this project published to
+  is shut down; its settings are gone, and snapshots resolve from the Central Portal's snapshot
+  repository (#23)
+
 FIXED:
 
 - apostrophes in a value were lost: `ResourceBundleExtensions.getStringQuietly(bundle, key, defaultValue)`
