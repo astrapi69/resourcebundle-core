@@ -1,6 +1,28 @@
 ## Change log
 ----------------------
 
+Version 6.1
+-------------
+
+CHANGED:
+
+- releases go to Maven Central through the Central Portal, as in the rest of the family: the
+  `com.gradleup.nmcp` plugin uploads, the maintainer releases each deployment in the Portal, and a
+  `RELEASE-*` tag runs the new `publish.yml`. The OSSRH staging endpoint this project published to
+  is shut down; its settings are gone, and snapshots resolve from the Central Portal's snapshot
+  repository (#23)
+
+FIXED:
+
+- apostrophes in a value were lost: `ResourceBundleExtensions.getStringQuietly(bundle, key, defaultValue)`
+  and the other variants without parameters ran the value through `MessageFormat`, which reads an
+  apostrophe as the start of a quoted section, so `don't` came back as `dont`; and the variants with
+  parameters formatted the value twice, so a doubled apostrophe was lost as well and `''{0}''` came back
+  without its quotes. A value read without parameters now comes back as the bundle holds it, and one
+  read with parameters is formatted once (#21). For a caller this means: a value read without
+  parameters that holds `''` comes back with both apostrophes, and one that holds `{0}` keeps it
+  instead of turning it into `null`
+
 Version 6.0
 -------------
 

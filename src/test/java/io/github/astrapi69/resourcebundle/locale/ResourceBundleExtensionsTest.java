@@ -26,9 +26,12 @@ package io.github.astrapi69.resourcebundle.locale;
 
 import static org.testng.AssertJUnit.assertEquals;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import org.meanbean.test.BeanTestException;
@@ -125,6 +128,55 @@ public class ResourceBundleExtensionsTest
 		actual = ResourceBundleExtensions.getStringQuietly(resourceBundle,
 			"com.example.gui.window.title", "default value of com.example.gui.window.title");
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * A value read without parameters comes back as the bundle holds it. MessageFormat reads an
+	 * apostrophe as the start of a quoted section, so formatting a value nobody asked to format
+	 * lost every apostrophe in it (#21)
+	 *
+	 * @throws IOException
+	 *             not expected, the bundle is read from a string
+	 */
+	@Test
+	public void testGetStringWithoutParametersKeepsTheValueAsItIs() throws IOException
+	{
+		ResourceBundle resourceBundle = bundleOf("single=don't", "quoted=a 'word' here",
+			"pattern=Hello {0}");
+
+		assertEquals("don't",
+			ResourceBundleExtensions.getStringQuietly(resourceBundle, "single", "default"));
+		assertEquals("a 'word' here",
+			ResourceBundleExtensions.getStringQuietly(resourceBundle, "quoted", "default"));
+		assertEquals("Hello {0}",
+			ResourceBundleExtensions.getStringQuietly(resourceBundle, "pattern", "default"));
+		assertEquals("don't",
+			ResourceBundleExtensions.getString(resourceBundle, "single", "default"));
+	}
+
+	/**
+	 * A value read with parameters is formatted once, so that a doubled apostrophe -
+	 * MessageFormat's escape for one - comes back as one, and the quotes around a parameter stay
+	 * (#21)
+	 *
+	 * @throws IOException
+	 *             not expected, the bundle is read from a string
+	 */
+	@Test
+	public void testGetStringQuietlyWithParametersFormatsOnce() throws IOException
+	{
+		ResourceBundle resourceBundle = bundleOf("exists=''{0}'' already exists",
+			"doubled=don''t {0}");
+
+		assertEquals("'file.txt' already exists", ResourceBundleExtensions
+			.getStringQuietly(resourceBundle, "exists", "default", "file.txt"));
+		assertEquals("don't stop", ResourceBundleExtensions.getStringQuietly(resourceBundle,
+			"doubled", "default", "stop"));
+	}
+
+	private static ResourceBundle bundleOf(final String... lines) throws IOException
+	{
+		return new PropertyResourceBundle(new StringReader(String.join("\n", lines)));
 	}
 
 	/**
