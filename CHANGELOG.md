@@ -1,7 +1,7 @@
 ## Change log
 ----------------------
 
-Version 6.1-SNAPSHOT
+Version 6.1
 -------------
 
 CHANGED:
@@ -19,7 +19,9 @@ FIXED:
   apostrophe as the start of a quoted section, so `don't` came back as `dont`; and the variants with
   parameters formatted the value twice, so a doubled apostrophe was lost as well and `''{0}''` came back
   without its quotes. A value read without parameters now comes back as the bundle holds it, and one
-  read with parameters is formatted once (#21)
+  read with parameters is formatted once (#21). For a caller this means: a value read without
+  parameters that holds `''` comes back with both apostrophes, and one that holds `{0}` keeps it
+  instead of turning it into `null`
 
 Version 6.0
 -------------
