@@ -287,3 +287,12 @@ Here is a list of awesome projects for resource bundles:
 |:-:|
 |![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)|
 |Many thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects.|
+
+## Git hooks
+
+The repository's git hooks live in `.githooks`: `commit-msg` where present, and `pre-commit`, which refuses a
+commit whose files Spotless would format. Activate them once per clone or worktree:
+
+```bash
+git config core.hooksPath .githooks
+```
