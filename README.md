@@ -2,13 +2,11 @@
 
 <div style="text-align: center">
 
-[![Build Status](https://travis-ci.org/astrapi69/resourcebundle-core.svg?branch=develop)](https://travis-ci.org/astrapi69/resourcebundle-core)
 [![Coverage Status](https://codecov.io/gh/astrapi69/resourcebundle-core/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/resourcebundle-core)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.astrapi69/resourcebundle-core)](https://central.sonatype.com/artifact/io.github.astrapi69/resourcebundle-core)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/resourcebundle-core.svg)](http://www.javadoc.io/doc/io.github.astrapi69/resourcebundle-core)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Hits Of Code](https://hitsofcode.com/github/astrapi69/resourcebundle-core)](https://hitsofcode.com/github/astrapi69/resourcebundle-core/view)
-[![Lines Of Code](https://tokei.rs/b1/github/astrapi69/resourcebundle-core)](https://github.com/astrapi69/resourcebundle-core)
 
 </div>
 
@@ -33,7 +31,7 @@ The source code comes under the liberal MIT License, making resourcebundle-inspe
 ## gradle dependency
 
 Replace the variable ${latestVersion} with the current latest
-version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/resourcebundle-core)
+version: [![Maven Central](https://img.shields.io/maven-central/v/io.github.astrapi69/resourcebundle-core)](https://central.sonatype.com/artifact/io.github.astrapi69/resourcebundle-core)
 
 You can first define the version in the ext section and add than the following gradle dependency to
 your project `build.gradle` if you want to import the core functionality of resourcebundle-core:
@@ -86,10 +84,7 @@ then add the dependency to the dependencies area
 
 ## Maven dependency
 
-Maven dependency is now on sonatype.
-Check
-out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~resourcebundle-core~~~)
-for latest snapshots and releases.
+The library is on Maven Central. Check out [Maven Central](https://central.sonatype.com/artifact/io.github.astrapi69/resourcebundle-core) for the latest release.
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core
 functionality of resourcebundle-core:
@@ -130,7 +125,7 @@ Then you can add the dependency to your dependencies:
 
 ## 📸 Snapshots
 
-[![Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://oss.sonatype.org/service/local/repositories/snapshots/content/io/github/astrapi69/resourcebundle-core/maven-metadata.xml&label=snapshot&color=red&query=.//versioning/latest)](https://oss.sonatype.org/content/repositories/snapshots/io/github/astrapi69/resourcebundle-core/)
+[![Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://central.sonatype.com/repository/maven-snapshots/io/github/astrapi69/resourcebundle-core/maven-metadata.xml&label=snapshot&color=red&query=.//versioning/latest)](https://central.sonatype.com/repository/maven-snapshots/io/github/astrapi69/resourcebundle-core/maven-metadata.xml)
 
 This section describes how to import snapshot versions into your project.
 Add the following code snippet to your gradle file in the repositories section:
@@ -142,8 +137,8 @@ repositories {
 
 ```groovy
     maven {
-        name "Sonatype Nexus Snapshots"
-        url "https://oss.sonatype.org/content/repositories/snapshots"
+        name "Central Portal Snapshots"
+        url "https://central.sonatype.com/repository/maven-snapshots/"
         mavenContent {
             snapshotsOnly()
         }
@@ -230,13 +225,6 @@ Here is a list of awesome projects for resource bundles:
 * [ResourceCheck](http://rscbundlecheck.sourceforge.net/) Ant Task for checking Java Resourcebundles. [sourceforge.net](https://sourceforge.net/projects/rscbundlecheck/)
 * [nv-i18n](https://github.com/TakahikoKawasaki/nv-i18n) Package to support internationalization, containing ISO 3166-1 country code enum, ISO 639-1 language code enum, etc.
 * [ngx-translate-json-from-properties](https://github.com/matthewurch/ngx-translate-json-from-properties) Convert properties files to simple JSON objects for ngx-translate (angular)
-
-## Credits
-
-|Travis CI|
-|:-:|
-|![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)|
-|Many thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects.|
 
 ## Git hooks
 
