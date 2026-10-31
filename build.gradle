@@ -46,3 +46,5 @@ tasks.withType(JavaCompile).configureEach { javaCompiler ->
 tasks.named("test") {
     it.mustRunAfter(tasks.named("jar"))
 }
+
+apply from: "gradle/test-results-complete.gradle"
