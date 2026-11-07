@@ -31,11 +31,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-import io.github.astrapi69.collection.pair.KeyValuePair;
 import io.github.astrapi69.io.file.FileExtension;
 import io.github.astrapi69.resourcebundle.locale.LocaleResolver;
 import lombok.Getter;
@@ -53,10 +54,10 @@ public class PropertiesListResolver
 	private final Locale defaultLocale;
 
 	/**
-	 * The properties list with {@linkplain KeyValuePair} objects as properties file as key and the
-	 * locale string code as value.
+	 * The properties list with {@linkplain Map.Entry} objects with the properties file as key and
+	 * its locale as value.
 	 */
-	private final List<KeyValuePair<File, Locale>> propertiesList = new ArrayList<>();
+	private final List<Map.Entry<File, Locale>> propertiesList = new ArrayList<>();
 
 	/** The root dir. */
 	private final File rootDir;
@@ -81,8 +82,8 @@ public class PropertiesListResolver
 
 	/**
 	 * Resolves the properties file from the given root directory and put the result to the
-	 * properties list with {@linkplain KeyValuePair} objects as properties file as key and the
-	 * locale string code as value.
+	 * properties list with {@linkplain Map.Entry} objects with the properties file as key and its
+	 * locale as value.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -99,8 +100,7 @@ public class PropertiesListResolver
 				if (asFile.getName().endsWith(FileExtension.PROPERTIES.getExtension()))
 				{
 					Locale locale = LocaleResolver.resolveLocale(asFile, defaultLocale, false);
-					propertiesList.add(
-						KeyValuePair.<File, Locale> builder().key(asFile).value(locale).build());
+					propertiesList.add(new AbstractMap.SimpleImmutableEntry<>(asFile, locale));
 				}
 				return FileVisitResult.CONTINUE;
 			}

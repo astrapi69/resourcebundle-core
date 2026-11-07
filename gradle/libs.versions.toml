@@ -15,7 +15,6 @@ json-extensions-version = "3"
 lombok-version = "1.18.34"
 meanbean-factories-version = "3"
 meanbean-version = "2.0.3"
-silly-bean-version = "3.0"
 silly-collection-version = "28"
 silly-io-version = "3.1"
 snakeyaml-version = "2.3"
@@ -33,7 +32,6 @@ json-extensions = { module = "io.github.astrapi69:json-extensions", version.ref 
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok-version" }
 meanbean = { module = "org.meanbean:meanbean", version.ref = "meanbean-version" }
 meanbean-factories = { module = "io.github.astrapi69:meanbean-factories", version.ref = "meanbean-factories-version" }
-silly-bean = { module = "io.github.astrapi69:silly-bean", version.ref = "silly-bean-version" }
 silly-collection = { module = "io.github.astrapi69:silly-collection", version.ref = "silly-collection-version" }
 silly-io = { module = "io.github.astrapi69:silly-io", version.ref = "silly-io-version" }
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml-version" }
