@@ -23,7 +23,6 @@ module io.github.astrapisixtynine.resourcebundle.core
 	requires io.github.astrapisixtynine.silly.collection;
 	requires silly.io.main;
 	requires io.github.astrapisixtynine.throwable;
-	requires io.github.astrapisixtynine.silly.bean;
 	requires io.github.astrapisixtynine.jobj.core;
 
 	exports io.github.astrapi69.resourcebundle.config;

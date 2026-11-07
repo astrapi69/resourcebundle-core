@@ -39,8 +39,6 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
-import io.github.astrapi69.collection.pair.KeyValuePair;
-
 /**
  * The class {@link PropertiesListResolver}.
  */
@@ -96,7 +94,7 @@ public class PropertiesListResolverTest
 				Locale.ENGLISH);
 			resolver.resolve();
 			final Map<File, Locale> resolved = new HashMap<>();
-			for (final KeyValuePair<File, Locale> entry : resolver.getPropertiesList())
+			for (final Map.Entry<File, Locale> entry : resolver.getPropertiesList())
 			{
 				resolved.put(entry.getKey(), entry.getValue());
 			}
