@@ -252,7 +252,9 @@ public final class PropertiesFileExtensions
 	 *
 	 * @param propertiesFile
 	 *            the properties file
-	 * @return the properties or null if the file is not found.
+	 * @return the properties
+	 * @throws java.io.FileNotFoundException
+	 *             if the file does not exist
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
