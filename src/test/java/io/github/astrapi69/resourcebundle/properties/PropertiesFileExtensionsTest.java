@@ -26,11 +26,16 @@ package io.github.astrapi69.resourcebundle.properties;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.expectThrows;
 import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -231,6 +236,55 @@ public class PropertiesFileExtensionsTest
 		assertNotNull(actual);
 		expected = SetFactory.newTreeSet("de", "de_DE", "en");
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions#loadProperties(File)} with a file that exists
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	@Test
+	public void testLoadPropertiesFile() throws IOException
+	{
+		final Path directory = Files.createTempDirectory("load-properties");
+		final Path file = Files.writeString(directory.resolve("existing.properties"),
+			"greeting=hello\n", StandardCharsets.ISO_8859_1);
+		try
+		{
+			final Properties properties = PropertiesFileExtensions.loadProperties(file.toFile());
+			assertEquals(properties.getProperty("greeting"), "hello");
+			assertEquals(properties.size(), 1);
+		}
+		finally
+		{
+			Files.delete(file);
+			Files.delete(directory);
+		}
+	}
+
+	/**
+	 * Test method for {@link PropertiesFileExtensions#loadProperties(File)} with a file that does
+	 * not exist: it throws, it does not return null (#55)
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	@Test
+	public void testLoadPropertiesFileThatDoesNotExist() throws IOException
+	{
+		final Path directory = Files.createTempDirectory("load-properties");
+		try
+		{
+			final File missing = directory.resolve("does-not-exist.properties").toFile();
+			final FileNotFoundException exception = expectThrows(FileNotFoundException.class,
+				() -> PropertiesFileExtensions.loadProperties(missing));
+			assertEquals(exception.getMessage(), "does-not-exist.properties not found.");
+		}
+		finally
+		{
+			Files.delete(directory);
+		}
 	}
 
 	/**
