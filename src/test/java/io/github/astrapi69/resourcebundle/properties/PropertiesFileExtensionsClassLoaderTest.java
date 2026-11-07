@@ -24,6 +24,8 @@
  */
 package io.github.astrapi69.resourcebundle.properties;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNotSame;
 import static org.testng.Assert.assertNull;
 
@@ -171,7 +173,8 @@ public class PropertiesFileExtensionsClassLoaderTest
 		final Load load) throws IOException
 	{
 		final Properties properties = load.load(markerClass);
-		assertNull(properties, name);
+		assertNotNull(properties, name);
+		assertEquals(properties.getProperty("found"), "next to the class", name);
 	}
 
 }
