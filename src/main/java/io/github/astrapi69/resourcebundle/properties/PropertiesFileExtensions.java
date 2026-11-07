@@ -194,13 +194,17 @@ public final class PropertiesFileExtensions
 	}
 
 	/**
-	 * Load properties.
+	 * Load properties. The class loader of the current thread is asked first, as by
+	 * {@link #loadProperties(String)}; if it does not find the file, the given class is asked as
+	 * {@link Class#getResourceAsStream(String)} does: a name without a leading slash relative to
+	 * the package of the class, a name with a leading slash from the root of its class loader
 	 *
 	 * @param clazz
-	 *            the clazz
+	 *            the clazz whose class loader is asked if the class loader of the current thread
+	 *            does not find the file
 	 * @param name
 	 *            the package path with the file name
-	 * @return the properties
+	 * @return the properties, or null if neither finds the file
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
@@ -210,26 +214,30 @@ public final class PropertiesFileExtensions
 		Properties properties = loadProperties(name);
 		if (properties == null)
 		{
-			final InputStream is = ClassExtensions.getResourceAsStream(clazz.getClass(), name);
-			if (is != null)
+			try (InputStream is = ClassExtensions.getResourceAsStream(clazz, name))
 			{
-				properties = new Properties();
-				properties.load(is);
+				if (is != null)
+				{
+					properties = new Properties();
+					properties.load(is);
+				}
 			}
 		}
 		return properties;
 	}
 
 	/**
-	 * Load properties.
+	 * Load properties, from the package path and the file name as
+	 * {@link #loadProperties(Class, String)} does from the two joined
 	 *
 	 * @param clazz
-	 *            the clazz
+	 *            the clazz whose class loader is asked if the class loader of the current thread
+	 *            does not find the file
 	 * @param packagePath
 	 *            the package path without the file name
 	 * @param fileName
 	 *            the file name
-	 * @return the properties
+	 * @return the properties, or null if neither finds the file
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
