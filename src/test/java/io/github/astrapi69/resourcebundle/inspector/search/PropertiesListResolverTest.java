@@ -29,9 +29,17 @@ import static org.testng.AssertJUnit.assertNotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.testng.annotations.Test;
+
+import io.github.astrapi69.collection.pair.KeyValuePair;
 
 /**
  * The class {@link PropertiesListResolver}.
@@ -58,6 +66,52 @@ public class PropertiesListResolverTest
 		assertEquals(expectedDir, actualDir);
 		final Locale actualLocale = propertiesListResolver.getDefaultLocale();
 		assertEquals(expectedLocale, actualLocale);
+	}
+
+	/**
+	 * Test method for {@link PropertiesListResolver#resolve()}: each properties file of the tree,
+	 * also in a subdirectory, comes with the locale of its name, the default locale for a file
+	 * without one, and a file of another kind is left out
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	@Test
+	public void testResolve() throws IOException
+	{
+		final Path directory = Files.createTempDirectory("properties-list");
+		final Path messages = Files.writeString(directory.resolve("messages.properties"),
+			"greeting=hello\n", StandardCharsets.ISO_8859_1);
+		final Path messagesDe = Files.writeString(directory.resolve("messages_de.properties"),
+			"greeting=hallo\n", StandardCharsets.ISO_8859_1);
+		final Path subdirectory = Files.createDirectory(directory.resolve("sub"));
+		final Path messagesDeDe = Files.writeString(
+			subdirectory.resolve("messages_de_DE.properties"), "greeting=servus\n",
+			StandardCharsets.ISO_8859_1);
+		final Path readme = Files.writeString(directory.resolve("readme.txt"), "no bundle\n",
+			StandardCharsets.ISO_8859_1);
+		try
+		{
+			final PropertiesListResolver resolver = new PropertiesListResolver(directory.toFile(),
+				Locale.ENGLISH);
+			resolver.resolve();
+			final Map<File, Locale> resolved = new HashMap<>();
+			for (final KeyValuePair<File, Locale> entry : resolver.getPropertiesList())
+			{
+				resolved.put(entry.getKey(), entry.getValue());
+			}
+			assertEquals(3, resolver.getPropertiesList().size());
+			assertEquals(Map.of(messages.toFile(), Locale.ENGLISH, messagesDe.toFile(),
+				Locale.GERMAN, messagesDeDe.toFile(), Locale.GERMANY), resolved);
+		}
+		finally
+		{
+			for (final Path path : List.of(readme, messagesDeDe, subdirectory, messagesDe, messages,
+				directory))
+			{
+				Files.delete(path);
+			}
+		}
 	}
 
 	/**
